@@ -1,0 +1,47 @@
+<!-- Categories display start -->
+<ul class="clearfix" style="margin-bottom:15px;">
+	<?php 
+	$rootcatId = Mage::app()->getStore()->getRootCategoryId(); 
+	$categories = Mage::getModel('catalog/category')->getCategories($rootcatId);
+	foreach ($categories as $_category): 
+		$cat = Mage::getModel('catalog/category')->load($_category->getId());
+		$count = $cat->getProductCount(); 
+	?>
+		<li class="menu-item" style="list-style: none; float:left">
+			<h5><a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a></h5>
+			<ul>
+				<?php $children = Mage::getModel('catalog/category')->getCategories($_category->getId()); ?>
+				<?php 
+				$i=0;
+				foreach ($children as $subcategory): 
+					$subcat = Mage::getModel('catalog/category')->load($subcategory->getId()); 
+				?>
+					<li>
+						<a class="inside-link" href="<?php echo Mage::getUrl($subcat->getUrlPath()); ?>" title="<?php echo $subcategory->getName() ?>"><?php echo $subcategory->getName() ?></a>
+					</li>			
+				<?php 
+				$i++;
+				if($i==3) break;
+				endforeach ?>
+				<?php
+				$i=0;
+				foreach ($children as $subcategory){
+				$i++;
+				} ?>
+				<li class="w-all">
+					<a class="lev" href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $total_count=$i." ".__('more..') ?>"><?php echo $total_count=$i." ".__('more..') ?></a>
+				</li>
+			</ul>
+		</li>
+	<?php endforeach ?>
+</ul>
+<!-- Categories display end -->
+
+
+<!--$counter = 0;
+foreach ($Contents as $item) {
+          something 
+          your code  ...
+      $counter++;      
+}
+$total_count=$counter-1;-->
