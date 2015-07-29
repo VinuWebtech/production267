@@ -697,8 +697,40 @@ table{
 
 /*------------------------- Layered nav srollbar for attribute ----------------------*/
 
+/*---------- adding scroll bar to subcategories box in layered nav -----------------*/
 ul.category-list {
 max-height: 100px;
 overflow-y: scroll;
 overflow-x: hidden;
+}
+
+/*---------- placing collapse button to left & changing color for subcat box ------*/
+.block-category-nav .block-title::before {
+    left: 10px;
+    border: 1px solid #777;
+    color: #777;
+}
+
+/*---------- adjusting subcat text label accordingly  ----------------------------*/
+.block-category-nav .block-title {
+    padding: 10px 45px;
+}
+
+/*---------- adding scroll bar to attributes in layered nav -----------------------*/
+dl#narrow-by-list dd >ol {
+max-height: 150px;
+overflow-y: scroll;
+overflow-x: hidden;
+}
+
+/*---------- placing collapse button to left & changing color for attributes -----*/
+.block-layered-nav dt::before {
+    left: 10px;
+    border: 1px solid #777;
+    color: #777;
+}
+
+/*---------- adjusting attribute text label accordingly  ---------------------------*/
+.block-layered-nav dt {
+    padding: 10px 45px;
 }
