@@ -24,11 +24,7 @@
     padding: 0px 10px;
     overflow: hidden;
 }
-/*
-span {
-    display: none;
-}
-*/
+
 .book-product-item-icon {
     display: none;
 }
@@ -170,141 +166,116 @@ ol, ul, li {
 /*--------------------------------------------------------------------------------------------*/
 /*------------------------------------Navbar links--------------------------------------------*/
 
-
-
-
-#sitenav{
-    border-top:1px solid #858585;
-    border-bottom:1px solid #858585
-}
-
-
-
-#sitenav .list-level-0>li .top-level-text-wrapper{
-    color:#4c4c4c
-}
-
-#sitenav .list-level-0>li .top-level-text{
-    font:12px/1.33333 "Proxima Nova",Arial,sans-serif;
-    color:#666;
-    font-weight:700;
-    text-transform:uppercase
-}
-
-
-
-#sitenav .list-level-1>li{
-    width:185px;
-    min-height:330px;
-    background-color:#fff;
-    border:1px solid #e7e7e7
-}
-
-#sitenav .list-level-1 .list-level-2{
-    padding:10px 6px
-}
-
-
-
-
-
-#sitenav .list-level-1.brands>li:last-child{
-    background:0 0;
-    border:0
-}
-
-#sitenav .list-level-1.brands>li:last-child .list-level-2{
-    margin-left:2px;
-    padding:10px 4px 10px 6px
-}
-
-#sitenav .list-level-1.brands>li:last-child .list-level-3 img{
-    position:absolute;
-    right:3px;
-    bottom:1px
-}
-
-
-
-#sitenav .viewAll{
-    color:#85a5af;
-    font-weight:700
-}
-
-@media (min-width:1360px){
-    #site-header.lanuk #sitenav .list-level-0>li .top-level-text{
-        font-size:14px;
-        line-height:1.14286
-    }
-
-}
-
-.left-nav-wrap{
-    border:1px solid #e1e1df
-}
-
-.left-nav-wrap .left-nav{
-    padding:25px 0;
-    background-color:#fff
-}
-
-.left-nav-wrap .left-nav .title>span{
-    display:inline-block;
-    margin-bottom:25px;
-    font:22px/1.09091 "Proxima Nova",Arial,sans-serif;
-    color:#666;
-    font-weight:700
-}
-
-.left-nav-wrap .left-nav .title .sub-title{
-    margin:0 auto 30px;
-    width:100%;
-    height:48px;
-    background:url(https://images-na.ssl-images-amazon.com/images/S/qwp-static-assets/casa/refine-results-heading.png) 50% 0 no-repeat;
-    text-indent:100%;
-    white-space:nowrap;
-    overflow:hidden
-}
-
-.left-nav-wrap.default ul.list-level-0{
-    padding-left:14px;
-    padding-right:14px
-}
-
-.left-nav-wrap.default ul.list-level-0 li{
-    padding:3px 0
-}
-
-.left-nav-wrap.default ul.list-level-0 li a{
-    display:block
-}
-
-.left-nav-wrap.default ul.list-level-0 li .qicon{
-    position:absolute;
-    top:4px;
-    right:0
-}
-
-.left-nav-wrap.default ul.list-level-0 li .qicon:after{
-    content:'\e60b';
-    font-size:16px;
-    color:#85A5AF
-}
-
-.left-nav-wrap.product-listing .browse-nodes-wrapper,.left-nav-wrap.product-listing .plp-left-banner-zone,.left-nav-wrap.product-listing .refinement-wrapper{
-    padding-left:14px;
-    padding-right:14px
-}
-
 /*------------------------------------------------------------------------------------------*/
-/*-------------------------------------------------------------*/
+/*----------------view all base cat links-------------------------*/
 
+.main-nav .menu > li .nav-sublist-dropdown .container ul > li:first-child a {
+    font-weight: 600px !important;
+}
+
+/*-----------------  Navigation view all custom link   --------------------------------*/
+
+.main-nav .menu {
+    box-sizing: border-box;
+    list-style: outside none none;
+    margin-bottom: 0px;
+    padding: 0px;
+    line-height: 1;
+}
+
+.menu-all-pages-container > ul.menu > li:nth-child(1) {
+    display: inline-block !important;
+}
+
+.header-container.type4 .main-nav ul.menu > li:first-child > a {
+    color: #FFF !important;
+    background: #08C none repeat scroll 0% 0% !important;
+    /*border-radius: 5px;*/
+    padding-bottom: 17px;
+}
+
+
+
+.main-nav ul.menu > li.menu-item-has-children > a::after {
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    right: 15px;
+    left: auto;
+    background-position: -144px 4px;
+}
+
+.view-all .nav-sublist-dropdown {
+    background: #FFF none repeat scroll 0% 0% !important;
+    border-top: 5px solid #08C !important;
+    width: 100%;
+    background: #fff;
+}
+
+.main-nav .menu > li.view-all .nav-sublist-dropdown .container ul {
+    display: block;
+    height: auto;
+    float: none;
+    width: 100%;
+    padding-left: 0px;
+    margin-bottom: 0px;
+    list-style: outside none none;
+}
+
+/* ----- vinu changes added (31-7-15) for base categories headings ------*/
+.main-nav .menu > li.view-all li.menu-item > h5.levelonecats{
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.main-nav .menu > li.view-all li.menu-item > h5.levelonecats a{
+    color: #000;
+}
+
+/* -------- navbar dropdown links ---------------------*/
+.main-nav ul.menu > li.menu-item-has-children > a {
+    border-top: 3px solid transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+    color: #777;
+}
+
+.main-nav .menu > li.view-all li.menu-item {
+    white-space: nowrap;
+    padding: 5px;
+    list-style: outside none none;
+    float: left;
+}
+
+.main-nav .menu > li.view-all li.menu-item a {
+    color: #777;
+    padding: 5px 10px 10px 5px;
+    width: 220px;
+    line-height: 1;
+}
+
+.main-nav .menu > li:first-child .nav-sublist-dropdown .container ul > li a.inside-link {
+    padding: 3px 10px 10px 5px;
+}
 
 /*---------------to remove down arrow-------------------------*/
 .main-nav ul.menu > li.menu-static-width > a::after {
     display: none;
 }
 
+/*--------------- change selected base category color -------*/
+.main-nav ul.menu > li.act {
+    background-color: #D75F07;
+}
+
+/*-------------- change base category color on hover -------*/
+.main-nav ul.menu > li:hover {
+    background-color: #D75F07;
+}
+    
 /*----------------to center align link button------------------*/
 .header-container.type3 .main-nav ul.menu > li.menu-static-width > a {
     padding-right: 11px;
@@ -320,13 +291,6 @@ ol, ul, li {
 
 .main-nav .menu > li.menu-static-width .nav-sublist-dropdown {
     border-width: 0px 0px 0px;
-    /*border-style: solid none none;
-    border-color: #08C -moz-use-text-color -moz-use-text-color;
-    -moz-border-top-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    border-image: none;*/
     border-radius: 0px 0px 5px 5px;
     background: transparent url("../images/Web_PrimeLanding_background.jpg" );
     background-color: #fff9e9;
@@ -349,7 +313,6 @@ ol, ul, li {
     white-space: nowrap;
     width: 185px;
     min-height: 330px;
-    /*background-color: #FFF;*/
     border: 1px solid #E7E7E7;
 }
 
@@ -394,7 +357,7 @@ ol, ul, li {
     color: #F9F8F3;
     text-decoration: none;
 }
-
+/*--------------------------- navbar changes end --------------------------------------*/
 /*-------------------------------------------------------------------------------------*/
 
 
@@ -530,22 +493,6 @@ table{
     display: inline;
 }
 
-#billing-progress-opcheckout {
-    width: 40%;
-}
-
-#payment-progress-opcheckout {
-    width: 40%;
-}
-
-
-
-
-/*.checkout-page-main-col {
-    width: 88%;
-}
-*/
-
 /*------------------------ review cart table right ------------*/
 /*#checkout-review-table {
     margin-top: 45px;
@@ -554,112 +501,10 @@ table{
     border-radius: 6px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 #checkout-step-login .col2-set .col-1 {
     padding-right: 5px;
     border-right: 1px dashed #CCC;
 }*/
-
-
-
-
-
-
-
-
-
-
-
-
-/*-----------------  Navigation view all custom link   --------------------------------*/
-
-.main-nav .menu {
-    box-sizing: border-box;
-    list-style: outside none none;
-    margin-bottom: 0px;
-    padding: 0px;
-    line-height: 1;
-}
-
-.menu-all-pages-container > ul.menu > li:nth-child(1) {
-    display: inline-block !important;
-}
-
-.header-container.type4 .main-nav ul.menu > li:first-child > a {
-    color: #FFF !important;
-    background: #E82F2C none repeat scroll 0% 0% !important;
-    /*border-radius: 5px;*/
-    padding-bottom: 17px;
-}
-
-
-
-.main-nav ul.menu > li.menu-item-has-children > a::after {
-    width: 10px;
-    height: 10px;
-    top: 50%;
-    right: 15px;
-    left: auto;
-    background-position: -144px 4px;
-}
-
-.view-all .nav-sublist-dropdown {
-    background: #FFF none repeat scroll 0% 0% !important;
-    border-top: 5px solid #E82F2C !important;
-    width: 100%;
-    background: #fff;
-}
-
-.main-nav .menu > li.view-all .nav-sublist-dropdown .container ul {
-    display: block;
-    height: auto;
-    float: none;
-    width: 100%;
-    padding-left: 0px;
-    margin-bottom: 0px;
-    list-style: outside none none;
-}
-
-.main-nav ul.menu > li.menu-item-has-children > a {
-    border-top: 3px solid transparent;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: 600;
-    color: #777;
-}
-
-.main-nav .menu > li.view-all li.menu-item {
-    white-space: nowrap;
-    padding: 5px;
-    list-style: outside none none;
-    float: left;
-}
-
-.main-nav .menu > li.view-all li.menu-item a {
-    color: #777;
-    padding: 5px 10px 10px 5px;
-    width: 220px;
-    line-height: 1;
-}
-
-.main-nav .menu > li:first-child .nav-sublist-dropdown .container ul > li a.inside-link {
-    padding: 3px 10px 10px 5px;
-}
-
-
-
-
 
 
 /*-------------------- checkout page header container  ----------------------*/
@@ -734,3 +579,117 @@ overflow-x: hidden;
 .block-layered-nav dt {
     padding: 10px 45px;
 }
+
+/*------------ popup for login,register & forgot password -------------------------*/
+
+/*------------ common to all popups ----------------*/
+
+.popup-title {
+    font-size: 20px !important;
+}
+
+.pop-form {
+    padding-bottom: 10px;
+    float: left;
+    width: 100%;
+    font-style: normal;
+}
+
+
+/*------------- ajax login changes ----------------------------------*/
+
+.sign-box-head {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #CCC;
+    margin: 7px 5px 5px 0px;
+}
+
+#sign-up {
+    margin-left: 10px;
+    text-decoration: underline;
+}
+
+.new-user {
+    margin-top: 8px;
+}
+
+/*-----------------------------------------------------*/
+
+.pop-form label{
+    float: left;
+    width: 16%;
+    font: 12px/34px arial;
+    text-align: right;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+
+.pop-form .txtbx {
+    float: left;
+    font-size: 11px;
+    outline: 0px none;
+    border: 1px solid #D2D2D2;
+    background: #FCFCFC none repeat scroll 0% 0%;
+    padding: 7px 10px;
+}
+
+.txtbx-wid0 {
+    width: 66% !important;
+}
+
+.sign-btn {
+    margin-left: 19%;
+    background-position: 0px 0px;
+    height: 35px;
+    min-width: 123px;
+    border: 0px none;
+    font-size: 12px;
+    padding: 6px 16px;
+    cursor: pointer;
+    border-radius: 2px;
+    background: #08C none repeat scroll 0% 0%;
+    color: #FFF;
+}
+
+.fs11 {
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 11px;
+    text-decoration: underline;
+}
+
+/*-------------- division of social & normal login --------------*/
+p.division-line {
+    border-top: 1px solid #E5E5E5;
+    width: 92%;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+p.division-line span {
+    z-index: 5;
+    top: -8px;
+    background: #FFF none repeat scroll 0% 0%;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    text-align: center;
+    font-style: normal;
+    font-size: 13px;
+}
+
+.full-wid {
+    float: left;
+    width: 100%;
+}
+
+.txtbx-wid1 {
+    width: 32%;
+}
+
+.lname{
+    margin-left: 2%;
+}
+/*------------------ forgot password popup -----------------*/

@@ -1,0 +1,72 @@
+<div class="account-login">
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+    <form onsubmit="formSubmitByAjax('g-form-login', '<?php echo $this->getUrl('ajaxlogin/account/szLogin')?>');return false;" method="post" id="g-form-login">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+        <div class="col-set">
+            <div class="col registered-users">
+                <!-- vinu changes -->
+                <div class="login-content">
+                    <div class="sign-box-head row">
+                        <span class="f-right new-user">
+                            <span>
+                                <?php echo $this->__('New User? ') ?>
+                            </span>
+                            <a href="javascript:void(0);" id="sign-up"><?php echo $this->__('Sign Up') ?></a>
+                        </span>
+                        <h2 class="popup-title f-left"><?php echo $this->__('Log In') ?></h2>
+                    </div>
+                    <ul class="form-list">
+                        <li>
+                            <div class="pop-form row">
+                                <label for="email"><?php echo $this->__('Email') ?></label>
+                                <input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="txtbx txtbx-wid0  required-entry validate-email" placeholder="abc@example.com" title="<?php echo $this->__('Email Address') ?>" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pop-form row">
+                                <label for="pass"><?php echo $this->__('Password') ?></label>
+                                <input type="password" name="login[password]" class="txtbx txtbx-wid0 required-entry validate-password" id="pass" placeholder="Enter Password" title="<?php echo $this->__('Password') ?>" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pop-form row">
+                                <button id="signin-btn" class="clr-fff btn-common2 sign-btn" type="submit"><?php echo $this->__('Login') ?></button>
+                                <a href="javascript:void(0)" class="fs11" id="frgt_pass"><?php echo $this->__('Forgot Password?')?></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+        //]]>
+    </script>
+</div>
+
+<div class="ajaxlogin-login">
+    <div class="account-login">
+        <p class="division-line">
+            <span class="pos-rel">Or</span>
+        </p>
+        <div class="<?php echo $this->_getColSet(); ?> ajaxlogin-login-lower">
+            <?php if($this->_googleEnabled()): ?>
+            <div class="<?php echo $this->_getButtCol(); ?> ajaxlogin-login-lower-google">
+                <div class="buttons-set">
+                    <?php echo $this->getChildHtml('ajaxlogin_google_login_button'); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+            <?php if($this->_facebookEnabled()): ?>
+            <div class="<?php echo $this->_getButtCol(); ?> ajaxlogin-login-lower-facebook">
+                <div class="buttons-set">
+                    <?php echo $this->getChildHtml('ajaxlogin_facebook_login_button'); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
+        </div>
+    </div>
+</div>
