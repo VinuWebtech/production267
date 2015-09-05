@@ -177,17 +177,15 @@
 	overflow: hidden;
 	display: none;
 	z-index: 8010;	
+	background: rgba(0,0,0,0.3);
 }
 
-.fancybox-overlay-fixed {
+/*.fancybox-overlay-fixed {
 	position: fixed;
 	bottom: 0;
 	right: 0;
-}
+}*/
 
-.fancybox-lock .fancybox-overlay {
-    background: url(../images/fancy_bg.png) repeat
-}
 
 /* Title helper */
 

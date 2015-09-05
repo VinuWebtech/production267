@@ -24,9 +24,10 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="page-title">
+<!--changes start added-->
+<!--<div class="page-title">
     <h1><?php echo $this->__('Checkout') ?></h1>
-</div>
+</div>-->
 <script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
 <ol class="opc" id="checkoutSteps">
@@ -34,7 +35,7 @@
 <?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
     <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
         <div class="step-title">
-            <span class="number"><?php echo $i ?></span>
+            <span class="number"><?php echo "Step"." ".$i.":" ?></span>
             <h2><?php echo $_stepInfo['label'] ?></h2>
             <a href="#"><?php echo $this->__('Edit') ?></a>
         </div>

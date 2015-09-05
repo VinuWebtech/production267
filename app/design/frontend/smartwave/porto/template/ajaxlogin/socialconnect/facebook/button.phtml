@@ -1,9 +1,6 @@
 
-<div class="clearer">
-    <div class="ajaxlogin-socialconnect-facebook">
-        <div class="ajaxlogin-socialconnect-facebook-inner">
-            <a href="<?php echo $this->escapeUrl($this->_getButtonUrl()); ?>"><?php echo $this->_getButtonText(); ?></a>
-        </div>
-        <div class="ajaxlogin-socialconnect-facebook-right"></div>
-    </div>
-</div>
+	<!-- vinu changes button design (29-8-15) -->
+    <a href="<?php echo $this->escapeUrl($this->_getButtonUrl()); ?>" class="fb-login-trigger d-inline">
+        <span class="social-sprite fb-login d-block"></span>
+    </a>
+    <!--changes end -->

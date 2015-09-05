@@ -1,5 +1,185 @@
 
 /*-------------------------------------------------------------------------------*/
+/* -------------------------for Header------------------ */
+.header-container.type4 .header {
+    padding: 10px 0px;
+}
+
+.top-links-container {
+    padding: -10px 0px;
+}
+
+.header-container.type4 .header-wrapper {
+    height: 35px;
+}
+
+.menu-item .menu-item-has-children .menu-parent-item .view-all {
+    height: 33px;
+}
+
+.top-links .custom-block {
+    display: inline-block;
+    text-align: left;
+    height: 24px;
+    line-height: 24px;
+    margin-left: -285px;
+}
+
+.top-links .custom-block i {
+    color: #F3A847;
+}
+
+.top-links .custom-block .num {
+    border-left: 1px solid #F3A847;
+}
+
+.header-container .links li {
+    border-left: 1px solid #F3A847;
+}
+
+
+.header .form-search {
+    border-radius: 10px;
+    border-left: 0px;
+}
+
+.header .form-search #search {
+    position: absolute;
+    left: 130px;
+    width: 280px;
+    border-right: 1px solid #CCC;
+    border-radius: 0px;
+}
+
+.header .form-search #cat {
+    background-color: #F3A847;
+    position: static;
+    border-radius: 10px 0px 0px 10px;
+    color: #fff;
+}
+
+.header-container.sticky-header .menu-wrapper .mini-cart {
+    top: -8px;
+}
+
+/* ----------------------for Homepage CMS page block bottom padding ------------------ */
+
+.main-container {
+    padding: 20px 0px 20px;
+}
+
+/* ----------------------for Homepage CMS page Categories display block------------------ */
+
+h3.filter-title {
+    font-family: "proxima-nova",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: #2B333B;
+    font-size: 16pt;
+    margin-bottom: 5px;
+    margin-left: 205px;
+    margin-right: 205px;
+    text-align: center;
+    border-bottom: 1px solid #D6D6D6;
+    padding-bottom: 15px;
+    padding-left: 115px;
+    padding-right: 115px;
+    margin-top: 10px;
+    background: none;
+}
+
+.easycatalogimg .parent-category {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.easycatalog-grid .product-image {
+    width: 100px;
+    margin-right: 95px;
+    margin-left: 87px;
+}
+
+.parallax-wrapper {
+    border-radius: 25px;
+}
+
+
+.sell-background {
+    border-radius: 130px;
+    text-align: center;
+}
+
+.owl-item .sellon-title {
+    text-align: center;
+    font-size: 30px;
+    color: #08C;
+}
+
+.parallax-slider .owl-carousel p {
+    text-align: center;
+}
+
+.parallax-slider .owl-carousel a {
+    padding: 12px 30px;
+    font-weight: bold !important;
+    background: #08C none repeat scroll 0% 0%;
+    color: #fff !important;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 465px;
+}
+
+/* -------------------------Footer changes------------------ */
+.footer-middle {
+    background-color: #F0F0ED;
+    padding: 40px 0px 20px 0px;
+}
+
+.footer-middle .block .block-title strong {
+    color: #08C;
+}
+
+.footer-middle a {
+    color: #08C;
+}
+
+.footer-middle a:hover {
+    color: #08C;
+    text-decoration: underline;
+}
+
+.footer-middle p {
+    color: #08C;
+}
+
+.footer-middle .corner-title {
+    text-align: center;
+}
+
+.footer-middle .corner-content {
+    padding-left: 140px;
+}
+
+.footer-middle .contact-info i.theme-color {
+    color: #F3A847 !important;
+}
+
+.footer-middle .contact-info i {
+    color: #F3A847
+}
+
+.footer-middle .block.block-subscribe .input-box input.input-text {
+    background-color: #fff;
+}
+
+.footer-middle .block.block-subscribe .input-box button span {
+    background: #F3A847
+}
+
+.footer-middle ul.features li i.theme-color {
+    color: #F3A847 !important;
+}
+
 /* -------------------------for Category landing page subcategory boxes------------------ */
 .category-product {
     padding-bottom: 5px;
@@ -189,9 +369,10 @@ ol, ul, li {
 
 .header-container.type4 .main-nav ul.menu > li:first-child > a {
     color: #FFF !important;
-    background: #08C none repeat scroll 0% 0% !important;
+    background: #08C none repeat scroll 0% 0% !important; 
     /*border-radius: 5px;*/
     padding-bottom: 17px;
+    height: 40px;
 }
 
 
@@ -230,16 +411,12 @@ ol, ul, li {
 }
 
 .main-nav .menu > li.view-all li.menu-item > h5.levelonecats a{
-    color: #000;
+    color: #08C;
 }
 
 /* -------- navbar dropdown links ---------------------*/
 .main-nav ul.menu > li.menu-item-has-children > a {
-    border-top: 3px solid transparent;
-    text-decoration: none;
     text-transform: uppercase;
-    font-size: 15px;
-    font-weight: 600;
     color: #777;
 }
 
@@ -268,23 +445,23 @@ ol, ul, li {
 
 /*--------------- change selected base category color -------*/
 .main-nav ul.menu > li.act {
-    background-color: #D75F07;
+    background-color: #F3A847;
 }
 
 /*-------------- change base category color on hover -------*/
 .main-nav ul.menu > li:hover {
-    background-color: #D75F07;
+    background-color: #F3A847;
 }
     
 /*----------------to center align link button------------------*/
-.header-container.type3 .main-nav ul.menu > li.menu-static-width > a {
+.main-nav ul.menu > li.menu-static-width > a {
     padding-right: 11px;
     padding-left: 11px;
     vertical-align: middle;
 }
 
-.header-container.type3 .main-nav ul.menu > li:hover {
-    background-color: #e8dfd8;
+.main-nav ul.menu > li:hover {
+    background-color: #F3A847;
 }
 
 
@@ -292,14 +469,13 @@ ol, ul, li {
 .main-nav .menu > li.menu-static-width .nav-sublist-dropdown {
     border-width: 0px 0px 0px;
     border-radius: 0px 0px 5px 5px;
-    background: transparent url("../images/Web_PrimeLanding_background.jpg" );
-    background-color: #fff9e9;
+    background-color: #fff9e9; 
     padding: 10px 0px 20px;
 }
 
-.main-nav .menu > li.menu-static-width .nav-sublist-dropdown {
+/*.main-nav .menu > li.menu-static-width .nav-sublist-dropdown {
     box-shadow: none;
-}
+}*/
 
 
 /*----------------to create box inside the dropdown------------*/
@@ -318,7 +494,7 @@ ol, ul, li {
 
 
 
-.header-container.type3 .main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a.level1:hover{
+.main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a.level1:hover{
     background-color: #666;
     color: #F9F8F3;
     text-decoration: none; 
@@ -494,14 +670,17 @@ table{
 }
 
 /*------------------------ review cart table right ------------*/
-/*#checkout-review-table {
-    margin-top: 45px;
-    margin-left: -80px;
-    border: 1px solid #D9DDE3 !important;
+#checkout-review-table {
+    border-collapse: collapse;
     border-radius: 6px;
 }
 
-#checkout-step-login .col2-set .col-1 {
+#checkout-review-table tfoot tr.last td {
+    background: #08C none repeat scroll 0% 0%;
+    color: #FFF;
+}
+
+/*#checkout-step-login .col2-set .col-1 {
     padding-right: 5px;
     border-right: 1px dashed #CCC;
 }*/
@@ -580,7 +759,9 @@ overflow-x: hidden;
     padding: 10px 45px;
 }
 
-/*------------ popup for login,register & forgot password -------------------------*/
+/*--------------------------------------------------------------------------------*/
+/*------------ Popup for login,register & forgot password ------------------------*/
+/*--------------------------------------------------------------------------------*/
 
 /*------------ common to all popups ----------------*/
 
@@ -593,10 +774,19 @@ overflow-x: hidden;
     float: left;
     width: 100%;
     font-style: normal;
+    /* vinu changes for centering form content (30-8-15) */
+    margin-left: 0px;
 }
 
+/*--------------------------------------------------------------------------------*/
+/*-------------------------- Ajax login changes ----------------------------------*/
+/*--------------------------------------------------------------------------------*/
 
-/*------------- ajax login changes ----------------------------------*/
+/*-------- to place gap after title ---------------------------------*/
+
+.vbox-head {
+    height: 56px;
+}
 
 .sign-box-head {
     padding-bottom: 8px;
@@ -615,13 +805,13 @@ overflow-x: hidden;
 
 /*-----------------------------------------------------*/
 
-.pop-form label{
+.pop-form label {
     float: left;
     width: 16%;
     font: 12px/34px arial;
     text-align: right;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 0px;
     margin-bottom: 0px;
 }
 
@@ -639,45 +829,28 @@ overflow-x: hidden;
 }
 
 .sign-btn {
-    margin-left: 19%;
+    margin-left: 3%;
     background-position: 0px 0px;
     height: 35px;
-    min-width: 123px;
+    min-width: 143px;
     border: 0px none;
     font-size: 12px;
     padding: 6px 16px;
     cursor: pointer;
     border-radius: 2px;
-    background: #08C none repeat scroll 0% 0%;
+    background: #F3A847 none repeat scroll 0% 0%; /* fb blue #3A5795 porto blue #08C*/
     color: #FFF;
 }
 
+#submit-create-account span {
+    background: #F3A847 none repeat scroll 0% 0%; /* porto blue #08C*/
+}
+
 .fs11 {
-    margin-left: 10px;
+    margin-left: 15px;
     margin-top: 5px;
     font-size: 11px;
     text-decoration: underline;
-}
-
-/*-------------- division of social & normal login --------------*/
-p.division-line {
-    border-top: 1px solid #E5E5E5;
-    width: 92%;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    text-align: center;
-}
-
-p.division-line span {
-    z-index: 5;
-    top: -8px;
-    background: #FFF none repeat scroll 0% 0%;
-    padding-left: 20px;
-    padding-right: 20px;
-    position: relative;
-    text-align: center;
-    font-style: normal;
-    font-size: 13px;
 }
 
 .full-wid {
@@ -692,4 +865,256 @@ p.division-line span {
 .lname{
     margin-left: 2%;
 }
-/*------------------ forgot password popup -----------------*/
+
+/*-------------- division of social & normal login --------------*/
+
+
+.orBlock {
+    width: 40px;
+    line-height: 40px;
+    background-color: #041371;
+    border-radius: 50%;
+    color: #FFF;
+    margin: 0px auto;
+    text-align: center;
+    font-size: 14px;
+}
+
+/*------------------ (29-8-15) ajaxlogin social buttons -----------------*/
+
+.d-inline {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.social-sprite {
+    background-image: url("../images/social-sprite.png");
+    background-repeat: no-repeat;
+}
+
+.fb-login {
+    background-position: 0px 1px;
+    width: 148px;
+    height: 36px;
+}
+
+.gplus-login {
+    background-position: 0px -37px;
+    width: 148px;
+    height: 36px;
+}
+
+.d-block {
+    display: block;
+}
+
+.ajaxlogin-login-lower {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.vbuttons-set {
+    clear: both;
+    margin: 1em 0px 0px;
+    padding: 8px 0px 0px;
+}
+
+.buttons-set button.vbutton {
+    float: left;
+    margin-left: 10px;
+}
+
+/*------------------ (29-8-15) checkout social buttons -----------------*/
+
+.vcheckout-login {
+    margin-top: 45px;
+}
+
+.vcheckout-social {
+    padding-left: 105px;
+    /*border-left: 1px dashed #ccc;*/
+    padding-top: 75px;
+    padding-bottom: 175px;
+}
+
+.vcheckoutorBlock {
+    width: 40px;
+    line-height: 40px;
+    background-color: #041371;
+    border-radius: 50%;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 45%;
+    z-index: 2;
+}
+
+.check-login-desk i.icon-or {
+    left: 100%;
+    bottom: 0px;
+    top: 42%;
+}
+
+.icon-or {
+    width: 26px;
+    height: 26px;
+    background-position: -1150px -200px;
+    position: absolute;
+    z-index: 2;
+    margin-left: -13px;
+}
+
+
+.col3-set .col-1 {
+    float: left;
+    width: 52%;
+}
+
+.col3-set .col-2 {
+    float: center;
+    width: 3%;
+    margin-left: 0%;
+    /*padding-top: 125px;
+    padding-bottom: 225px;
+    border-right: 1px dashed #ccc;*/
+}
+
+.col3-set .col-3 {
+    float: right;
+    width: 45%;
+}
+
+.sp_login_seprator1 {
+    background-color: #E5E5E5;
+    float: left;
+    height: 350px;
+    margin: 24px;
+    width: 1px !important;
+}
+
+.sp_login_seprator1 span {
+    background: #041371 none repeat scroll 0px 0px;
+    left: -27px;
+    padding: 17px 17px;
+    position: relative;
+    top: 165px;
+    z-index: 1;
+    border-radius: 50%;
+    color: #fff;
+}
+
+input#checkout_email {
+    width: 80%;
+}
+
+.opc .a-item {
+    padding: 15px;
+    background: #FFF;
+    position:absolute;
+    width: 100%;
+    height: inherit;
+}
+
+
+/* ======================= Improved One Page Checkout with tabs  ======================== */
+.block-progress .block-title { background:none; margin:0 0 34px; padding:0; }
+.checkout-onepage-index .col-main { padding:0; border:0; }
+.checkout-onepage-index .page-title { padding-right:40px; width:auto; }
+.checkout-onepage-index .page-title h1 { background:none; padding:0; }
+
+.opc { 
+    position:relative; 
+    overflow:hidden; 
+    height:970px;
+    padding-top:20px; 
+    border:1px solid #BBAFA0; 
+    background:#F0F0ED; } /*background: #F9F3E3*/
+
+.opc .buttons-set .back-link { display:none; }
+
+.opc .ul { list-style:disc outside; padding-left:18px; }
+.opc li.section { display:inline; } /*box-shadow: none;*/
+.opc .step-title,.opc .allow .step-title { border:1px solid #F9F3E3; height:91px }
+.opc .step { 
+    padding:30px 20px; 
+    position:absolute; 
+    border:0; top:110px; 
+    left:0; z-index:1; 
+    background:#FBFAF6; 
+    border-bottom:1px dotted #ccc; 
+    border:none; 
+    border-top:1px solid #BBAFA0; }
+
+.opc .step-title .number,.opc .allow .step-title .number,.opc .active .step-title .number { 
+    float:none; 
+    display:block; 
+    margin:0 auto; 
+    margin-bottom:10px; }
+
+.opc .step-title { 
+    position:relative; 
+    float:left; 
+    text-align:center; 
+    padding:15px 11px 0; 
+    margin-left:-1px; 
+    background:none; }
+
+.opc .step-title a { display:none; }
+
+.opc .step-title .number { 
+    background:#fff; 
+    color:#ccc; 
+    width:65px; 
+    height:32px; 
+    line-height:30px; 
+    -moz-border-radius:20px; 
+    -webkit-border-radius:20px; 
+    border-radius:20px; 
+    margin-bottom:10px; 
+    padding:0; 
+    border:0; 
+}
+
+.opc .step-title h2 { font-size:12px; color:#bbb; clear:both; }
+.opc .allow .step-title { cursor:pointer; background:none; }
+.opc .allow .step-title .number { background:#000; color:#fff; }
+.opc .allow .step-title h2 { color:#000; }
+.opc .active .step-title { 
+    color:#ef0606; 
+    cursor:default; 
+    border:1px solid #BBAFA0; 
+    border-bottom:1px solid #FBFAF6; 
+    z-index:2; background:#FBFAF6 url(../images/bkg_checkout.gif) 0 0 repeat-x; }
+
+.opc .active .step-title .number { background:#F18200; border-color:#fff; color:#fff; }
+.opc .active .step-title h2 { color:#08C; } /*#F18200*/
+.opc .step-title h2,.opc .allow .step-title h2,.opc .active .step-title h2 { 
+    width:100%; text-align:center; }
+
+.opc .step-title { width:24%; }
+
+.opc:first-of-type .step{
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;}
+
+.opc:first-of-type .step[style*='display:none;'],
+.opc:first-of-type .step[style*='display: none;']{display:block !important;}
+.opc:first-of-type .section .step{left: 100%;}
+.opc:first-of-type .allow .step{left: -100%;}
+.opc:first-of-type .active .step{left:0;}
+.opc:first-of-type li:last-child .step-title a{width:50%}
+.opc:first-of-type li:first-child .step-title a{width:50%;left:50%}
+
+
+
+#opc-review .step { padding:30px 20px; border-top:1px solid #BBAFA0; }
+#opc-review .product-name { font-weight:bold; color:#0a263c; }
+#opc-review .item-options { margin:5px 0 0; }
+#opc-review .buttons-set { padding:20px 0; border:0; }
+#opc-review .buttons-set p { margin:0; line-height:40px; }
+#opc-review .buttons-set .please-wait { height:40px; line-height:40px; }
+#opc-shipping_method .buttons-set { border-top:1px solid #E4E4E4; }
+/* ================================= Solution by www.h-o.nl =============================== */

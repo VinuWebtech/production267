@@ -29,7 +29,7 @@
 				$i++;
 				} ?>
 				<li class="w-all">
-					<a class="lev" href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $total_count=$i." ".__('more..') ?>"><?php echo $total_count=$i." ".__('more..') ?></a>
+					<a class="lev" href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $total_count=$i." ".__('more..') ?>"><?php echo $total_count=($i-3)." ".__('more..') ?></a>
 				</li>
 			</ul>
 		</li>

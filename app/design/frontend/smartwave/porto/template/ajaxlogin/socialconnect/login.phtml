@@ -4,17 +4,20 @@
         <?php echo $this->getBlockHtml('formkey'); ?>
         <div class="col-set">
             <div class="col registered-users">
-                <!-- vinu changes -->
                 <div class="login-content">
-                    <div class="sign-box-head row">
-                        <span class="f-right new-user">
-                            <span>
-                                <?php echo $this->__('New User? ') ?>
+                    <!-- vinu changes for gap placement after title extra div added (29-8-15) -->
+                    <div class="vbox-head">
+                        <div class="sign-box-head row">
+                            <span class="f-right new-user">
+                                <span>
+                                    <?php echo $this->__('New User? ') ?>
+                                </span>
+                                <a href="javascript:void(0);" id="sign-up"><?php echo $this->__('Sign Up') ?></a>
                             </span>
-                            <a href="javascript:void(0);" id="sign-up"><?php echo $this->__('Sign Up') ?></a>
-                        </span>
-                        <h2 class="popup-title f-left"><?php echo $this->__('Log In') ?></h2>
+                            <h2 class="popup-title f-left"><?php echo $this->__('Log In') ?></h2>
+                        </div>
                     </div>
+                    <!-- changes end -->
                     <ul class="form-list">
                         <li>
                             <div class="pop-form row">
@@ -46,27 +49,17 @@
     </script>
 </div>
 
-<div class="ajaxlogin-login">
-    <div class="account-login">
-        <p class="division-line">
-            <span class="pos-rel">Or</span>
-        </p>
-        <div class="<?php echo $this->_getColSet(); ?> ajaxlogin-login-lower">
-            <?php if($this->_googleEnabled()): ?>
-            <div class="<?php echo $this->_getButtCol(); ?> ajaxlogin-login-lower-google">
-                <div class="buttons-set">
-                    <?php echo $this->getChildHtml('ajaxlogin_google_login_button'); ?>
-                </div>
-            </div>
-            <?php endif; ?>
-            <?php if($this->_facebookEnabled()): ?>
-            <div class="<?php echo $this->_getButtCol(); ?> ajaxlogin-login-lower-facebook">
-                <div class="buttons-set">
-                    <?php echo $this->getChildHtml('ajaxlogin_facebook_login_button'); ?>
-                </div>
-            </div>
-            <?php endif; ?>
+<!-- vinu changes for OR division (29-8-15) -->
+<div class="pos-rel orBlock">- OR -</div>
+<!-- changes end -->
 
-        </div>
-    </div>
-</div>
+<!-- vinu changes for social login buttons (30-8-15) -->
+<div class="ajaxlogin-login-lower">
+    <?php if($this->_googleEnabled()): ?>
+        <?php echo $this->getChildHtml('ajaxlogin_google_login_button'); ?>
+    <?php endif; ?>
+    <?php if($this->_facebookEnabled()): ?>
+        <?php echo $this->getChildHtml('ajaxlogin_facebook_login_button'); ?>
+    <?php endif; ?>
+</div> 
+<!-- changes end -->     
