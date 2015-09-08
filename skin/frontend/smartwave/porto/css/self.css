@@ -13,12 +13,20 @@
     height: 33px;
 }
 
+.top-links-container {
+    background: transparent url("../images/toplink-background.png") repeat-x scroll 0px -2px;
+}
+
 .top-links .custom-block {
     display: inline-block;
     text-align: left;
     height: 24px;
     line-height: 24px;
-    margin-left: -285px;
+    margin-left: -345px;
+}
+
+.header-container.type4 .top-links a {
+    color: #08C;
 }
 
 .top-links .custom-block i {
@@ -27,6 +35,12 @@
 
 .top-links .custom-block .num {
     border-left: 1px solid #F3A847;
+    padding : 0px 5px 0px;
+}
+
+.phnum {
+    padding : 0px 5px;
+    color: #08C;
 }
 
 .header-container .links li {
@@ -69,6 +83,10 @@
 
 /* ----------------------for Homepage CMS page Categories display block------------------ */
 
+.std .easycatalog-grid {
+    margin : 5px 55px;
+}
+
 h3.filter-title {
     font-family: "proxima-nova",sans-serif;
     font-style: normal;
@@ -92,12 +110,75 @@ h3.filter-title {
     margin-top: 10px;
 }
 
-.easycatalog-grid .product-image {
+.easycatalogimg .parent-category a {
+    font: 16px/20px "ProximaBold",Arial Bold;
+    text-transform: uppercase;
+    color: #666;
+}
+
+/*.easycatalog-grid .product-image {
     width: 100px;
     margin-right: 95px;
     margin-left: 87px;
+}*/
+
+
+/*------------------ subcat text align to center (8-9-15) ---------*/
+
+.easycatalogimg .list-subcategories {
+    margin: 0px 30px 0px 35px;
 }
 
+.easycatalogimg .list-subcategories li {
+    text-align: center;
+    padding: 1px 0px;
+    border-bottom: 1px solid #D5D5D5;
+    margin: 0px;
+}
+
+.easycatalog-grid li.item {
+    margin: 10px 10px 14px 0px;
+    border: 1px solid #E1E1DF;
+    box-sizing: border-box;
+}
+
+
+.easycatalogimg-cols-5 li.item {
+    width: 19% !important;
+}
+
+.child-category {
+    height: 20px;
+    line-height: 20px;
+    padding: 0px;
+    display: block;
+    text-align: center;
+    color: #85A5AF;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.child-category:hover {
+    background-color: #85A5AF;
+    color: #F9F8F3;
+    text-decoration: none;
+}
+
+/*---------------------------------------------------------------------------------------------*/
+
+.homepage-products {
+    margin: 0px;
+}
+
+.filter-products .products.small-list div.item {
+    max-width: 279px;
+}
+
+.filter-products .products.small-list {
+    margin: 20px 0px;
+}
+
+/*---------------------------------------------------------------------------------------------*/
 .parallax-wrapper {
     border-radius: 25px;
 }
@@ -169,6 +250,7 @@ h3.filter-title {
 
 .footer-middle .block.block-subscribe .input-box input.input-text {
     background-color: #fff;
+    border: 1px solid #E1E1DF;
 }
 
 .footer-middle .block.block-subscribe .input-box button span {
@@ -374,7 +456,9 @@ ol, ul, li {
     height: 40px;
 }
 
-
+.main-nav .menu > li.menu-item-has-children .nav-sublist-dropdown .container ul > li a.lev {
+   font-weight: 700;
+}
 
 .main-nav ul.menu > li.menu-item-has-children > a::after {
     width: 10px;

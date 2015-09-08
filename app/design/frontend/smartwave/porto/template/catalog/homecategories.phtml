@@ -12,25 +12,25 @@
 			<ul>
 				<?php $children = Mage::getModel('catalog/category')->getCategories($_category->getId()); ?>
 				<?php 
-				$i=0;
+				$i=0; 
 				foreach ($children as $subcategory): 
-					$subcat = Mage::getModel('catalog/category')->load($subcategory->getId()); 
-				?>
-					<li>
-						<a class="inside-link" href="<?php echo Mage::getUrl($subcat->getUrlPath()); ?>" title="<?php echo $subcategory->getName() ?>"><?php echo $subcategory->getName() ?></a>
-					</li>			
-				<?php 
-				$i++;
-				if($i==3) break;
+					$subcat = Mage::getModel('catalog/category')->load($subcategory->getId()); ?>
+						<li>
+							<a class="inside-link" href="<?php echo Mage::getUrl($subcat->getUrlPath()); ?>" title="<?php echo $subcategory->getName() ?>"><?php echo $subcategory->getName() ?></a>
+						</li>			
+					<?php 
+					$i++;
+					if($i==3) break;
 				endforeach ?>
 				<?php
 				$i=0;
 				foreach ($children as $subcategory){
-				$i++;
-				} ?>
-				<li class="w-all">
-					<a class="lev" href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $total_count=$i." ".__('more..') ?>"><?php echo $total_count=($i-3)." ".__('more..') ?></a>
-				</li>
+				$i++; } ?>
+				<?php if($i > 3): ?>
+					<li class="w-all">
+						<a class="lev" href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>"><?php echo $total_count=($i-3)." ".__('more..') ?></a>
+					</li>
+				<?php endif; ?>
 			</ul>
 		</li>
 	<?php endforeach ?>
