@@ -7,7 +7,21 @@ foreach ($categories as $_category):
 	$count = $cat->getProductCount(); 
 ?>	
 	<div class="col-lg-4 col-md-4">
-		<a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" class="footer-cat" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a>
+		<div class="row">
+			<h5 class="levelonecats"><a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" class="footer-cat" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a></h5>
+		</div>
+		<?php $children = Mage::getModel('catalog/category')->getCategories($_category->getId()); ?>
+		<?php 
+		$i=0; 
+		foreach ($children as $subcategory): 
+			$subcat = Mage::getModel('catalog/category')->load($subcategory->getId()); ?>
+			<div class="row">
+				<a class="inside-link" href="<?php echo Mage::getUrl($subcat->getUrlPath()); ?>" title="<?php echo $subcategory->getName() ?>"><?php echo $subcategory->getName() ?></a>
+			</div>			
+		<?php 
+		$i++;
+		if($i==4) break;
+		endforeach ?>
 	</div>
 <?php endforeach ?>
 <!-- Categories display end -->
