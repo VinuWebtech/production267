@@ -1,0 +1,13 @@
+<!-- Categories display start -->
+<?php 
+$rootcatId = Mage::app()->getStore()->getRootCategoryId(); 
+$categories = Mage::getModel('catalog/category')->getCategories($rootcatId);
+foreach ($categories as $_category): 
+	$cat = Mage::getModel('catalog/category')->load($_category->getId());
+	$count = $cat->getProductCount(); 
+?>	
+	<div class="col-lg-4 col-md-4">
+		<a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" class="footer-cat" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a>
+	</div>
+<?php endforeach ?>
+<!-- Categories display end -->

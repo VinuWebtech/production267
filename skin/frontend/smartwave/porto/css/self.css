@@ -1,3 +1,20 @@
+/* ------------------------- Universal ------------------ */
+
+.text-color{
+    color: #08C;
+}
+
+.c-yellow{
+    color: #F3A847;
+}
+
+.bg-yellow {
+    background-color: #F3A847;
+}
+
+.bg-grey {
+    background-color: #f0f0ed;
+}
 
 /*-------------------------------------------------------------------------------*/
 /* -------------------------for Header------------------ */
@@ -25,9 +42,9 @@
     margin-left: -345px;
 }
 
-.header-container.type4 .top-links a {
+/*.header-container.type4 .top-links a {
     color: #08C;
-}
+}*/
 
 .top-links .custom-block i {
     color: #F3A847;
@@ -210,26 +227,110 @@ h3.filter-title {
 }
 
 /* -------------------------Footer changes------------------ */
+
+.footer-container {
+    background-color: #F0F0ED;
+}
+
+.footer-toppart {
+   padding: 20px 0px;
+}
+
+.footer-top {
+    padding: 0px;
+}
+
+.footer-top .block .block-title {
+    margin-bottom: 20px;
+}
+
+.footer-top .block .block-title strong {
+    font-weight: 400;
+    padding: 0px;
+    font-size: 16px;
+    line-height: inherit;
+    color: #08C;
+    text-transform: none;
+}
+
+.footer-top .block {
+    text-align: left;
+    line-height: 1.5;
+    border: 0px none;
+    margin: 0px;
+    background-color: transparent;
+    float: none;
+    width: auto;
+}
+
+.footer-top a {
+    color: #08C;
+}
+
+.footer-top p {
+    color: #08C;
+}
+
+.footer-top .contact-info p {
+    display: inline-block;
+}
+
+.footer-top .contact-info li:first-child {
+    padding-top: 0px;
+}
+
+.footer-top .contact-info li {
+    padding: 5px 0px;
+}
+
+.footer-top .contact-info i.theme-color {
+    color: #F3A847 !important;
+}
+
+.footer-top ul.features li i.theme-color {
+    color: #F3A847 !important;
+}
+
+.footer-top .block .block-title strong {
+    color: #08C;
+}
+
+.footer-top .contact-info i {
+    color: #F3A847;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 5px 0px 0px;
+}
+
+.footer-top ul.features li {
+    position: relative;
+    padding: 10px 0px;
+    line-height: 1;
+    display: block;
+}
+
+.footer-top .corner-title {
+    text-align: center;
+}
+
+.footer-top .corner-content {
+    padding-left: 120px;
+}
+
 .footer-middle {
     background-color: #F0F0ED;
-    padding: 40px 0px 20px 0px;
+    border-top: 1px solid #E8E8E8;
+    padding: 20px 0px 0px 0px;
+    margin-top: 20px;
 }
 
 .footer-middle .block .block-title strong {
     color: #08C;
 }
 
-.footer-middle a {
-    color: #08C;
-}
-
 .footer-middle a:hover {
     color: #08C;
     text-decoration: underline;
-}
-
-.footer-middle p {
-    color: #08C;
 }
 
 .footer-middle .corner-title {
@@ -244,10 +345,6 @@ h3.filter-title {
     color: #F3A847 !important;
 }
 
-.footer-middle .contact-info i {
-    color: #F3A847
-}
-
 .footer-middle .block.block-subscribe .input-box input.input-text {
     background-color: #fff;
     border: 1px solid #E1E1DF;
@@ -257,8 +354,41 @@ h3.filter-title {
     background: #F3A847
 }
 
-.footer-middle ul.features li i.theme-color {
-    color: #F3A847 !important;
+.footer .container h5.social-icons-header {
+    float: none;
+    padding-bottom: 10px;
+}
+
+.footer .social-icons {
+    float: none;
+}
+
+.footer .container .shopAllCat {
+    border-bottom: 1px solid #E1E1DF;
+    padding: 10px 0px;
+    margin: 0px 0px 10px;
+}
+
+.footer .container h5 {
+    font-size: 18px;
+    float: left;
+}
+
+.footer .container a.footer-cat {
+    float: left;
+}
+
+.footer-bottom {
+    padding: 0px;
+}
+
+.footer-bottom .custom-block {
+    font-size: 18px;
+    margin-left: 0px;
+}
+
+.footer-bottom .custom-block img {
+    padding: 10px 10px;
 }
 
 /* -------------------------for Category landing page subcategory boxes------------------ */
