@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<config>
+	<tabs>
+		<sz>
+			<label>Vendor Management</label>
+			<sort_order>1000</sort_order>
+		</sz>
+	</tabs>
+		<sections>
+			<vendor>
+			<class>separator-top</class>
+            <label>Vendor</label>
+            <tab>sz</tab>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+				<groups>
+					<vendor_options>
+						<label>Options</label>
+						<frontend_type>text</frontend_type>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<sort_order>1</sort_order>
+						<fields>
+							<percent translate="label">
+								<label>Percent per product sale</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>1</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</percent>
+							<taxmanage translate="label">
+								<label>Move Product Tax to Vendor Account</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>
+								<sort_order>2</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</taxmanage>
+							<attributesetid translate="label">
+								<label>Attribute Set ID</label>
+								<frontend_type>multiselect</frontend_type>
+								<sort_order>2</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+								<source_model>vendor/attributesetid</source_model>
+							</attributesetid>
+							<partner_approval translate="label">
+								<label>Vendor Approval Required</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>
+								<sort_order>3</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</partner_approval>
+							<product_approval translate="label">
+								<label>Product Approval Required</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>
+								<sort_order>4</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</product_approval>
+							<product_edit_approval translate="label">
+								<label>Product Update Approval Required</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>
+								<sort_order>5</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</product_edit_approval>
+							<categoryids translate="label">
+								<label>Allowed Categories for vendor to add products</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>8</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+								<comment>e.g Please enter category ids by comma(') seperated</comment>
+							</categoryids>
+							<vendorlabel translate="label">
+								<label>MarketPlace Landing Page Label</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>9</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+								<default>1</default>
+								<comment>e.g Turn Your Passion Into a Business</comment>
+							</vendorlabel>
+							<adminemail translate="label">
+								<label>Admin Email-id</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>12</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</adminemail>
+							<allow_for_vendor translate="label">
+								<label>Product Type For Vendor</label>
+								<frontend_type>multiselect</frontend_type>
+								<source_model>vendor/producttypemp</source_model>
+								<sort_order>15</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</allow_for_vendor>
+						</fields>
+					</vendor_options>
+			        <vendor_review>
+						<label>Vendor Vendor Review Settings</label>
+						<frontend_type>text</frontend_type>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<sort_order>2</sort_order>
+						<fields>
+							<review_status translate="label">
+								<label>Make a Review on only Order Purchase</label>
+								<frontend_type>select</frontend_type>
+                    			<source_model>adminhtml/system_config_source_yesno</source_model>
+								<sort_order>1</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</review_status>
+						</fields>
+			        </vendor_review>
+				</groups>
+			</vendor>
+		</sections>
+	</config>

@@ -1,0 +1,462 @@
+<?php 
+$isPartner= Mage::getModel('vendor/userprofile')->isPartner();
+$helper = Mage::helper('vendor');
+if($isPartner==1){?>
+	<script type="text/javascript">
+	if (typeof jQuery == 'undefined'){
+	    document.write(unescape("%3Cscript src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+	}
+	</script>
+	<script type="text/javascript">
+	  	bkLib.onDomLoaded(function() { 
+	        new nicEditor({fullPanel : true}).panelInstance('compdesi');
+	        <?php
+			if(Mage::getStoreConfig('vendor/vendor_options/partner_policy_approval')){?>
+		        new nicEditor({fullPanel : true}).panelInstance('returnpolicy');
+		        new nicEditor({fullPanel : true}).panelInstance('shippingpolicy');
+	        <?php
+	    	}?>
+	  	});
+	</script>
+	<script src="<?php echo $this->getSkinUrl('vendor/colorpicker/js/colorpicker.js'); ?>"></script>
+	<?php $paymentDetail=Mage::getModel('vendor/saleslist')->getPaymentDetailById(); ?>
+
+	<form action="<?php echo $this->getUrl('vendor/vendoraccount/editProfile') ?>" enctype="multipart/form-data" method="post" id="form-profile-validate">
+		<div class="page-title">
+			<h1 style="float:left;"><?php echo $helper->__('Edit Profile Information') ?></h1>
+			<button class="button wk_mp_btn" title="<?php echo $helper->__('Save Profile') ?>" type="submit" id="save_butn">
+				<span><span><?php echo $helper->__('Save Profile') ?></span></span>
+			</button>
+		</div>
+		<?php $formKey = Mage::getSingleton('core/session')->getFormKey(); ?>
+		<input type="hidden" name="form_key" value="<?php echo $formKey; ?>" />
+		<div class="wk_mp_design">
+			<div class="block block-account">	
+				<div class="block-title">	
+					<strong><span><h4><?php echo $helper->__('Profile Information') ?></h4></span></strong>
+				</div>
+			</div>
+			<div class="fieldset wk_mp_fieldset">
+				<ul class="form-list">
+					<li class="fields">
+					<?php $partner=Mage::getModel('vendor/userprofile')->getPartnerProfileById(Mage::getSingleton('customer/session')->getCustomerId());
+						if($partner['wantpartner']==1){?> 
+							<div class="profile">
+								<label for="twitterid"><?php echo $helper->__('Twitter ID') ?> </label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_tw')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_tw') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">
+									 <input type="text" id="twitterid" name="twitterid" value="<?php echo $partner['twitterid']; ?>" title="twitterid" class="input-text" />
+								</div>
+							</div>
+							<div class="profile">
+								<label for="facebookid"><?php echo $helper->__('Facebook ID') ?> </label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_fb')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_fb') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">
+									 <input type="text" id="facebookid" name="facebookid" value="<?php echo $partner['facebookid']; ?>" title="facebookid" class="input-text" />
+								</div>
+							</div>
+							<div class="profile">
+								<label for="twitterid"><?php echo $helper->__('Contact Number') ?> </label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_cn')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_cn') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">
+									 <input type="text" id="contactnumber" name="contactnumber" value="<?php echo $partner['contactnumber']; ?>" title="twitterid" class="input-text" placeholder="<?php echo $helper->__('Enter Mobile Number with country code ex: +91 9999999999') ?>"/>
+								</div>
+							</div>
+							<div class="profile">
+								<label for="backgroundth"><?php echo $helper->__('Theme : Background Color') ?> </label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_bc')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_bc') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">
+									 <input type="text" id="backgroundth" name="backgroundth" value="<?php echo $partner['backgroundth']; ?>" title="backgroundth" class="input-text" />
+									 <span class="color_pick" style="background-color:<?php echo $partner['backgroundth']; ?>"></span>
+								</div>
+							</div>
+							<div class="profile">
+								<label for="shoptitle"><?php echo $helper->__('Shop Title') ?></label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_shop')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_shop') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">
+									 <input type="text" id="shoptitle" name="shoptitle" value="<?php echo $partner['shoptitle']; ?>" title="shoptitle" class="input-text" />
+								</div>
+							</div>
+							<div class="profile">
+								<label for="bannerpic"> <?php echo $helper->__('Company Banner') ?> </label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_banner')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_banner') ?>"/>
+								<?php
+								} ?>
+								<label class="input-box-notification input-box-notification1">(<?php echo $helper->__("Upload 700px X 100px for better look"); ?>)</label>
+								<div class="input-box">
+									<input type="file" id="bannerpic" name="bannerpic"  title="bannerpic" class="input-text banner" size="26" />
+									<div class="profileimage_set">
+									  	<div class="setimage">
+											<img class="wk_banner" alt=" <?php echo $helper->__('no image') ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'avatar/'.$partner['bannerpic']; ?>"/>
+											<?php
+											$collection = Mage::getModel('vendor/userprofile')->getCollection();
+											$collection->addFieldToFilter('mageuserid',array('eq'=>Mage::getSingleton('customer/session')->getCustomerId()));
+											foreach($collection as  $value){ 
+												$bannerpic = $value->getBannerpic(); 
+												$logopic = $value->getLogopic(); 
+											}
+											if($bannerpic){
+											?>
+											<span class="wk_profileimagedelete" title="Delete">
+											  	<img src="<?php echo $this->getSkinUrl('vendor/images/deleteIcon.png'); ?>" alt="<?php echo $helper->__('Delete Image')?>" title="<?php echo $helper->__('Delete Image')?>"/>
+											</span>
+											<?php
+											}?>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="profile">
+								<label for="logopic"> <?php echo $helper->__('Company Logo') ?> </label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_logo')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_logo') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">
+									<input type="file" id="logopic" alt="no image" name="logopic"  title="logopic" class="input-text banner" size="26"/>
+									<div class="logoimage_set">
+									  	<div class="setimage">
+											<img class="prev_img" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'avatar/'.$partner['logopic']; ?>"/>
+											<?php
+											if($logopic){
+											?>
+											<span class="wk_logoimagedelete" title="Delete">
+											  	<img src="<?php echo $this->getSkinUrl('vendor/images/deleteIcon.png'); ?>" alt="<?php echo $helper->__('Delete Image')?>" title="<?php echo $helper->__('Delete Image')?>"/>
+											</span>
+											<?php
+											}?>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="profile">
+								<label for="complocality"><?php echo $helper->__('Company Locality') ?></label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_loc')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_loc') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">
+									 <input type="text" id="complocality" name="complocality" value="<?php echo $partner['complocality']; ?>" title="complocality" class="input-text" />
+								</div>
+							</div>
+							<div class="profile">
+								<label for="compdesi"><?php echo $helper->__('Company Description') ?></label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_desciption')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_desciption') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">
+									 <textarea type="text" id="compdesi" name="compdesi" title="compdesi" class="input-text compdesi" ><?php echo $partner['compdesi']; ?> </textarea>
+								</div>
+							</div>
+							<?php
+							if(Mage::getStoreConfig('vendor/vendor_options/partner_policy_approval')){?>
+								<div class="profile">
+									<label><?php echo $helper->__('Return Policy') ?></label>
+									<?php
+									if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/returnpolicy')){?>
+										<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/returnpolicy') ?>"/>
+									<?php
+									} ?>
+									<div class="input-box">
+										 <textarea type="text" id="returnpolicy" name="returnpolicy" title="returnpolicy" class="input-text compdesi" ><?php echo $partner['returnpolicy']; ?> </textarea>
+									</div>
+								</div>
+								<div class="profile">
+									<label><?php echo $helper->__('Shipping Policy') ?></label>
+									<?php
+									if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/shippingpolicy')){?>
+										<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/shippingpolicy') ?>"/>
+									<?php
+									} ?>
+									<div class="input-box">
+										 <textarea type="text" id="shippingpolicy" name="shippingpolicy" title="shippingpolicy" class="input-text compdesi" ><?php echo $partner['shippingpolicy']; ?> </textarea>
+									</div>
+								</div>
+							<?php
+							} ?>
+							<div class="profile">
+								<label for="countrypic"> <?php echo $helper->__('Country') ?> </label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_country')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_country') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">
+									 <select name="countrypic" id="countrypic">
+										<option value="" selected="selected" disabled="disabled"><?php echo $helper->__('Select Country')?></option>
+									<?php foreach(Mage::getModel('directory/country')->getResourceCollection()->loadByStore()->toOptionArray(true) as $country){?>
+										<option <?php 
+										if($country['value']!=''){
+										echo ($partner['countrypic']==$country['value']?"selected='selected'":""); ?>value="<?php echo $country['value']; ?>"><?php echo $country['label'];?></option>
+									<?php 
+								      }
+									} ?>
+									</select>
+									<img class="country_img_prev" alt="no image" src="<?php echo $this->getSkinUrl('vendor/images/country/countryflags/').strtoupper($partner['countrypic']==""?"xx":$partner['countrypic']).".png"; ?>"/>
+								</div>
+							</div>
+							<div class="profile">	
+								<label for="meta_keywords"><?php echo $helper->__('Meta Keywords') ?></label>
+								<label class="input-box-notification">(<?php echo $helper->__("Enter Meta Keywords Comma(',') Separated.."); ?>)</label>
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_meta')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_meta') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">			
+									<textarea type="text" id="meta_keywords" name="meta_keyword" title="Meta Keyword" class="input-text compdesi" ><?php echo $partner['meta_keyword']; ?> </textarea>
+								</div>	
+							</div>	
+							<div class="profile">	
+								<label for="meta_description"><?php echo $helper->__('Meta Description') ?></label>	
+								<?php
+								if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_mdesc')){?>
+									<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_mdesc') ?>"/>
+								<?php
+								} ?>
+								<div class="input-box">	
+									<textarea type="text" id="meta_description" name="meta_description" title="Meta Description" class="input-text compdesi" ><?php echo $partner['meta_description']; ?> </textarea>	
+								</div>	
+							</div>							
+						<?php } ?>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</form>
+	<br/><br/>
+	<form action="<?php echo $this->getUrl('vendor/vendoraccount/payment') ?>" enctype="multipart/form-data" method="post" id="form-payment-validate">
+		<div class="page-title">
+			<h1 style="float:left;"><?php echo $helper->__('Edit Payment Information') ?></h1>
+			<button class="button wk_mp_btn" title="<?php echo $helper->__('Save Payment') ?>" type="submit" id="savepaym">
+				<span><span><?php echo $helper->__('Save Payment') ?></span></span>
+			</button>
+		</div>
+		<?php $formKey = Mage::getSingleton('core/session')->getFormKey(); ?>
+		<input type="hidden" name="form_key" value="<?php echo $formKey; ?>" />
+		<div class="wk_mp_design">
+			<div class="block block-account">	
+				<div class="block-title">	
+					<strong><span><h4><?php echo $helper->__('Payment Information') ?></h4></span></strong>
+				</div>
+			</div>
+			<div class="fieldset wk_mp_fieldset">
+				<ul class="form-list">
+					<li class="fields">
+						<div class="field">
+							<label><?php echo $helper->__('Payment Details') ?></label>
+							<?php
+							if(Mage::getStoreConfig('vendor/vendor_profile/profile_hint_status') && Mage::getStoreConfig('vendor/vendor_profile/profile_bank')){?>
+								<img src="<?php echo $this->getSkinUrl('vendor/images/quest.png'); ?>" class='questimg' title="<?php echo Mage::getStoreConfig('vendor/vendor_profile/profile_bank') ?>"/>
+							<?php
+							} ?>
+							<div class="input-box">
+								<textarea class="input-text" name="paymentsource" id="paymentsource" title="payment source" cols="1" rows="3" ><?php echo $paymentDetail; ?></textarea>
+								
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>		
+		</div>		
+	</form>
+	<br/><br/>
+	<?php echo $this->getChildHtml(); ?>
+	<div class="profile">
+		<div class="wk_profile_links">
+			<a class="btn_primary" id="cprofile" href="<?php echo $this->getUrl('vendor/seller/profile').$partner['profileurl']; ?>" target="_blank"><?php echo $helper->__('View Profile') ?></a>
+		</div>
+		<div class="wk_profile_links">
+			<a class="btn_primary" id="ccollection" href="<?php echo $this->getUrl('vendor/seller/collection').$partner['profileurl']; ?>" target="_blank"><?php echo $helper->__('View Collection') ?></a>
+		</div>
+	</div>
+	<div class="buttons-set">
+		<p class="back-link">
+			<a href="javascript:;" onclick="javascript: window.history.back();" class="left">&laquo; <?php echo $helper->__('Back') ?></a>
+		</p>
+	</div>
+	
+	<script>
+		$wk_jq=jQuery.noConflict();
+		(function($wk_jq){
+			$wk_jq(function(){
+				var dataForm = new VarienForm('form-profile-validate', true);
+				$wk_jq('.color_pick').ColorPicker({
+					color: '<?php echo $partner['backgroundth']; ?>',
+					onShow: function (colpkr) {
+						$wk_jq(colpkr).fadeIn(500);
+						return false;
+					},
+					onHide: function (colpkr) {
+						$wk_jq(colpkr).fadeOut(500);
+						return false;
+					},
+					onChange: function (hsb, hex, rgb) {
+						$wk_jq('#backgroundth').val('#' + hex);
+						$wk_jq('.color_pick').css('background-color','#'+hex);
+					}
+				});	
+				$wk_jq('#countrypic').change(function(){
+					$wk_jq('#countrylist').val($wk_jq(this).val());
+					$wk_jq('.country_img_prev').attr('src','<?php echo $this->getSkinUrl("vendor/images/country/countryflags/")?>'+$wk_jq(this).val()+'.png')
+					var address=$wk_jq(this).find('option[value="'+$wk_jq(this).val()+'"]').text();//address which you want Longitude and Latitude
+					$wk_jq.ajax({
+						type: "GET",
+						dataType: "json",
+						url: "http://maps.googleapis.com/maps/api/geocode/json",
+						data: {'address': address,'sensor':false},
+						success: function(data){
+							if(data.results.length){
+								$wk_jq('#country-latitude').val(data.results[0].geometry.location.lat);
+								$wk_jq('#country-longitude').val(data.results[0].geometry.location.lng);
+							}else{
+								$wk_jq('#country-latitude').val('invalid address');
+								$wk_jq('#country-longitude').val('invalid address');
+						   }
+						}
+					});
+				});
+				$wk_jq('#logopic,#bannerpic').change(function(){
+					var imagename=$wk_jq(this).val();
+					var image=imagename.split("."); 
+					image=image[1];
+					if(image!='jpg'){
+						if(image!='jpeg'){
+							if(image!='png'){
+								if(image!='gif'){
+									alert('Invalid Image Extension. Allowed extension is jpg,jpef,png,gif');
+									$wk_jq(this).val('');
+								}
+							}
+						}
+					}
+				});
+				$wk_jq('.left').insertAfter('.buttons-set:last');
+				
+				
+				jQuery('#save_butn').click(function(e){
+					if(dataForm.validator.validate()!=false){	
+						var descrip = nicEditors.findEditor( "compdesi" ).getContent();
+			            var regex = /<script(.+?)<\/script>/g;
+			            var result = descrip.replace(regex,"");
+			            result = result.replace(/script/g,'');
+			            nicEditors.findEditor( "compdesi" ).setContent(result);
+						jQuery('#compdesi').text(result);
+						
+						<?php
+						if(Mage::getStoreConfig('vendor/vendor_options/partner_policy_approval')){?>
+							var returnpolicy = nicEditors.findEditor( "returnpolicy" ).getContent();
+							var shippingpolicy = nicEditors.findEditor( "shippingpolicy" ).getContent();
+							var regex = /<script(.+?)<\/script>/g;
+				            var result1 = returnpolicy.replace(regex,"");
+				            result1 = result1.replace(/script/g,'');
+				            nicEditors.findEditor( "returnpolicy" ).setContent(result1);
+							jQuery('#returnpolicy').text(result1);
+
+				            var result2 = shippingpolicy.replace(regex,"");
+				            result2 = result2.replace(/script/g,'');
+				            nicEditors.findEditor( "shippingpolicy" ).setContent(result2);
+							jQuery('#shippingpolicy').text(result2);
+						<?php
+						}?>
+						
+						jQuery('#form-profile-validate').submit();
+					}
+				});
+			    
+			    
+			    jQuery('#savepaym').click(function(e){
+				   var pay = jQuery('#paymentsource').val();
+				   var regex = /(<([^>]+)>)/ig;
+				    var result = descrip.replace(regex,"");
+				    jQuery('#paymentsource').val(result); 
+				});
+				
+				$wk_jq('.input-text').change(function(){
+				    var validt = $wk_jq(this).val();
+				    var regex = /(<([^>]+)>)/ig;
+			        var mainvald = validt .replace(regex, "");
+			        $wk_jq(this).val(mainvald);	
+		       	});
+		     	
+		     	$wk_jq('.profileimage_set span').click(function(event){
+					var dicisionapp=confirm('<?php echo $helper->__(" Are you sure you want to delete this banner ? ")?>');
+					if(dicisionapp==true){		
+						var thisthis = $wk_jq(this);
+						$wk_jq('.wk_banner').css('opacity','.7');			
+						$wk_jq.ajax({
+							url: "<?php echo $this->getUrl('vendor/vendoraccount/deleteprofileimage');?>",
+							type: "POST",
+							data: {file:'banner'},
+							dataType: 'html',
+							success:function(content){
+								thisthis.parent('.setimage').remove();
+							}
+						});							
+					}		
+				});
+
+				$wk_jq('.wk_profileimagedelete img').mouseover(function(event){
+					$wk_jq(event.target).css('width','22px');
+				});
+				$wk_jq('.wk_profileimagedelete img').mouseout(function(event){
+					$wk_jq(event.target).css('width','20px');
+				});	
+
+				$wk_jq('.logoimage_set span').click(function(event){
+					var dicisionapp=confirm('<?php echo $helper->__(" Are you sure you want to delete this Logo ? ")?>');
+					if(dicisionapp==true){		
+						var thisthis = $wk_jq(this);
+						$wk_jq('.wk_logo').css('opacity','.7');			
+						$wk_jq.ajax({
+							url: "<?php echo $this->getUrl('vendor/vendoraccount/deletelogoimage');?>",
+							type: "POST",
+							data: {file:'logo'},
+							dataType: 'html',
+							success:function(content){
+								thisthis.parent('.setimage').remove();
+							}
+						});							
+					}		
+				});
+
+				$wk_jq('.wk_logoimagedelete img').mouseover(function(event){
+					$wk_jq(event.target).css('width','22px');
+				});
+				$wk_jq('.wk_logoimagedelete img').mouseout(function(event){
+					$wk_jq(event.target).css('width','20px');
+				});				
+			});
+		})(jQuery);
+	</script>
+<?php 
+}else{
+	echo "<h2 class='wk_new_msg'>".$helper->__("To BECOME SELLER PLEASE CONTACT TO ADMIN.")."</h2>";
+}?>
