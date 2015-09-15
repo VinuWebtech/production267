@@ -12,7 +12,7 @@
 .easycatalogimg-cols-6 li.item { width: 16.6% !important; }
 
 .easycatalogimg .parent-category { margin: 0 0 8px; }
-.easycatalogimg .parent-category a { font-size: 17px; font-weight: normal; text-decoration: none; color: #000; }
+.easycatalogimg .parent-category a { font-size: 17px; font-weight: normal; text-decoration: none; } /*color: #000;*/
 .easycatalogimg .parent-category a:hover { text-decoration: underline; }
 
 .easycatalogimg .list-subcategories { padding: 0; margin: 5px 0; list-style: none; font-size: .95em; }

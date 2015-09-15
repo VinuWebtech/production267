@@ -30,7 +30,8 @@ $i = 0;
     <?php endif; ?>
 
     <li class="item">
-        <h5 class="category-name parent-category"><a href="<?php echo $_category->getUrl() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a></h5>
+        <!--vinu changes added (15-9-15) -->
+        <h5 class="category-name parent-category"><a class="text-color" href="<?php echo $_category->getUrl() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a></h5>
         <?php if ($showImage) : ?>
             <a href="<?php echo $_category->getUrl() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>" class="product-image">
                 <?php $imageUrl = $this->getImage($_category) ?>
@@ -73,9 +74,10 @@ $i = 0;
                         <?php break;
                     endif; ?>
                     <li>
+                        <!--vinu changes added (15-9-15) -->
                         <a href="<?php echo $_subcategory->getUrl() ?>"
                             title="<?php echo $this->htmlEscape($_subcategory->getName())?>"
-                            class="category-name child-category"><?php
+                            class="category-name child-category text-color"><?php
                             echo $this->htmlEscape($_subcategory->getName());
                         ?></a>
                     </li>
