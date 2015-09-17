@@ -240,15 +240,16 @@
                 <action method="addTab" translate="title" module="review" ><alias>review_tabbed</alias><title>Reviews</title><block>review/product_view_list</block><template>review/product_info_review.phtml</template></action>
             </block>
         </reference>
-        <!--changes start commenting out to remove dispaly on frontend-->
-        <!--<reference name="right">
+        <!--changes start commenting out to remove display on frontend-->
+        <reference name="right">
             <remove name="right.poll"/>
             <remove name="right.reports.product.viewed"/>
             <remove name="catalog.compare.sidebar"/>
             <remove name="right.permanent.callout"/>
+            <block type="catalog/product_list_related" name="catalog.product.related" before="-" template="catalog/product/list/related.phtml"/>
             <block type="cms/block" name="product.right.custom1" before="-"><action method="setBlockId"><block_id>porto_product_right_side_1</block_id></action></block>
             <block type="cms/block" name="product.right.custom2" after="product.right.custom1"><action method="setBlockId"><block_id>porto_product_right_side_2</block_id></action></block>
-        </reference>-->
+        </reference>
         <!--changes end-->
         <reference name="product.info.upsell">
             <action method="setColumnCount" ifconfig="porto_settings/general/layout" condition="1024"><columns>3</columns></action>
