@@ -220,14 +220,20 @@ h3.filter-title {
 }
 
 /*---------------------------------------------------------------------------------------------*/
+
+
 .parallax-wrapper {
     border-radius: 25px;
 }
 
+.parallax {
+    margin: 50px 0px 10px 0px;
+}
 
 .sell-background {
-    border-radius: 130px;
+    /*border-radius: 130px;*/
     text-align: center;
+    background: transparent url("../images/dot-bg.png") repeat scroll 0px 0px;
 }
 
 .owl-item .sellon-title {
@@ -836,7 +842,7 @@ ol, ul, li {
 }
 
 .product-view .product-shop {
-    width: 72%;
+    width: 65%;
 }
 
 .product-view .product-name {
@@ -913,6 +919,7 @@ table{
 
 #insideconfigurable-product-table {
     table-layout: fixed;
+    /*width: auto;*/
 }
 
 

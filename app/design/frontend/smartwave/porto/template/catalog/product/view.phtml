@@ -156,7 +156,7 @@ if($enable_addtocart_sticky){
                         <div class="std" <?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                     </div>
                 <?php endif;?>
-                <!--changes start added-->
+                <!--vinu changes start added attributes row -->
                 <?php echo $this->getChildHtml('attributes'); ?>
                 <!--changes end-->
                 <div class="product-info">
@@ -166,7 +166,7 @@ if($enable_addtocart_sticky){
                         <?php echo $price_properties; ?>
                     </div>
                     <?php echo $this->getChildHtml('extrahint') ?>
-                    <!--changes start commenting out to remove dispaly on frontend-->
+                    <!--changes start commenting out to remove display on frontend-->
                     <!--<?php if ($this->canEmailToFriend()): ?>
                         <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
                     <?php endif; ?>-->
@@ -195,9 +195,7 @@ if($enable_addtocart_sticky){
                     </div>
                 <?php endif; ?>
 
-                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-                <?php endif;?>
+                
                 <!--changes start commenting out to remove display on frontend-->
                 <!--?php echo $this->getChildHtml('smartwave_sharetool'); ?>-->
                 <!--changes end-->
@@ -206,6 +204,9 @@ if($enable_addtocart_sticky){
         </div>
         <?php if ($_product->isSaleable() && $this->hasOptions()):?>
             <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+        <?php endif;?>
+        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+            <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
         <?php endif;?>
     </form>
 <?php if(Mage::getStoreConfig('ajaxcart/addtocart/enableproduct') && (Mage::app()->getFrontController()->getRequest()->getModuleName() == "catalog") || (Mage::app()->getFrontController()->getRequest()->getModuleName() == "quickview")): ?>
