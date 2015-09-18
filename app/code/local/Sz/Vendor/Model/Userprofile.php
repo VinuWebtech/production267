@@ -73,6 +73,45 @@ class Sz_Vendor_Model_Userprofile extends Mage_Core_Model_Abstract
 		}		
 	}
 
+    public function approvePartner($vendorid = null){
+        if(!is_null($vendorid)){
+            $collection = Mage::getModel('vendor/userprofile')->getCollection()->addFieldToFilter('mageuserid',array('eq'=>$vendorid));
+            foreach ($collection as $row) {
+                $auto=$row->getautoid();
+                $collection1 = Mage::getModel('vendor/userprofile')->load($auto);
+                $collection1->setwantpartner(1);
+                $collection1->setpartnerstatus('Vendor');
+                $collection1->save();
+            }
+            $users = Mage::getModel('vendor/product')->getCollection()->addFieldToFilter('userid',array('eq'=>$vendorid));
+            foreach ($users as $value) {
+                $allStores = Mage::app()->getStores();
+                foreach ($allStores as $_eachStoreId => $val)
+                {
+                    Mage::getModel('catalog/product_status')->updateProductStatus($value->getMageproductid(),Mage::app()->getStore($_eachStoreId)->getId(), Mage_Catalog_Model_Product_Status::STATUS_ENABLED);
+                }
+                $value->setStatus(1);
+                $value->save();
+            }
+            $customer = Mage::getModel('customer/customer')->load($vendorid);
+            $emailTemp = Mage::getModel('core/email_template')->loadDefault('partnerapprove');
+
+            $emailTempVariables = array();
+            $admin_storemail = Mage::getStoreConfig('vendor/vendor_options/adminemail');
+            $adminEmail=$admin_storemail? $admin_storemail:Mage::getStoreConfig('trans_email/ident_general/email');
+            $adminUsername = 'Admin';
+            $emailTempVariables['myvar1'] = $customer->getName().'(Email::'.$customer->getEmail().')';
+            $emailTempVariables['myvar2'] =  Mage::getUrl('vendor/account/login', array('_secure' => true));
+
+            $processedTemplate = $emailTemp->getProcessedTemplate($emailTempVariables);
+
+            $emailTemp->setSenderName($adminUsername);
+            $emailTemp->setSenderEmail($adminEmail);
+            $emailTemp->send($customer->getEmail(),$adminUsername,$emailTempVariables);
+            Mage::dispatchEvent('mp_approve_vendor',array('vendor'=>$customer));
+        }
+    }
+
 	public function massisnotpartner($data){ 
 		$wholedata=$data->getParams();
 		foreach($wholedata['customer'] as $key){
@@ -116,6 +155,48 @@ class Sz_Vendor_Model_Userprofile extends Mage_Core_Model_Abstract
 			Mage::dispatchEvent('mp_disapprove_vendor',array('vendor'=>$customer));
 		}		
 	}
+
+    public function disaprovePartner($vendorid = null){
+        if(!is_null($vendorid)){
+            $collection = Mage::getModel('vendor/userprofile')->getCollection();
+            $collection->getSelect()->where('mageuserid ='.$vendorid);
+            foreach ($collection as $row) {
+                $auto=$row->getautoid();
+                $collection1 = Mage::getModel('vendor/userprofile')->load($auto);
+                $collection1->setwantpartner(0);
+                $collection1->setpartnerstatus('Pending');
+                $collection1->save();
+            }
+            $users = Mage::getModel('vendor/product')->getCollection()->addFieldToFilter('userid',array('eq'=>$vendorid));
+            foreach ($users as $value) {
+                $id = $value->getMageproductid();
+                $magentoProductModel = Mage::getModel('catalog/product')->load($id);
+                $allStores = Mage::app()->getStores();
+                foreach ($allStores as $_eachStoreId => $val)
+                {
+                    Mage::getModel('catalog/product_status')->updateProductStatus($value->getMageproductid(),Mage::app()->getStore($_eachStoreId)->getId(), Mage_Catalog_Model_Product_Status::STATUS_DISABLED);
+                }
+                $magentoProductModel->setStatus(2)->save();
+                $value->setStatus(2);
+                $value->save();
+            }
+            $customer = Mage::getModel('customer/customer')->load($vendorid);
+            $emailTemp = Mage::getModel('core/email_template')->loadDefault('partnerdisapprove');
+            $emailTempVariables = array();
+            $admin_storemail = Mage::getStoreConfig('vendor/vendor_options/adminemail');
+            $adminEmail=$admin_storemail? $admin_storemail:Mage::getStoreConfig('trans_email/ident_general/email');
+            $adminUsername = 'Admin';
+            $emailTempVariables['myvar1'] = $customer->getName();
+            $emailTempVariables['myvar2'] = Mage::helper('customer')->getLoginUrl();
+
+            $processedTemplate = $emailTemp->getProcessedTemplate($emailTempVariables);
+
+            $emailTemp->setSenderName($adminUsername);
+            $emailTemp->setSenderEmail($adminEmail);
+            $emailTemp->send($customer->getEmail(),$adminUsername,$emailTempVariables);
+            Mage::dispatchEvent('mp_disapprove_vendor',array('vendor'=>$customer));
+        }
+    }
 
 	public function denypartner($data){ 
 		$wholedata=$data->getParams();

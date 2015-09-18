@@ -12,7 +12,8 @@
 				<?php
 				foreach($collection as $data){
 					$userinfo = Mage::getModel('customer/customer')->load($data->getUserid());
-					echo $userinfo->getFirstname()." ".$userinfo->getLastname();
+					echo $userinfo->getName().' (Email:'.$userinfo->getEmail().')';
+                    break;
 				}
 			}
 		?> 

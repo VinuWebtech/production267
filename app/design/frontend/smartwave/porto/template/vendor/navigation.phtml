@@ -52,17 +52,24 @@
 							</a>				
 					<?php } ?>		
 					</li>
-
-						<li  <?php echo strpos($magentoCurrentUrl,'uploadproducts')? "class=current":"";?>>
-						<?php if(strpos($magentoCurrentUrl,'uploadproducts')){ ?>
-							<strong><?php echo $helper->__('Upload Product Csv') ?></strong>
-							<?php }		
-							else{ ?>		
-								<a href="<?php echo $this->getUrl('vendor/vendoraccount/uploadproducts'); ?>">
-									<?php echo $helper->__('Upload Product Csv') ?></a>
-							<?php } ?>				
-						</li>
-
+                    <li  <?php echo strpos($magentoCurrentUrl,'uploadproducts')? "class=current":"";?>>
+                    <?php if(strpos($magentoCurrentUrl,'uploadproducts')){ ?>
+                        <strong><?php echo $helper->__('Upload Product Csv') ?></strong>
+                        <?php }
+                        else{ ?>
+                            <a href="<?php echo $this->getUrl('vendor/vendoraccount/uploadproducts'); ?>">
+                                <?php echo $helper->__('Upload Product Csv') ?></a>
+                        <?php } ?>
+                    </li>
+                    <li  <?php echo strpos($magentoCurrentUrl,'productcsvstatus')? "class=current":"";?>>
+                        <?php if(strpos($magentoCurrentUrl,'productcsvstatus')){ ?>
+                            <strong><?php echo $helper->__('Product Csv Status') ?></strong>
+                        <?php }
+                        else{ ?>
+                            <a href="<?php echo $this->getUrl('vendor/vendoraccount/productcsvstatus'); ?>">
+                                <?php echo $helper->__('Product Csv Status') ?></a>
+                        <?php } ?>
+                    </li>
 					<li  <?php echo (strpos($magentoCurrentUrl,'vendoraccount/new') && strpos($magentoCurrentUrl,'vendoraccount/newattribute')===false)? "class=current":"";?>>			
 					<?php if(strpos($magentoCurrentUrl,'vendoraccount/new') && strpos($magentoCurrentUrl,'vendoraccount/newattribute')===false){ ?>		
 						<strong><?php echo $helper->__('New Products') ?></strong>	

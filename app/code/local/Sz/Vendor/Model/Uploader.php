@@ -101,7 +101,7 @@ class Sz_Vendor_Model_Uploader extends Mage_Core_Model_Abstract
                 if (isset($productData['short_description']) && $productData['short_description']) {
                     $magentoProductModel->setShortDescription($productData['short_description']);
                 }
-                if (isset($productData['price']) && $productData['price']) {
+                if (isset($productData['price'])) {
                     $magentoProductModel->setPrice($productData['price']);
                 }
                 if (isset($productData['special_price']) && $productData['special_price']) {
@@ -125,7 +125,7 @@ class Sz_Vendor_Model_Uploader extends Mage_Core_Model_Abstract
                     $magentoProductModel->setAccessoriesSize($optionId);
                 }
                 $magentoProductModel->setStatus(Mage_Catalog_Model_Product_Status::STATUS_DISABLED);
-
+                $magentoProductModel->setTaxClassId(0);
                 if (isset($productData['categories']) && $productData['categories']) {
                     $magentoProductModel->setCategoryIds($this->_assignCategories($productData['categories']));
                 }
@@ -193,7 +193,7 @@ class Sz_Vendor_Model_Uploader extends Mage_Core_Model_Abstract
                 $collection1->save();
             }
         } catch (Exception $e) {
-            throw Mage::exception($e->getMessage());
+            //throw Mage::exception($e->getMessage());
         }
     }
 

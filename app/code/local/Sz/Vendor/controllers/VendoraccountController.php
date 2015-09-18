@@ -304,6 +304,35 @@ class Sz_Vendor_VendoraccountController extends Mage_Customer_AccountController{
         exit;
     }
 
+
+    public function downloadAction() {
+        $fileId = $this->getRequest()->getParam('fileid', '');
+        $fileId = urldecode($fileId);
+        if ($fileId) {
+            $file = Mage::getModel('vendor/uploader')->load($fileId);
+            $vendorHelper = Mage::helper('vendor');
+            if ($file->getStatus() == Sz_Vendor_Model_Uploader::COMPLETE) {
+                $filePath = $vendorHelper->getProductImportedFileDirectory().$file->getFileName();
+            } else {
+                $filePath = $vendorHelper->getArchiveDirectory().$file->getFileName();
+            }
+
+            $this->getResponse()->setHttpResponseCode(200)
+                ->setHeader('Pragma','publi', true)
+                ->setHeader('Cache-Control', 'must-revalidate, post-check=0', true)
+                ->setHeader('Content-type', 'application/force-download')
+                ->setHeader('Content-Length', filesize($filePath))
+                ->setHeader(
+                    'Content-Disposition', 'attachment'.';filename='.basename($filePath)
+                );
+            $this->getResponse()->clearBody();
+            $this->getResponse()->sendHeaders();
+            readfile($vendorHelper->getSampleFilePath());
+            exit;
+        }
+
+    }
+
     public function uploadPostAction() {
         $partner = Mage::getModel('vendor/userprofile')->isPartner(Mage::getSingleton('customer/session')->getCustomerId());
         if (!$partner) {
@@ -507,7 +536,7 @@ class Sz_Vendor_VendoraccountController extends Mage_Customer_AccountController{
 			return $this->_redirect('vendor/vendoraccount/new/');
 		}
 	}
-	
+
 	public function configurableassociateAction(){
 		$this->loadLayout( array('default','vendor_account_configurableassociate'));
         $this->_initLayoutMessages('customer/session');
@@ -523,6 +552,16 @@ class Sz_Vendor_VendoraccountController extends Mage_Customer_AccountController{
 		$this->getLayout()->getBlock('head')->setTitle( Mage::helper('vendor')->__('My Product List'));
     	$this->renderLayout();
 	}
+
+    public function productcsvstatusAction(){
+        $this->loadLayout( array('default','vendor_account_productcsvstatus'));
+        $this->_initLayoutMessages('customer/session');
+        $this->_initLayoutMessages('catalog/session');
+        $this->getLayout()->getBlock('head')->setTitle( Mage::helper('vendor')->__('Product CSV List'));
+        $this->renderLayout();
+    }
+
+
 	public function becomepartnerAction(){
 		if($this->getRequest()->isPost()){ 
 			 if (!$this->_validateFormKey()) {

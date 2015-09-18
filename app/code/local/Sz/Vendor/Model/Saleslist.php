@@ -26,56 +26,37 @@ class Sz_Vendor_Model_Saleslist extends Mage_Core_Model_Abstract
 	}
 	
 	public function getCommsionCalculation($order){
-		$percent = Mage::getStoreConfig('vendor/vendor_options/percent');
-		$lastOrderId=$order->getId();
-		$ordercollection=Mage::getModel('vendor/saleslist')->getCollection()
-										->addFieldToFilter('mageorderid',array('eq'=>$lastOrderId))
-										->addFieldToFilter('cpprostatus',array('eq'=>0));
-		foreach($ordercollection as $item){
-			$actparterprocost = $item->getActualparterprocost();
-			$totalamount = $item->getTotalamount();
-			$vendor_id = $item->getMageproownerid();
-							
-			$collectionverifyread = Mage::getModel('vendor/saleperpartner')->getCollection();
-			$collectionverifyread->addFieldToFilter('mageuserid',array('eq'=>$vendor_id));
-			if(count($collectionverifyread)>=1){
-				foreach($collectionverifyread as $verifyrow){
-					$totalsale=$verifyrow->getTotalsale()+$totalamount;
-					$totalremain=$verifyrow->getAmountremain()+$actparterprocost;
-					$verifyrow->setTotalsale($totalsale);
-					$verifyrow->setAmountremain($totalremain);
-					$verifyrow->save();
-				}
-			}
-			else{
-				$percent = Mage::getStoreConfig('vendor/vendor_options/percent');			
-				$collectionf=Mage::getModel('vendor/saleperpartner');
-				$collectionf->setMageuserid($vendor_id);
-				$collectionf->setTotalsale($totalamount);
-				$collectionf->setAmountremain($actparterprocost);
-				$collectionf->setCommision($percent);
-				$collectionf->save();						
-			}
-			if($vendor_id){
-				$ordercount = 0;
-				$feedbackcount = 0;
-				$feedcountid = 0;
-				$collectionfeed=Mage::getModel('vendor/feedbackcount')->getCollection()
-										->addFieldToFilter('vendorid',array('eq'=>$vendor_id));
-				foreach ($collectionfeed as $value) {
-					$feedcountid = $value->getFeedcountid();
-					$ordercount = $value->getOrdercount();
-					$feedbackcount = $value->getFeedbackcount();
-				}
-				$collectionfeed=Mage::getModel('vendor/feedbackcount')->load($feedcountid);
-				$collectionfeed->setBuyerid($order->getCustomerId());
-				$collectionfeed->setVendorid($vendor_id);
-				$collectionfeed->setOrdercount($ordercount+1);
-				$collectionfeed->setFeedbackcount($feedbackcount);
-				$collectionfeed->save();
-			}
-			$item->setCpprostatus(1)->save();	
-		}
+        try {
+            $percent = Mage::getStoreConfig('vendor/vendor_options/percent');
+            $lastOrderId=$order->getId();
+            $ordercollection=Mage::getModel('vendor/saleslist')->getCollection()
+                                            ->addFieldToFilter('mageorderid',array('eq'=>$lastOrderId))
+                                            ->addFieldToFilter('cpprostatus',array('eq'=>0));
+            foreach($ordercollection as $item){
+                $actparterprocost = $item->getActualparterprocost();
+                $totalamount = $item->getTotalamount();
+                $vendor_id = $item->getMageproownerid();
+                $salesCommissionSoFar = Mage::getModel('vendor/saleperpartner')->loadByVendorId($vendor_id);
+                if($salesCommissionSoFar instanceof Sz_Vendor_Model_Saleperpartner){
+                    $totalsale=$salesCommissionSoFar->getTotalsale()+$totalamount;
+                    $totalremain=$salesCommissionSoFar->getAmountremain()+$actparterprocost;
+                    $salesCommissionSoFar->setTotalsale($totalsale);
+                    $salesCommissionSoFar->setAmountremain($totalremain);
+                    $salesCommissionSoFar->save();
+                } else{
+                    $percent = Mage::getStoreConfig('vendor/vendor_options/percent');
+                    $collectionf = Mage::getModel('vendor/saleperpartner');
+                    $collectionf->setMageuserid($vendor_id);
+                    $collectionf->setTotalsale($totalamount);
+                    $collectionf->setAmountremain($actparterprocost);
+                    $collectionf->setCommision($percent);
+                    $collectionf->save();
+                }
+                Mage::getModel('vendor/saleslist')->load($item->getAutoid())->setCpprostatus(1)->save();
+            }
+        } catch (exception $e) {
+            Mage::log($e, null, 'vendor_errors.log', true);
+        }
 	}
 
 	public function payvendorpayment($order,$vendorid,$trid){

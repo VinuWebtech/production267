@@ -3,13 +3,6 @@ $isPartner= Mage::getModel('vendor/userprofile')->isPartner();
 $helper= Mage::helper('vendor');
 if($isPartner==1){
 	?>
-	<script type="text/javascript">
-	if (typeof jQuery == 'undefined'){
-	    document.write(unescape("%3Cscript src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
-	}
-	</script>
-	<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<div class="page-title">
 		<h1 style="float:left;"><?php echo $helper->__('My Product List') ?></h1>
 	</div>	

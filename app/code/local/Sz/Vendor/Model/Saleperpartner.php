@@ -7,6 +7,17 @@ class Sz_Vendor_Model_Saleperpartner extends Mage_Core_Model_Abstract
         parent::_construct();
         $this->_init('vendor/saleperpartner');
     }
+
+    public function loadByVendorId($vendorId = null) {
+        $collection = $this->getResourceCollection()
+            ->addFieldToFilter('mageuserid',array('eq'=>$vendorId))
+            ->setCurPage(1)
+            ->setPageSize(1);
+        foreach ($collection as $object) {
+            return $object;
+        }
+        return false;
+    }
 	
 	public function salePayment($data)
 	{

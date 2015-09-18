@@ -338,10 +338,48 @@
             </action>
         </reference>
         <update handle="customer_account" />
+        <reference name="head">
+        <action method="addCss">
+            <stylesheet>vendor/css/jquery-ui.css</stylesheet>
+        </action>
+        <action method="addItem">
+            <type>js</type>
+            <script>vendor/js/jquery.min.js</script>
+        </action>
+        <action method="addItem">
+            <type>js</type>
+            <script>vendor/js/jquery-ui.js</script>
+        </action>
+        </reference>
         <reference name="content">
             <block type="vendor/vendor" name="vendor_myproductslist" template="vendor/myproductlist.phtml" />
         </reference>
     </vendor_account_productlist>
+
+    <vendor_account_productcsvstatus>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>vendor/css/style.css</stylesheet>
+            </action>
+        </reference>
+        <update handle="customer_account" />
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>vendor/css/jquery-ui.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <script>vendor/js/jquery.min.js</script>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <script>vendor/js/jquery-ui.js</script>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="vendor/uploadcsv" name="vendor_productcsvstatus" template="vendor/productcsvstatus.phtml" />
+        </reference>
+    </vendor_account_productcsvstatus>
     <vendor_account_simpleproductedit>
         <reference name="head">
             <action method="addCss">
@@ -352,7 +390,21 @@
                 <script>vendor/js/nicEdit-latest.js</script>
             </action>
         </reference>
+
         <update handle="customer_account" />
+        <reference name="head">
+        <action method="addCss">
+            <stylesheet>vendor/css/jquery-ui.css</stylesheet>
+        </action>
+        <action method="addItem">
+            <type>js</type>
+            <script>vendor/js/jquery.min.js</script>
+        </action>
+        <action method="addItem">
+            <type>js</type>
+            <script>vendor/js/jquery-ui.js</script>
+        </action>
+        </reference>
         <reference name="content">
             <block type="core/template" name="vendor_editproducts" template="vendor/editsimpleproduct.phtml" />
         </reference>
@@ -368,6 +420,19 @@
             </action>
         </reference>
         <update handle="customer_account" />
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>vendor/css/jquery-ui.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <script>vendor/js/jquery.min.js</script>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <script>vendor/js/jquery-ui.js</script>
+            </action>
+        </reference>
         <reference name="content">
             <block type="core/template" name="vendor_editproducts" template="vendor/editdownloadableproduct.phtml" />
         </reference>
@@ -393,6 +458,19 @@
 			<action method="addItem"><type>skin_js</type><script>vendor/js/nicEdit-latest.js</script></action>		
 		</reference>
         <update handle="customer_account"/>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>vendor/css/jquery-ui.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <script>vendor/js/jquery.min.js</script>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <script>vendor/js/jquery-ui.js</script>
+            </action>
+        </reference>
         <reference name="content">
             <block type="core/template" name="vendor_editproducts" template="vendor/editconfigurableproduct.phtml"/>
         </reference>
@@ -405,8 +483,29 @@
             <action method="addCss">
                 <stylesheet>vendor/css/wk_block.css</stylesheet>
             </action>
+
         </reference>
         <update handle="customer_account" />
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>vendor/css/jquery-ui.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>vendor/css/shThemejqPlot.min.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <script>vendor/js/jquery.min.js</script>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <script>vendor/js/jquery-ui.js</script>
+            </action>
+            <action method="addItem">
+                <type>js</type>
+                <script>vendor/js/chart.js</script>
+            </action>
+        </reference>
         <reference name="content">
             <block type="vendor/products" name="vendor_dashboard" template="vendor/mydashboard.phtml" />
         </reference>

@@ -4,7 +4,7 @@ $configproducts = $this->getConfigurableProduct();
 $helper=Mage::helper('vendor');
 $isPartner= Mage::getModel('vendor/userprofile')->isPartner();
 $allow_pro_type=Mage::getStoreConfig('vendor/vendor_options/allow_for_seller');
-if($isPartner==1 && strpos($allow_pro_type,'configurable') !== false){
+if($isPartner==1){
 	?>
 
 	<style type="text/css">
@@ -413,6 +413,4 @@ if($isPartner==1 && strpos($allow_pro_type,'configurable') !== false){
 		})($wk_jq);
 	</script>
 <?php 
-}else{
-	echo "<h2 class='wk_new_msg'>".$helper->__("To BECOME SELLER PLEASE CONTACT TO ADMIN.")."</h2>";
 }?>

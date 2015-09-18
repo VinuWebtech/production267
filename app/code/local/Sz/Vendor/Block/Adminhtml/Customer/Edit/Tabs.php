@@ -18,78 +18,80 @@ class Sz_Vendor_Block_Adminhtml_Customer_Edit_Tabs extends Mage_Adminhtml_Block_
             'label'     => Mage::helper('customer')->__('Addresses'),
             'content'   => $this->getLayout()->createBlock('adminhtml/customer_edit_tab_addresses')->initForm()->toHtml(),
         ));
+        $isPartner= Mage::getModel('vendor/userprofile')->isPartner();
         if (Mage::registry('current_customer')->getId()) {
-            if (Mage::getSingleton('admin/session')->isAllowed('sales/order/actions/view')) {
-                $this->addTab('orders', array(
-                    'label'     => Mage::helper('customer')->__('Orders'),
+            if($isPartner == Sz_Vendor_Model_Userprofile::IS_ONLY_CUSTOMER){
+                if (Mage::getSingleton('admin/session')->isAllowed('sales/order/actions/view')) {
+                    $this->addTab('orders', array(
+                        'label'     => Mage::helper('customer')->__('Orders'),
+                        'class'     => 'ajax',
+                        'url'       => $this->getUrl('*/*/orders', array('_current' => true)),
+                     ));
+                }
+                $this->addTab('cart', array(
+                    'label'     => Mage::helper('customer')->__('Shopping Cart'),
                     'class'     => 'ajax',
-                    'url'       => $this->getUrl('*/*/orders', array('_current' => true)),
-                 ));
-            }
-            $this->addTab('cart', array(
-                'label'     => Mage::helper('customer')->__('Shopping Cart'),
-                'class'     => 'ajax',
-                'url'       => $this->getUrl('*/*/carts', array('_current' => true)),
-            ));
-            $this->addTab('wishlist', array(
-                'label'     => Mage::helper('customer')->__('Wishlist'),
-                'class'     => 'ajax',
-                'url'       => $this->getUrl('*/*/wishlist', array('_current' => true)),
-            ));
-            if (Mage::getSingleton('admin/session')->isAllowed('newsletter/subscriber')) {
-                $this->addTab('newsletter', array(
-                    'label'     => Mage::helper('customer')->__('Newsletter'),
-                    'content'   => $this->getLayout()->createBlock('adminhtml/customer_edit_tab_newsletter')->initForm()->toHtml()
+                    'url'       => $this->getUrl('*/*/carts', array('_current' => true)),
                 ));
-            }
-            if (Mage::getSingleton('admin/session')->isAllowed('catalog/reviews_ratings')) {
-                $this->addTab('reviews', array(
-                    'label'     => Mage::helper('customer')->__('Product Reviews'),
+                $this->addTab('wishlist', array(
+                    'label'     => Mage::helper('customer')->__('Wishlist'),
                     'class'     => 'ajax',
-                    'url'       => $this->getUrl('*/*/productReviews', array('_current' => true)),
+                    'url'       => $this->getUrl('*/*/wishlist', array('_current' => true)),
                 ));
+                if (Mage::getSingleton('admin/session')->isAllowed('newsletter/subscriber')) {
+                    $this->addTab('newsletter', array(
+                        'label'     => Mage::helper('customer')->__('Newsletter'),
+                        'content'   => $this->getLayout()->createBlock('adminhtml/customer_edit_tab_newsletter')->initForm()->toHtml()
+                    ));
+                }
+                if (Mage::getSingleton('admin/session')->isAllowed('catalog/reviews_ratings')) {
+                    $this->addTab('reviews', array(
+                        'label'     => Mage::helper('customer')->__('Product Reviews'),
+                        'class'     => 'ajax',
+                        'url'       => $this->getUrl('*/*/productReviews', array('_current' => true)),
+                    ));
+                }
+                if (Mage::getSingleton('admin/session')->isAllowed('catalog/tag')) {
+                    $this->addTab('tags', array(
+                        'label'     => Mage::helper('customer')->__('Product Tags'),
+                        'class'     => 'ajax',
+                        'url'       => $this->getUrl('*/*/productTags', array('_current' => true)),
+                    ));
+                }
+            } else {
+
+                if($isPartner==1){
+                    $this->addTab('payment', array(
+                        'label'     => Mage::helper('customer')->__('Payment Information'),
+                        'content'   => $this->paymentmode(),
+                    ));
+                    
+                    $this->addTab('vendorcommision', array(
+                        'label'     => Mage::helper('customer')->__("Vendor Commission"),
+                        'content'   => $this->vendorcommision(),
+                    ));
+                    $this->addTab('newproduct', array(
+                        'label'     => Mage::helper('customer')->__("Add Product"),
+                        'content'   => $this->addproduct(),
+                    ));
+                    $this->addTab('removeproduct', array(
+                        'label'     => Mage::helper('customer')->__("Remove Product"),
+                        'content'   => $this->removeproduct(),
+                    ));
+                    $this->addTab('notpartner', array(
+                        'label'     => Mage::helper('customer')->__("Do You Want To Remove This Vendor?"),
+                        'content'   => $this->removepartner(),
+                    ));
+                }
+                else {
+                $this->addTab('partner', array(
+                        'label'     => Mage::helper('customer')->__('Do You Want To Make This Customer As Vendor?'),
+                        'content'   => $this->wantpartner(),
+                    ));
+                }
+                $this->removeTab('customer_edit_tab_agreements');
+                $this->removeTab('customer_edit_tab_recurring_profile');
             }
-            if (Mage::getSingleton('admin/session')->isAllowed('catalog/tag')) {
-                $this->addTab('tags', array(
-                    'label'     => Mage::helper('customer')->__('Product Tags'),
-                    'class'     => 'ajax',
-                    'url'       => $this->getUrl('*/*/productTags', array('_current' => true)),
-                ));
-            }
-			$customerid=Mage::registry('current_customer')->getId();
-			$isPartner= Mage::getModel('vendor/userprofile')->isPartner();
-			if($isPartner==1){
-				$this->addTab('payment', array(
-					'label'     => Mage::helper('customer')->__('Payment Information'),
-					'content'   => $this->paymentmode(),
-				));
-				$this->addTab('vendorinformation', array(
-					'label'     => Mage::helper('customer')->__("Vendor Account Information"),
-					'content'   => $this->vendorinformation(),
-				));
-				$this->addTab('vendorcommision', array(
-					'label'     => Mage::helper('customer')->__("Vendor Commission"),
-					'content'   => $this->vendorcommision(),
-				));
-				$this->addTab('newproduct', array(
-					'label'     => Mage::helper('customer')->__("Add Product"),
-					'content'   => $this->addproduct(),
-				));
-				$this->addTab('removeproduct', array(
-					'label'     => Mage::helper('customer')->__("Remove Product"),
-					'content'   => $this->removeproduct(),
-				));
-				$this->addTab('notpartner', array(
-					'label'     => Mage::helper('customer')->__("Do You Want To Remove This Vendor?"),
-					'content'   => $this->removepartner(),
-				));
-			}
-			else {
-			$this->addTab('partner', array(
-					'label'     => Mage::helper('customer')->__('Do You Want To Make This Customer As Vendor?'),
-					'content'   => $this->wantpartner(),
-				));
-			}
 			
         }
         $this->_updateActiveTab();
@@ -395,8 +397,7 @@ class Sz_Vendor_Block_Adminhtml_Customer_Edit_Tabs extends Mage_Adminhtml_Block_
 						<h4 class="icon-head head-customer-view">Do You Want To Make This Customer As Vendor?</h4>
 					</div>
 					<fieldset>
-						<input type="checkbox" name="partnertype" value="1">&nbsp;Approve Vendor<br><br>'.
-						$this->__('Shop Name : ') .'<input type="text" name="profileurl" placeholder="Enter Shop Name" value="'.$profileurl.'" class="profileurl"/>
+						<input type="checkbox" name="partnertype" value="1">&nbsp;Approve Vendor
 					</fieldset>							
 				</div>
 				<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
