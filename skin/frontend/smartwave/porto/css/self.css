@@ -211,6 +211,41 @@ h3.filter-title {
     margin: 0px;
 }
 
+.filter-products .owl-item {
+    padding: 0px 10px;
+    margin: 20px 0px;
+}
+
+.filter-products .owl-controls {
+    position: absolute;
+    right: 0px;
+    top: -56px;
+}
+
+.product-grid .product-image img {
+    width: 100%;
+    height: auto;
+}
+
+.filter-products .product-image-area {
+    text-align: center;
+    min-height: 300px;
+    max-height: 300px;
+}
+
+.filter-products .product-image-area img {
+    min-height: 180px;
+    max-height: 180px;
+}
+
+.filter-products .owl-controls .owl-buttons div {
+    color: #08C;
+    font-size: 13px;
+    padding: 0px;
+    margin: 0px;
+    background: transparent none repeat scroll 0% 0%;
+}
+
 .filter-products .products.small-list div.item {
     max-width: 279px;
 }
