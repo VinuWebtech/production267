@@ -229,13 +229,18 @@ h3.filter-title {
 
 .filter-products .product-image-area {
     text-align: center;
-    min-height: 300px;
-    max-height: 300px;
+    min-height: 130px;
+    max-height: 130px;
+    max-width: 90px;
 }
 
 .filter-products .product-image-area img {
-    min-height: 180px;
     max-height: 180px;
+}
+
+.filter-products .details-area {
+    text-align: center;
+    max-width: 160px;
 }
 
 .filter-products .owl-controls .owl-buttons div {

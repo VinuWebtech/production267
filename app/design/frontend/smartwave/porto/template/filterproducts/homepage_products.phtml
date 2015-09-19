@@ -17,7 +17,8 @@
                     		<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                         		<img src="<?php if(Mage::getStoreConfig("porto_settings/category/aspect_ratio",$code)):?><?php echo $this->helper('catalog/image')->init($_product, 'small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(150);?><?php else: ?><?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(Mage::getStoreConfig("porto_settings/category/ratio_width",$code),Mage::getStoreConfig("porto_settings/category/ratio_height",$code)); ?><?php endif; ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
                     		</a>
-                            <div class="details-area">
+                		</div>
+                        <div class="details-area">
                             <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                             <?php 
                                 if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')):
@@ -47,7 +48,6 @@
                             ?>
                             <?php echo $this->getPriceHtml($_product, true) ?>
                         </div>
-                		</div>
                 		
                 		<div class="clearer"></div>
             		</div>
