@@ -117,6 +117,21 @@
     top: -8px;
 }
 
+.owl-banner-carousel .content.type2 h2 {
+    font-size: 26px;
+}
+
+.owl-banner-carousel .content.type2 h2.slide {
+    border-top: none; 
+}
+
+
+.owl-banner-carousel .content.type2 h3 {
+    font-size: 20px;
+}
+
+
+
 /* ----------------------for Homepage CMS page block bottom padding ------------------ */
 
 .main-container {
