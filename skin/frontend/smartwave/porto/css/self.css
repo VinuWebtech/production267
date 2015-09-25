@@ -138,7 +138,135 @@
     padding: 20px 0px 20px;
 }
 
-/* ----------------------for Homepage CMS page Categories display block------------------ */
+/* ----------------------for Homepage CMS page Categories display block 1 ------------------ */
+.sub-cat-list1 .catItem1 {
+    text-align: center;
+}
+
+.sub-cat-list1 .catItem1 img {
+    width:250px;
+    height: 223px;
+    background-color: #E1E1DF;
+}
+
+ul.img-list1 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+ul.img-list1 li {
+  display: inline-block;
+  height: 223px;
+  margin: 0 1em 1em 0;
+  position: relative;
+  width: 250px;
+}
+
+span.text-content1 {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 223px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 250px;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+ul.img-list1 li:hover span.text-content1 {
+  opacity: 1;
+}
+
+span.text-content1 span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font: 16px/20px "ProximaBold",Arial Bold;
+}
+
+/* ----------------------for Homepage CMS page Categories display block 2 ------------------ */
+
+.sub-cat-list2{
+    margin-bottom: 20px;
+} 
+
+.sub-cat-list2 .catItem2 {
+    padding: 20px 15px;
+    border-bottom: 1px dashed #7A859E;
+}
+
+.sub-cat-list2 .catItem2 .parent-category2 {
+    text-align: center;
+    margin: 8px 0px;
+    font: 16px/20px "ProximaBold",Arial Bold;
+}
+
+.sub-cat-list2 .catItem2 img {
+    width:250px;
+    height: 223px;
+}
+
+/* ----------------------for Homepage CMS page Categories display block 3 ------------------ */
+
+.sub-cat-list3 {
+    margin-bottom: 20px;
+} 
+
+.sub-cat-list3 .catItem3 {
+    width:263px;
+    margin: 10px 10px 14px 0px;
+    padding: 10px 5px;
+    border: 1px solid #E1E1DF;
+    box-sizing: border-box;
+}
+
+.sub-cat-list3 .catItem3 .parent-category3 {
+    text-align: center;
+    margin: 8px 0px;
+    font: 16px/20px "ProximaBold",Arial Bold;
+}
+
+.sub-cat-list3 .catItem3 img {
+    width:250px;
+    height: 223px;
+}
+
+.sub-cat-list3 .list-subcategories3 {
+    margin: 0px 40px 0px 45px;
+    padding-left: 0px;
+}
+
+.sub-cat-list3 .list-subcategories3 .subCat3 {
+    text-align: center;
+    padding: 1px 0px;
+    border-bottom: 1px solid #D5D5D5;
+    margin: 0px;
+}
+
+.categoryLink3 {
+    height: 20px;
+    line-height: 20px;
+    display: block;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.categoryLink3:hover {
+    background-color: #85A5AF;
+    color: #F9F8F3;
+    text-decoration: none;
+}
+
+
+/* ------------- for Homepage CMS page Categories display block (extension) ------------------ */
 
 .std .easycatalog-grid {
     margin : 5px 55px;
@@ -202,6 +330,11 @@ h3.filter-title {
 .easycatalogimg-cols-5 li.item {
     width: 19% !important;
 }
+
+/*.easycatalogimg img {
+    border: 1px solid #E1E1DF;
+    background-color: #E1E1DF;
+}*/
 
 .child-category {
     height: 20px;

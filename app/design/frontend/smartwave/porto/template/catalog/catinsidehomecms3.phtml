@@ -1,0 +1,49 @@
+<?php
+/*
+* List Sub catgories template
+*/
+?>
+
+<?php
+    $object = new Mage_Catalog_Block_Navigation();
+    $categoyrId = 2;
+    $actualCategory = Mage::getModel('catalog/category')->load($categoyrId);
+    $subCategories = explode(',', $actualCategory->getChildren()); 
+?>
+<div class="sub-cat-list3">
+	<h3 class="filter-title l-height70">
+        <span class="content">
+            <strong>Top Categories</strong>
+        </span>
+    </h3>
+    <?php $i; foreach ($subCategories as $subCategoryId): $i++; ?>
+        <?php 
+        	$category = Mage::getModel('catalog/category')->load($subCategoryId);
+        	if ($category->getIsActive() ): 
+        ?>
+        	<div class="col-sm-3 catItem3">
+                <h5 class="category-name parent-category3"><a class="text-color" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><?php echo $category->getName(); ?></a></h5>
+            	<?php if($category->getThumbnail()): ?>
+                	<a href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt=""  /></a>
+            	<?php endif; ?> 
+            	<div class="bottom3">
+            		<?php // show subs ?>
+            		<?php $newSubCategories = explode(',', $category->getChildren()); ?>
+            		<ul class="list-subcategories3"> 
+                		<?php $j=0; foreach ($newSubCategories as $newSubCategoryId): ?>
+                			<?php $newCategory = Mage::getModel('catalog/category')->load($newSubCategoryId); ?>
+                    		<li class="subCat3">
+                    			<a href="<?php echo $newCategory->getURL(); ?>" class="categoryLink3 text-color" title="<?php echo $newCategory->getName(); ?>"><?php echo $newCategory->getName(); ?></a>
+                    		</li>
+                		<?php 
+                            $j++; 
+                            if($j==4) break;
+                            endforeach; 
+                        ?>
+            		</ul>
+            	</div>
+            	<!--<a class="viewAll3" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><span>View All</span></a>-->
+        	</div>
+        <?php endif; ?>
+    <?php endforeach; ?> 
+</div>
