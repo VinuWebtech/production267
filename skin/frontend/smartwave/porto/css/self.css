@@ -138,6 +138,19 @@
     padding: 20px 0px 20px;
 }
 
+h3.filter-title {
+    font-family: "proxima-nova",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: #2B333B;
+    font-size: 16pt;
+    margin: 10px 205px 25px;
+    text-align: center;
+    border-bottom: 1px solid #D6D6D6;
+    padding: 0px 115px 15px;
+    background: none;
+}
+
 /* ----------------------for Homepage CMS page Categories display block 1 ------------------ */
 .sub-cat-list1 .catItem1 {
     /*text-align: center;*/
@@ -161,7 +174,7 @@ ul.img-list1 {
 ul.img-list1 li {
   display: inline-block;
   height: 223px;
-  margin: 0 1em 1em 0;
+  margin: 0 1em 2em 0;
   position: relative;
   width: 267px;
 }
@@ -323,24 +336,6 @@ span.text-content1 span {
     margin : 5px 55px;
 }
 
-h3.filter-title {
-    font-family: "proxima-nova",sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    color: #2B333B;
-    font-size: 16pt;
-    margin-bottom: 5px;
-    margin-left: 205px;
-    margin-right: 205px;
-    text-align: center;
-    border-bottom: 1px solid #D6D6D6;
-    padding-bottom: 15px;
-    padding-left: 115px;
-    padding-right: 115px;
-    margin-top: 10px;
-    background: none;
-}
-
 .easycatalogimg .parent-category {
     text-align: center;
     margin-top: 10px;
@@ -415,6 +410,10 @@ h3.filter-title {
     margin: 20px 0px;
 }
 
+.homepage-products .owl-item .item {
+    text-align: center;
+}
+
 .filter-products .owl-controls {
     position: absolute;
     right: 0px;
@@ -428,6 +427,7 @@ h3.filter-title {
 
 .filter-products .product-image-area {
     text-align: center;
+    margin-left: 55px;
     min-height: 130px;
     max-height: 130px;
     max-width: 90px;
@@ -440,6 +440,12 @@ h3.filter-title {
 .filter-products .details-area {
     text-align: center;
     max-width: 160px;
+    margin-left: 20px;
+}
+
+.filter-products .details-area .product-name {
+    height: 18px;
+    overflow: hidden;
 }
 
 .filter-products .owl-controls .owl-buttons div {
