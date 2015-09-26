@@ -140,20 +140,22 @@
 
 /* ----------------------for Homepage CMS page Categories display block 1 ------------------ */
 .sub-cat-list1 .catItem1 {
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .sub-cat-list1 .catItem1 img {
-    width:250px;
+    width: 267px;
     height: 223px;
     background-color: #E1E1DF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0px 0px 223px rgba(0, 0, 0, 0.1) inset;
+    border: 1px solid #E1E1DF;
 }
 
 ul.img-list1 {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  text-align: center;
+  /*text-align: center;*/
 }
 
 ul.img-list1 li {
@@ -161,7 +163,7 @@ ul.img-list1 li {
   height: 223px;
   margin: 0 1em 1em 0;
   position: relative;
-  width: 250px;
+  width: 267px;
 }
 
 span.text-content1 {
@@ -173,7 +175,7 @@ span.text-content1 {
   left: 0;
   position: absolute;
   top: 0;
-  width: 250px;
+  width: 267px;
   opacity: 0;
   -webkit-transition: opacity 500ms;
   -moz-transition: opacity 500ms;
@@ -187,9 +189,58 @@ ul.img-list1 li:hover span.text-content1 {
 
 span.text-content1 span {
   display: table-cell;
-  text-align: center;
+  /*text-align: center;*/
   vertical-align: middle;
   font: 16px/20px "ProximaBold",Arial Bold;
+}
+
+.parent-category1 {
+    margin: 0px 10px 0px 0px;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1); 
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1); 
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+}
+
+.parent-category1:hover {
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1);
+    transition: all 200ms ease-in;
+    transform: scale(1.1);
+}
+
+.parent-category1 a {
+    font: 24px "ProximaBold",Arial Bold;
+    color: #fff;
+    text-decoration: underline;
+    padding-left: 40px;
+}
+
+.subCat1 {
+    margin: 0px 40px 0px 45px;
+}
+
+.subCat1:hover {
+    background-color: #08C;
+    opacity: 1;
+}
+
+.subCat1 a {
+    color: #fff;
+}
+
+.subCat1 a:hover {
+    color: #F9F8F3;
+    text-decoration: none;
 }
 
 /* ----------------------for Homepage CMS page Categories display block 2 ------------------ */
