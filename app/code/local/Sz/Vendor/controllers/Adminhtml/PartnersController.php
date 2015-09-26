@@ -65,4 +65,8 @@ class Sz_Vendor_Adminhtml_PartnersController extends Mage_Adminhtml_Controller_A
         $response->sendResponse();
         die;
     }
+
+    public function showfilelistAction(){
+
+    }
 }

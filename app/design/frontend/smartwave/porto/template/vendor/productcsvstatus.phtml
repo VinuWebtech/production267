@@ -20,6 +20,7 @@ if($isPartner==1){
                             <thead>
                                 <tr id="wk_mp_tr_heading">
                                     <th><span><?php echo $helper->__('File Name') ?></span></th>
+                                    <th><span><?php echo $helper->__('File Type') ?></span></th>
                                     <th><span><?php echo $helper->__('Uploaded Date') ?></span></th>
                                     <th><span><?php echo $helper->__('Status') ?></span></th>
                                     <th><span>&nbsp;</span></th>
@@ -29,6 +30,18 @@ if($isPartner==1){
                                 <tr>
                                     <td>
                                         <input type="text" class="input-text" name="s" placeholder='<?php echo $helper->__('Search by File name') ?>' value="<?php echo $this->getRequest()->getParam('s')?>"/>
+                                    </td>
+                                    <td>
+                                        <select name="file_type" class="input-text">
+                                            <option value=""><?php echo $helper->__('All') ?></option>
+                                            <option value="1" <?php if($this->getRequest()->getParam('file_type') == Sz_Vendor_Model_Uploader::PRODUCT_FILE_CSV) echo 'selected="selected"'?>>
+                                                <?php echo $helper->__('CSV File') ?>
+                                            </option>
+                                            <option value="2" <?php if($this->getRequest()->getParam('file_type') == Sz_Vendor_Model_Uploader::PRODUCT_IMAGE) echo 'selected="selected"'?>>
+                                                <?php echo $helper->__('Image File') ?>
+                                            </option>
+
+                                        </select>
                                     </td>
                                     <td>
                                         <span class="wk_mp_td_span">
@@ -85,6 +98,11 @@ if($isPartner==1){
                                             </span>
                                         </th>
                                         <th>
+                                            <span class="label name">
+                                                <?php echo $helper->__('File Type')?>
+                                            </span>
+                                        </th>
+                                        <th>
                                             <span class="label date">
                                                 <?php echo $helper->__('Uploaded Date')?>
                                             </span>
@@ -113,6 +131,26 @@ if($isPartner==1){
                                                 <span class="label pro_status">
                                                         <?php echo $helper->__($files->getFileName())?>
                                                 </span>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                if ($files->getFileType() == Sz_Vendor_Model_Uploader::PRODUCT_FILE_CSV) {
+                                                    ?>
+                                                    <span class="label pro_status">
+                                                        <?php echo $helper->__('CSV FILE')?>
+                                                    </span>
+                                                <?php
+                                                }
+                                                ?>
+                                                <?php
+                                                if ($files->getFileType() == Sz_Vendor_Model_Uploader::PRODUCT_IMAGE) {
+                                                    ?>
+                                                    <span class="label pro_status">
+                                                        <?php echo $helper->__('Image File')?>
+                                                    </span>
+                                                <?php
+                                                }
+                                                ?>
                                             </td>
                                             <td>
                                                 <span class="label pro_status">

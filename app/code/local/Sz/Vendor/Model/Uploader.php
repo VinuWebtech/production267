@@ -5,10 +5,29 @@ class Sz_Vendor_Model_Uploader extends Mage_Core_Model_Abstract
     CONST WORKING = 1;
     CONST COMPLETE = 2;
     CONST ERROR = 3;
+    CONST PRODUCT_FILE_CSV = 1;
+    CONST PRODUCT_IMAGE = 2;
     public function _construct()
     {
         parent::_construct();
         $this->_init('vendor/uploader');
+    }
+
+    public function importProductImages($fileName = null, $fileData= null) {
+        try {
+            $zip = new ZipArchive();
+            $vendorHelper = Mage::helper('vendor');
+            $fileName = $vendorHelper->getProductImportedImageFileDirectory().$fileName;
+            $zipOpen = $zip->open($fileName);
+            if ($zipOpen === true) {
+                $zip->extractTo($vendorHelper->getProductImageDirectory());
+                $zip->close();
+            }
+            return true;
+        } catch (Exception $e) {
+            throw Mage::exception($e->getMessage());
+        }
+        return false;
     }
 
     public function importProduts($fileName = null, $fileData= null) {
@@ -116,6 +135,7 @@ class Sz_Vendor_Model_Uploader extends Mage_Core_Model_Abstract
                 if (isset($productData['weight']) && $productData['weight']) {
                     $magentoProductModel->setWeight($productData['weight']);
                 }
+
                 if (isset($productData['color']) && $productData['color']) {
                    $optionId = $this->_getOptionIDByCode('color',  $productData['color']);
                    $magentoProductModel->setColor($optionId);
@@ -128,6 +148,16 @@ class Sz_Vendor_Model_Uploader extends Mage_Core_Model_Abstract
                 $magentoProductModel->setTaxClassId(0);
                 if (isset($productData['categories']) && $productData['categories']) {
                     $magentoProductModel->setCategoryIds($this->_assignCategories($productData['categories']));
+                }
+                if (isset($productData['image']) && $productData['image']) {
+                    Mage::getSingleton('catalog/product_action')
+                        ->updateAttributes(array($lastId),
+                            array(
+                                'image'=>$productData['image'],
+                                'small_image'=>$productData['image'],
+                                'thumbnail'=>$productData['image'],
+                            ),
+                            0);
                 }
                 if ($type== 'configurable') {
                         $childProductsData = isset($productData['child_sku'])?$productData['child_sku']:'';
@@ -185,10 +215,24 @@ class Sz_Vendor_Model_Uploader extends Mage_Core_Model_Abstract
                         $productData['in_stock']
                     );
                 }
+                if (isset($productData['image']) && $productData['image']) {
+                    Mage::getSingleton('catalog/product_action')
+                        ->updateAttributes(array($lastId),
+                            array(
+                                'image'=>$productData['image'],
+                                'small_image'=>$productData['image'],
+                                'thumbnail'=>$productData['image'],
+                            ),
+                            0);
+                }
+
+
+
                 Mage::dispatchEvent('mp_customoption_setdata', array('id'=>$lastId));
                 $collection1=Mage::getModel('vendor/product');
                 $collection1->setmageproductid($lastId);
                 $collection1->setuserid($fileData->getVendorId());
+                $collection1->setFileId($fileData->getId());
                 $collection1->setstatus(Mage_Catalog_Model_Product_Status::STATUS_DISABLED);
                 $collection1->save();
             }

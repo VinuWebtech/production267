@@ -5,71 +5,82 @@ class Sz_Vendor_Block_Adminhtml_Products_Grid extends Mage_Adminhtml_Block_Widge
         $this->setId('vendorGrid');
         $this->setUseAjax(true);
         $this->setDefaultDir('DESC');
+        $this->setDefaultFilter( array('status' => 2));
         $this->setSaveParametersInSession(true);
         $this->_emptyText = Mage::helper('vendor')->__('No Products Found.');
     }
 
     protected function _prepareCollection(){
         $collection = Mage::getModel('vendor/product')->getCollection();
-        if($this->getRequest()->getParam('unapp')==1){
-           $collection->addFieldToFilter('status', array('neq' => '1'));
+        $productTable = Mage::getResourceModel('catalog/product')->getEntityTable();
+        $catalogInventoryStockItemTable = Mage::getSingleton('core/resource')->getTableName(
+            'cataloginventory/stock_item'
+        );
+        $productNameAttribute = Mage::getResourceModel('catalog/product')->getAttribute(
+            'name'
+        );
+        $productWeightAttribute = Mage::getResourceModel('catalog/product')->getAttribute(
+            'weight'
+        );
+        $productPriceAttribute = Mage::getResourceModel('catalog/product')->getAttribute(
+            'price'
+        );
+        $collection->getSelect()->joinInner(
+            array('pt' => $productTable),
+            'pt.entity_id = main_table.mageproductid',
+            array('pt.sku as sku','pt.created_at as created_at')
+        );
+        $collection->getSelect()->joinInner(
+            array('ct' => $catalogInventoryStockItemTable),
+            'ct.product_id = main_table.mageproductid',
+            array('ct.qty as qty', 'ct.is_in_stock as is_in_stock')
+        );
+        $collection->getSelect()->joinInner(
+            array('pn' => $productTable.'_'.$productNameAttribute->getBackendType()),
+            'pn.entity_id = main_table.mageproductid AND
+            pn.attribute_id = '.$productNameAttribute->getId(),
+            array('pn.value as product_name')
+        );
+
+        $collection->getSelect()->joinLeft(
+            array('pw' => $productTable.'_'.$productWeightAttribute->getBackendType()),
+            'pw.entity_id = main_table.mageproductid AND
+            pw.attribute_id = '.$productWeightAttribute->getId(),
+            array('pw.value as weight')
+        );
+        $collection->getSelect()->joinLeft(
+            array('pp' => $productTable.'_'.$productPriceAttribute->getBackendType()),
+            'pp.entity_id = main_table.mageproductid AND
+            pp.attribute_id = '.$productPriceAttribute->getId(),
+            array('pp.value as price')
+        );
+        $vendorId = $this->getRequest()->getParam('vendor_id', 0);
+        if(($this->getRequest()->getParam('unapp')==1) || $vendorId){
+           //$collection->addFieldToFilter('status', array('neq' => '1'));
 
         }
-        $customerModel = Mage::getModel('customer/customer');
-        $prefix = Mage::getConfig()->getTablePrefix();
-        $eavAttribute = new Mage_Eav_Model_Mysql4_Entity_Attribute();
-        $pro_att_id = $eavAttribute->getIdByCode("catalog_product","name");
-        $fnameid = Mage::getModel("eav/entity_attribute")->loadByCode("1", "firstname")->getAttributeId();
-        $lnameid = Mage::getModel("eav/entity_attribute")->loadByCode("1", "lastname")->getAttributeId();
-        $collection->getSelect()
-                ->join(array("ce1" => $prefix."customer_entity_varchar"),"ce1.entity_id = main_table.userid",array("fname" => "value"))->where("ce1.attribute_id = ".$fnameid)
-                ->join(array("ce2" => $prefix."customer_entity_varchar"),"ce2.entity_id = main_table.userid",array("lname" => "value"))->where("ce2.attribute_id = ".$lnameid)
-                ->columns(new Zend_Db_Expr("CONCAT(`ce1`.`value`, ' ',`ce2`.`value`) AS fullname"));
-        $collection->addFilterToMap("fullname","`ce1`.`value`");
-
-        $pro_att_id = $eavAttribute->getIdByCode("catalog_product","name");
-        $collection->getSelect()
-        ->join(array("pn" => $prefix."catalog_product_entity_varchar"),"pn.entity_id = main_table.mageproductid",array("proname" => "value"))->where("pn.attribute_id = ".$pro_att_id. " AND pn.store_id = ".Mage::app()->getStore()->getStoreId());
-        $collection->addFilterToMap("proname","pn.value");
-
-        $price_att_id = $eavAttribute->getIdByCode("catalog_product","price");
-        $collection->getSelect()
-        ->join(array("pp" => $prefix."catalog_product_entity_decimal"),"pp.entity_id = main_table.mageproductid",array("price" => "value"))->where("pp.attribute_id = ".$price_att_id. " AND pn.store_id = ".Mage::app()->getStore()->getStoreId());
-        $collection->addFilterToMap("price","pp.value");
-
-        $collection->getSelect()->joinLeft($prefix."cataloginventory_stock_item","main_table.mageproductid = ".$prefix."cataloginventory_stock_item.product_id",array("qty"=>"qty"));
-        $collection->getSelect()->joinLeft($prefix."catalog_product_entity","main_table.mageproductid = ".$prefix."catalog_product_entity.entity_id",array("created_at"=>"created_at"));
+        if ($vendorId) {
+            $collection->addFieldToFilter('userid', array('eq' => $vendorId));
+        }
 
         $this->setCollection($collection);
-        parent::_prepareCollection();        
-        //Modify loaded collection
+        parent::_prepareCollection();
         foreach ($this->getCollection() as $item) {
-            $item->deny = sprintf('<button type="button" class="wk_denyproduct" customer-id ="%s" product-id="%s"><span><span title="Deny">Deny</span></span></button>',$item->getuserid(),$item->getMageproductid());
-            $item->prev = sprintf('<span data="%s" product-id="%s" customer-id="%s" title="Click to Review" class="prev btn">prev</span>',$this->getUrl('vendor/prev/index/id/' .$item->getMageproductid()),$item->getMageproductid(),$item->getuserid());
-            $item->entity_id = (int)$item->getmageproductid();
+
             if(!(is_null($item->getmageproductid())) && $item->getmageproductid() != 0){
                  if($item->getstatus() == 1){
-                    $item->status = sprintf('<a href="%s" title="View product">Approved</a>',
-                                             $this->getUrl('adminhtml/catalog_product/edit/id/' . $item->getmageproductid())
+                    $item->action = sprintf('<a href="%s" title="View product">Approved</a>',
+                                             $this->getUrl('adminhtml/catalog_product/edit/id/' . $item->getmageproductid(),
+                                                 array('vendor_id'=>$vendorId))
                                             );
                 }
                 else{
-                    $item->status = sprintf('<a href="%s" title="Click to Approve" onclick="return confirm(\'You sure?\')">Unapproved</a>',$this->getUrl('vendor/adminhtml_products/approve/id/' . $item->getmageproductid()));
+                    $item->action = sprintf('<a href="%s" title="Click to Approve" onclick="return confirm(\'You sure?\')">Unapproved</a>',$this->getUrl(
+                        'vendor/adminhtml_products/approve/id/' . $item->getmageproductid(),
+                        array('vendor_id'=>$vendorId)
+                    ));
                 }
-            $product = Mage::getModel('catalog/product')->load($item->getmageproductid());
-            $stock_inventory = Mage::getModel('cataloginventory/stock_item')->loadByProduct($item->getmageproductid());
-            $item->weight = $product->getWeight();
-            $item->stock = $stock_inventory->getQty();
-                
-            $quantity = Mage::getModel('vendor/saleslist')->getSalesdetail($item->getmageproductid());
-            $item->qty_sold = (int)$quantity['quantitysold'];
-            $item->qty_soldconfirmed = (int)$quantity['quantitysoldconfirmed'];
-            $symbol=Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); 
-            $item->qty_soldpending = (int)$quantity['quantitysoldpending'];
-            $item->amount_earned = $symbol.$quantity['amountearned'];
-                foreach($quantity['clearedat'] as $clear){
-                    if ( isset($clear) && $clear != '0000-00-00 00:00:00' ) {$item->cleared_at = $clear;}
-                }
+
             }
         }
     }
@@ -78,20 +89,19 @@ class Sz_Vendor_Block_Adminhtml_Products_Grid extends Mage_Adminhtml_Block_Widge
         $this->addColumn('entity_id', array(
             'header'    => Mage::helper('vendor')->__('ID'),
             'width'     => '50px',
-            'index'     => 'entity_id',
+            'index'     => 'mageproductid',
             'type'  => 'number',
             'filter_index' => 'main_table.mageproductid'
         ));
-       
-        $this->addColumn('customer_name', array(
-            'header'    => Mage::helper('vendor')->__('Customer Name'),
-            'index'     => 'fullname',
-            'type'  => 'text',
+
+        $this->addColumn('product_name', array(
+            'header'    => Mage::helper('vendor')->__('Product Name'),
+            'index'     => 'product_name',
+            'type'  => 'string',
         ));
-      
-        $this->addColumn('name', array(
-            'header'    => Mage::helper('vendor')->__('Name'),
-            'index'     => 'proname',
+        $this->addColumn('sku', array(
+            'header'    => Mage::helper('vendor')->__('Product SKU'),
+            'index'     => 'sku',
             'type'  => 'string',
         ));
          $this->addColumn('price', array(
@@ -114,66 +124,36 @@ class Sz_Vendor_Block_Adminhtml_Products_Grid extends Mage_Adminhtml_Block_Widge
             "filter"    => false,
             "sortable"  => false
         ));
+
         $this->addColumn('status', array(
-            'header'    => Mage::helper('vendor')->__('Status'),
+            'header'    => Mage::helper('vendor')->__('Product Status'),
             'index'     => 'status',
-            "type"      => "text",
-            "align"     => "center",
-            "filter"    => false,
-            // "sortable"  => false
+            'type'      => 'options',
+            'options'   => array(1 => 'Approved', 2=> 'Unapproved'),
         ));
-        $this->addColumn('prev', array(
-            'header'    => Mage::helper('vendor')->__('Preview'),
-            'index'     => 'prev',
-            'type'  => 'text',
-            'filter'    => false,
-            'sortable'  => false
-        ));
-        $this->addColumn('qty_soldconfirmed', array(
-            'header'    => Mage::helper('vendor')->__('Qty. Confirmed'),
-            'index'     => 'qty_soldconfirmed',
-            'type'  => 'number',
-            'filter'    => false,
-            'sortable'  => false
-        ));
-        
-        $this->addColumn('qty_soldpending', array(
-            'header'    => Mage::helper('vendor')->__('Qty. Pending'),
-            'index'     => 'qty_soldpending',
-            'type'  => 'number',
-            'filter'    => false,
-            'sortable'  => false
-        ));
-        $this->addColumn('qty_sold', array(
-            'header'    => Mage::helper('vendor')->__('Qty. Sold'),
-            'index'     => 'qty_sold',
-            'type'  => 'number',
-            'filter'    => false,
-            'sortable'  => false
-        ));
-        $this->addColumn('amount_earned', array(
-            'header'    => Mage::helper('vendor')->__('Earned'),
-            'index'     => 'amount_earned',
-            'type'  => 'price',
-            'filter'    => false,
-            'sortable'  => false
-        ));
-        
         $this->addColumn('created_at', array(
             'header'    => Mage::helper('vendor')->__('Created'),
             'index'     => 'created_at',
             'type'  => 'datetime',
         ));
-
+        $this->addColumn('action', array(
+            'header'    => Mage::helper('vendor')->__('Action'),
+            'index'     => 'action',
+            "type"      => "text",
+            "align"     => "center",
+            "filter"    => false,
+            // "sortable"  => false
+        ));
         return parent::_prepareColumns();
     }
 
     protected function _prepareMassaction()  {
-        $this->setMassactionIdField('main_table.mageproductid');
+        $this->setMassactionIdField('main_table.index_id');
         $this->getMassactionBlock()->setFormFieldName('vendorproduct');
-        $this->getMassactionBlock()->addItem('delete', array(
+        $vendorId = $this->getRequest()->getParam('vendor_id', 0);
+        $this->getMassactionBlock()->addItem('approve', array(
            'label'    => Mage::helper('vendor')->__('Approve'),
-           'url'      => $this->getUrl('vendor/adminhtml_products/massapprove')
+           'url'      => $this->getUrl('vendor/adminhtml_products/massapprove', array('vendor_id'=>$vendorId))
         ));
         return $this;
     }

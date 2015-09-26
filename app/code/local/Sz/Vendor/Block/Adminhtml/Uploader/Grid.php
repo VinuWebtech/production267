@@ -12,6 +12,7 @@ class Sz_Vendor_Block_Adminhtml_Uploader_Grid extends Mage_Adminhtml_Block_Widge
 
     protected function _prepareCollection(){
         $collection = Mage::getModel('vendor/uploader')->getCollection();
+        $vendorId = $this->getRequest()->getParam('id', 0);
         $vendorTable =  Mage::getModel('vendor/uploader')->getResource()->getTable(
             'vendor/userprofile'
         );
@@ -31,6 +32,9 @@ class Sz_Vendor_Block_Adminhtml_Uploader_Grid extends Mage_Adminhtml_Block_Widge
                 ->join(array("ce2" => $prefix."customer_entity_varchar"),"ce2.entity_id = main_table.vendor_id",array("lname" => "value"))->where("ce2.attribute_id = ".$lnameid)
                 ->columns(new Zend_Db_Expr("CONCAT(`ce1`.`value`, ' ',`ce2`.`value`) AS fullname"));
         $collection->addFilterToMap("fullname","`ce1`.`value`");
+        if ($vendorId) {
+            $collection->getSelect()->where('mageuserid = '.$vendorId);
+        }
 
         $this->setCollection($collection);
         parent::_prepareCollection();
@@ -57,7 +61,14 @@ class Sz_Vendor_Block_Adminhtml_Uploader_Grid extends Mage_Adminhtml_Block_Widge
             'type'  => 'options',
             'options'   =>$this->getAllowedSets()
         ));
-
+        $this->addColumn('file_type', array(
+            'header'    => Mage::helper('vendor')->__('File Type'),
+            'index'     => 'file_type',
+            'type'      => 'options',
+            'options'   => array(1 => 'Product Data File', 2=> 'Product Image File'),
+            "align"     => "center"
+            // "sortable"  => false
+        ));
          $this->addColumn('file_name', array(
              'header'    => Mage::helper('vendor')->__('File'),
              'index'     => 'file_name',

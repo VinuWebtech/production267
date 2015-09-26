@@ -34,7 +34,12 @@ class Sz_Vendor_Adminhtml_ProductsController extends Mage_Adminhtml_Controller_A
                     $fileData->setStatus(Sz_Vendor_Model_Uploader::WORKING);
                     $fileData->save();
                     try {
-                        $status = $uploader->importProduts($fileData->getFileName(), $fileData);
+                        if ($fileData->getFileType() == Sz_Vendor_Model_Uploader::PRODUCT_IMAGE) {
+                            $status = $uploader->importProductImages($fileData->getFileName(), $fileData);
+                        } else {
+                            $status = $uploader->importProduts($fileData->getFileName(), $fileData);
+                        }
+
                         if ($status) {
                             $fileData->setStatus(Sz_Vendor_Model_Uploader::COMPLETE);
                             $fileData->save();
@@ -113,13 +118,14 @@ class Sz_Vendor_Adminhtml_ProductsController extends Mage_Adminhtml_Controller_A
 	}
 	public function massapproveAction(){
 		$ids = $this->getRequest()->getParam('vendorproduct');
+        $vendorId = $this->getRequest()->getParam('vendor_id', 0);
         if(!is_array($ids)) {
 			Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select item(s)'));
         } else {
             try {
                 foreach ($ids as $id) {
                 	$vendorproduct = Mage::getModel('vendor/product')->load($id);
-					$lastId=Mage::getModel('vendor/product')->approveSimpleProduct($vendorproduct->getMageproductid());
+					Mage::getModel('vendor/product')->approveSimpleProduct($vendorproduct);
 				}
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('adminhtml')->__(
@@ -130,7 +136,14 @@ class Sz_Vendor_Adminhtml_ProductsController extends Mage_Adminhtml_Controller_A
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
             }
 		}
-		$this->_redirect('*/*/index');
+        if ($vendorId) {
+            $this->_redirect('*/*/index', array('vendor_id'=>$vendorId));
+            return;
+        } else {
+            $this->_redirect('*/*/index');
+            return;
+        }
+
 	}
 	public function gridAction(){
             $this->loadLayout();

@@ -107,8 +107,20 @@ $connection = $installer->getConnection();
 if(!$connection->tableColumnExists($this->getTable('vendor_userdata'),'contactnumber')){
     $installer->run("
         ALTER TABLE {$this->getTable('vendor_userdata')} ADD COLUMN(
-          `contactnumber` varchar(50) NOT NULL,
-          `returnpolicy` text NOT NULL,
+          `contactnumber` varchar(50) NOT NULL
+        );
+    ");
+}
+if(!$connection->tableColumnExists($this->getTable('vendor_userdata'),'returnpolicy')){
+    $installer->run("
+        ALTER TABLE {$this->getTable('vendor_userdata')} ADD COLUMN(
+          `returnpolicy` text NOT NULL
+        );
+    ");
+}
+if(!$connection->tableColumnExists($this->getTable('vendor_userdata'),'contactnumber')){
+    $installer->run("
+        ALTER TABLE {$this->getTable('vendor_userdata')} ADD COLUMN(
           `shippingpolicy` text NOT NULL
         );
     ");
@@ -125,11 +137,22 @@ if(!$connection->tableColumnExists($this->getTable('vendor_product'),'adminassig
 if(!$connection->tableColumnExists($this->getTable('vendor_userdata'),'paidstatus')){
     $installer->run("
         ALTER TABLE {$this->getTable('vendor_userdata')} ADD COLUMN(
-          `paidstatus` int(2) NOT NULL,
-          `transid` int(11) NOT NULL default '0',
+          `paidstatus` int(2) NOT NULL
+        );
+    ");
+}
+if(!$connection->tableColumnExists($this->getTable('vendor_userdata'),'transid')){
+    $installer->run("
+        ALTER TABLE {$this->getTable('vendor_userdata')} ADD COLUMN(
+          `transid` int(11) NOT NULL default '0'
+        );
+    ");
+}
+if(!$connection->tableColumnExists($this->getTable('vendor_userdata'),'totaltax')){
+    $installer->run("
+        ALTER TABLE {$this->getTable('vendor_userdata')} ADD COLUMN(
           `totaltax` decimal(12,4) NOT NULL
         );
     ");
 }
-
 $installer->endSetup(); 

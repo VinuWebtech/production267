@@ -288,6 +288,14 @@ class Sz_Vendor_VendoraccountController extends Mage_Customer_AccountController{
         $this->renderLayout();
     }
 
+    public function uploadimagesAction(){
+        $this->loadLayout( array('default','vendor_account_uploadimages'));
+        $this->_initLayoutMessages('customer/session');
+        $this->_initLayoutMessages('catalog/session');
+        $this->getLayout()->getBlock('head')->setTitle($this->__('Upload Product Images'));
+        $this->renderLayout();
+    }
+
     public function downloadSampleAction() {
         $vendorHelper = Mage::helper('vendor');
         $this->getResponse()->setHttpResponseCode(200)
@@ -362,6 +370,7 @@ class Sz_Vendor_VendoraccountController extends Mage_Customer_AccountController{
                 $vendorFiles = Mage::getModel('vendor/uploader');
                 $vendorFiles->setVendorId(Mage::getSingleton('customer/session')->getCustomerId());
                 $vendorFiles->setFileName($fileName);
+                $vendorFiles->setFileType(Sz_Vendor_Model_Uploader::PRODUCT_FILE_CSV);
                 $vendorFiles->setAttributeSet($this->getRequest()->getParam('attribute_set'));
                 $vendorFiles->setStatus(Sz_Vendor_Model_Uploader::PENDING);
                 $vendorFiles->save();
@@ -382,6 +391,49 @@ class Sz_Vendor_VendoraccountController extends Mage_Customer_AccountController{
                 $emailTemp->setSenderEmail($email);
                 $emailTemp->send($adminEmail,'Administrators',$emailTempVariables);
             }
+        } catch (Exception $e) {
+            Mage::getSingleton('core/session')->addError(
+                $e->getMessage()
+            );
+        }
+        $this->_redirectReferer();
+    }
+
+    public function uploadImagePostAction() {
+        $partner = Mage::getModel('vendor/userprofile')->isPartner(Mage::getSingleton('customer/session')->getCustomerId());
+        if (!$partner) {
+            Mage::getSingleton('core/session')->addError(
+                'Only a Vendor can upload the Product Image Zip File.'
+            );
+            $this->_redirectReferer();
+            return;
+        }
+        $vendorHelper = Mage::helper('vendor');
+        $destinationPath = $vendorHelper->getProductImportedImageFileDirectory();
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 777, true);
+        }
+        try {
+            $prefix = $this->_getHelper('core')
+                ->getHash(date('dmyhms'),5);
+            $fileName = date('ymdhms').'-'.$_FILES['product_image_file']['name'];
+            $uploader = new Varien_File_Uploader($_FILES['product_image_file']);
+            $uploader->setAllowedExtensions(array('zip'));
+            $uploader->setAllowRenameFiles(false);
+            $uploader->setFilesDispersion(false);
+            if ($uploader->save($destinationPath, $fileName)) {
+                Mage::getSingleton('core/session')->addSuccess(
+                    Mage::helper('vendor')->__('Product Image Zip file has been uploaded successfully.')
+                );
+                $vendorFiles = Mage::getModel('vendor/uploader');
+                $vendorFiles->setVendorId(Mage::getSingleton('customer/session')->getCustomerId());
+                $vendorFiles->setFileName($fileName);
+                $vendorFiles->setFileType(Sz_Vendor_Model_Uploader::PRODUCT_IMAGE);
+                $vendorFiles->setAttributeSet($this->getRequest()->getParam('attribute_set'));
+                $vendorFiles->setStatus(Sz_Vendor_Model_Uploader::PENDING);
+                $vendorFiles->save();
+            }
+
         } catch (Exception $e) {
             Mage::getSingleton('core/session')->addError(
                 $e->getMessage()

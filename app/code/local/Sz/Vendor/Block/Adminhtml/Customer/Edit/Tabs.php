@@ -65,7 +65,7 @@ class Sz_Vendor_Block_Adminhtml_Customer_Edit_Tabs extends Mage_Adminhtml_Block_
                         'label'     => Mage::helper('customer')->__('Payment Information'),
                         'content'   => $this->paymentmode(),
                     ));
-                    
+
                     $this->addTab('vendorcommision', array(
                         'label'     => Mage::helper('customer')->__("Vendor Commission"),
                         'content'   => $this->vendorcommision(),

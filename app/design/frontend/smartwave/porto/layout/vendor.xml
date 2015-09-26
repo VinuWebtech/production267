@@ -273,6 +273,16 @@
             <block type="vendor/newproduct" name="vendor_account_uploadproducts" template="vendor/uploadproducts.phtml"/>
         </reference>
     </vendor_account_uploadproducts>
+    <vendor_account_uploadimages>
+        <update handle="customer_account"/>
+
+        <reference name="head">
+            <action method="addCss"><stylesheet>vendor/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="vendor/newproduct" name="vendor_account_uploadproducts" template="vendor/uploadproductsimages.phtml"/>
+        </reference>
+    </vendor_account_uploadimages>
     <vendor_account_simpleproduct>
         <reference name="head">
             <action method="addCss">

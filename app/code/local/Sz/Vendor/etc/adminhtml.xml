@@ -4,13 +4,13 @@
 		<vendor module="vendor">
 			<title>Vendor Management</title>
             <sort_order>70</sort_order>
-			<children>
+			<!--<children>
 				<vendor_products>
 					<title>Manage Vendor Products</title>
 					<sort_order>2</sort_order>
 					<action>vendor/adminhtml_products</action>
 				</vendor_products>
-			</children>
+			</children>-->
             <children>
                 <vendor_process_products>
                     <title>Process Product CSV</title>

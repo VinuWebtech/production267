@@ -61,13 +61,22 @@
                                 <?php echo $helper->__('Upload Product Csv') ?></a>
                         <?php } ?>
                     </li>
+                    <li  <?php echo strpos($magentoCurrentUrl,'uploadimages')? "class=current":"";?>>
+                        <?php if(strpos($magentoCurrentUrl,'uploadproducts')){ ?>
+                            <strong><?php echo $helper->__('Upload Product Images') ?></strong>
+                        <?php }
+                        else{ ?>
+                            <a href="<?php echo $this->getUrl('vendor/vendoraccount/uploadimages'); ?>">
+                                <?php echo $helper->__('Upload Product Images') ?></a>
+                        <?php } ?>
+                    </li>
                     <li  <?php echo strpos($magentoCurrentUrl,'productcsvstatus')? "class=current":"";?>>
                         <?php if(strpos($magentoCurrentUrl,'productcsvstatus')){ ?>
-                            <strong><?php echo $helper->__('Product Csv Status') ?></strong>
+                            <strong><?php echo $helper->__('Product File Status') ?></strong>
                         <?php }
                         else{ ?>
                             <a href="<?php echo $this->getUrl('vendor/vendoraccount/productcsvstatus'); ?>">
-                                <?php echo $helper->__('Product Csv Status') ?></a>
+                                <?php echo $helper->__('Product File Status') ?></a>
                         <?php } ?>
                     </li>
 					<li  <?php echo (strpos($magentoCurrentUrl,'vendoraccount/new') && strpos($magentoCurrentUrl,'vendoraccount/newattribute')===false)? "class=current":"";?>>			

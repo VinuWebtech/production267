@@ -13,7 +13,7 @@ class Sz_Vendor_Block_Uploadcsv extends Mage_Customer_Block_Account_Dashboard
 		$fileName=$this->getRequest()->getParam('s')!=""?$this->getRequest()->getParam('s'):"";
         $this->_fileCollection->addFieldToFilter('file_name',array('like'=>"%".$fileName."%"));
 		$filter_prostatus=$this->getRequest()->getParam('prostatus')!=""?$this->getRequest()->getParam('prostatus'):"";
-
+        $filter_file_type=$this->getRequest()->getParam('file_type')?$this->getRequest()->getParam('file_type'):"";
 		$filter_data_frm=$this->getRequest()->getParam('from_date')!=""?$this->getRequest()->getParam('from_date'):"";
 		$filter_data_to=$this->getRequest()->getParam('to_date')!=""?$this->getRequest()->getParam('to_date'):"";
 		if($filter_data_to){
@@ -30,6 +30,9 @@ class Sz_Vendor_Block_Uploadcsv extends Mage_Customer_Block_Account_Dashboard
         $this->_fileCollection->addFieldToFilter('status',array('like'=>"%".$filter_prostatus."%"))
 						   ->addFieldToFilter('created_at', array('datetime' => true,'from' => $from,'to' =>  $to))
 						   ->setOrder('created_at','DESC');
+        if ($filter_file_type) {
+            $this->_fileCollection->addFieldToFilter('file_type',array('eq'=>$filter_file_type));
+        }
 		$this->setCollection($this->_fileCollection);
 	}
 	protected function _prepareLayout() {
