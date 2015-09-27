@@ -157,7 +157,7 @@ h3.filter-title {
 }
 
 .sub-cat-list1 .catItem1 img {
-    width: 267px;
+    width: 249px;
     height: 223px;
     background-color: #E1E1DF;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0px 0px 223px rgba(0, 0, 0, 0.1) inset;
@@ -166,7 +166,7 @@ h3.filter-title {
 
 ul.img-list1 {
   list-style-type: none;
-  margin: 0;
+  margin-left: 5px;
   padding: 0;
   /*text-align: center;*/
 }
@@ -174,9 +174,9 @@ ul.img-list1 {
 ul.img-list1 li {
   display: inline-block;
   height: 223px;
-  margin: 0 1em 2em 0;
+  margin: 0px 14px 28px;
   position: relative;
-  width: 267px;
+  width: 249px;
 }
 
 span.text-content1 {
@@ -188,7 +188,7 @@ span.text-content1 {
   left: 0;
   position: absolute;
   top: 0;
-  width: 267px;
+  width: 249px;
   opacity: 0;
   -webkit-transition: opacity 500ms;
   -moz-transition: opacity 500ms;
@@ -285,7 +285,7 @@ span.text-content1 span {
 } 
 
 .sub-cat-list3 .catItem3 {
-    width:263px;
+    width:170px;
     margin: 10px 10px 14px 0px;
     padding: 10px 5px;
     border: 1px solid #E1E1DF;
@@ -299,12 +299,11 @@ span.text-content1 span {
 }
 
 .sub-cat-list3 .catItem3 img {
-    width:250px;
-    height: 223px;
+    width:150px;
+    height: 150px;
 }
 
 .sub-cat-list3 .list-subcategories3 {
-    margin: 0px 40px 0px 45px;
     padding-left: 0px;
 }
 
@@ -316,7 +315,6 @@ span.text-content1 span {
 }
 
 .categoryLink3 {
-    height: 20px;
     line-height: 20px;
     display: block;
     overflow: hidden;
@@ -433,19 +431,27 @@ span.text-content1 span {
     max-width: 90px;
 }
 
+.filter-products .product-image-area .quickview-icon {
+    font-size: 10px;
+    padding: 4px;
+}
+
 .filter-products .product-image-area img {
     max-height: 180px;
 }
 
 .filter-products .details-area {
     text-align: center;
-    max-width: 160px;
-    margin-left: 20px;
+    max-width: 205px;
 }
 
 .filter-products .details-area .product-name {
     height: 18px;
     overflow: hidden;
+}
+
+.filter-products .details-area .actions {
+
 }
 
 .filter-products .owl-controls .owl-buttons div {
@@ -469,6 +475,7 @@ span.text-content1 span {
 
 .parallax-wrapper {
     border-radius: 25px;
+    
 }
 
 .parallax {
@@ -477,8 +484,10 @@ span.text-content1 span {
 
 .sell-background {
     /*border-radius: 130px;*/
+    /*margin-left: -200px;*/
     text-align: center;
-    background: transparent url("../images/dot-bg.png") repeat scroll 0px 0px;
+    background: transparent url("../images/p51.jpg") repeat fixed 0px 0px;
+    top: 0px;
 }
 
 .owl-item .sellon-title {

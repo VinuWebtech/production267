@@ -1,21 +1,10 @@
 <?php
-/*
-* List Sub catgories template
-*/
-?>
-
-<?php
     $object = new Mage_Catalog_Block_Navigation();
-    $categoyrId = 2;
+    $categoyrId = Mage::registry('current_category')->getId(); //$this->getCategoryId();
     $actualCategory = Mage::getModel('catalog/category')->load($categoyrId);
     $subCategories = explode(',', $actualCategory->getChildren()); 
 ?>
 <div class="sub-cat-list3">
-	<h3 class="filter-title l-height70">
-        <span class="content">
-            <strong>Top Categories</strong>
-        </span>
-    </h3>
     <?php $i; foreach ($subCategories as $subCategoryId): $i++; ?>
         <?php 
         	$category = Mage::getModel('catalog/category')->load($subCategoryId);
@@ -42,7 +31,6 @@
                         ?>
             		</ul>
             	</div>
-            	<!--<a class="viewAll3" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><span>View All</span></a>-->
         	</div>
         <?php endif; ?>
     <?php endforeach; ?> 
