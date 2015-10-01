@@ -1,3 +1,4 @@
+
 /* ------------------------- Universal ------------------ */
 
 .text-color{
@@ -259,23 +260,73 @@ span.text-content1 span {
 /* ----------------------for Homepage CMS page Categories display block 2 ------------------ */
 
 .sub-cat-list2{
+    /*background-color: #E1E1DF;*/
+    /*background: transparent url("../images/dot-bg.png") repeat scroll 0px 0px;*/
+    /*background: #FFF url("../images/productContainer_bg.jpg") repeat-x scroll center 45px;*/
     margin-bottom: 20px;
+    border: 1px solid #CCC;
+    padding: 30px;
+    font-size: 13px;
 } 
 
+.sub-cat-list2 h3.filter-title .content {
+    /*background-color: #E1E1DF;*/
+}
+
+.sub-cat-list2 .img-list2 {
+    display: inline-block;
+    padding-left: 25px;
+}
+
 .sub-cat-list2 .catItem2 {
-    padding: 20px 15px;
-    border-bottom: 1px dashed #7A859E;
+    margin: 0px 20px 22px;
+    float: left;
+}
+
+.sub-cat-list2 .catItem2 .catbox2 {
+    width: 161px;
+    height: 152px;
+    padding: 2px;
+    background: transparent url("../images/cat-bg.png") no-repeat scroll left top;
+    border-radius: 15px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0px 0px 152px rgba(0, 0, 0, 0.1) inset;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1); 
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1); 
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+}
+
+.sub-cat-list2 .catItem2 .catbox2:hover {
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1);
+    transition: all 200ms ease-in;
+    transform: scale(1.1);
 }
 
 .sub-cat-list2 .catItem2 .parent-category2 {
     text-align: center;
-    margin: 8px 0px;
     font: 16px/20px "ProximaBold",Arial Bold;
+    display: table-cell;
+    vertical-align: middle;
+    height: 35px;
+    width: 146px;
+    padding: 0px 3px;
 }
 
 .sub-cat-list2 .catItem2 img {
-    width:250px;
-    height: 223px;
+    width:100px;
+    height: 105px;
+    display: block;
+    margin: auto;
 }
 
 /* ----------------------for Homepage CMS page Categories display block 3 ------------------ */
@@ -1276,9 +1327,9 @@ table{
 
 /*---------- adding scroll bar to subcategories box in layered nav -----------------*/
 ul.category-list {
-max-height: 100px;
-overflow-y: scroll;
-overflow-x: hidden;
+    max-height: 100px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /*---------- placing collapse button to left & changing color for subcat box ------*/
@@ -1288,16 +1339,39 @@ overflow-x: hidden;
     color: #777;
 }
 
-/*---------- adjusting subcat text label accordingly  ----------------------------*/
+/*-------- adjusting subcat text label accordingly & removing curved border ----------------*/
+.block-category-nav {
+    border-radius: 0px;
+    margin-bottom: 14px;
+    background-color: #fff;
+    border: 0px;
+}
+
 .block-category-nav .block-title {
     padding: 10px 45px;
+    border-radius: 0px;
+}
+
+.block-category-nav .block-title.closed {
+    border-radius: 0px;
+}
+
+.block-category-nav .block-content {
+    border-radius: 0px;
+    border-style: none;
+    background-color: #fff;
+    border-bottom: 1px solid;
+}
+
+.col2-left-layout .col-left.sidebar {
+    box-shadow: 0px 0px 3px 3px #ccc;
 }
 
 /*---------- adding scroll bar to attributes in layered nav -----------------------*/
 dl#narrow-by-list dd >ol {
-max-height: 150px;
-overflow-y: scroll;
-overflow-x: hidden;
+    max-height: 150px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /*---------- placing collapse button to left & changing color for attributes -----*/
@@ -1307,10 +1381,34 @@ overflow-x: hidden;
     color: #777;
 }
 
-/*---------- adjusting attribute text label accordingly  ---------------------------*/
+/*------- adjusting attribute text label accordingly & removing curved border ----------------*/
 .block-layered-nav dt {
     padding: 10px 45px;
+    margin-top: 0px;
+    border-radius: 0px;
+    border: 0px;
+    background-color: #fff;
 }
+
+.block-layered-nav dt.closed {
+    border-radius: 0px;
+    margin: 3px;
+    border-bottom: 1px solid;
+}
+
+.block-layered-nav dd {
+    border-radius: 0px;
+    margin: 3px;
+    border-bottom: 1px solid;
+    border-width: 0px 0px 1px 0px;
+    background-color: #fff;
+}
+
+.block-layered-nav dd.last {
+    border-bottom: 0px;
+}
+
+/*------------------------- Layered nav srollbar for attribute ends ----------------------*/
 
 /*--------------------------------------------------------------------------------*/
 /*------------ Popup for login,register & forgot password ------------------------*/
