@@ -15,6 +15,11 @@ class Sz_Vendor_Adminhtml_ProductsController extends Mage_Adminhtml_Controller_A
 			->renderLayout();
 	}
 
+    public function approveproductsAction() {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
     public function processcsvAction() {
         $this->_title($this->__("Process Product CSV"));
         $this->loadLayout()

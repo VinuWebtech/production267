@@ -26,9 +26,13 @@
 	<vendor_adminhtml_products_index>
         <reference name="content">
             <block type="vendor/adminhtml_products" name="products" />
-			<block type="core/template" template="vendor/previewpro.phtml"/>
         </reference>
     </vendor_adminhtml_products_index>
+    <vendor_adminhtml_products_approveproducts>
+        <reference name="content">
+            <block type="vendor/adminhtml_approvedproducts" name="approvedproducts" />
+        </reference>
+    </vendor_adminhtml_products_approveproducts>
     <vendor_adminhtml_products_processcsv>
 <!--        <reference name="head">
             <action method="addCss"><name>/vendor/styles.css</name><params/></action>

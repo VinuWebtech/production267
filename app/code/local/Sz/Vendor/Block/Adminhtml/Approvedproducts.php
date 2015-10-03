@@ -1,16 +1,16 @@
 <?php
-class Sz_Vendor_Block_Adminhtml_Products extends Mage_Adminhtml_Block_Widget_Grid_Container
+class Sz_Vendor_Block_Adminhtml_Approvedproducts extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
     public function __construct()
     {
-        $this->_controller = 'adminhtml_products';
+        $this->_controller = 'adminhtml_approvedproducts';
         $vendorId = $this->getRequest()->getParam('vendor_id', 0);
         $headerSuffix= '';
         if ($vendorId) {
             $customer = Mage::getModel('customer/customer')->load($vendorId);
             $headerSuffix .= $customer->getName().'('.$customer->getEmail().')';
         }
-        $this->_headerText = Mage::helper('vendor')->__("Manage Vendor's Unapproved Product").' For '.$headerSuffix;
+        $this->_headerText = Mage::helper('vendor')->__("Manage Vendor's Approved Product").' For '.$headerSuffix;
         $this->_blockGroup = 'vendor';
         parent::__construct();
         $this->_removeButton('add');

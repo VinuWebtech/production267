@@ -1,5 +1,5 @@
 <?php
-class Sz_Vendor_Block_Adminhtml_Products_Grid extends Mage_Adminhtml_Block_Widget_Grid {
+class Sz_Vendor_Block_Adminhtml_Approvedproducts_Grid extends Mage_Adminhtml_Block_Widget_Grid {
     public function __construct(){
         parent::__construct();
         $this->setId('vendorGrid');
@@ -39,13 +39,13 @@ class Sz_Vendor_Block_Adminhtml_Products_Grid extends Mage_Adminhtml_Block_Widge
         );
         $collection->getSelect()->joinInner(
             array('pn' => $productTable.'_'.$productNameAttribute->getBackendType()),
-            'pn.entity_id = main_table.mageproductid AND
+            'pn.entity_id = main_table.mageproductid AND pn.store_id = 0 AND
             pn.attribute_id = '.$productNameAttribute->getId(),
             array('pn.value as product_name')
         );
         $collection->getSelect()->joinInner(
             array('ps' => $productTable.'_'.$productStatusAttribute->getBackendType()),
-            'ps.entity_id = main_table.mageproductid AND ps.value = '.Mage_Catalog_Model_Product_Status::STATUS_DISABLED.' AND
+            'ps.entity_id = main_table.mageproductid AND ps.value = '.Mage_Catalog_Model_Product_Status::STATUS_ENABLED.' AND
             ps.attribute_id = '.$productStatusAttribute->getId(),
             array('ps.value as product_status')
         );
@@ -69,6 +69,7 @@ class Sz_Vendor_Block_Adminhtml_Products_Grid extends Mage_Adminhtml_Block_Widge
         }
         $collection->getSelect()->group('main_table.mageproductid');
         $this->setCollection($collection);
+
         parent::_prepareCollection();
 
     }
