@@ -331,27 +331,42 @@ span.text-content1 span {
 
 /* ----------------------for Homepage CMS page Categories display block 3 ------------------ */
 
+.parent-category13 {
+    margin: 8px 0px;
+    font: 16px/20px "ProximaBold",Arial Bold;
+}
+
 .sub-cat-list3 {
-    margin-bottom: 20px;
+    margin: 10px !important;
+    border: 1px solid #EEE;
+    background-color: #FFF;
+    box-shadow: 0px 0px 2px 1px #F3F3F3;
 } 
 
+ul.list3 {
+    padding: 0px 10px;
+}
+
+ul.list3 li {
+    display: inline-block;
+}
+
 .sub-cat-list3 .catItem3 {
-    width:170px;
-    margin: 10px 10px 14px 0px;
-    padding: 10px 5px;
-    border: 1px solid #E1E1DF;
+    width:130px;
+    margin: 20px 1px 10px;
+    padding: 2px 5px;
     box-sizing: border-box;
 }
 
 .sub-cat-list3 .catItem3 .parent-category3 {
     text-align: center;
     margin: 8px 0px;
-    font: 16px/20px "ProximaBold",Arial Bold;
+    font: 12px/20px "ProximaBold",Arial Bold;
 }
 
 .sub-cat-list3 .catItem3 img {
-    width:150px;
-    height: 150px;
+    width:120px;
+    height: 120px;
 }
 
 .sub-cat-list3 .list-subcategories3 {
