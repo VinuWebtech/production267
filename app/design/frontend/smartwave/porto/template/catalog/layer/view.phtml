@@ -21,10 +21,10 @@
                 jQuery(function($){
                     $(".block-layered-nav dt").click(function(){
                         if($(this).next("dd").css("display") == "none"){
-                            $(this).next("dd").slideDown(200);
+                            $(this).next("dd").slideDown();
                             $(this).removeClass("closed");
                         } else {
-                            $(this).next("dd").slideUp(200);
+                            $(this).next("dd").slideUp();
                             $(this).addClass("closed");
                         }
                     });
