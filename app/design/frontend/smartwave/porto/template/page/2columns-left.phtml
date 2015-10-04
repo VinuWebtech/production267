@@ -33,6 +33,17 @@
 <html lang="<?php echo $this->getLang() ?>">
     <head>
         <?php echo $this->getChildHtml('head') ?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                position: relative;
+            }
+            .affix {
+                top: 0px;
+                width: 293px;
+            }
+        </style>
     </head>
     <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
         <?php echo $this->getChildHtml('after_body_start') ?>
@@ -49,7 +60,7 @@
                                 <?php echo $this->getChildHtml('global_messages') ?>
                                 <?php echo $this->getChildHtml('content') ?>
                             </div>
-                            <div class="col-left sidebar f-left col-sm-3"><?php echo $this->getChildHtml('left') ?></div>
+                            <div class="col-left sidebar f-left col-sm-3" data-spy="affix" data-offset-top="185" data-offset-bottom="400"><?php echo $this->getChildHtml('left') ?></div>
                         </div>
                     </div>
                 </div>
