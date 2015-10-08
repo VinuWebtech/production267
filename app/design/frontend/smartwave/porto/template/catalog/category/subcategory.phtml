@@ -4,39 +4,51 @@
     $actualCategory = Mage::getModel('catalog/category')->load($categoyrId);
     $subCategories = explode(',', $actualCategory->getChildren()); 
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<h5 class="category-name parent-category13"><?php echo Mage::registry('current_category')->getName().' ' ?>Categories</h5>
-<div class="sub-cat-list3">
-    <ul class="list3 term-list" >
-        <?php $i; foreach ($subCategories as $subCategoryId): $i++; ?>
-            <?php 
-        	   $category = Mage::getModel('catalog/category')->load($subCategoryId);
-        	   if ($category->getIsActive() ): 
-            ?>
-        	    <li class="catItem3 term-item">
-            	    <?php if($category->getThumbnail()): ?>
-                	    <a href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt=""  /></a>
-            	    <?php endif; ?>
-                    <h5 class="category-name parent-category3"><a class="text-color" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><?php echo $category->getName(); ?></a></h5>
-        	    </li>
-            <?php endif; ?>
-        <?php endforeach; ?> 
-    </ul>
-</div>
-<script type="text/javascript">
-    jQuery(function($){
-        $('ul.term-list').each(function(){ 
-            var LiN = $(this).find('li').length;
-            if( LiN > 6){    
-                $('li', this).eq(5).nextAll().hide().addClass('extras');
-                $(this).append('<div class="more" style="text-align: center; padding: 5px; background:#f2f2f2; color:#333; font-size: 12px; margin-bottom:10px; text-transform: uppercase;">Show More Categories</div>');    
-            }
-        });
-        $('ul.term-list').on('click','.more',function(){
-            $this = $(this);
-            var text = ($this.text() == 'Show Less Categories') ? 'Show More Categories' : 'Show Less Categories';
-            $this.text(text);  
-            $(this).siblings('li.extras').slideToggle();
-        });
-    });
-</script>
+<?php 
+    $layer = Mage::getSingleton('catalog/layer');
+    $_category = $layer->getCurrentCategory();
+    $currentCategoryId= $_category->getId();
+    $children = Mage::getModel('catalog/category')->getCategories($currentCategoryId);
+    $countSubcategory=0; foreach ($children as $category):  
+?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <h5 class="category-name parent-category13"><?php echo Mage::registry('current_category')->getName().' ' ?>Categories</h5>
+        <div class="sub-cat-list3">
+            <ul class="list3 term-list" >
+                <?php $i; foreach ($subCategories as $subCategoryId): $i++; ?>
+                    <?php 
+                	   $category = Mage::getModel('catalog/category')->load($subCategoryId);
+                	   if ($category->getIsActive() ): 
+                    ?>
+                	    <li class="catItem3 term-item">
+                    	    <?php if($category->getThumbnail()): ?>
+                        	    <a href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt=""  /></a>
+                    	    <?php endif; ?>
+                            <h5 class="category-name parent-category3"><a class="text-color" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><?php echo $category->getName(); ?></a></h5>
+                	    </li>
+                    <?php endif; ?>
+                <?php endforeach; ?> 
+            </ul>
+        </div>
+        <script type="text/javascript">
+            jQuery(function($){
+                $('ul.term-list').each(function(){ 
+                    var LiN = $(this).find('li').length;
+                    if( LiN > 6){    
+                        $('li', this).eq(5).nextAll().hide().addClass('extras');
+                        $(this).append('<div class="more" style="text-align: center; padding: 5px; background:#f2f2f2; color:#333; font-size: 12px; margin-bottom:10px; text-transform: uppercase;">Show More Categories</div>');    
+                    }
+                });
+                $('ul.term-list').on('click','.more',function(){
+                    $this = $(this);
+                    var text = ($this.text() == 'Show Less Categories') ? 'Show More Categories' : 'Show Less Categories';
+                    $this.text(text);  
+                    $(this).siblings('li.extras').slideToggle();
+                });
+            });
+        </script>
+<?php 
+    $countSubcategory++;
+    if($countSubcategory==1) break; 
+    endforeach; 
+?> 

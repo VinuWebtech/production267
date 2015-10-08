@@ -19,8 +19,8 @@
             </block>
         </reference>
         <reference name="head">
-            <action method="addJs"><script>jquery/jquery-1.7.2.min.js</script></action>
-            <action method="addJs"><script>jquery/jquery-noconflict.js</script></action>
+            <!--<action method="addJs"><script>jquery/jquery-1.7.2.min.js</script></action>-->
+            <!--<action method="addJs"><script>jquery/jquery-noconflict.js</script></action>-->
             <action method="addItem"><type>skin_js</type><name>js/ajaxlogin/messi.js</name></action>
             <reference name="head">
                 <action method="addItem">
@@ -36,11 +36,11 @@
                 <type>skin_css</type>
                 <name>css/ajaxlogin/ajaxlogin.css</name>
             </action>
-            <action method="addItem">
+            <!--<action method="addItem">
                 <type>skin_css</type>
                 <name>css/ajaxlogin/jquery.fancybox.css</name>
-            </action>
-            <action method="addItem"><type>skin_js</type><name>js/ajaxlogin/jquery.fancybox.js</name></action>
+            </action>-->
+            <!--<action method="addItem"><type>skin_js</type><name>js/ajaxlogin/jquery.fancybox.js</name></action>-->
             <action method="addItem"
                     ifconfig="ajaxlogin_options/ajaxlogin_google/enabled">
                 <type>skin_css</type>
