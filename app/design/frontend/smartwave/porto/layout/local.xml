@@ -64,6 +64,9 @@
                 <name>css/productloader.css</name>
             </action>
             <!-- changes end -->
+            <block type="core/text" name="bootstrapjsforfixedsidebar">
+                <action method="setText"><text><![CDATA[<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>]]></text></action>
+            </block>
         </reference>
         <reference name="header">
             <action method="setTemplate" ifconfig="porto_settings/header/type" condition="0"><template>page/html/header_type1.phtml</template></action>
@@ -168,9 +171,6 @@
                 <type>skin_css</type>
                 <name>css/productloader.css</name>
             </action>
-            <block type="core/text" name="jqueryforsubcategorydisplay">
-                <action method="setText"><text><![CDATA[<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>]]></text></action>
-            </block>
         </reference>
         <reference name="content">
             <block type="core/template" name="productloader" template="productloader/productloader.phtml" after="-" />
@@ -199,10 +199,6 @@
                 <type>skin_css</type>
                 <name>css/productloader.css</name>
             </action>
-            
-            <block type="core/text" name="bootstrapjsforfixedsidebar">
-                <action method="setText"><text><![CDATA[<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>]]></text></action>
-            </block>
         </reference>
         <reference name="content">
             <block type="core/template" name="productloader" template="productloader/productloader.phtml" after="-" />

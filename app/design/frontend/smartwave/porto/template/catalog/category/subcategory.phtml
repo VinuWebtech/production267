@@ -11,7 +11,6 @@
     $children = Mage::getModel('catalog/category')->getCategories($currentCategoryId);
     $countSubcategory=0; foreach ($children as $category):  
 ?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <h5 class="category-name parent-category13"><?php echo Mage::registry('current_category')->getName().' ' ?>Categories</h5>
         <div class="sub-cat-list3">
             <ul class="list3 term-list" >

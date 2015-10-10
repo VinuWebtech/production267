@@ -17,8 +17,7 @@
             </dl>
             <script type="text/javascript">decorateDataList('narrow-by-list')</script>
             <script type="text/javascript">
-                var ab = jQuery.noConflict(true);
-                ab(function($){
+                jQuery(function($){
                     $(".block-layered-nav dt").click(function(){
                         if($(this).next("dd").css("display") == "none"){
                             $(this).next("dd").slideDown();

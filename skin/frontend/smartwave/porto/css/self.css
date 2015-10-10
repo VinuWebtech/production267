@@ -393,58 +393,8 @@ ul.list3 li {
     text-decoration: none;
 }
 
+/* -------------  ------------------ */
 
-/* ------------- for Homepage CMS page Categories display block (extension) ------------------ */
-
-.std .easycatalog-grid {
-    margin : 5px 55px;
-}
-
-.easycatalogimg .parent-category {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.easycatalogimg .parent-category a {
-    font: 16px/20px "ProximaBold",Arial Bold;
-    text-transform: uppercase;
-}
-
-/*.easycatalog-grid .product-image {
-    width: 100px;
-    margin-right: 95px;
-    margin-left: 87px;
-}*/
-
-
-/*------------------ subcat text align to center (8-9-15) ---------*/
-
-.easycatalogimg .list-subcategories {
-    margin: 0px 30px 0px 35px;
-}
-
-.easycatalogimg .list-subcategories li {
-    text-align: center;
-    padding: 1px 0px;
-    border-bottom: 1px solid #D5D5D5;
-    margin: 0px;
-}
-
-.easycatalog-grid li.item {
-    margin: 10px 10px 14px 0px;
-    border: 1px solid #E1E1DF;
-    box-sizing: border-box;
-}
-
-
-.easycatalogimg-cols-5 li.item {
-    width: 19% !important;
-}
-
-/*.easycatalogimg img {
-    border: 1px solid #E1E1DF;
-    background-color: #E1E1DF;
-}*/
 
 .child-category {
     height: 20px;
@@ -463,7 +413,7 @@ ul.list3 li {
     text-decoration: none;
 }
 
-/*---------------------------------------------------------------------------------------------*/
+/*------------------- Best Sellers on homepage cms ----------------------------*/
 
 .homepage-products {
     margin: 0px;
@@ -536,8 +486,7 @@ ul.list3 li {
     margin: 20px 0px;
 }
 
-/*---------------------------------------------------------------------------------------------*/
-
+/*------------------------- Sell on Parallax cms -----------------------------*/
 
 .parallax-wrapper {
     border-radius: 25px;
@@ -794,168 +743,6 @@ ul.list3 li {
 
 .footer-socialicons {
     padding: 0px;
-}
-
-/* -------------------------for Category landing page subcategory boxes------------------ */
-.category-product {
-    padding-bottom: 5px;
-    background-color: transparent;
-    box-shadow: none;
-}
-
-.category-product-list .category-product-item {
-    margin-right: 14px;
-    margin-bottom: 14px;
-    padding: 10px;
-    width: 184px;
-    height: 375px;
-    background-image: none;
-    border: 1px solid #E1E1DF;
-    box-sizing: border-box;
-}
-
-.category-product-item {
-    float: left;
-    width: 170px;
-    padding: 0px 10px;
-    overflow: hidden;
-}
-
-.book-product-item-icon {
-    display: none;
-}
-
-.vMiddle, .vHeight {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    overflow: hidden;
-}
-
-.category-product-list .category-product-item .category-product-item-image {
-    width: 100%;
-
-}
-
-.category-product-item-links li a {
-    height: 20px;
-    line-height: 20px;
-    padding: 0px;
-    display: block;
-    text-align: center;
-    color: #85A5AF;
-    overflow: hidden;
-}
-
-.category-product-item-links li {
-    padding: 1px 0px;
-    border-bottom: 1px solid #D5D5D5;
-    margin: 0px;
-}
-
-.category-product-list .category-product-item h1 a {
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-}
-.category-product-item h1 a {
-    left: 10px;
-    font: 16px/20px "ProximaBold",Arial Bold;
-    text-align: center;
-    text-transform: uppercase;
-}
-.category-product-item h1 a {
-    position: absolute;
-    top: 5px;
-    display: block;
-    width: 160px;
-    line-height: 20px;
-}
-
-
-blockquote, body, button, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, td, textarea, th, ul {
-    margin: 0px;
-    padding: 0px;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-size: 100%;
-    font-weight: normal;
-}
-
-body, a {
-    color: #666;
-}
-
-a {
-    background: transparent none repeat scroll 0px 0px;
-}
-
-
-body {
-    font-family: Arial,sans-serif;
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-.category-product-item h1 a {
-    left: 10px;
-    font: 16px/20px "ProximaBold",Arial Bold;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.category-product-list .category-product-item h1 a {
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-}
-
-.category-product-item-links {
-    margin: 0px 10px 0px 15px;
-    bottom: 0px;
-    height: 0px;
-}
-
-.category-product-item:hover .category-product-item-links {
-    
-}
-
-.category-product-item-image .vHeight {
-    height: 134px;
-}
-
-.vHeight {
-    width: 0px;
-}
-
-.category-product-title {
-    display: none;
-}
-.category-product-title {
-    margin: 27px 0px 11px 3px;
-}
-
-.category-product-splitLine {
-    clear: both;
-    height: 1px;
-    line-height: 1px;
-}
-
-ol, ul, li {
-    list-style: outside none none;
-}
-
-.subcategory-links:hover{
-    background-color: #85A5AF;
-    color: #F9F8F3;
-    text-decoration: none; 
-}
-
-.subcategory-title-link{
-    height: 55px;
-    position:relative;
 }
 
 
@@ -1228,11 +1015,6 @@ table{
     word-wrap:break-word; 
 }
 
-
-
-
-
-
 .col1-layout .product-options {
     width: 100%;
 }
@@ -1337,6 +1119,8 @@ table{
     text-indent: -999em;
     overflow: hidden;
 }
+
+/*-------------------------------------------------------------------------------------------------*/
 
 /*------------------------- Layered nav srollbar for attribute ----------------------*/
 
