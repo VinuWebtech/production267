@@ -131,7 +131,7 @@
     font-size: 20px;
 }
 
-
+/* -------------------------------------------------------------------------------------*/
 
 /* ----------------------for Homepage CMS page block bottom padding ------------------ */
 
@@ -525,6 +525,7 @@ ul.list3 li {
     margin-left: 465px;
 }
 
+/* --------------------------------------------------------------------------------------*/
 /* -------------------------Footer changes------------------ */
 
 .text-color {
@@ -1206,6 +1207,17 @@ dl#narrow-by-list dd >ol {
 .block-layered-nav dd.last {
     border-bottom: 0px;
 }
+
+.affix {
+    overflow: auto;
+}
+
+/*#internalscroll {
+    height: 99%;
+    overflow: auto;
+    padding-right: -15px;
+}*/
+
 
 /*------------------------- Layered nav srollbar for attribute ends ----------------------*/
 

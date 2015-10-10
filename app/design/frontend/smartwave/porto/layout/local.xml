@@ -64,9 +64,7 @@
                 <name>css/productloader.css</name>
             </action>
             <!-- changes end -->
-            <block type="core/text" name="bootstrapjsforfixedsidebar">
-                <action method="setText"><text><![CDATA[<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>]]></text></action>
-            </block>
+            <action method="addJs"><script>self/jquery.sticky-kit.min.js</script></action>
         </reference>
         <reference name="header">
             <action method="setTemplate" ifconfig="porto_settings/header/type" condition="0"><template>page/html/header_type1.phtml</template></action>
