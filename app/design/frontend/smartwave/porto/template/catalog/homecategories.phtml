@@ -1,8 +1,12 @@
 <!-- Categories display start -->
 <ul class="clearfix" style="margin-bottom:15px;">
 	<?php 
-	$rootcatId = Mage::app()->getStore()->getRootCategoryId(); 
-	$categories = Mage::getModel('catalog/category')->getCategories($rootcatId);
+	$categories = Mage::getResourceModel('catalog/category_collection')
+    ->addAttributeToSelect('*')
+    ->addAttributeToFilter('is_active', 1) //only active categories
+    ->addAttributeToFilter('parent_id', 2)//get only subcategories of the category with id 10
+    ->addAttributeToSort('position')//sort by position
+	;
 	foreach ($categories as $_category): 
 		$cat = Mage::getModel('catalog/category')->load($_category->getId());
 		$count = $cat->getProductCount(); 

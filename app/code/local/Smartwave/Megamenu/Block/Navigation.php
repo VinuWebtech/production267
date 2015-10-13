@@ -256,7 +256,7 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         $keyCurrent = self::$_key_current;
         $html = '';        
         foreach ($children as $child)
-        {
+        { 
             if (is_object($child) && $child->getIsActive())
             {
                 $activeChildren = $this->_getActiveChildren($child, $level);
@@ -315,7 +315,7 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
                 }
                 $html .= '</li>';
             }
-        }        
+        }    
         return $html;
     }
 

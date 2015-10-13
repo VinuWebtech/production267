@@ -132,7 +132,9 @@
 }
 
 /* -------------------------------------------------------------------------------------*/
-
+.std ul {
+    list-style: outside none none;
+}
 /* ----------------------for Homepage CMS page block bottom padding ------------------ */
 
 .main-container {
