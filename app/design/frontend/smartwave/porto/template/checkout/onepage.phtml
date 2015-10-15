@@ -30,7 +30,7 @@
 </div>-->
 <script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
-<ul class="opc" id="checkoutSteps">
+<!--<div class="opc" id="checkoutSteps">-->
 <?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
 <?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
     <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
@@ -44,7 +44,7 @@
         </div>
     </li>
 <?php endforeach ?>
-</ul>
+<!--</div>-->
 <script type="text/javascript">
     /*
     *** function of setMethod of Checkout JS class has been

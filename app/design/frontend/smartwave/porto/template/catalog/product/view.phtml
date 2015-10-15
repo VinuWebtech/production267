@@ -332,7 +332,7 @@ if($enable_addtocart_sticky){
         }.bind(productAddToCartForm);
     //]]>
     </script>
-<?php else : ?>
+    <?php else : ?>
     <script type="text/javascript">
     //<![CDATA[
         var productAddToCartForm = new VarienForm('product_addtocart_form');
@@ -345,17 +345,104 @@ if($enable_addtocart_sticky){
                    form.action = url;
                 }
                 var e = null;
-                try {
-                    this.form.submit();
-                } catch (e) {
+                if (!url) {
+                    url = jQuery('#product_addtocart_form').attr('action');
                 }
+                if(url.indexOf("wishlist/index/cart") != -1){
+                    url = url.replace("wishlist/index/cart","ajaxcart/index/add"); // New Code
+                } else {
+                    url = url.replace("checkout/cart","ajaxcart/index"); // New Code
+                }
+                url = url.replace("http://", "//");
+                url = url.replace("https://", "//");
+                var data = jQuery('#product_addtocart_form').serialize();
+                data += '&isAjax=1';
+                jQuery('#loading-mask').show();
+                try {
+                    jQuery.ajax({
+                        url : url,
+                        dataType : 'json',
+                        type : 'post',
+                        data : data,
+                        success : function(data) {
+                            if(is_quickview)
+                                window.parent.jQuery('#loading-mask').hide();
+                            else
+                                jQuery('#loading-mask').hide();
+                            if(data.status == 'ERROR'){
+                                if(is_quickview)
+                                    window.parent.alert(data.message.replace("<br/>",""));
+                                else
+                                    alert(data.message.replace("<br/>",""));
+                            }else{
+                                if(is_quickview){
+                                    if(window.parent.jQuery('.header .mini-cart')){
+                                        window.parent.jQuery('.header .mini-cart').replaceWith(data.toplink);
+                                    }
+                                    if(window.parent.jQuery('.fixed-header .mini-cart')){
+                                        window.parent.jQuery('.fixed-header .mini-cart').replaceWith(data.toplink);
+                                    }
+                                    if(window.parent.jQuery('.sticky-header .mini-cart')){
+                                        window.parent.jQuery('.sticky-header .mini-cart').replaceWith(data.toplink);
+                                    }
+                                    if(window.parent.jQuery('.col-right .block.block-cart')){
+                                        window.parent.jQuery('.col-right .block.block-cart').replaceWith(data.cart_sidebar);
+                                    }
+                                    window.parent.jQuery('#after-loading-success-message #success-message-container .msg-box').html(data.message);
+                                    <?php $autoclose = Mage::getStoreConfig('ajaxcart/addtocart/autoclose', $code);?>
+                                    ajaxcart_sec = <?php echo ($autoclose && is_numeric($autoclose))?$autoclose:5; ?>;
+                                    timer_sec = ajaxcart_sec;
+                                    window.parent.jQuery('#after-loading-success-message').fadeIn(200);
+                                    ajaxcart_timer = setInterval(function(){
+                                        timer_sec --;
+                                        window.parent.jQuery('#after-loading-success-message .timer').html(timer_sec);
+                                    },1000)
+                                    setTimeout(function(){
+                                        window.parent.jQuery('#after-loading-success-message').fadeOut(200);
+                                        clearTimeout(ajaxcart_timer);
+                                        setTimeout(function(){
+                                            window.parent.jQuery('#after-loading-success-message .timer').html(ajaxcart_sec);
+                                        }, 1000);
+                                    },ajaxcart_sec*1000);
+                                }
+                                else {
+                                    if(jQuery('.header .mini-cart')){
+                                        jQuery('.header .mini-cart').replaceWith(data.toplink);
+                                    }
+                                    if(jQuery('.fixed-header .mini-cart')){
+                                        jQuery('.fixed-header .mini-cart').replaceWith(data.toplink);
+                                    }
+                                    if(jQuery('.sticky-header .mini-cart')){
+                                        jQuery('.sticky-header .mini-cart').replaceWith(data.toplink);
+                                    }
+                                    if(jQuery('.col-right .block.block-cart')){
+                                        jQuery('.col-right .block.block-cart').replaceWith(data.cart_sidebar);
+                                    }
+                                    jQuery('#after-loading-success-message #success-message-container .msg-box').html(data.message);
+                                    <?php $autoclose = Mage::getStoreConfig('ajaxcart/addtocart/autoclose', $code);?>
+                                    ajaxcart_sec = <?php echo ($autoclose && is_numeric($autoclose))?$autoclose:5; ?>;
+                                    timer_sec = ajaxcart_sec;
+                                    jQuery('#after-loading-success-message').fadeIn(200);
+                                    ajaxcart_timer = setInterval(function(){
+                                        timer_sec --;
+                                        jQuery('#after-loading-success-message .timer').html(timer_sec);
+                                    },1000)
+                                    setTimeout(function(){
+                                        jQuery('#after-loading-success-message').fadeOut(200);
+                                        clearTimeout(ajaxcart_timer);
+                                        setTimeout(function(){
+                                            jQuery('#after-loading-success-message .timer').html(ajaxcart_sec);
+                                        }, 1000);
+                                    },ajaxcart_sec*1000);
+                                }
+                            }
+                        }
+                    });
+                } catch (e) {
+                }                
                 this.form.action = oldUrl;
                 if (e) {
                     throw e;
-                }
-
-                if (button && button != 'undefined') {
-                    button.disabled = true;
                 }
             }
         }.bind(productAddToCartForm);

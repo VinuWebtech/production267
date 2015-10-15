@@ -1481,24 +1481,24 @@ input#checkout_email {
 
 
 /* ======================= Improved One Page Checkout with tabs  ======================== */
-.block-progress .block-title { background:none; margin:0 0 34px; padding:0; }
+/*.block-progress .block-title { background:none; margin:0 0 34px; padding:0; }
 .checkout-onepage-index .col-main { padding:0; border:0; }
 .checkout-onepage-index .page-title { padding-right:40px; width:auto; }
 .checkout-onepage-index .page-title h1 { background:none; padding:0; }
 
 .opc { 
     position:relative; 
-    overflow:hidden; 
-    height:970px;
+    overflow:hidden;
+    height:1090px;
     padding-top:20px; 
     border:1px solid #BBAFA0; 
     background:#F0F0ED; } /*background: #F9F3E3*/
 
-.opc .buttons-set .back-link { display:none; }
+/*.opc .buttons-set .back-link { display:none; }
 
 .opc .ul { list-style:disc outside; padding-left:18px; }
 .opc li.section { display:inline; } /*box-shadow: none;*/
-.opc .step-title,.opc .allow .step-title { border:1px solid #F9F3E3; height:91px }
+/*.opc .step-title,.opc .allow .step-title { border:1px solid #F9F3E3; height:91px }
 .opc .step { 
     padding:30px 20px; 
     position:absolute; 
@@ -1552,12 +1552,115 @@ input#checkout_email {
 
 .opc .active .step-title .number { background:#F18200; border-color:#fff; color:#fff; }
 .opc .active .step-title h2 { color:#08C; } /*#F18200*/
-.opc .step-title h2,.opc .allow .step-title h2,.opc .active .step-title h2 { 
+/*.opc .step-title h2,.opc .allow .step-title h2,.opc .active .step-title h2 { 
     width:100%; text-align:center; }
 
 .opc .step-title { width:24%; }
 
 .opc:first-of-type .step{
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;}
+
+.opc:first-of-type .step[style*='display:none;'],
+.opc:first-of-type .step[style*='display: none;']{display:block !important;}
+.opc:first-of-type .section .step{left: 100%;}
+.opc:first-of-type .allow .step{left: -100%;}
+.opc:first-of-type .active .step{left:0;}
+.opc:first-of-type li:last-child .step-title a{width:50%}
+.opc:first-of-type li:first-child .step-title a{width:50%;left:50%}
+
+
+
+#opc-review .step { padding:30px 20px; border-top:1px solid #BBAFA0; }
+#opc-review .product-name { font-weight:bold; color:#0a263c; }
+#opc-review .item-options { margin:5px 0 0; }
+#opc-review .buttons-set { padding:20px 0; border:0; }
+#opc-review .buttons-set p { margin:0; line-height:40px; }
+#opc-review .buttons-set .please-wait { height:40px; line-height:40px; }
+#opc-shipping_method .buttons-set { border-top:1px solid #E4E4E4; }
+/* ================================= Solution by www.h-o.nl =============================== */
+
+/* ======================= Improved One Page Checkout with tabs  ======================== */
+.block-progress .block-title { background:none; margin:0 0 34px; padding:0; }
+.checkout-onepage-index .col-main { padding:0; border:0; }
+.checkout-onepage-index .page-title { padding-right:40px; width:auto; }
+.checkout-onepage-index .page-title h1 { background:none; padding:0; }
+
+.opc { 
+    position:relative; 
+    overflow:hidden;
+    height:1090px;
+    padding-top:20px; 
+    border:1px solid #BBAFA0; 
+    background:#F0F0ED; } /*background: #F9F3E3*/
+
+ .buttons-set .back-link { display:none; }
+
+ .ul { list-style:disc outside; padding-left:18px; }
+ li.section { display:inline; } /*box-shadow: none;*/
+ .step-title, .allow .step-title { border:1px solid #F9F3E3; height:91px }
+ .step { 
+    padding:30px 20px; 
+    
+    border:0; top:110px; 
+    left:0; z-index:1; 
+    background:#FBFAF6; 
+    border-bottom:1px dotted #ccc; 
+    border:none; 
+    border-top:1px solid #BBAFA0; }
+
+ .step-title .number, .allow .step-title .number, .active .step-title .number { 
+    float:none; 
+    display:block; 
+    margin:0 auto; 
+    margin-bottom:10px; }
+
+ .step-title { 
+    position:relative; 
+    float:left; 
+    text-align:center; 
+    padding:15px 11px 0; 
+    margin-left:-1px; 
+    background:none; }
+
+ .step-title a { display:none; }
+
+ .step-title .number { 
+    background:#fff; 
+    color:#ccc; 
+    width:65px; 
+    height:32px; 
+    line-height:30px; 
+    -moz-border-radius:20px; 
+    -webkit-border-radius:20px; 
+    border-radius:20px; 
+    margin-bottom:10px; 
+    padding:0; 
+    border:0; 
+}
+
+ .step-title h2 { font-size:12px; color:#bbb; clear:both; }
+ .allow .step-title { cursor:pointer; background:none; }
+ .allow .step-title .number { background:#000; color:#fff; }
+ .allow .step-title h2 { color:#000; }
+ .active .step-title { 
+    color:#ef0606; 
+    cursor:default; 
+    border:1px solid #BBAFA0; 
+    border-bottom:1px solid #FBFAF6; 
+    z-index:2; background:#FBFAF6 url(../images/bkg_checkout.gif) 0 0 repeat-x; }
+
+ .active .step-title .number { background:#F18200; border-color:#fff; color:#fff; }
+ .active .step-title h2 { color:#08C; } /*#F18200*/
+ .step-title h2, .allow .step-title h2, .active .step-title h2 { 
+    width:100%; text-align:center; }
+
+ .step-title { width:24%; }
+
+ .step{
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
