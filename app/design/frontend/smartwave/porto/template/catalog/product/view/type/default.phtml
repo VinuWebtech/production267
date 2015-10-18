@@ -1,0 +1,19 @@
+<?php $_product = $this->getProduct() ?>
+<!--vinu changes start wraping code inside if block-->
+<!--changes start added-->
+<?php if(!$_product->isConfigurable()): ?>
+<!--changes end-->
+	<?php echo $this->getPriceHtml($_product) ?>
+	<!--changes added-->
+	<?php echo $_product->getData('by_unit'); ?>
+	<!--changes end-->
+	<?php if ($_product->isAvailable()): ?>
+		<p class="availability in-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('In stock') ?></span></p>
+	<?php else: ?>
+		<p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('Out of stock') ?></span></p>
+	<?php endif; ?>
+<!--changes start added-->
+<?php endif; ?>
+<!--changes end-->
+
+<?php echo $this->getChildHtml('product_type_data_extra') ?>

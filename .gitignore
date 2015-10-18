@@ -1,0 +1,9 @@
+app/etc/local.xml
+robots.txt
+var/*
+media/*
+downloader/cache.cfg
+downloader/connect.cfg
+.htaccess
+.git/*
+/index.php

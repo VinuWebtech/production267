@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Sz_Checkout>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Sz_Checkout>
+    </modules>
+    <modules>
+        <Sz_Sales>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Sz_Sales>
+    </modules>
+</config> 
