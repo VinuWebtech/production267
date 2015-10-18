@@ -1,0 +1,26 @@
+
+
+<?php echo $this->getChildHtml('customer_form_register');?>
+<div class="ajaxlogin-register">   
+    <div class="<?php echo $this->_getColSet(); ?>">
+        <?php if($this->_googleEnabled()): ?>
+        <div class="<?php echo $this->_getCol(); ?> ajaxlogin-register-google">
+            <div class="fieldset">
+                <h2 class="legend"><?php echo $this->__('Google Connect') ?></h2>
+                <p><?php echo $this->__('You can register using your Google account.') ?></p>
+                <p><?php echo $this->getChildHtml('ajaxlogin_checkout_google_button')?></p>
+            </div>
+        </div>
+        <?php endif; ?>
+        <?php if($this->_facebookEnabled()): ?>
+        <div class="<?php echo $this->_getCol(); ?> ajaxlogin-register-facebook">
+            <div class="fieldset">
+                <h2 class="legend"><?php echo $this->__('Facebook Connect') ?></h2>
+                <p><?php echo $this->__('You can register using your Facebook account.') ?></p>
+                <p><?php echo $this->getChildHtml('ajaxlogin_checkout_facebook_button')?></p>
+            </div>
+        </div>
+        <?php endif; ?>
+
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<!-- Categories display start -->
+<div class="mt-10">
+	<?php 
+	
+	$categories = Mage::getResourceModel('catalog/category_collection')
+    ->addAttributeToSelect('*')
+    ->addAttributeToFilter('is_active', 1) //only active categories
+    ->addAttributeToFilter('parent_id', 2)//get only subcategories of the category with id 10
+    ->addAttributeToSort('position')//sort by position
+	;
+	foreach ($categories as $_category): 
+		$cat = Mage::getModel('catalog/category')->load($_category->getId());
+		$count = $cat->getProductCount(); 
+	?>	
+		<div class="row footer-categories">
+			<h5 class="levelonecats">
+				<a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" class="footer-cat text-color" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?> : </a>
+			</h5>
+			<?php $children = Mage::getModel('catalog/category')->getCategories($_category->getId()); ?>
+			<?php 
+			$i=0; 
+			foreach ($children as $subcategory): 
+				$subcat = Mage::getModel('catalog/category')->load($subcategory->getId()); ?>
+				<a class="inside-link text-color" href="<?php echo Mage::getUrl($subcat->getUrlPath()); ?>" title="<?php echo $subcategory->getName() ?>">| <?php echo $subcategory->getName() ?> </a>	
+			<?php 
+			$i++;
+			endforeach ?>
+		</div>
+	<?php endforeach ?>
+</div>
+<!-- Categories display end -->

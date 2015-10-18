@@ -20,7 +20,7 @@
  *
  * @category    design
  * @package     base_default
- * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 
@@ -35,23 +35,18 @@
     $_product = $this->getProduct()
 ?>
 <?php if($_additional = $this->getAdditionalData()): ?>
-    <!--<h2><?php echo $this->__('Additional Information') ?></h2>-->
-    <div class="specs-box-area row">
+    <h2><?php echo $this->__('Additional Information') ?></h2>
+    <table class="data-table" id="product-attribute-specs-table">
+        <col width="25%" />
+        <col />
+        <tbody>
         <?php foreach ($_additional as $_data): ?>
-            <div class="specs-box col-md-3">
-                <table class="data-table" id="product-attribute-specs-table">
-                    <col width="20%" />
-                    <tbody>
-                        <tr> 
-                            <th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></th>   
-                        </tr>
-                        <tr>
-                            <td class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
-                        </tr>
-                    </tbody>   
-                </table>
-                <script type="text/javascript">decorateTable('product-attribute-specs-table')</script>
-            </div>
+            <tr>
+                <th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></th>
+                <td class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+            </tr>
         <?php endforeach; ?>
-    </div>
+        </tbody>
+    </table>
+    <script type="text/javascript">decorateTable('product-attribute-specs-table')</script>
 <?php endif;?>

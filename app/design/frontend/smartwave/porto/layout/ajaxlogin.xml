@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="top.links">
+            <action method="setTemplate" ifconfig="ajaxlogin_options/ajaxlogin/enable">
+                <template>ajaxlogin/links.phtml</template>
+            </action>
+        </reference>
+        <reference name="top.links">
+            <block type="ajaxlogin/login" name="ajaxlogin_login">
+                <block type="ajaxlogin/google_button" name="ajaxlogin_google_login_button" />
+                <block type="ajaxlogin/facebook_button" name="ajaxlogin_facebook_login_button" />
+            </block>
+        </reference>
+        <reference name="top.links">
+            <block type="ajaxlogin/register" name="ajaxlogin_register">
+                <block type="ajaxlogin/google_button" name="ajaxlogin_checkout_google_button" />
+                <block type="ajaxlogin/facebook_button" name="ajaxlogin_checkout_facebook_button" />
+            </block>
+        </reference>
+        <reference name="head">
+            <!--<action method="addJs"><script>jquery/jquery-1.7.2.min.js</script></action>-->
+            <!--<action method="addJs"><script>jquery/jquery-noconflict.js</script></action>-->
+            <action method="addItem"><type>skin_js</type><name>js/ajaxlogin/messi.js</name></action>
+            <reference name="head">
+                <action method="addItem">
+                    <type>skin_css</type>
+                    <name>css/ajaxlogin/css/styles.css</name>
+                </action>
+            </reference>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/ajaxlogin/messi.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/ajaxlogin/ajaxlogin.css</name>
+            </action>
+            <!--<action method="addItem">
+                <type>skin_css</type>
+                <name>css/ajaxlogin/jquery.fancybox.css</name>
+            </action>-->
+            <!--<action method="addItem"><type>skin_js</type><name>js/ajaxlogin/jquery.fancybox.js</name></action>-->
+            <action method="addItem"
+                    ifconfig="ajaxlogin_options/ajaxlogin_google/enabled">
+                <type>skin_css</type>
+                <name>css/ajaxlogin/google/css/button.css</name>
+            </action>
+            <action method="addItem"
+                    ifconfig="ajaxlogin_options/ajaxlogin_facebook/enabled">
+                <type>skin_css</type>
+                <name>css/ajaxlogin/facebook/css/button.css</name>
+            </action>
+        </reference>
+    </default>
+
+    <customer_account_create>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/ajaxlogin/css/styles.css</name>
+            </action>
+        </reference>
+        <reference name="customer_form_register">
+            <action method="setTemplate" >
+                <template>ajaxlogin/socialconnect/customer/form/register.phtml</template>
+            </action>
+            <block type="ajaxlogin/register" name="ajaxlogin_register">
+                <block type="ajaxlogin/google_button" name="ajaxlogin_checkout_google_button" />
+                <block type="ajaxlogin/facebook_button" name="ajaxlogin_checkout_facebook_button" />
+            </block>
+        </reference>
+    </customer_account_create>
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="ajaxlogin"
+                    ifconfig="ajaxlogin_options/ajaxlogin_google/enabled">
+                <name>ajaxlogin_google</name>
+                <path>socialconnect/account/google</path>
+                <label>Google Connect</label>
+            </action>
+            <action method="addLink" translate="label" module="ajaxlogin"
+                    ifconfig="ajaxlogin_options/ajaxlogin_facebook/enabled">
+                <name>ajaxlogin_facebook</name>
+                <path>socialconnect/account/facebook</path>
+                <label>Facebook Connect</label>
+            </action>
+        </reference>
+    </customer_account>
+
+    <ajaxlogin_account_google translate="label">
+        <label>Customer My Account Google Connect</label>
+        <update handle="customer_account"/>
+        <reference name="head">
+            <action method="setTitle" translate="title" module="ajaxlogin">
+                <title>Google Connect</title>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/ajaxlogin/css/styles.css</name>
+            </action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="ajaxlogin/google_account" name="ajaxlogin_google_account">
+                <block type="ajaxlogin/google_button" name="ajaxlogin_account_google_button" />
+            </block>
+        </reference>
+        <reference name="customer_account_navigation">
+            <action method="setActive" module="ajaxlogin">
+                <path>socialconnect/account/google</path>
+            </action>
+        </reference>
+    </ajaxlogin_account_google>
+
+    <ajaxlogin_account_facebook translate="label">
+        <label>Customer My Account Facebook Connect</label>
+        <update handle="customer_account"/>
+        <reference name="head">
+            <action method="setTitle" translate="title" module="ajaxlogin">
+                <title>Facebook Connect</title>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/ajaxlogin/css/styles.css</name>
+            </action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="ajaxlogin/facebook_account" name="ajaxlogin_facebook_account">
+                <block type="ajaxlogin/facebook_button" name="ajaxlogin_account_facebook_button" />
+            </block>
+        </reference>
+        <reference name="customer_account_navigation">
+            <action method="setActive" module="ajaxlogin">
+                <path>socialconnect/account/facebook</path>
+            </action>
+        </reference>
+    </ajaxlogin_account_facebook>
+
+    <checkout_onepage_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/ajaxlogin/css/styles.css</name>
+            </action>
+        </reference>
+        <reference name="checkout.onepage.login">
+            <action method="setTemplate" >
+                <template>ajaxlogin/socialconnect/checkout/onepage/login.phtml</template>
+            </action>
+            <block type="ajaxlogin/checkout" name="ajaxlogin_checkout">
+                <block type="ajaxlogin/google_button" name="ajaxlogin_google_login_button" />
+                <block type="ajaxlogin/facebook_button" name="ajaxlogin_checkout_facebook_button" />
+            </block>
+        </reference>
+
+    </checkout_onepage_index>
+</layout>

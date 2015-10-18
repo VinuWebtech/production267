@@ -1,0 +1,160 @@
+
+<?php $_links = $this->getLinks(); ?>
+<?php if(count($_links)>0): ?>
+    <ul class="<?php echo ($this->getClass()) ? $this->getClass():'links'?>"<?php if($this->getName()): ?> id="<?php echo $this->getName() ?>"<?php endif;?><?php echo ($this->getIsDropdown()) ? ' role="menu"':''?>>
+    <?php foreach($_links as $_link): ?>
+        <?php if ($_link instanceof Mage_Core_Block_Abstract):?>
+            <?php echo $_link->toHtml() ?>
+        <?php else: ?>
+          <?php if($_link->getTitle()!='Log In'){?>
+                <li<?php if($_link->getIsFirst()||$_link->getIsLast()): ?> class="<?php if($_link->getIsFirst()): ?>first<?php endif; ?><?php if($_link->getIsLast()): ?> last<?php endif; ?>"<?php endif; ?> <?php echo $_link->getLiParams() ?>><?php echo $_link->getBeforeText() ?><a href="<?php echo $_link->getUrl() ?>" title="<?php echo $_link->getTitle() ?>" <?php echo $_link->getAParams() ?>><?php echo $_link->getLabel() ?></a><?php echo $_link->getAfterText() ?></li>
+          <li<?php if($_link->getIsFirst()||$_link->getIsLast()): ?> class="<?php if($_link->getIsFirst()): ?>first<?php endif; ?><?php if($_link->getIsLast()): ?> last<?php endif; ?>"<?php endif; ?> <?php echo $_link->getLiParams() ?>><?php echo $_link->getBeforeText() ?><a href="<?php echo $_link->getUrl() ?>" title="<?php echo $_link->getTitle() ?>" <?php echo $_link->getAParams() ?>><?php echo $_link->getLabel() ?></a><?php echo $_link->getAfterText() ?></li>
+          <?php }else{?>
+          <!-- changes added login button name changed -->
+          <li><a href="#info-login-create" id="login-create" class="fancybox"  title="<?php echo $_link->getTitle() ?>" <?php echo $_link->getAParams() ?>><?php echo 'Login/Sign Up';?></a></li>
+          <?php }?>
+        <?php endif;?>
+    <?php endforeach; ?>
+</ul>
+<?php endif; ?>
+<!-- DIV LOGIN_CREATE INFO  -->
+<div id="info-login-create" class="messi-content" style="display:none;min-width:400px;min-height:200px;">
+    <!-- vinu changes -->
+    <!--<span class="messi-closebtn" onclick="jQuery.fancybox.close()"></span>-->
+    <div id="login-section" class="login-create-popup">
+        <?php echo $this->getChildHtml('ajaxlogin_login');?>
+    </div>
+    <div id="forgot-password" class="login-create-popup" style="display:none">
+        <div class="sign-box-head row">
+            <h2 class="popup-title f-left"><?php echo $this->__('Forgot Password') ?></h2>
+        </div>
+        <form onsubmit="formSubmitByAjax('gform-forgot-password', '<?php echo $this->getUrl('ajaxlogin/account/szforgotpass')?>');return false;" method="post" id="gform-forgot-password">
+            <div class="fieldset">
+                <p><?php echo $this->__('Please enter your email address below. You will receive a link to reset your password.') ?></p>
+                <ul class="form-list">
+                    <li>
+                        <div class="pop-form row">
+                            <label for="email_address"><?php echo $this->__('Email') ?></label>
+                            <input type="text" name="email" alt="email" id="gforgot-emai-address" class="txtbx required-entry validate-email" placeholder="abc@example.com" value="" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="buttons-set btn-new">
+                <div class="footer-ajax-loader"></div><button type="submit" title="<?php echo $this->__('Send me a New Password') ?>" class="button vbutton"><span><span><?php echo $this->__('Send me a New Password') ?></span></span></button>
+            </div>
+        </form>
+    </div>
+    <div id="register-new"  class="login-create-popup" style="display:none">
+        <div class="g-create">
+            <div class="box-head">
+                <div class="sign-box-head row">
+                    <span class="f-right new-user">
+                        <span>
+                            <?php echo $this->__('Already Registered? ') ?>
+                            <a href="javascript:void(0);" id="login"><?php echo $this->__('Log In') ?></a>
+                        </span>
+                    </span>
+                    <h2 class="popup-title f-left"><?php echo $this->__('Sign Up') ?></h2>
+                </div>
+            </div>
+            <div class="">
+                <form onsubmit="formSubmitByAjax('g-form-register-customer', '<?php echo $this->getUrl('ajaxlogin/account/szCreate')?>');return false;" id="g-form-register-customer">
+                    <ul class="form-list">
+                        <li>
+                            <div class="pop-form full-wid">
+                                <label for="first-name"><?php echo $this->__('Name') ?></label>
+                                <input id="firstname" class="txtbx txtbx-wid1 required-entry validate-alpha" placeholder="first name" type="text" title="First Name" value="" name="firstname" />
+                                <input id="lastname" class="txtbx txtbx-wid1 lname required-entry validate-alpha" placeholder="Last name" type="text" title="Last Name" value="" name="lastname" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pop-form full-wid">
+                                <label for="email"><?php echo $this->__('Email') ?></label>
+                                <input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="txtbx txtbx-wid0  required-entry validate-email" placeholder="abc@example.com" title="<?php echo $this->__('Email Address') ?>" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pop-form full-wid">
+                                <label><?php echo $this->__('Password') ?></label>
+                                <input id="gcreate-password" class="txtbx txtbx-wid1 required-entry validate-password" placeholder="Enter Password" type="password" title="Password" name="password"/>
+                                <input id="confirmation" class="txtbx txtbx-wid1 lname required-entry validate-password" placeholder="Confirm Password" type="password" title="Password" name="confirmation"/>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                    <div class="buttons-set btn-new">
+                        <span><input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed" /></span>
+                        <label><?php echo $this->__('Sign Up for Newsletter') ?></label>
+                        <div class="footer-ajax-loader"></div><button type="submit" title="<?php echo $this->__('Create an Account') ?>" class="button" id="submit-create-account"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
+                    </div>
+                </form>
+            </div>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('g-form-login', true);
+        var dataForm = new VarienForm('g-form-register-customer', true);
+        var dataForm = new VarienForm('gform-forgot-password', true);
+        jQuery(document).ready(function(){
+            jQuery('#sign-up').click(function(){
+                jQuery('.login-create-popup').hide();
+                jQuery('#register-new').show();
+            });
+            jQuery('#frgt_pass').click(function(){
+                jQuery('.login-create-popup').hide();
+                jQuery('#forgot-password').show();
+            });
+            jQuery('#login').click(function(){
+                jQuery('.login-create-popup').hide();
+                jQuery('#login-section').show();
+            });
+        });
+    //]]>
+    </script>
+
+</div>
+<!-- END DIV LOGIN_CREATE INFO  -->
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    jQuery('.fancybox').fancybox();
+});
+function formSubmitByAjax(formId, url) {
+    var loginForm = new VarienForm(formId, true);
+    jQuery('#'+formId+' input:not([type=submit])').blur();
+    if (!loginForm.validator.validate()) {
+        return;
+    }
+    jQuery('.footer-ajax-loader').css(
+        'background', 'url(<?php echo $this->getSkinUrl('images/opc-ajax-loading-black.gif') ?>) no-repeat top right'
+    );
+    var request = new Ajax.Request(
+        url, {
+            method: 'post',
+            parameters: Form.serialize(formId),
+            onFailure: function (response) {
+                alert('An error occurred while processing your request');
+
+            },
+            onComplete: updatePopUp.bind(this)
+        });
+    onComplete: updatePopUp.bind(this)
+}
+
+function updatePopUp(data){
+    eval('parsedJson = ' + data.responseText);
+    if(parsedJson.message){
+        new Messi(parsedJson.message);
+    }
+    if(parsedJson.success && parsedJson.url){
+        new Messi(parsedJson.message);
+        window.location = parsedJson.url;
+    }
+    jQuery('.footer-ajax-loader').css('background', 'none');
+
+}
+</script>
+
+
+
+
