@@ -38,7 +38,7 @@
 }
 
 .header-container.type4 .header {
-    padding: 10px 0px;
+    padding: 20px 0px;
 }
 
 /*.header-container.type4 .header-wrapper {
@@ -108,11 +108,17 @@
 }
 
 .header .form-search #cat {
-    background-color: #F3A847;
+    background-color: #08C;
     position: static;
     border-radius: 10px 0px 0px 10px;
     color: #fff;
 }
+
+.header .form-search button.button {
+    background-color: #F3A847;
+    border-radius: 0px 10px 10px 0px;
+}
+
 
 .header-container.sticky-header .menu-wrapper .mini-cart {
     top: -8px;
