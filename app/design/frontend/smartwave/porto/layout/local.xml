@@ -55,6 +55,7 @@
             <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl-custom.css</stylesheet></action>
             <!-- Vinu changes start added -->
             <action method="addCss"><stylesheet>css/self.css</stylesheet></action>
+            <action method="addJs"><script>self/jquery.hc-sticky.min.js</script></action>
             <!-- changes end -->
             <action method="addItem"><type>skin_js</type><name>js/checkout.js</name></action>
             <!-- SZ changes start added -->
@@ -64,7 +65,6 @@
                 <name>css/productloader.css</name>
             </action>
             <!-- changes end -->
-            <action method="addJs"><script>self/jquery.sticky-kit.min.js</script></action>
         </reference>
         <reference name="header">
             <action method="setTemplate" ifconfig="porto_settings/header/type" condition="0"><template>page/html/header_type1.phtml</template></action>
