@@ -1498,12 +1498,12 @@ input#checkout_email {
     height:1090px;
     padding-top:20px; 
     border:1px solid #BBAFA0; 
-    background:#F0F0ED; } /*background: #F9F3E3*/
+    background:#F0F0ED; }*/ /*background: #F9F3E3*/
 
 /*.opc .buttons-set .back-link { display:none; }
 
 .opc .ul { list-style:disc outside; padding-left:18px; }
-.opc li.section { display:inline; } /*box-shadow: none;*/
+.opc li.section { display:inline; } *//*box-shadow: none;*/
 /*.opc .step-title,.opc .allow .step-title { border:1px solid #F9F3E3; height:91px }
 .opc .step { 
     padding:30px 20px; 
@@ -1557,7 +1557,7 @@ input#checkout_email {
     z-index:2; background:#FBFAF6 url(../images/bkg_checkout.gif) 0 0 repeat-x; }
 
 .opc .active .step-title .number { background:#F18200; border-color:#fff; color:#fff; }
-.opc .active .step-title h2 { color:#08C; } /*#F18200*/
+.opc .active .step-title h2 { color:#08C; }*/ /*#F18200*/
 /*.opc .step-title h2,.opc .allow .step-title h2,.opc .active .step-title h2 { 
     width:100%; text-align:center; }
 
@@ -1597,20 +1597,20 @@ input#checkout_email {
 
 .opc { 
     position:relative; 
-    overflow:hidden;
-    height:1090px;
+    overflow:hidden; 
+    height:970px;
     padding-top:20px; 
     border:1px solid #BBAFA0; 
     background:#F0F0ED; } /*background: #F9F3E3*/
 
- .buttons-set .back-link { display:none; }
+.opc .buttons-set .back-link { display:none; }
 
- .ul { list-style:disc outside; padding-left:18px; }
- li.section { display:inline; } /*box-shadow: none;*/
- .step-title, .allow .step-title { border:1px solid #F9F3E3; height:91px }
- .step { 
+.opc .ul { list-style:disc outside; padding-left:18px; }
+.opc li.section { display:inline; } /*box-shadow: none;*/
+.opc .step-title,.opc .allow .step-title { border:1px solid #F9F3E3; height:91px }
+.opc .step { 
     padding:30px 20px; 
-    
+    position:absolute; 
     border:0; top:110px; 
     left:0; z-index:1; 
     background:#FBFAF6; 
@@ -1618,13 +1618,13 @@ input#checkout_email {
     border:none; 
     border-top:1px solid #BBAFA0; }
 
- .step-title .number, .allow .step-title .number, .active .step-title .number { 
+.opc .step-title .number,.opc .allow .step-title .number,.opc .active .step-title .number { 
     float:none; 
     display:block; 
     margin:0 auto; 
     margin-bottom:10px; }
 
- .step-title { 
+.opc .step-title { 
     position:relative; 
     float:left; 
     text-align:center; 
@@ -1632,9 +1632,9 @@ input#checkout_email {
     margin-left:-1px; 
     background:none; }
 
- .step-title a { display:none; }
+.opc .step-title a { display:none; }
 
- .step-title .number { 
+.opc .step-title .number { 
     background:#fff; 
     color:#ccc; 
     width:65px; 
@@ -1648,25 +1648,25 @@ input#checkout_email {
     border:0; 
 }
 
- .step-title h2 { font-size:12px; color:#bbb; clear:both; }
- .allow .step-title { cursor:pointer; background:none; }
- .allow .step-title .number { background:#000; color:#fff; }
- .allow .step-title h2 { color:#000; }
- .active .step-title { 
+.opc .step-title h2 { font-size:12px; color:#bbb; clear:both; }
+.opc .allow .step-title { cursor:pointer; background:none; }
+.opc .allow .step-title .number { background:#000; color:#fff; }
+.opc .allow .step-title h2 { color:#000; }
+.opc .active .step-title { 
     color:#ef0606; 
     cursor:default; 
     border:1px solid #BBAFA0; 
     border-bottom:1px solid #FBFAF6; 
     z-index:2; background:#FBFAF6 url(../images/bkg_checkout.gif) 0 0 repeat-x; }
 
- .active .step-title .number { background:#F18200; border-color:#fff; color:#fff; }
- .active .step-title h2 { color:#08C; } /*#F18200*/
- .step-title h2, .allow .step-title h2, .active .step-title h2 { 
+.opc .active .step-title .number { background:#F18200; border-color:#fff; color:#fff; }
+.opc .active .step-title h2 { color:#08C; } /*#F18200*/
+.opc .step-title h2,.opc .allow .step-title h2,.opc .active .step-title h2 { 
     width:100%; text-align:center; }
 
- .step-title { width:24%; }
+.opc .step-title { width:24%; }
 
- .step{
+.opc:first-of-type .step{
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
