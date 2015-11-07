@@ -55,6 +55,7 @@
             <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl-custom.css</stylesheet></action>
             <!-- Vinu changes start added -->
             <action method="addCss"><stylesheet>css/self.css</stylesheet></action>
+            <action method="addJs"><script>self/jquery.hc-sticky.min.js</script></action>
             <!-- changes end -->
             <action method="addItem"><type>skin_js</type><name>js/checkout.js</name></action>
             <!-- SZ changes start added -->

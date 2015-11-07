@@ -34,15 +34,8 @@
     <head>
         <?php echo $this->getChildHtml('head') ?>
         <style>
-            body {
-                position: relative;
-            }
             .sidebar {
-                width: 270px;   
-            }
-            .affix {
-                top: 0px;
-                width: 270px;
+                width: 252px;   
             }
         </style>
     </head>
@@ -61,7 +54,7 @@
                                 <?php echo $this->getChildHtml('global_messages') ?>
                                 <?php echo $this->getChildHtml('content') ?>
                             </div>
-                            <div class="col-left sidebar f-left col-sm-3" data-spy="affix" data-offset-top="185" data-offset-bottom="560"><?php echo $this->getChildHtml('left') ?></div>
+                            <div class="col-left sidebar f-left col-sm-3" ><?php echo $this->getChildHtml('left') ?></div>
                         </div>
                     </div>
                 </div>
@@ -71,5 +64,12 @@
             </div>
         </div>
         <?php echo $this->getAbsoluteFooter() ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                $('.sidebar').hcSticky({
+                    wrapperClassName: 'sidebar-sticky'
+                });
+            });
+        </script>   
     </body>
 </html>
