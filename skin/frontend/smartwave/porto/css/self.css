@@ -136,10 +136,22 @@
 .owl-banner-carousel .content.type2 h3 {
     font-size: 20px;
 }
+
+.header-container.type4 .header-wrapper {
+    margin-bottom: 2px;
+}
+
 /* ------------------------------- Breadcrumbs ---------------------------------*/
 .top-container > .breadcrumbs {
     padding: 0px;
-    background-color: none;
+    background-color: #fff;
+    color: #777;
+}
+
+.header-container .top-container a.backstep {
+    color: #666;
+    font-weight: 400;
+    font-size: 12px;
 }
 
 /* -------------------------------------------------------------------------------------*/
@@ -1346,6 +1358,7 @@ ul.category-list {
     border-right: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     padding: 0px;
+    margin-left: 12px;
 }
 
 /*---------- adding scroll bar to attributes in layered nav -----------------------*/
@@ -1373,6 +1386,7 @@ dl#narrow-by-list dd >ol {
     border: 0px;
     background-color: #F5F5F5;
     border: 1px solid #DDD;
+    font-weight: normal;
 }
 
 .block-layered-nav dt.closed {
