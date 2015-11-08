@@ -1,0 +1,33 @@
+div.ajaxlogin-socialconnect-register,
+div.ajaxlogin-socialconnect-checkout,
+div.ajaxlogin-socialconnect-login {
+    margin-top: 28px;
+}
+
+div.ajaxlogin-socialconnect-login .content {
+    min-height: 100px;
+}
+
+div.ajaxlogin-socialconnect-register .fieldset {
+    margin: 0px;
+}
+
+div.ajaxlogin-socialconnect-account .col3-set .col-1 {
+    width: 29%
+}
+
+div.ajaxlogin-socialconnect-account .col3-set .col-2 {
+    width: 49%
+}
+
+div.ajaxlogin-socialconnect-account .col3-set .col-3 {
+    width: 19%
+}
+
+div.ajaxlogin-socialconnect-account .col2-set .col-1 {
+    width: 79%
+}
+
+div.ajaxlogin-socialconnect-account .col2-set .col-2 {
+    width: 19%
+}

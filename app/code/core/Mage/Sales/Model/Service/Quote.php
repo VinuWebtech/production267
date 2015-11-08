@@ -292,8 +292,7 @@ class Mage_Sales_Model_Service_Quote
         if (!$this->getQuote()->isVirtual()) {
             $address = $this->getQuote()->getShippingAddress();
             $addressValidation = $address->validate();
-            // changes (to skip shipping)
-            /*if ($addressValidation !== true) {
+            if ($addressValidation !== true) {
                 Mage::throwException(
                     Mage::helper('sales')->__('Please check shipping address information. %s', implode(' ', $addressValidation))
                 );
@@ -302,20 +301,18 @@ class Mage_Sales_Model_Service_Quote
             $rate  = $address->getShippingRateByCode($method);
             if (!$this->getQuote()->isVirtual() && (!$method || !$rate)) {
                 Mage::throwException(Mage::helper('sales')->__('Please specify a shipping method.'));
-            }*/
+            }
         }
 
         $addressValidation = $this->getQuote()->getBillingAddress()->validate();
         if ($addressValidation !== true) {
             Mage::throwException(
-                $helper->__('Please check billing address information. %s', implode(' ', $addressValidation)));
-                //Mage::helper('sales')->__('Please check billing address information. %s', implode(' ', $addressValidation))
+                Mage::helper('sales')->__('Please check billing address information. %s', implode(' ', $addressValidation))
+            );
         }
 
         if (!($this->getQuote()->getPayment()->getMethod())) {
-            Mage::throwException($helper->__('Please select a valid payment method.'));
-            //Mage::throwException(Mage::helper('sales')->__('Please select a valid payment method.'));
-            // changes end
+            Mage::throwException(Mage::helper('sales')->__('Please select a valid payment method.'));
         }
 
         return $this;

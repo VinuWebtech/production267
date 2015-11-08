@@ -1,0 +1,10 @@
+<!-- vinu changes for social login buttons (30-8-15) -->
+<div class="vcheckout-login">
+    <?php if($this->_googleEnabled()): ?>
+        <?php echo $this->getChildHtml('ajaxlogin_google_login_button'); ?>
+    <?php endif; ?>
+    <?php if($this->_facebookEnabled()): ?>
+        <?php echo $this->getChildHtml('ajaxlogin_checkout_facebook_button'); ?>
+    <?php endif; ?>
+</div> 
+<!-- changes end -->  

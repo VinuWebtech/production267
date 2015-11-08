@@ -256,7 +256,7 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         $keyCurrent = self::$_key_current;
         $html = '';        
         foreach ($children as $child)
-        {
+        { 
             if (is_object($child) && $child->getIsActive())
             {
                 $activeChildren = $this->_getActiveChildren($child, $level);
@@ -288,13 +288,13 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
                     $html .= '<li class="'.$class.' '.$active.' ">';
 					//added from version 1.0.2
 					//version 1.0.2 start
-					if ($type == 'wide' && $catModel->getThumbnail()) {
-						$html .= '<div class="menu_thumb_img">';
-						$html .= '<a class="menu_thumb_link" href="'. $this->getCategoryUrl($child) .'">';
-						$html .= '<img src="' . Mage::getBaseUrl('media').'catalog/category/' . $catModel->getThumbnail() . '" alt="' . Mage::helper('catalog/output')->__("Thumbnail Image").'" />';
-						$html .= '</a>';
-						$html .= '</div>';
-					}
+					//if ($type == 'wide' && $catModel->getThumbnail()) {
+						//$html .= '<div class="menu_thumb_img">';
+						//$html .= '<a class="menu_thumb_link" href="'. $this->getCategoryUrl($child) .'">';
+						//$html .= '<img src="' . Mage::getBaseUrl('media').'catalog/category/' . $catModel->getThumbnail() . '" alt="' . Mage::helper('catalog/output')->__("Thumbnail Image").'" />';
+						//$html .= '</a>';
+						//$html .= '</div>';
+					//}
 					//version 1.0.2 end
                     $html.= '<a class="level' . $level . '" href="' . $this->getCategoryUrl($child) . '"><span>' . $name .$label. '</span></a>';    
                 } else {
@@ -315,7 +315,7 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
                 }
                 $html .= '</li>';
             }
-        }        
+        }    
         return $html;
     }
 

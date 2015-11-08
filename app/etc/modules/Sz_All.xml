@@ -5,11 +5,17 @@
             <active>true</active>
             <codePool>local</codePool>
         </Sz_Checkout>
-    </modules>
-    <modules>
         <Sz_Sales>
             <active>true</active>
             <codePool>local</codePool>
         </Sz_Sales>
+        <Sz_Productloader>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Sz_Productloader>
+        <Sz_Ajaxlogin>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Sz_Ajaxlogin>
     </modules>
 </config> 
