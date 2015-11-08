@@ -20,7 +20,7 @@
             <!-- example for redis -->
             <!-- please read https://github.com/colinmollenhour/Cm_Cache_Backend_Redis for more informations -->
 
-            <backend>Cm_Cache_Backend_Redis</backend>
+            <!--<backend>Cm_Cache_Backend_Redis</backend>
             <backend_options>
                 <server>127.0.0.1</server>
                 <port>6381</port>
