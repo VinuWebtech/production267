@@ -1,0 +1,33 @@
+<div class="top-home-category">
+    <?php 
+    $limit = 0;
+    $_helper    = $this->helper('catalog/output');
+    foreach ($this->getStoreCategories() as $_category):
+        if($_category->getIsActive()):
+            $cur_category = Mage::getModel('catalog/category')->load($_category->getId()); 
+            if ($_imgUrl = $cur_category->getImageUrl()){
+                $_imgHtml = '<img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($cur_category->getName()).'" title="'.$this->htmlEscape($cur_category->getName()).'"  width="105px" />';
+                $_imgHtml = $_helper->categoryAttribute($cur_category, $_imgHtml, 'image');
+            } 
+    ?>
+            	<div class="home-category">
+                	<div class="linkimage">
+                    	<a href="<?php echo $this->getCategoryUrl($cur_category) ?>" style="border:none">
+                    		<?php echo $_imgHtml; ?>
+                    	</a>
+                	</div>
+                	<div class="category-link-container">
+                		<a href="<?php echo $this->getCategoryUrl($cur_category) ?>">
+                    		<?php echo $_helper->categoryAttribute($cur_category, $cur_category->getName(), 'name') ?>
+                		</a>
+                	</div>
+            	</div>
+    <?php
+       		$limit+=1;
+        endif;
+        if ($limit==8):
+            break;
+        endif;  
+    endforeach;
+	?>
+</div>

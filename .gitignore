@@ -1,4 +1,5 @@
 app/etc/local.xml
+app/etc/fpc.xml
 robots.txt
 var/*
 media/*

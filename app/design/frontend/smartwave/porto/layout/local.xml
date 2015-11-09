@@ -55,6 +55,7 @@
             <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl-custom.css</stylesheet></action>
             <!-- Vinu changes start added -->
             <action method="addCss"><stylesheet>css/self.css</stylesheet></action>
+            <action method="addJs"><script>self/jquery.hc-sticky.min.js</script></action>
             <!-- changes end -->
             <action method="addItem"><type>skin_js</type><name>js/checkout.js</name></action>
             <!-- SZ changes start added -->
@@ -64,6 +65,7 @@
                 <name>css/productloader.css</name>
             </action>
             <!-- changes end -->
+            <action method="addJs"><script>self/jquery.sticky-kit.min.js</script></action>
         </reference>
         <reference name="header">
             <action method="setTemplate" ifconfig="porto_settings/header/type" condition="0"><template>page/html/header_type1.phtml</template></action>
@@ -78,10 +80,12 @@
             <action method="setTemplate" ifconfig="porto_settings/header/type" condition="9"><template>page/html/header_type10.phtml</template></action>
             <action method="setTemplate" ifconfig="porto_settings/header/type" condition="10"><template>page/html/header_type11.phtml</template></action>
             <action method="setTemplate" ifconfig="porto_settings/header/type" condition="11"><template>page/html/header_type12.phtml</template></action>
+            <action method="setTemplate" ifconfig="porto_settings/header/type" condition="12"><template>page/html/header_type13.phtml</template></action>
             <block type="directory/currency" name="store_currency" template="page/switch/currency.phtml"/>
-			<block type="catalog/product_compare_sidebar" name="compare_link">
+            <!-- Vinu changes start (to remove compare from header) -->
+			<!--<block type="catalog/product_compare_sidebar" name="compare_link">
 				<action method="setTemplate" ifconfig="porto_settings/product_compare/show_link"><template>catalog/product/compare/compare_link.phtml</template></action>
-			</block>
+			</block>-->
             <block type="checkout/cart_sidebar" name="minicart">
                 <action method="setTemplate"><template>checkout/cart/minicart.phtml</template></action>
                 <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>
@@ -97,6 +101,9 @@
         </reference>
         <reference name="top.links">
             <remove name="checkout_cart_link"/>
+            <!-- vinu changes start added -->
+            <remove name="store_language"/>
+            <!-- changes end -->
         </reference>
         <reference name="top.menu">
             <action method="unsetChild" ifconfig="porto_settings/header/type" condition="9"><name>catalog.topnav</name></action>
@@ -205,7 +212,8 @@
             <reference name="catalog.leftnav">
                 <action method="unsetChild"><child>category_filter</child></action>
             </reference>
-            <block type="cms/block" name="custom_side_block" after="-"><action method="setBlockId"><block_id>porto_left_side_category</block_id></action></block>
+            <!-- vinu changes to remove additional items from left navigation -->
+            <!--<block type="cms/block" name="custom_side_block" after="-"><action method="setBlockId"><block_id>porto_left_side_category</block_id></action></block>-->
         </reference>
     </catalog_category_layered>
     <catalog_product_view>
@@ -235,15 +243,15 @@
                 <action method="addTab" translate="title" module="review" ><alias>review_tabbed</alias><title>Reviews</title><block>review/product_view_list</block><template>review/product_info_review.phtml</template></action>
             </block>
         </reference>
-        <!--changes start commenting out to remove dispaly on frontend-->
-        <!--<reference name="right">
+        <!--changes start commenting out to remove display on frontend-->
+        <reference name="right">
             <remove name="right.poll"/>
             <remove name="right.reports.product.viewed"/>
             <remove name="catalog.compare.sidebar"/>
             <remove name="right.permanent.callout"/>
-            <block type="cms/block" name="product.right.custom1" before="-"><action method="setBlockId"><block_id>porto_product_right_side_1</block_id></action></block>
-            <block type="cms/block" name="product.right.custom2" after="product.right.custom1"><action method="setBlockId"><block_id>porto_product_right_side_2</block_id></action></block>
-        </reference>-->
+            <!--<block type="cms/block" name="product.right.custom1" before="-"><action method="setBlockId"><block_id>porto_product_right_side_1</block_id></action></block>-->
+            <!--<block type="cms/block" name="product.right.custom2" after="product.right.custom1"><action method="setBlockId"><block_id>porto_product_right_side_2</block_id></action></block>-->
+        </reference>
         <!--changes end-->
         <reference name="product.info.upsell">
             <action method="setColumnCount" ifconfig="porto_settings/general/layout" condition="1024"><columns>3</columns></action>
@@ -261,30 +269,13 @@
         </reference>
         <!--changes done to right sidebar on checkout page-->
         <reference name="right">
-            <!-- changes for Removing Order Progess Block from the checkout sidebar -->
-            <action method="unsetChild"><name>checkout.progress.wrapper</name></action>
-            <!-- changes for adding Review Block table to the checkout sidebar -->
-            <block type="checkout/onepage_review_info" name="checkout_review_sidebar" output="toHtml" before="-" template="checkout/onepage/review/info.phtml">
-                <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/onepage/review/item.phtml</template></action>
-                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/onepage/review/item.phtml</template></action>
-                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/onepage/review/item.phtml</template></action>
-                <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="checkout/onepage/review/totals.phtml"/>
+            <block type="checkout/onepage_review_info" name="checkout_review_sidebar" before="-" template="checkout/onepage/review/inforight.phtml">
+                <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/onepage/review/itemright.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/onepage/review/itemright.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/onepage/review/itemright.phtml</template></action>
+                <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="checkout/onepage/review/totalsright.phtml"/>
                 <block type="core/text_list" name="checkout.onepage.review.info.items.before" as="items_before" translate="label">
                     <label>Items Before</label>
-                </block>
-            </block>
-        </reference>
-        <reference name="checkout.onepage.review">
-            <!-- Adding Order Progess Block on the checkout review step -->
-            <block type="page/html_wrapper" name="checkout.progress.wrapper" translate="label">
-                <label>Checkout Progress Wrapper</label>
-                <action method="setElementId"><value>checkout-progress-wrapper</value></action>
-                <block type="checkout/onepage_progress" name="checkout.progress" before="-" template="checkout/onepage/progress.phtml">
-                    <block type="checkout/onepage_progress" name="billing.progress" template="checkout/onepage/progress/billing.phtml"/>
-                    <!-- commented out due to removal of shipping steps -->
-                    <!--<block type="checkout/onepage_progress" name="shipping.progress" template="checkout/onepage/progress/shipping.phtml"/>
-                    <block type="checkout/onepage_progress" name="shippingmethod.progress" template="checkout/onepage/progress/shipping_method.phtml"/>-->
-                    <block type="checkout/onepage_progress" name="payment.progress" template="checkout/onepage/progress/payment.phtml"/>
                 </block>
             </block>
         </reference>

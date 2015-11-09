@@ -36,12 +36,15 @@
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <?php if($this->isContentMode()): ?>
+    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/subcategory.phtml')->toHtml(); ?>
     <?php echo $this->getCmsBlockHtml() ?>
 
 <?php elseif($this->isMixedMode()): ?>
+    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/subcategory.phtml')->toHtml(); ?>
     <?php echo $this->getCmsBlockHtml() ?>
     <?php echo $this->getProductListHtml() ?>
 
 <?php else: ?>
+    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/subcategory.phtml')->toHtml(); ?>
     <?php echo $this->getProductListHtml() ?>
 <?php endif; ?>

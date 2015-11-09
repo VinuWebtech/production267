@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<config>
+	<sections>
+		<ajaxlogin_options translate="label" module="ajaxlogin">
+			<label>Ajax Login</label>
+			<tab>general</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>1000</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+    			<ajaxlogin translate="label">
+    				<label>Configuration</label>
+    				<frontend_type>text</frontend_type>
+    				<sort_order>1</sort_order>
+    				<show_in_default>1</show_in_default>
+    				<show_in_website>1</show_in_website>
+    				<show_in_store>1</show_in_store>                
+                	<fields>
+                		<enable>
+                            <label>Show Ajax Login : </label>
+                            <frontend_type>select</frontend_type>
+                            <!-- adding a source model -->
+                            <source_model>adminhtml/system_config_source_yesno</source_model>                           
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </enable>
+                	</fields>
+                </ajaxlogin>
+                <ajaxlogin_google translate="label" module="ajaxlogin">
+                    <label>Social Connect Google Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>120</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <client_id translate="label" module="ajaxlogin">
+                            <label>Google API Client ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_id>
+                        <client_secret translate="label" module="ajaxlogin">
+                            <label>Google API Client Secret</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_secret>
+                    </fields>
+                </ajaxlogin_google>
+                <ajaxlogin_facebook translate="label" module="ajaxlogin">
+                    <label>Social Connect Facebook Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>130</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <client_id translate="label" module="ajaxlogin">
+                            <label>Facebook App ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_id>
+                        <client_secret translate="label" module="ajaxlogin">
+                            <label>Facebook App Secret</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <validate>required-entry</validate>
+                        </client_secret>
+                    </fields>
+                </ajaxlogin_facebook>
+            </groups>
+		</ajaxlogin_options>
+	</sections>
+</config>
