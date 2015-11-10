@@ -1,5 +1,4 @@
 app/etc/local.xml
-app/etc/fpc.xml
 robots.txt
 var/*
 media/*
@@ -8,3 +7,4 @@ downloader/connect.cfg
 .htaccess
 .git/*
 /index.php
+app/etc/fpc.xml
