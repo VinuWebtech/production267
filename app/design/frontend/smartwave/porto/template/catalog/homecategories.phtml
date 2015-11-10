@@ -15,7 +15,7 @@
 			<h5 class="levelonecats"><a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a></h5>
 			<ul>
 				<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
-                <?php $_subcategories = $_category->getChildrenCategories() ?>
+            	<?php $_subcategories = $_category->getChildrenCategories() ?>
 				<?php 
 				$i=0; 
 				foreach ($_subcategories as $subcategory): 
@@ -41,3 +41,4 @@
 	<?php endforeach ?>
 </ul>
 <!-- Categories display end -->
+<!-- rechecking -->
