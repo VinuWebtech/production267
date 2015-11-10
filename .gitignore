@@ -6,5 +6,5 @@ downloader/cache.cfg
 downloader/connect.cfg
 .htaccess
 .git/*
-app/etc/fpc.xml
 /index.php
+app/etc/fpc.xml

@@ -14,10 +14,11 @@
 		<li class="menu-item" style="list-style: none; float:left">
 			<h5 class="levelonecats"><a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a></h5>
 			<ul>
-				<?php $children = Mage::getModel('catalog/category')->getCategories($_category->getId()); ?>
+				<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+            	<?php $_subcategories = $_category->getChildrenCategories() ?>
 				<?php 
 				$i=0; 
-				foreach ($children as $subcategory): 
+				foreach ($_subcategories as $subcategory): 
 					$subcat = Mage::getModel('catalog/category')->load($subcategory->getId()); ?>
 						<li>
 							<a class="inside-link" href="<?php echo Mage::getUrl($subcat->getUrlPath()); ?>" title="<?php echo $subcategory->getName() ?>"><?php echo $subcategory->getName() ?></a>
@@ -28,7 +29,7 @@
 				endforeach ?>
 				<?php
 				$i=0;
-				foreach ($children as $subcategory){
+				foreach ($_subcategories as $subcategory){
 				$i++; } ?>
 				<?php if($i > 3): ?>
 					<li class="w-all">
