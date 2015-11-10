@@ -7,3 +7,4 @@ downloader/connect.cfg
 .htaccess
 .git/*
 /index.php
+app/etc/fpc.xml
