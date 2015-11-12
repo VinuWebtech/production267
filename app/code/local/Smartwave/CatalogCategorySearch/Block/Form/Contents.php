@@ -22,7 +22,7 @@ class Smartwave_CatalogCategorySearch_Block_Form_Contents extends Mage_Core_Bloc
             ->addAttributeToSelect('name')
             ->addAttributeToSelect('all_children')
             ->addAttributeToFilter('is_active', 1)
-            ->addAttributeToFilter('include_in_menu', 1)
+            //->addAttributeToFilter('include_in_menu', 1)
             ->addIdFilter($category->getChildren())
             ->setOrder('position', 'ASC')
             ->load();
