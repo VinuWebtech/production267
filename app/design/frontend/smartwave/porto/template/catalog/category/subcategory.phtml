@@ -7,9 +7,11 @@
 <?php 
     $layer = Mage::getSingleton('catalog/layer');
     $_category = $layer->getCurrentCategory();
-    $currentCategoryId= $_category->getId();
-    $children = Mage::getModel('catalog/category')->getCategories($currentCategoryId);
-    $countSubcategory=0; foreach ($children as $category):  
+    $_category = Mage::getModel('catalog/category')->load($_category->getId()); 
+    $_subcategories = $_category->getChildrenCategories();
+    //$currentCategoryId= $_category->getId();
+    //$children = Mage::getModel('catalog/category')->getCategories($currentCategoryId);
+    $countSubcategory=0; foreach ($_subcategories as $category):  
 ?>
         <h5 class="category-name parent-category13"><?php echo Mage::registry('current_category')->getName().' ' ?>Categories</h5>
         <div class="sub-cat-list3">
