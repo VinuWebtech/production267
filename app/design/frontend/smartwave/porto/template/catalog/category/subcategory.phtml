@@ -7,8 +7,8 @@
 <?php 
     $layer = Mage::getSingleton('catalog/layer');
     $_category = $layer->getCurrentCategory();
-    $_category = Mage::getModel('catalog/category')->load($_category->getId()) 
-    $_subcategories = $_category->getChildrenCategories() 
+    $_category = Mage::getModel('catalog/category')->load($_category->getId()); 
+    $_subcategories = $_category->getChildrenCategories();
     //$currentCategoryId= $_category->getId();
     //$children = Mage::getModel('catalog/category')->getCategories($currentCategoryId);
     $countSubcategory=0; foreach ($_subcategories as $category):  
