@@ -8,3 +8,4 @@ downloader/connect.cfg
 .git/*
 /index.php
 app/etc/fpc.xml
+a.php
