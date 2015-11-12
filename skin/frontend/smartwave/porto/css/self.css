@@ -1329,6 +1329,8 @@ ul.category-list {
     left: 10px;
     border: 1px solid #777;
     color: #777;
+    width: 22px;
+    height: 22px;
 }
 
 /*-------- adjusting subcat text label accordingly & removing curved border ----------------*/
