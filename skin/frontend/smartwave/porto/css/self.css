@@ -1339,6 +1339,7 @@ ul.category-list {
 .block-category-nav .block-title {
     padding: 10px 45px;
     border-radius: 0px;
+    font-weight: normal;
 }
 
 .block-category-nav .block-title.closed {
@@ -1350,6 +1351,10 @@ ul.category-list {
     border-style: none;
     background-color: #fff;
     /*border-bottom: 1px solid;*/
+}
+
+.block-category-nav .category-list li {
+    height: 24px;
 }
 
 .col2-left-layout .col-left.sidebar {
@@ -1366,6 +1371,10 @@ dl#narrow-by-list dd >ol {
     max-height: 150px;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+.block-layered-nav .block-content dl#narrow-by-list dd >ol li {
+    height: 24px;
 }
 
 /*---------- placing collapse button to left & changing color for attributes -----*/

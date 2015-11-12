@@ -34,7 +34,9 @@
 <?php if($_count): ?>
 <div class="block block-category-nav">
     <div class="block-title">
-        <strong><span><?php echo Mage::registry('current_category')->getName(); ?></span></strong>
+        <!-- vinu changes start (12-11-15) -->
+        <span><?php echo Mage::registry('current_category')->getName(); ?></span>
+        <!-- vinu changes end (12-11-15) -->
     </div>
     <div class="block-content">
         <ul class="category-list">
