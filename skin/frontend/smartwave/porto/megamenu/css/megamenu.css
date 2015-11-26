@@ -88,6 +88,7 @@ position: absolute;
 width: 100%;
 height: 100%;
 left: 0;
+right: auto;
 top: -15px;
 z-index: -1; }
 .fixed-header .menu > li .nav-sublist-dropdown ul,
