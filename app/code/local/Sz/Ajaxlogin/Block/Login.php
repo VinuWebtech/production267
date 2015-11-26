@@ -14,11 +14,6 @@ class Sz_Ajaxlogin_Block_Login extends Mage_Core_Block_Template
         $this->clientGoogle = Mage::getSingleton('ajaxlogin/google_client');
         $this->clientFacebook = Mage::getSingleton('ajaxlogin/facebook_client');
 
-        if( !$this->_googleEnabled() &&
-            !$this->_facebookEnabled()
-            )
-            return;
-
         if($this->_googleEnabled()) {
             $this->numEnabled++;
         }
