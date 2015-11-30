@@ -1157,12 +1157,15 @@ ol, ul, li {
 
 /*------------------------------Additional info attributes---------------------------*/
 
+.border-box-area1 {
+    /*border-bottom: 2px solid #000;*/
+    border-bottom: 1px solid #EBEBEB;
+    margin: 5px 0px 0px;
+    padding-bottom: 5px;
+}
+
 .specs-box-area1 {
     background-color: #ffffeb;
-    margin-right: 0px;
-    margin-left: 0px;
-    border-bottom: 2px solid #000;
-    margin-top: 5px;
 }
 
 #product-attribute-specs-table1 {
@@ -1372,6 +1375,10 @@ ul.category-list {
 }
 
 /*---------- adding scroll bar to attributes in layered nav -----------------------*/
+.block-layered-nav {
+    margin: 0px;
+}
+
 dl#narrow-by-list dd >ol {
     max-height: 150px;
     overflow-y: scroll;
