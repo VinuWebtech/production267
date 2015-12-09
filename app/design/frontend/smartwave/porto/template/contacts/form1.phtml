@@ -1,0 +1,121 @@
+<h1 id="tagline">Contact Ziffy Supply</h1>
+<div class="grid-10 center">Get in touch with us to get the ball rolling</div>
+<section class="section">
+	<ul class="list-icon-items clearfix no-margins">
+		<li class="grid-3 secondary alpha">
+            <a href="mailto:hello@ziffysupply.com">
+                <i class="circ large tertiary ss-icon ss-standard">
+                    ✉
+                    <i class="circ pulse"></i>
+                </i>
+                <h4 class="secondary">Email</h4>
+                <p><span class="pseudo-link">care@ziffysupply.com</span></p>
+            </a>
+		</li>
+		<li class="grid-3 secondary">
+			<i class="circ large tertiary ss-icon ss-standard">
+                📱
+                <i class="circ pulse"></i>
+			</i>
+			<h4 class="secondary">Phone</h4>
+			<p class="secondary">+44 (0)1273 434 060</p>
+		</li>
+		<li class="grid-3 secondary">
+            <a href="/planner">
+                <i class="circ large tertiary ss-icon ss-standard">
+                    📝
+                    <i class="circ pulse"></i>
+                </i>
+                <h4 class="secondary">Project planner</h4>
+                <p><span class="pseudo-link">Launch it</span></p>
+            </a>
+		</li>
+		<li class="grid-3 secondary">
+            <a href="http://twitter.com/builtbybuffalo">
+                <i class="circ large tertiary ss-icon ss-social">
+                    
+                    <i class="circ pulse"></i>
+                </i>
+                <h4 class="secondary">Twitter</h4>
+                <p><span class="pseudo-link">Follow us</span></p>
+            </a>
+		</li>
+		<li class="grid-3 secondary omega">
+            <a href="skype:builtbybuffalo?call">
+                <i class="circ large tertiary ss-icon ss-social">
+                    
+                    <i class="circ pulse"></i>
+                </i>
+                <h4 class="secondary">Skype</h4>
+                <p><span class="pseudo-link">Call us</span></p>
+            </a>
+		</li>
+	</ul>
+</section>
+<section class="section">
+	<hr class="grid-2 center">
+		<h2>Find us</h2>
+		<!--<div class="grid-14 center">
+			<div style="padding: 0px; overflow: hidden;" id="map-find-us" class="map">
+				<div class="info">
+                    <a href="#" class="info-close ss-icon ss-standard">␡</a>
+				    <div class="info-inner">
+				</div>
+            </div>
+		</div>-->
+		<ul class="map-lower clearfix">
+			<li class="grid-5 omega">
+				<h3>Our address</h3>
+                <div itemscope="" itemtype="http://schema.org/PostalAddress">
+                    <meta itemprop="name" content="Buffalo">
+                    <div itemscope="" itemtype="http://schema.org/PostalAddress">
+                        <ul itemprop="address">
+                            <li itemprop="streetAddress">Shop No.411</li>
+                            <li itemprop="streetAddress">Arya Arcade</li>
+                            <li itemprop="addressRegion">Vikhroli West</li>
+                            <li itemprop="postalCode">Mumbai - 400083</li>
+                        </ul>
+                        <!--<meta itemprop="addressCountry" content="United Kingdom">
+                        <meta itemprop="telephone" content="+44 (0)1273 434 060">
+                        <meta itemprop="email" content="hello@builtbybuffalo.com">-->
+                    </div>
+                </div>
+			</li>
+			<li class="grid-9 alpha">
+				<h3>Drop Us a Line</h3>
+				<div class="row">
+        			<ul class="form-list col-sm-6">
+            			<li>
+                			<label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+                			<div class="input-box">
+                    			<input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                			</div>
+            			</li>
+            			<li>
+                			<label for="email" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Email') ?></label>
+                			<div class="input-box">
+                    			<input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                			</div>
+            			</li>
+            			<li>
+                			<label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                			<div class="input-box">
+                    			<input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text" type="text" />
+                			</div>
+            			</li>
+            			<li>
+                			<label for="comment" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                			<div class="input-box input-textarea">
+                    			<textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3" placeholder="<?php echo Mage::helper('contacts')->__('Comment') ?>"></textarea>
+                			</div>
+            			</li>
+            			<li>
+                			<input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+                			<button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+            			</li>
+        			</ul>
+    			</div>	
+			</li>	
+		</ul>
+	</div>
+</section>
