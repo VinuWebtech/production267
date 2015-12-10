@@ -2036,3 +2036,194 @@ input#checkout_email {
     transition-duration: 275ms;
     transition-timing-function: cubic-bezier(0.53, -0.67, 0.73, 0.74);
 }
+
+/*------------------------------------------------------------------*/
+
+
+
+#contact #sitecontent .wrapper1 {
+    position: relative;
+    background-color: #F6F7F0;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 80px;
+    margin-bottom: 140px;
+    font-family: "museo-slab",Georgia,serif;
+}
+
+.wrapper1 {
+    width: 978px;
+    margin: 0px auto;
+    text-align: left;
+}
+
+#sitecontent #contact-form {
+    position: relative;
+    display: inline;
+    float: left;
+    width: 622px;
+    padding: 15px 30px;
+}
+
+aside {
+    display: block;
+}
+
+.styled-form .pagetitle {
+    margin-bottom: 5px;
+}
+
+.pagetitle {
+    color: #204A65;
+    font-size: 35px;
+    line-height: 40px;
+    margin-bottom: 30px;
+    font-weight: 300;
+    font-family: "museo-slab",Georgia,serif;
+}
+
+.styled-form .note {
+    margin-bottom: 40px;
+    font-family: "museo-slab",Georgia,serif;
+}
+
+p.firstp {
+    margin-bottom: 10px;
+    line-height: 20px;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.styled-form .row.half.first {
+    margin-left: 0px;
+    clear: left;
+}
+
+.styled-form label {
+    display: block;
+    font-family: "brandon-grotesque",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 11px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #4E4E4D;
+}
+
+.styled-form .field {
+    display: block;
+}
+
+.styled-form .row {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+.required {
+    text-transform: uppercase;
+    font-family: "brandon-grotesque",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    top: 7px;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 1px;
+    color: #E8554E;
+}
+
+.styled-form input[type="text"], .styled-form input[type="password"], .styled-form textarea {
+    background-color: #E1E1DB;
+    width: 100%;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-family: "museo-slab",Georgia,serif;
+    line-height: normal;
+}
+
+.styled-form textarea {
+    height: 160px;
+    width: 296px;
+}
+
+.styled-form .contact-message {
+    padding-right: 0px;
+}
+
+#sitecontent #contact-form .submit-row {
+    text-align: right;
+}
+
+.styled-form .submit-row {
+    clear: both;
+}
+
+.submit-row button[type="submit"], .button {
+    box-sizing: border-box;
+    white-space: nowrap;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: "brandon-grotesque",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #FFF;
+    background-color: #F3A847; /*#E8554E;*/
+    cursor: pointer;
+    border-bottom: 5px solid #9A3834;
+    border-radius: 4px;
+    transition-property: background-color, color;
+    padding: 10px 55px;
+}
+
+#sitecontent #contact-info {
+    position: absolute;
+    display: inline;
+    right: 185px;
+    /*top: 0px;*/
+    /*height: 100%;*/
+    border: 10px solid #FFF;
+    box-sizing: border-box;
+    width: 306px;
+    padding: 15px 25px;
+    background: #FFF url("../images/16.png") repeat scroll 0% 0%;
+} /*wave-pattern-white.png?1350403306*/
+
+#sitecontent #contact-info dt {
+    text-transform: uppercase;
+    font-family: "brandon-grotesque",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: #08C;
+}
+
+#sitecontent #contact-info .social-links a.fb {
+    background-position: -592px -72px;
+}
+
+#sitecontent #contact-info .social-links a.tt {
+    background-position: -592px -8px;
+}
+
+#sitecontent #contact-info .social-links a {
+    text-indent: -119988px;
+    overflow: hidden;
+    text-align: left;
+    background-image: url("../images/icons.png?1381413743");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 48px;
+    margin-right: 5px;
+}
+
+#sitecontent #contact-info dd a {
+    color: #204A65;
+}
