@@ -2176,7 +2176,7 @@ p.firstp {
     color: #FFF;
     background-color: #F3A847; /*#E8554E;*/
     cursor: pointer;
-    border-bottom: 5px solid #9A3834;
+    /*border-bottom: 5px solid #9A3834;*/
     border-radius: 4px;
     transition-property: background-color, color;
     padding: 10px 55px;
@@ -2228,4 +2228,87 @@ p.firstp {
 
 #sitecontent #contact-info dd a {
     color: #204A65;
+}
+
+/*----------------------------------- privacy policy page ---------------------------*/
+
+.privacypage-header {
+    border-bottom: 1px solid #DDD;
+    margin-right: 40px;
+    margin-bottom: 10px;
+}
+
+h1.privacy-heading {
+    font-size: 2.275em;
+    line-height: 1.2em;
+    font-weight: normal;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: Georgia,Times,"Times New Roman",serif;
+    color: #000;
+}
+
+h3.sub-head {
+    color: #000;
+    font: 24px/30px "Open Sans",Helvetica,Arial,Verdana,sans-serif;
+    text-transform: none;
+    margin-bottom: 10px;
+}
+
+em.note-line {
+    text-decoration: underline;
+}
+
+/*----------------------------------- careers page ---------------------------*/
+
+.container-flex {
+    max-width: 1040px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*div {
+    border: 0px none;
+    margin: 0px;
+    padding: 0px;
+    font-size: 100%;
+    vertical-align: baseline;
+}*/
+
+.color-callout.light-blue {
+    background: #00A0FF none repeat scroll 0% 0%;
+    font: 16px/1.5 "Helvetica Neue",Helvetica,Arial,"Liberation Sans",FreeSans,sans-serif;
+    color: #FFF;
+}
+
+.color-callout {
+    padding: 100px;
+    margin-bottom: 80px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.soft-header.soft-header--small {
+    font-size: 32px !important;
+    margin-bottom: 20px;
+    color: #FFF;
+}
+
+.soft-section .soft-header {
+    font-family: "Helvetica Neue",Helvetica,Arial,"Liberation Sans",FreeSans,sans-serif;
+    font-weight: 500;
+    line-height: 53px !important;
+    color: !important;
+    text-align: center;
+    margin: 0px auto 40px;
+}
+
+.color-callout__tiny-copy div.mbottom {
+    font-size: 18px !important;
+    line-height: 30px !important;
+    max-width: 600px;
+    margin: 0px auto !important;
+    font: 16px/1.5 "Helvetica Neue",Helvetica,Arial,"Liberation Sans",FreeSans,sans-serif;
+    color: #FFF;
 }
