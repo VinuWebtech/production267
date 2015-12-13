@@ -1,3 +1,8 @@
+<?php
+  $store = Mage::app()->getStore();
+  $code  = $store->getCode();
+?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <div class="container">
   <div class="privacypage-header">
     <h1 class="privacy-heading">Contact Us</h1>
@@ -14,7 +19,7 @@
           best to find it for you.</p>
         </div>
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-5">
             <p class="row half first firstp">
               <label for="id_name">Name: <span class="required">*</span></label>
               <span class="field"><input name="name" id="id_name" type="text"></span>
@@ -28,15 +33,15 @@
               <span class="field"><input name="mobile" id="id_mobile" type="text"></span>
             </p>
           </div>
-          <div class="col-sm-9 contact-message">
+          <div class="col-sm-7 contact-message">
             <p class="row half firstp">
               <label for="id_message">Message: <span class="required">*</span></label>
               <span class="field"><textarea cols="40" rows="5" name="message" id="id_message"></textarea></span>
             </p>
           </div>
-          <p class="submit-row">
-            <button type="submit">SEND</button>
-          </p>
+          <div class="submit-row">
+            <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+          </div>
         </div>
       </form>
       <aside id="contact-info">
@@ -56,10 +61,11 @@
             Maharashtra - 400083<br><br>
           </address>
         </div>
-        <div class="social-links">
+        <!--<div class="social-links">
           <a class="fb" href="http://www.facebook.com/Ziffysupply" title="Find us on Facebook" style="background-position:-60px 0; width:30px; height:30px;">Facebook</a>
-          <a class="tt" href="http://twitter.com/ziffysupply" title="Find us on Twitter">Twitter</a>
-        </div>
+          <a class="tt" href="http://twitter.com/ziffysupply" title="Find us on Twitter" style="background-position:0px 0; width:30px; height:30px;">Twitter</a>
+          <a class="ln" href="http://twitter.com/ziffysupply" title="Find us on LinkedIn" style="background-position:-300px 0; width:30px; height:30px;">Twitter</a>
+        </div>-->
       </aside>
     </div>
   </div>
