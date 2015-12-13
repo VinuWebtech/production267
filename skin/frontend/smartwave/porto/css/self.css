@@ -1,4 +1,20 @@
 
+body {
+    font-family: Arial,sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.std {
+    line-height: 18px;
+}
+
+.std ul li {
+    line-height: 18px;
+}
+
+
+
 /* ------------------------- Universal ------------------ */
 
 .text-color{
@@ -58,7 +74,6 @@
     display: inline-block;
     text-align: left;
     height: 24px;
-    line-height: 24px;
     float: left;
     color: #FFF;
 }
@@ -526,7 +541,7 @@ ul.list3 li {
     /*border-radius: 130px;*/
     /*margin-left: -200px;*/
     text-align: center;
-    background: transparent url("../images/p51.jpg") repeat fixed 0px 0px;
+    background: transparent url("../images/tl.jpg") repeat fixed 0px 0px;
     top: 0px;
 }
 
@@ -534,6 +549,7 @@ ul.list3 li {
     text-align: center;
     font-size: 30px;
     color: #08C;
+    line-height: 22px;
 }
 
 .parallax-slider .owl-carousel p {
@@ -580,19 +596,20 @@ ul.list3 li {
 
 .footer-top .block .block-title {
     margin: 10px 0px;
+    line-height: 
 }
 
 .footer-top .block .block-title strong {
     font-weight: 400;
     padding: 0px;
     font-size: 16px;
-    line-height: inherit;
+    line-height: 18px;
     text-transform: none;
 }
 
 .footer-top .block {
     text-align: left;
-    line-height: 1.5;
+    line-height: 18px;
     border: 0px none;
     margin: 0px;
     background-color: transparent;
@@ -630,7 +647,7 @@ ul.list3 li {
 .footer-top ul.features li {
     position: relative;
     padding: 4px 0px;
-    line-height: 1;
+    line-height: 18px;
     display: block;
 }
 
@@ -724,11 +741,12 @@ ul.list3 li {
 .footer .container h5 {
     font-size: 18px;
     float: left;
+    line-height: 18px;
 }
 
 .footer-categories {
     padding-left: 25px;
-    line-height: 20px;
+    line-height: 18px;
 }
 
 .footer .container h5.levelonecats {
@@ -870,11 +888,7 @@ a {
 }
 
 
-body {
-    font-family: Arial,sans-serif;
-    font-size: 12px;
-    line-height: 1.5;
-}
+
 
 .category-product-item h1 a {
     left: 10px;
@@ -1912,7 +1926,7 @@ input#checkout_email {
     font-size: 84px;
     word-spacing: 1px;
     line-height: 90px;
-    font-family: "neuzeitgrobold",sans-serif;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
     text-transform: none;
     letter-spacing: -3px;
     color: #181818;
@@ -1922,7 +1936,7 @@ input#checkout_email {
 
 .grid-10 {
     margin-top: 1.5em;
-    font-family: "freightsans_regular","Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
     font-weight: 300;
     font-size: 18px;
     text-transform: none;
@@ -2045,47 +2059,31 @@ input#checkout_email {
 
 #contact #sitecontent .wrapper1 {
     position: relative;
-    background-color: #F6F7F0;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
     margin-top: 80px;
     margin-bottom: 140px;
-    font-family: "museo-slab",Georgia,serif;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
 }
 
 .wrapper1 {
-    width: 978px;
     margin: 0px auto;
     text-align: left;
 }
 
 #sitecontent #contact-form {
     position: relative;
+    width: 700px;
     display: inline;
     float: left;
-    width: 622px;
-    padding: 15px 30px;
+    padding: 15px 30px 15px 15px;
 }
 
 aside {
     display: block;
 }
 
-.styled-form .pagetitle {
-    margin-bottom: 5px;
-}
-
-.pagetitle {
-    color: #204A65;
-    font-size: 35px;
-    line-height: 40px;
-    margin-bottom: 30px;
-    font-weight: 300;
-    font-family: "museo-slab",Georgia,serif;
-}
-
 .styled-form .note {
-    margin-bottom: 40px;
-    font-family: "museo-slab",Georgia,serif;
+    margin-bottom: 30px;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
 }
 
 p.firstp {
@@ -2102,11 +2100,11 @@ p.firstp {
 
 .styled-form label {
     display: block;
-    font-family: "brandon-grotesque",Helvetica,Arial,sans-serif;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
     font-size: 11px;
-    line-height: 20px;
+    line-height: 18px;
     text-transform: uppercase;
     color: #4E4E4D;
 }
@@ -2123,7 +2121,7 @@ p.firstp {
 
 .required {
     text-transform: uppercase;
-    font-family: "brandon-grotesque",Helvetica,Arial,sans-serif;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
     position: relative;
@@ -2135,18 +2133,18 @@ p.firstp {
 }
 
 .styled-form input[type="text"], .styled-form input[type="password"], .styled-form textarea {
-    background-color: #E1E1DB;
+    background-color: #F0F0ED;
     width: 100%;
     padding: 8px 12px;
     box-sizing: border-box;
     border-radius: 3px;
-    font-family: "museo-slab",Georgia,serif;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
     line-height: normal;
 }
 
 .styled-form textarea {
     height: 160px;
-    width: 296px;
+    width: 382px;
 }
 
 .styled-form .contact-message {
@@ -2159,27 +2157,6 @@ p.firstp {
 
 .styled-form .submit-row {
     clear: both;
-}
-
-.submit-row button[type="submit"], .button {
-    box-sizing: border-box;
-    white-space: nowrap;
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    font-family: "brandon-grotesque",Helvetica,Arial,sans-serif;
-    font-weight: 700;
-    letter-spacing: 2px;
-    font-size: 14px;
-    line-height: 14px;
-    text-transform: uppercase;
-    color: #FFF;
-    background-color: #F3A847; /*#E8554E;*/
-    cursor: pointer;
-    /*border-bottom: 5px solid #9A3834;*/
-    border-radius: 4px;
-    transition-property: background-color, color;
-    padding: 10px 55px;
 }
 
 #sitecontent #contact-info {
@@ -2195,30 +2172,20 @@ p.firstp {
     background: #FFF url("../images/16.png") repeat scroll 0% 0%;
 } /*wave-pattern-white.png?1350403306*/
 
-#sitecontent #contact-info dt {
+#sitecontent #contact-info .contact-info-header {
     text-transform: uppercase;
-    font-family: "brandon-grotesque",Helvetica,Arial,sans-serif;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
     font-size: 12px;
     color: #08C;
 }
 
-#sitecontent #contact-info .social-links a.fb {
-    background-position: -592px -72px;
-}
-
-#sitecontent #contact-info .social-links a.tt {
-    background-position: -592px -8px;
-}
-
 #sitecontent #contact-info .social-links a {
     text-indent: -119988px;
     overflow: hidden;
     text-align: left;
-    background-image: url("../images/icons.png?1381413743");
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+    background: #000 url("../images/social-icons-sprite.png") no-repeat scroll 0px 0px;
     display: inline-block;
     vertical-align: middle;
     width: 32px;
@@ -2226,8 +2193,21 @@ p.firstp {
     margin-right: 5px;
 }
 
-#sitecontent #contact-info dd a {
-    color: #204A65;
+#sitecontent #contact-info .social-links a {
+    background-color: #9E9E9E;
+    border-radius: 50%;
+}
+
+#sitecontent #contact-info .social-links a.fb:hover {
+    background-color: #3C599B;
+}
+
+#sitecontent #contact-info .social-links a.tt:hover {
+    background-color: #1CA8E3;
+}
+
+#sitecontent #contact-info .social-links a.ln:hover {
+    background-color: #4975B6;
 }
 
 /*----------------------------------- privacy policy page ---------------------------*/
@@ -2239,21 +2219,25 @@ p.firstp {
 }
 
 h1.privacy-heading {
-    font-size: 2.275em;
-    line-height: 1.2em;
+    font-size: 27px;
+    line-height: 18px;
     font-weight: normal;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-family: Georgia,Times,"Times New Roman",serif;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
     color: #000;
 }
 
 h3.sub-head {
     color: #000;
-    font: 24px/30px "Open Sans",Helvetica,Arial,Verdana,sans-serif;
+    font: 24px/18px Arial,Helvetica,Verdana,sans-serif;
     text-transform: none;
     margin-bottom: 10px;
+}
+
+.cus-info-points li {
+    line-height: 18px !important;
 }
 
 em.note-line {
@@ -2277,8 +2261,8 @@ em.note-line {
 }*/
 
 .color-callout.light-blue {
-    background: #00A0FF none repeat scroll 0% 0%;
-    font: 16px/1.5 "Helvetica Neue",Helvetica,Arial,"Liberation Sans",FreeSans,sans-serif;
+    background: #08C none repeat scroll 0% 0%;
+    font: 16px/1.5 Arial,Helvetica,Verdana,sans-serif;
     color: #FFF;
 }
 
@@ -2296,7 +2280,7 @@ em.note-line {
 }
 
 .soft-section .soft-header {
-    font-family: "Helvetica Neue",Helvetica,Arial,"Liberation Sans",FreeSans,sans-serif;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
     font-weight: 500;
     line-height: 53px !important;
     color: !important;
@@ -2309,6 +2293,19 @@ em.note-line {
     line-height: 30px !important;
     max-width: 600px;
     margin: 0px auto !important;
-    font: 16px/1.5 "Helvetica Neue",Helvetica,Arial,"Liberation Sans",FreeSans,sans-serif;
+    font: 16px/1.5 Arial,Helvetica,Verdana,sans-serif;
     color: #FFF;
+}
+
+.container-flex a.hr-mail {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+.container-flex a.hr-mail:hover {
+    color: #F3A847;
+}
+
+.para-content {
+    font-size: 14px;
 }
