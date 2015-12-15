@@ -83,6 +83,7 @@ class ImpCat_Catalog_Model_Convert_Adapter_Category extends Mage_Eav_Model_Conve
     $MetaKeywords=$importData['meta_keywords'];
     $MetaDescription=$importData['meta_description'];
     $Image=$importData['image'];
+    $ThumbnailImage=$importData['thumbnail_image'];
     $URlkey=$importData['url_key'];
     foreach ($categories as $catName) {
       $namePath .= (empty($namePath) ? '' : '/').strtolower($catName);
@@ -96,7 +97,7 @@ class ImpCat_Catalog_Model_Convert_Adapter_Category extends Mage_Eav_Model_Conve
         ->setIsAnchor($IsAnchor)
         ->setDisplayMode($dispMode)->save();
         $cat = Mage::getModel('catalog/category')->load($cat->getId());
-        $cat->setIncludeInMenu($IncludeInMenu);
+        /*$cat->setIncludeInMenu($IncludeInMenu);*/
         $cat->setDescription($Description);
         $cat->setMetaTitle($MetaTitle).
         $cat->setMetaKeywords($MetaKeywords);
@@ -108,6 +109,8 @@ class ImpCat_Catalog_Model_Convert_Adapter_Category extends Mage_Eav_Model_Conve
         $data['meta_keywords']=$MetaKeywords;
         $data['meta_description']=$MetaDescription;
         $data['url_key']= $URlkey;
+        $data['include_in_menu']= $IncludeInMenu;
+        $data['thumbnail_image']= $ThumbnailImage;
         $cat->addData($data);
         $cat->save();
         $cache[$namePath] = $cat;
