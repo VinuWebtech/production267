@@ -1355,6 +1355,9 @@ ul.category-list {
     margin-bottom: 14px;
     background-color: #fff;
     border: 0px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .block-category-nav .block-title {
@@ -1380,16 +1383,17 @@ ul.category-list {
 
 .col2-left-layout .col-left.sidebar {
     /*box-shadow: 0px 0px 3px 3px #ccc;*/
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
     padding: 0px;
     margin-left: 12px;
 }
 
 /*---------- adding scroll bar to attributes in layered nav -----------------------*/
-.block-layered-nav {
+.block.block-layered-nav {
     margin: 0px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 dl#narrow-by-list dd >ol {
