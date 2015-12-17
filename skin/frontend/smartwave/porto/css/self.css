@@ -1926,141 +1926,6 @@ input#checkout_email {
 
 /* --------------------- contact us page design ------------------------------ */
 
-#tagline {
-    font-size: 84px;
-    word-spacing: 1px;
-    line-height: 90px;
-    font-family: Arial,Helvetica,Verdana,sans-serif;
-    text-transform: none;
-    letter-spacing: -3px;
-    color: #181818;
-    text-align: center;
-    margin: 0.95em 0px 0px;
-}
-
-.grid-10 {
-    margin-top: 1.5em;
-    font-family: Arial,Helvetica,Verdana,sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    text-transform: none;
-    letter-spacing: 0px;
-    line-height: 32px;
-    color: #6B6B6B;
-    float: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 380px;
-}
-
-.section {
-    margin-top: 75px;
-}
-
-.list-icon-items.no-margins {
-    margin-top: -100px;
-    margin: 0px;
-    padding: 0px;
-    border: 0px none;
-    font-family: inherit;
-    font-style: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    font-size-adjust: inherit;
-    font-stretch: inherit;
-    font-feature-settings: inherit;
-    font-language-override: inherit;
-    font-kerning: inherit;
-    font-synthesis: inherit;
-    font-variant: inherit;
-    font-size: 100%;
-    vertical-align: baseline;
-    text-align: center;
-}
-
-.circ.large {
-    font-size: 36px;
-    word-spacing: 1px;
-    line-height: 127px;
-    width: 120px;
-    height: 120px;
-}
-
-.circ.tertiary {
-    background-color: #C5C5C5;
-}
-
-.circ {
-    font-size: 30px;
-    word-spacing: 1px;
-    border-radius: 1000px;
-    box-sizing: border-box;
-    line-height: 105px;
-    width: 100px;
-    height: 100px;
-    max-width: 100%;
-    text-align: center;
-    color: #FFF;
-    background-color: #16A6B6;
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-}
-
-.list-icon-items a {
-    border: medium none;
-    display: block;
-}
-
-.grid-3 {
-    width: 190px;
-    position: relative;
-    max-width: 100%;
-    padding: 0px;
-    border: 0px none;
-    font-family: inherit;
-    font-style: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    font-size-adjust: inherit;
-    font-stretch: inherit;
-    font-feature-settings: inherit;
-    font-language-override: inherit;
-    font-kerning: inherit;
-    font-synthesis: inherit;
-    font-variant: inherit;
-    font-size: 100%;
-}
-
-.list-icon-items > li {
-    display: inline-block;
-    float: none;
-    vertical-align: top;
-}
-
-.list-icon-items li.secondary .pulse {
-    border: 1px solid #C5C5C5;
-}
-
-.list-icon-items .pulse {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    background: transparent none repeat scroll 0% 0%;
-    border: 1px solid #EE6557;
-    transition-property: all;
-    transition-duration: 275ms;
-    transition-timing-function: cubic-bezier(0.53, -0.67, 0.73, 0.74);
-}
-
-/*------------------------------------------------------------------*/
-
-
-
 #contact #sitecontent .wrapper1 {
     position: relative;
     margin-top: 80px;
@@ -2073,20 +1938,8 @@ input#checkout_email {
     text-align: left;
 }
 
-#sitecontent #contact-form {
-    position: relative;
-    width: 700px;
-    display: inline;
-    float: left;
-    padding: 15px 30px 15px 15px;
-}
-
-aside {
-    display: block;
-}
-
 .styled-form .note {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     font-family: Arial,Helvetica,Verdana,sans-serif;
 }
 
@@ -2097,86 +1950,27 @@ p.firstp {
     font-size: 12px;
 }
 
-.styled-form .row.half.first {
-    margin-left: 0px;
-    clear: left;
+h2.legend1 {
+    margin-bottom: 10px;
 }
 
-.styled-form label {
-    display: block;
-    font-family: Arial,Helvetica,Verdana,sans-serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 11px;
-    line-height: 18px;
-    text-transform: uppercase;
-    color: #4E4E4D;
-}
-
-.styled-form .field {
+aside {
     display: block;
 }
 
-.styled-form .row {
-    display: inline;
-    float: left;
-    width: 100%;
-}
-
-/*.required {
-    text-transform: uppercase;
-    font-family: Arial,Helvetica,Verdana,sans-serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-    position: relative;
-    top: 7px;
-    font-size: 20px;
-    font-style: normal;
-    line-height: 1px;
-    color: #E8554E;
-}*/
-
-.styled-form input[type="text"], .styled-form input[type="password"], .styled-form textarea {
-    background-color: #F0F0ED;
-    width: 100%;
-    padding: 8px 12px;
-    box-sizing: border-box;
-    border-radius: 3px;
-    font-family: Arial,Helvetica,Verdana,sans-serif;
-    line-height: normal;
-}
-
-.styled-form textarea {
-    height: 160px;
-    width: 382px;
-}
-
-.styled-form .contact-message {
-    padding-right: 0px;
-}
-
-#sitecontent #contact-form .submit-row {
-    text-align: right;
-}
-
-.styled-form .submit-row {
-    clear: both;
-}
-
-#sitecontent #contact-info {
+#contact-info {
     position: absolute;
     display: inline;
-    right: 185px;
-    /*top: 0px;*/
-    /*height: 100%;*/
-    border: 10px solid #FFF;
+    border-top: 10px solid #FFF;
+    border-bottom: 10px solid #FFF;
+    border-right: 10px solid #FFF;
     box-sizing: border-box;
     width: 306px;
     padding: 15px 25px;
     background: #FFF url("../images/16.png") repeat scroll 0% 0%;
-} /*wave-pattern-white.png?1350403306*/
+} 
 
-#sitecontent #contact-info .contact-info-header {
+#contact-info .contact-info-header {
     text-transform: uppercase;
     font-family: Arial,Helvetica,Verdana,sans-serif;
     font-weight: 700;
@@ -2185,7 +1979,7 @@ p.firstp {
     color: #08C;
 }
 
-#sitecontent #contact-info .social-links a {
+#contact-info .social-links a {
     text-indent: -119988px;
     overflow: hidden;
     text-align: left;
@@ -2197,20 +1991,20 @@ p.firstp {
     margin-right: 5px;
 }
 
-#sitecontent #contact-info .social-links a {
+#contact-info .social-links a {
     background-color: #9E9E9E;
     border-radius: 50%;
 }
 
-#sitecontent #contact-info .social-links a.fb:hover {
+#contact-info .social-links a.fb:hover {
     background-color: #3C599B;
 }
 
-#sitecontent #contact-info .social-links a.tt:hover {
+#contact-info .social-links a.tt:hover {
     background-color: #1CA8E3;
 }
 
-#sitecontent #contact-info .social-links a.ln:hover {
+#contact-info .social-links a.ln:hover {
     background-color: #4975B6;
 }
 
@@ -2222,7 +2016,7 @@ p.firstp {
     margin-bottom: 10px;
 }
 
-h1.privacy-heading {
+h2.privacy-heading {
     font-size: 27px;
     line-height: 18px;
     font-weight: normal;
@@ -2246,6 +2040,25 @@ h3.sub-head {
 
 em.note-line {
     text-decoration: underline;
+}
+
+.form-list textarea {
+    height: 142px;
+}
+
+.form-list .input-box1 {
+    width: 100%;
+    border-radius: 3px;
+    clear: both;
+    position: relative;
+}
+
+li.submitbutton {
+    text-align: right;
+}
+
+.contact-info {
+    margin-top: 15px;
 }
 
 /*----------------------------------- careers page ---------------------------*/
