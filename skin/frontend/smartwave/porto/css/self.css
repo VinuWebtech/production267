@@ -2124,3 +2124,51 @@ li.submitbutton {
 .para-content {
     font-size: 14px;
 }
+
+/* --------------------------- track order page -------------------------- */
+
+.trackorder-btn {
+    margin-left: 18%;
+    height: 35px;
+    min-width: 143px;
+    border: 0px none;
+    font-size: 12px;
+    padding: 6px 16px;
+    cursor: pointer;
+    border-radius: 2px;
+    background: #F3A847 none repeat scroll 0% 0%;
+    color: #FFF;
+}
+
+.trackpage_seprator1 {
+    background-color: #E5E5E5;
+    float: left;
+    height: 150px;
+    margin: 24px;
+    width: 1px !important;
+}
+
+.trackpage_seprator1 span {
+    background: #041371 none repeat scroll 0px 0px;
+    left: -27px;
+    padding: 17px;
+    position: relative;
+    top: 65px;
+    z-index: 1;
+    border-radius: 50%;
+    color: #FFF;
+}
+
+.trackorderlogin-btn {
+    margin-left: 3%;
+    height: 35px;
+    min-width: 143px;
+    border: 0px none;
+    font-size: 12px;
+    padding: 6px 16px;
+    cursor: pointer;
+    border-radius: 2px;
+    background: #F3A847 none repeat scroll 0% 0%;
+    color: #FFF;
+}
+/* ---------------------------------------------------------------------- */
