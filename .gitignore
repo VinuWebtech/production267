@@ -1,5 +1,6 @@
 app/etc/local.xml
 robots.txt
+sitemap.xml
 var/*
 media/*
 downloader/cache.cfg
