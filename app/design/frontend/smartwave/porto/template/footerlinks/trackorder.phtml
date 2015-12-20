@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="privacypage-header">
+		<h2 class="privacy-heading">Track Order</h2>
+	</div>
+	<div class="col-sm-5">
+		<strong>Track using Order ID</strong>
+		<?php echo $this->getMessagesBlock()->toHtml() ?>
+	    <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">
+	        <?php echo $this->getBlockHtml('formkey'); ?>
+	        <ul class="form-list">
+	        	<li>
+	                <div class="pop-form row">
+	                    <label for="pass"><?php echo $this->__('Order ID') ?></label>
+	                    <input type="orderid" name="login[password]" class="txtbx txtbx-wid0" id="pass" placeholder="" title="<?php echo $this->__('orderid') ?>" />
+	                </div>
+	            </li>
+	            <li>
+	                <div class="pop-form row">
+	                    <label for="email"><?php echo $this->__('Email') ?></label>
+	                    <input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="txtbx txtbx-wid0  required-entry validate-email" placeholder="Enter Email ID used to place the order" title="<?php echo $this->__('Email Address') ?>" />
+	                </div>
+	            </li>
+	            <li>
+	                <div class="pop-form row">
+	                	<button id="signin-btn" class="clr-fff btn-common2 trackorder-btn" type="submit"><?php echo $this->__('View Order Status') ?></button>
+	                </div>
+	            </li>
+	        </ul>
+	    </form>
+	</div>
+	<div class="col-2">
+        <div class="trackpage_seprator1">
+            <span class=" c999"> OR </span>
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <strong>Login and do more!</strong>
+        <ul>
+	        <li><div class="pop-form row">Track individual Orders</div></li>
+	        <li><div class="pop-form row">View your Order history</div></li>
+	        <li><div class="pop-form row">Cancel Individual Orders</div></li>
+	        <li><div class="pop-form row">Review products</div></li>
+        </ul>
+        <div class="pop-form row">
+	        <button id="signin-btn" class="clr-fff btn-common2 trackorderlogin-btn" type="submit"><?php echo $this->__('Login') ?></button>
+	    </div>
+    </div>
+</div>
