@@ -1304,8 +1304,9 @@ table{
     border-top-style: solid;
 }
 
+
 .checkoutheader {
-    padding: 20px 15px !important;
+    padding: 20px 15px 20px 0px !important;
 }
 
 .checkoutheader-container .checkoutheader > .logo {
@@ -1327,6 +1328,10 @@ table{
     line-height: 0;
     text-indent: -999em;
     overflow: hidden;
+}
+
+.checkoutheader .logo img {
+    max-width: 140px;
 }
 
 /*-------------------------------------------------------------------------------------------------*/
