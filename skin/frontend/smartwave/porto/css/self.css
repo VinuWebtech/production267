@@ -762,6 +762,10 @@ ul.list3 li {
     float: left;
 }
 
+.footer .container a.inside-link-first {
+    float: left;
+}
+
 .footer-bottom {
     padding: 0px;
     /*background-color: #0C0C0C;*/
