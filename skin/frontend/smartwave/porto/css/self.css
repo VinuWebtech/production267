@@ -574,11 +574,43 @@ ul.list3 li {
     color: #7A859E;
 }
 
-.footer-container {
-    /*background-color: #232F3E; /*#F0F0ED*/
-    border-top: 1px solid #DFDDDD;
-    background-color: #FDFBFC;
+.text-color11 {
+    color: #B7E3F0;
 }
+
+.text-color11:hover {
+    color: #B7E3F0;
+}
+
+.text-color12 {
+    color: #E7CD3C;
+}
+
+.footer-container1 {
+    background-image: url("../images/colorScheme/footer-pattern.png");
+    background-position: left top;
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+    background-color: #1C4154;
+    border-top: 1px solid #DFDDDD;
+}
+
+/*.footer-container2 {
+    background-image: url("../images/colorScheme/footer-pattern.png");
+    background-position: left top;
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+    background-color: #FDFBFC;
+    border-top: 1px solid #DFDDDD;
+}*/
+
+/*.footer-container {
+    /*background-color: #232F3E; /*#F0F0ED*/
+    /*border-top: 1px solid #DFDDDD;
+    background-color: #FDFBFC;
+}*/
 
 .footer-toppart {
    padding: 10px 0px;
@@ -586,12 +618,18 @@ ul.list3 li {
 
 .footer-top {
     padding: 0px 0px 15px 0px;
-    border-bottom: 1px solid #E1E1DF;
+    border-bottom: 1px solid #0B2137;/*#E1E1DF*/
 }
 
 .footertop-bg-color {
     /*background-color: #232F3E;*/
-    background-color: #FDFBFC;
+    /*background-color: #FDFBFC;*/
+    background-image: url("../images/colorScheme/footer-pattern.png");
+    background-position: left top;
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+    background-color: #1C4154;
 }
 
 .footer-top .block .block-title {
@@ -769,7 +807,13 @@ ul.list3 li {
 .footer-bottom {
     padding: 0px;
     /*background-color: #0C0C0C;*/
-    background-color: #FDFBFC;
+    /*background-color: #FDFBFC;*/
+    background-image: url("../images/colorScheme/footer-pattern.png");
+    background-position: left top;
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+    background-color: #1C4154;
 }
 
 .footer-bottom .custom-block {
@@ -2181,3 +2225,5 @@ li.submitbutton {
     color: #FFF;
 }
 /* ---------------------------------------------------------------------- */
+
+/* ------------------ changes to set colour scheme similar on lines of thomas cook -------- */

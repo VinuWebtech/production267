@@ -14,7 +14,7 @@
 	?>	
 		<div class="row footer-categories">
 			<h5 class="levelonecats">
-				<a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" class="footer-cat text-color" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?> : </a>
+				<a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" class="footer-cat text-color11" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?> : </a>
 			</h5>
 			<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
             <?php $_subcategories = $_category->getChildrenCategories() ?>
