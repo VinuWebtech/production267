@@ -27,7 +27,7 @@
         	    <li class="catItem2">
                     <div class="catbox2">
             	        <?php if($category->getThumbnail()): ?>
-                	       <a href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><img src="<?php echo $_image_helper->init($_product, 'small_image')->resize($ratio_width,$ratio_height); ?><?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt=""  /></a>
+                	       <a href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt=""  /></a>
             	        <?php endif; ?> 
                     </div>
                     <h5 class="category-name parent-category2"><a class="text-color" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><?php echo $category->getName(); ?></a></h5>
