@@ -292,15 +292,15 @@ button.button span {
 }
 
 h3.filter-title {
-    font-family: "proxima-nova",sans-serif;
+    
     font-style: normal;
     font-weight: 600;
     color: #2B333B;
     font-size: 16pt;
-    margin: 10px 205px 25px;
+    margin: 10px 205px 15px;
     text-align: center;
     border-bottom: 1px solid #D6D6D6;
-    padding: 0px 115px 15px;
+    padding: 0px 115px 10px;
     background: none;
 }
 
@@ -412,47 +412,24 @@ span.text-content1 span {
 /* ----------------------for Homepage CMS page Categories display block 2 ------------------ */
 
 .sub-cat-list2{
-    /*background-color: #E1E1DF;*/
-    /*background: transparent url("../images/dot-bg.png") repeat scroll 0px 0px;*/
-    /*background: #FFF url("../images/productContainer_bg.jpg") repeat-x scroll center 45px;*/
     margin-bottom: 20px;
     border: 1px solid #CCC;
-    padding: 30px;
+    padding: 15px;
     font-size: 13px;
 } 
 
-.sub-cat-list2 h3.filter-title .content {
-    /*background-color: #E1E1DF;*/
-}
-
 .sub-cat-list2 .img-list2 {
     display: inline-block;
-    padding-left: 25px;
+    padding-left: 0px;
 }
 
 .sub-cat-list2 .catItem2 {
-    margin: 0px 20px 22px;
+    width: 20%;
     float: left;
+    padding: 10px;
 }
 
-.sub-cat-list2 .catItem2 .catbox2 {
-    width: 161px;
-    height: 152px;
-    padding: 2px;
-    background: transparent url("../images/cat-bg.png") no-repeat scroll left top;
-    border-radius: 15px;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0px 0px 152px rgba(0, 0, 0, 0.1) inset;
-    -webkit-transition: all 200ms ease-in;
-    -webkit-transform: scale(1); 
-    -ms-transition: all 200ms ease-in;
-    -ms-transform: scale(1); 
-    -moz-transition: all 200ms ease-in;
-    -moz-transform: scale(1);
-    transition: all 200ms ease-in;
-    transform: scale(1);
-}
-
-.sub-cat-list2 .catItem2 .catbox2:hover {
+.sub-cat-list2 .catItem2:hover {
     z-index: 2;
     -webkit-transition: all 200ms ease-in;
     -webkit-transform: scale(1.1);
@@ -464,21 +441,32 @@ span.text-content1 span {
     transform: scale(1.1);
 }
 
-.sub-cat-list2 .catItem2 .parent-category2 {
-    text-align: center;
-    font: 16px/20px "ProximaBold",Arial Bold;
-    display: table-cell;
-    vertical-align: middle;
-    height: 35px;
-    width: 146px;
-    padding: 0px 3px;
+.sub-cat-list2 .catItem2 .catbox2 {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #DDD;
+    border-radius: 7px;
+    padding: 3px;
 }
 
 .sub-cat-list2 .catItem2 img {
-    width:100px;
-    height: 105px;
+    width: 100%;
+    height: 100%;
     display: block;
-    margin: auto;
+}
+
+.sub-cat-list2 .catItem2 .parent-category2 {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px;
+}
+
+.sub-cat-list2 .catItem2 .parent-category2 a:hover {
+    text-decoration: none;
+    color: #7A859E;
 }
 
 /* ----------------------for Homepage CMS page Categories display block 3 ------------------ */
@@ -494,10 +482,6 @@ span.text-content1 span {
     background-color: #FFF;
     box-shadow: 0px 0px 2px 1px #F3F3F3;
 } 
-
-ul.list3 {
-    padding: 0px 10px;
-}
 
 ul.list3 li {
     display: inline-block;
@@ -568,6 +552,7 @@ ul.list3 li {
 /*------------------- Best Sellers on homepage cms ----------------------------*/
 
 .homepage-products {
+    border: 1px solid #CCC;
     margin: 0px;
 }
 
@@ -676,6 +661,10 @@ ul.list3 li {
     text-decoration: none;
     display: inline-block;
     margin-left: 465px;
+}
+
+.parallax-slider .owl-carousel a:hover {
+    opacity: 0.9;
 }
 
 /* --------------------------------------------------------------------------------------*/

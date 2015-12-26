@@ -26,24 +26,11 @@
             ?>
         	    <li class="catItem2">
                     <div class="catbox2">
-                        <h5 class="category-name parent-category2"><a class="text-color" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><?php echo $category->getName(); ?></a></h5>
             	        <?php if($category->getThumbnail()): ?>
-                	       <a href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt=""  /></a>
+                	       <a href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><img src="<?php echo $_image_helper->init($_product, 'small_image')->resize($ratio_width,$ratio_height); ?><?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt=""  /></a>
             	        <?php endif; ?> 
-            	        <!--<div class="bottom">
-            		        <?php // show subs ?>
-            		        <?php $newSubCategories = explode(',', $category->getChildren()); ?>
-            		        <ul> 
-                		        <?php foreach ($newSubCategories as $newSubCategoryId): ?>
-                			        <?php $newCategory = Mage::getModel('catalog/category')->load($newSubCategoryId); ?>
-                    		        <li class="subCat">
-                    			        <a href="<?php echo $newCategory->getURL(); ?>" class="categoryLink" title="<?php echo $newCategory->getName(); ?>"><?php echo $newCategory->getName(); ?></a>
-                    		        </li>
-                		        <?php endforeach; ?>
-            		        </ul>
-            	        </div>
-            	        <a class="viewAll" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><span>Check All Categories</span></a>-->
                     </div>
+                    <h5 class="category-name parent-category2"><a class="text-color" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><?php echo $category->getName(); ?></a></h5>
         	    </li>
             <?php endif; ?>
         <?php endforeach; ?>
