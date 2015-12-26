@@ -191,6 +191,12 @@ body {
 
 .btn-default {
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-repeat: repeat;
+}
+
+.btn-default:hover {
+    background-color: transparent;
+    background-position: 0px 0px;
 }
 
 a.quickview-icon {
@@ -876,11 +882,11 @@ button.button2 {
 .orange2 {
     color: #FEF4E9;
     border: 1px solid #DA7C0C;
-    background: transparent -moz-linear-gradient(center top , #FAA51A, #F47A20) repeat scroll 0% 0%;
+    background: transparent linear-gradient(#FAA51A, #F47A20) repeat scroll 0% 0%;
 }
 
 .orange2:hover {
-    background: transparent -moz-linear-gradient(center top , #F88E11, #F06015) repeat scroll 0% 0%;
+    background: transparent linear-gradient(#F88E11, #F06015) repeat scroll 0% 0%;
 }
 
 .button2:hover {
@@ -2222,8 +2228,12 @@ li.submitbutton {
     padding: 6px 16px;
     cursor: pointer;
     border-radius: 2px;
-    background: #F3A847 none repeat scroll 0% 0%;
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#FAA51A, #F47A20);
     color: #FFF;
+}
+
+.trackorder-btn:hover {
+    opacity: 0.9;
 }
 
 .trackpage_seprator1 {
@@ -2254,9 +2264,15 @@ li.submitbutton {
     padding: 6px 16px;
     cursor: pointer;
     border-radius: 2px;
-    background: #F3A847 none repeat scroll 0% 0%;
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#FAA51A, #F47A20);
     color: #FFF;
 }
+
+.trackorderlogin-btn:hover {
+    opacity: 0.9;
+}
+
+
 /* ---------------------------------------------------------------------- */
 
 /* ------------------ changes to set colour scheme similar on lines of thomas cook -------- */
