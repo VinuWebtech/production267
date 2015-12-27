@@ -1,0 +1,109 @@
+<?php
+$helper =Mage::helper('vendor');
+$partner=$this->getProfileDetail();
+?>
+<script type="text/javascript">
+	if (typeof jQuery == 'undefined'){
+		document.write(unescape("%3Cscript src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+	}
+</script>
+<div class="wk_mp_design" style="padding-top: 10px;">
+	<div class="block block-account">	
+		<div class="block-title">	
+			<strong><span><h4><?php echo Mage::helper('vendor')->__("Recently Added Products") ?></h4></span></strong>
+		</div>
+	</div>
+	<div class="fieldset wk_mp_fieldset">
+		<div class="best-sell-box" style="display:none;">
+			<span class="ed_nav ed_left"></span>
+			<div class="best-sell">
+			<?php $m= new Mage;
+				$version=$m->getVersion();
+				$products=$this->getBestsellProducts();
+				foreach($products as $productid ){
+					$_product=Mage::getModel('catalog/product')->load($productid);
+					$stockItem = Mage::getModel('cataloginventory/stock_item');
+					$stockItem->loadByProduct($productid);
+					if($stockItem->getData('is_in_stock') == 1 && $_product->getStatus()==1){ ?>
+				<div class="best-sell-product">
+					<a href="<?php echo $_product->getProductUrl()?>">
+						<div class="image">
+							<img src=<?php echo Mage::helper('catalog/image')->init($_product, 'image')->resize(265);?> />
+						</div>
+						<div class="name" title="<?php echo $_product->getName() ?>"><?php echo substr($_product->getName(),0,25) ?></div>
+					</a>
+				</div>
+				<?php }
+				}
+			?>
+			</div>
+			<span class="ed_nav ed_right"></span>
+		</div>
+	</div>
+</div>
+<?php
+if(Mage::getStoreConfig('vendor/vendor_options/partner_policy_approval')){?>
+	<div class="wk_mp_design" style="padding-top: 10px;" id="return-policy">
+		<div class="block block-account">	
+			<div class="block-title">	
+				<strong><span><h4><?php echo $helper->__("Returns Policies") ?></h4></span></strong>
+			</div>
+		</div>
+		<div class="fieldset wk_mp_fieldset">
+			<div class="wk_mp_detail">		
+				<div class="row">
+					<span class="data"><?php echo $partner->getReturnpolicy();?></span>		
+				</div>
+			</div>
+			<a href="#" class="wk_top_page"><?php echo $helper->__("Top of Page")?></a>
+		</div>
+	</div>
+
+	<div class="wk_mp_design" style="padding-top: 10px;" id="shipping-policy">
+		<div class="block block-account">	
+			<div class="block-title">	
+				<strong><span><h4><?php echo $helper->__("Shipping Policies") ?></h4></span></strong>
+			</div>
+		</div>
+		<div class="fieldset wk_mp_fieldset">
+			<div class="wk_mp_detail">		
+				<div class="row">
+					<span class="data"><?php echo $partner->getShippingpolicy();?></span>		
+				</div>
+			</div>
+			<a href="#" class="wk_top_page"><?php echo $helper->__("Top of Page")?></a>
+		</div>
+	</div>
+<?php
+}?>
+<style>
+.best-sell{width:<?php echo (181*sizeof($products))?>px;}
+</style>
+<script>
+$wk_jq=jQuery.noConflict();
+(function($wk_jq){	
+	$wk_jq(function(){
+		if($wk_jq('.best-sell .best-sell-product').length > 0){
+			$wk_jq('.best-sell-box').show();
+		}
+		var wk_slider=$wk_jq('.best-sell .best-sell-product').length;
+
+		$wk_jq('.ed_right').click(function() {
+			if(wk_slider>3)
+			{
+			var thisthis=$wk_jq(this).siblings('.best-sell');
+			thisthis.animate({"left":"-=480"},1500);
+			wk_slider=wk_slider-3;
+			}
+		});
+		
+		$wk_jq('.ed_left').click(function() {
+			var thisthis=$wk_jq(this).siblings('.best-sell');
+			if(wk_slider<$wk_jq('.best-sell .best-sell-product').length){
+				thisthis.animate({"left":"+=480"},1500);
+				wk_slider=wk_slider+3;
+			}
+		});
+	});
+})($wk_jq);
+</script>

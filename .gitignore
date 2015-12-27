@@ -9,5 +9,4 @@ downloader/connect.cfg
 .git/*
 /index.php
 app/etc/fpc.xml
-sitemap.xml
 a.php

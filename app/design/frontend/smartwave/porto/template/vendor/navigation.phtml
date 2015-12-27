@@ -1,0 +1,128 @@
+<?php 
+	$partner = Mage::getModel('vendor/userprofile')->isPartner(Mage::getSingleton('customer/session')->getCustomerId()); 
+	$magentoCurrentUrl = Mage::helper('core/url')->getCurrentUrl(); 
+	$helper=Mage::helper('vendor');
+	$allow_pro_type=Mage::getStoreConfig('vendor/vendor_options/allow_for_seller');
+?>
+<?php if($partner == Sz_Vendor_Model_Userprofile::IS_ONLY_CUSTOMER){ ?>
+<div class="block block-account">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('My Account'); ?></span></strong>
+    </div>
+    <div class="block-content">
+        <ul>
+            <?php $_links = $this->getLinks(); ?>
+            <?php $_index = 1; ?>
+            <?php $_count = count($_links); ?>
+            <?php foreach ($_links as $_link): ?>
+                <?php $_last = ($_index++ >= $_count); ?>
+                <?php if ($this->isActive($_link)): ?>
+                    <li class="current<?php echo ($_last ? ' last' : '') ?>"><strong><?php echo $_link->getLabel() ?></strong></li>
+                <?php else: ?>
+                    <li<?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php } else { ?>
+<div class="block block-account">
+		<div class="block-title">	
+			<strong><span><?php echo $helper->__('Vendor Menu') ?></span></strong>
+		</div>		
+		<div class="block-content">		
+			<ul class="wk_cont_ul">
+                    <li  <?php echo strpos($magentoCurrentUrl,'mydashboard')? "class=current":"";?>>
+                        <?php if(strpos($magentoCurrentUrl,'mydashboard')){ ?>
+                            <strong><?php echo $helper->__('My Dashboard') ?></strong>
+                        <?php }
+                        else{ ?>
+                            <a href="<?php echo $this->getUrl('vendor/vendoraccount/mydashboard'); ?>">
+                                <?php echo $helper->__('My Dashboard') ?>
+                            </a>
+                        <?php } ?>
+                    </li>
+                    <li  <?php echo strpos($magentoCurrentUrl,'vendor/vendoraccount/editprofile')? "class=current":"";?>>
+					<?php if(strpos($magentoCurrentUrl,'vendor/account/index/')){ ?>
+						<strong><?php echo $helper->__('Vendor Profile') ?></strong>
+						<?php }			
+						else{ ?>	
+							<a href="<?php echo $this->getUrl('vendor/account/index/'); ?>">
+								<?php echo $helper->__('Vendor Profile') ?>
+							</a>				
+					<?php } ?>		
+					</li>
+                    <li  <?php echo strpos($magentoCurrentUrl,'uploadproducts')? "class=current":"";?>>
+                    <?php if(strpos($magentoCurrentUrl,'uploadproducts')){ ?>
+                        <strong><?php echo $helper->__('Upload Product Csv') ?></strong>
+                        <?php }
+                        else{ ?>
+                            <a href="<?php echo $this->getUrl('vendor/vendoraccount/uploadproducts'); ?>">
+                                <?php echo $helper->__('Upload Product Csv') ?></a>
+                        <?php } ?>
+                    </li>
+                    <li  <?php echo strpos($magentoCurrentUrl,'uploadimages')? "class=current":"";?>>
+                        <?php if(strpos($magentoCurrentUrl,'uploadproducts')){ ?>
+                            <strong><?php echo $helper->__('Upload Product Images') ?></strong>
+                        <?php }
+                        else{ ?>
+                            <a href="<?php echo $this->getUrl('vendor/vendoraccount/uploadimages'); ?>">
+                                <?php echo $helper->__('Upload Product Images') ?></a>
+                        <?php } ?>
+                    </li>
+                    <li  <?php echo strpos($magentoCurrentUrl,'productcsvstatus')? "class=current":"";?>>
+                        <?php if(strpos($magentoCurrentUrl,'productcsvstatus')){ ?>
+                            <strong><?php echo $helper->__('Product File Status') ?></strong>
+                        <?php }
+                        else{ ?>
+                            <a href="<?php echo $this->getUrl('vendor/vendoraccount/productcsvstatus'); ?>">
+                                <?php echo $helper->__('Product File Status') ?></a>
+                        <?php } ?>
+                    </li>
+					<li  <?php echo (strpos($magentoCurrentUrl,'vendoraccount/new') && strpos($magentoCurrentUrl,'vendoraccount/newattribute')===false)? "class=current":"";?>>			
+					<?php if(strpos($magentoCurrentUrl,'vendoraccount/new') && strpos($magentoCurrentUrl,'vendoraccount/newattribute')===false){ ?>		
+						<strong><?php echo $helper->__('New Products') ?></strong>	
+						<?php }					
+						else{ ?>					
+							<a href="<?php echo $this->getUrl('vendor/vendoraccount/new'); ?>">
+								<?php echo $helper->__('New Products') ?>
+							</a>						
+						<?php } ?>			
+					</li>					
+					<li  <?php echo strpos($magentoCurrentUrl,'myproductslist')? "class=current":"";?>>			
+					<?php if(strpos($magentoCurrentUrl,'myproductslist')){ ?>		
+						<strong><?php echo $helper->__('My Products List') ?></strong>	
+						<?php }					
+						else{ ?>					
+							<a href="<?php echo $this->getUrl('vendor/vendoraccount/myproductslist'); ?>">
+								<?php echo $helper->__('My Products List') ?>
+							</a>						
+						<?php } ?>			
+					</li>
+
+					
+					<!--<li  <?php /*echo strpos($magentoCurrentUrl,'mytransaction')? "class=current":"";*/?>>
+						<?php /*if(strpos($magentoCurrentUrl,'mytransaction')){ */?>
+							<strong><?php /*echo $helper->__('My Transaction List') */?></strong>
+						<?php /*}
+						else{ */?>
+							<a href="<?php /*echo $this->getUrl('vendor/vendoraccount/mytransaction'); */?>"><?php /*echo $helper->__('My Transaction List') */?></a>
+						<?php /*} */?>
+					</li>-->
+								
+					<?php echo $this->getChildHtml();?>				
+					<li class="last <?php echo strpos($magentoCurrentUrl,'myorderhistory')? "current":"";?>">		
+						<?php if(strpos($magentoCurrentUrl,'myorderhistory')){ ?>	
+							<strong><?php echo $helper->__('My Order History') ?></strong>	
+						<?php }		
+						else{ ?>		
+							<a href="<?php echo $this->getUrl('vendor/vendoraccount/myorderhistory'); ?>">
+								<?php echo $helper->__('My Order History') ?>
+							</a>						
+						<?php } ?>	
+					</li>	
+
+			</ul>	
+		</div>	
+	</div>
+<?php } ?>

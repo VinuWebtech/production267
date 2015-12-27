@@ -1,0 +1,22 @@
+
+
+    <div class="col-2 addresses-additional">
+        <h2><?php echo $this->__('Additional Address Entries') ?></h2>
+        <ol>
+        <?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
+            <?php foreach($_pAddsses as $_address): ?>
+            <li class="item">
+                <address>
+                    <?php echo $this->getAddressHtml($_address) ?>
+                </address>
+                <p><a href="<?php echo $this->getUrl('vendor/address/edit', array('id'=>$_address->getId())) ?>"><?php echo $this->__('Edit Address') ?></a></p>
+            </li>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <li class="item empty">
+                <p><?php echo $this->__('You have no additional address entries in your address book.') ?></p>
+            </li>
+        <?php endif ?>
+        </ol>
+    </div>
+
