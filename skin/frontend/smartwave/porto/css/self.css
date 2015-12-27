@@ -942,8 +942,16 @@ button.button2 {
     margin-left: 0px;
 }
 
-.footer-bottom .custom-block img {
-    padding: 10px 10px;
+.footer-bottom .custom-block img.payimage1 {
+    padding: 10px 4px 10px 10px;
+    height: 48px;
+    width: 64px;
+}
+
+.footer-bottom .custom-block img.payimage {
+    padding: 10px 4px 10px 4px;
+    height : 48px;
+    width: 58px;
 }
 
 .footer-bottom address {
