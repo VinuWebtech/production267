@@ -297,7 +297,9 @@
         </reference>
         <!-- changes end -->
         <reference name="left">
-            <block type="cms/block" name="custom_side_block" after="-"><action method="setBlockId"><block_id>porto_left_side_category</block_id></action></block>
+            <block type="catalog/navigation" name="catalog.leftnav" after="currency" template="catalog/navigation/left.phtml"/>
+            <!-- vinu changes to remove additional items from left navigation -->
+            <!--<block type="cms/block" name="custom_side_block" after="-"><action method="setBlockId"><block_id>porto_left_side_category</block_id></action></block>-->
         </reference>
     </catalogsearch_result_index>
     <catalogsearch_advanced_index>
@@ -305,7 +307,8 @@
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
         <reference name="left">
-            <block type="cms/block" name="custom_side_block" after="-"><action method="setBlockId"><block_id>porto_left_side_category</block_id></action></block>
+            <!-- vinu changes to remove additional items from left navigation -->
+            <!--<block type="cms/block" name="custom_side_block" after="-"><action method="setBlockId"><block_id>porto_left_side_category</block_id></action></block>-->
         </reference>
     </catalogsearch_advanced_index>
     <catalogsearch_advanced_result>
@@ -325,7 +328,9 @@
         </reference>
         <!-- changes end -->
         <reference name="left">
-            <block type="cms/block" name="custom_side_block" after="-"><action method="setBlockId"><block_id>porto_left_side_category</block_id></action></block>
+            <block type="catalog/navigation" name="catalog.leftnav" after="currency" template="catalog/navigation/left.phtml"/>
+            <!-- vinu changes to remove additional items from left navigation -->
+            <!--<block type="cms/block" name="custom_side_block" after="-"><action method="setBlockId"><block_id>porto_left_side_category</block_id></action></block>-->
         </reference>
     </catalogsearch_advanced_result>
     <contacts_index_index>
