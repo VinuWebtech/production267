@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Email Log integration.
+*
+* @package    Sz_EmailLog
+* @author     Yugesh Ramteke <yugesh.ramteke@zeonsolutions.com>
+*/
+-->
+<config>
+    <modules>
+        <Sz_EmailLog>
+            <version>1.0.0</version>
+        </Sz_EmailLog>
+    </modules>
+    <global>
+        <helpers>
+            <emaillog>
+                <class>Sz_EmailLog_Helper</class>
+            </emaillog>
+        </helpers>
+        <blocks>
+            <emaillog>
+                <class>Sz_EmailLog_Block</class>
+            </emaillog>
+        </blocks>
+        <models>
+            <emaillog>
+                <class>Sz_EmailLog_Model</class>
+                <resourceModel>emaillog_mysql4</resourceModel>
+            </emaillog>
+             <emaillog_mysql4>
+                <class>Sz_EmailLog_Model_Mysql4</class>
+                <entities>
+                    <email_log><table>log_email</table></email_log>
+                </entities>
+            </emaillog_mysql4>
+            <newsletter>
+                <rewrite>
+                    <template>Sz_EmailLog_Model_Newsletter_Template</template>
+                </rewrite>
+            </newsletter>
+            <core>
+                <rewrite>
+                    <email>Sz_EmailLog_Model_Email</email>
+                    <email_template>Sz_EmailLog_Model_Email_Template</email_template>
+                </rewrite>
+            </core>
+        </models>
+        <resources>
+            <emaillog_setup>
+                <setup>
+                    <module>Sz_EmailLog</module>
+                    <class>Sz_EmailLog_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </emaillog_setup>
+            <emaillog_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </emaillog_write>
+            <emaillog_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </emaillog_read>
+        </resources> 
+        <events>
+          <emaillog_email_before_send>
+            <observers>
+              <emaillog_email_before_send_observer>
+                <type>singleton</type>
+                <class>emaillog/observer</class>
+                <method>log</method>
+              </emaillog_email_before_send_observer>
+            </observers>
+          </emaillog_email_before_send>
+        </events>
+    </global>
+    <frontend>
+            <routers>
+                  <emaillog>
+                        <use>standard</use>
+                        <args>
+                          <module>Sz_EmailLog</module>
+                          <frontName>emaillog</frontName>
+                        </args>
+                  </emaillog>
+            </routers>
+    </frontend>
+    <admin>
+        <routers>
+            <emaillog>
+                <use>admin</use>
+                <args>
+                    <module>Sz_EmailLog</module>
+                    <frontName>emaillog</frontName>
+                </args>
+            </emaillog>
+        </routers>
+    </admin>
+    <crontab>
+        <jobs>
+            <clear_emaillog>
+                <schedule><cron_expr>0 0 * * * </cron_expr></schedule>
+                <run><model>emaillog/observer::clearEmailLogs</model></run>
+            </clear_emaillog>
+        </jobs>
+    </crontab>
+</config>

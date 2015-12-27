@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<adminhtml_system_config_edit>		
+		<update handle="editor"/>		
+		<reference name="head">			
+			<action method="setCanLoadTinyMce"><load>1</load></action>		
+		</reference>	
+	</adminhtml_system_config_edit>
+	<vendor_adminhtml_partners_index>
+        <reference name="content">
+            <block type="vendor/adminhtml_partners" name="partners" />
+            <block type="core/template" template="vendor/denyvendor.phtml"/>
+        </reference>
+    </vendor_adminhtml_partners_index>
+	<vendor_adminhtml_order_index>
+        <reference name="content">
+            <block type="vendor/adminhtml_order" name="order" />
+            <block type="core/template" template="vendor/payvendor.phtml"/>
+        </reference>
+    </vendor_adminhtml_order_index>
+    <vendor_adminhtml_transaction_index>
+        <reference name="content">
+            <block type="vendor/adminhtml_transaction" name="transaction" />
+        </reference>
+    </vendor_adminhtml_transaction_index>
+	<vendor_adminhtml_products_index>
+        <reference name="content">
+            <block type="vendor/adminhtml_products" name="products" />
+        </reference>
+    </vendor_adminhtml_products_index>
+    <vendor_adminhtml_products_approveproducts>
+        <reference name="content">
+            <block type="vendor/adminhtml_approvedproducts" name="approvedproducts" />
+        </reference>
+    </vendor_adminhtml_products_approveproducts>
+    <vendor_adminhtml_products_processcsv>
+<!--        <reference name="head">
+            <action method="addCss"><name>/vendor/styles.css</name><params/></action>
+        </reference>-->
+        <reference name="content">
+            <block type="vendor/adminhtml_uploader" name="products" />
+        </reference>
+    </vendor_adminhtml_products_processcsv>
+	<vendor_adminhtml_commisions_index>
+        <reference name="content">
+            <block type="vendor/adminhtml_commisions" name="commisions" />
+        </reference>
+    </vendor_adminhtml_commisions_index>
+	<vendor_adminhtml_feedback_index>
+        <reference name="content">
+            <block type="vendor/adminhtml_feedback" name="feedback" />
+        </reference>
+    </vendor_adminhtml_feedback_index>
+	<adminhtml_sales_order_view> 
+		<reference name="order_items">
+            <action method="addItemRender"><type>default</type><block>adminhtml/sales_order_view_items_renderer_default</block><template>sales/order/view/items/renderer/default.phtml</template></action>
+            <action method="addColumnRender"><column>name</column><block>adminhtml/sales_items_column_name</block><template>vendor/sales/items/column/name.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_view>
+	<adminhtml_sales_order_invoice_new>
+		<reference name="order_items">
+            <action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>sales/order/invoice/create/items/renderer/default.phtml</template></action>
+            <action method="addColumnRender"><column>name</column><block>adminhtml/sales_items_column_name</block><template>vendor/sales/items/column/name.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_invoice_new>
+	 <adminhtml_sales_order_shipment_new>
+		<reference name="order_items">
+           <action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>sales/order/shipment/create/items/renderer/default.phtml</template></action>
+            <action method="addColumnRender"><column>name</column><block>adminhtml/sales_items_column_name</block><template>vendor/sales/items/column/name.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_shipment_new>
+	<adminhtml_sales_order_shipment_view>
+		 <reference name="shipment_items">
+           <action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>sales/order/shipment/view/items/renderer/default.phtml</template></action>
+            <action method="addColumnRender"><column>name</column><block>adminhtml/sales_items_column_name</block><template>vendor/sales/items/column/name.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_shipment_view>
+	 <adminhtml_sales_order_invoice_updateqty>
+        <reference name="order_items">
+            <action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>sales/order/invoice/create/items/renderer/default.phtml</template></action>
+           <action method="addColumnRender"><column>name</column><block>adminhtml/sales_items_column_name</block><template>vendor/sales/items/column/name.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_invoice_updateqty>
+	<adminhtml_sales_order_invoice_view>
+        <reference name="invoice_items">
+            <action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>sales/order/invoice/view/items/renderer/default.phtml</template></action>
+            <action method="addColumnRender"><column>name</column><block>adminhtml/sales_items_column_name</block><template>vendor/sales/items/column/name.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_invoice_view>
+	<adminhtml_sales_order_creditmemo_new>
+        <reference name="order_items">
+            <action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>sales/order/creditmemo/create/items/renderer/default.phtml</template></action>
+            <action method="addColumnRender"><column>name</column><block>adminhtml/sales_items_column_name</block><template>vendor/sales/items/column/name.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_creditmemo_new>
+
+    <adminhtml_sales_order_creditmemo_updateqty>
+        <reference name="order_items">
+            <action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>sales/order/creditmemo/create/items/renderer/default.phtml</template></action>
+            <action method="addColumnRender"><column>name</column><block>adminhtml/sales_items_column_name</block><template>vendor/sales/items/column/name.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_creditmemo_updateqty>
+    <adminhtml_sales_order_creditmemo_view>
+        <reference name="creditmemo_items">
+            <action method="addItemRender"><type>default</type><block>adminhtml/sales_items_renderer_default</block><template>sales/order/creditmemo/view/items/renderer/default.phtml</template></action>
+             <action method="addColumnRender"><column>name</column><block>adminhtml/sales_items_column_name</block><template>vendor/sales/items/column/name.phtml</template></action>
+        </reference>
+    </adminhtml_sales_order_creditmemo_view>
+</layout>

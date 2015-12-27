@@ -1,0 +1,289 @@
+<?php 
+$isPartner= Mage::getModel('vendor/userprofile')->isPartner(); 
+$helper= Mage::helper('vendor');
+if($isPartner==1){
+    ?>
+    <div class="page-title">
+        <h1 style="float:left;"><?php echo $helper->__('Product Csv Status') ?></h1>
+    </div>    
+    <div class="wk_mp_design">
+        <div class="block block-account">    
+            <div class="block-title">    
+                <strong><span><h4><?php echo $helper->__('Product CSV List') ?></h4></span></strong>
+            </div>
+        </div>
+        <div class="fieldset wk_mp_fieldset">
+            <div class="grid">
+                <div class="hor-scroll">
+                    <form action="<?php echo Mage::helper('core/url')->getCurrentUrl();?>" method="post">
+                        <table cellspacing="0" class="border wk_mp_list_table">
+                            <thead>
+                                <tr id="wk_mp_tr_heading">
+                                    <th><span><?php echo $helper->__('File Name') ?></span></th>
+                                    <th><span><?php echo $helper->__('File Type') ?></span></th>
+                                    <th><span><?php echo $helper->__('Uploaded Date') ?></span></th>
+                                    <th><span><?php echo $helper->__('Status') ?></span></th>
+                                    <th><span>&nbsp;</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="wk_mp_body">
+                                <tr>
+                                    <td>
+                                        <input type="text" class="input-text" name="s" placeholder='<?php echo $helper->__('Search by File name') ?>' value="<?php echo $this->getRequest()->getParam('s')?>"/>
+                                    </td>
+                                    <td>
+                                        <select name="file_type" class="input-text">
+                                            <option value=""><?php echo $helper->__('All') ?></option>
+                                            <option value="1" <?php if($this->getRequest()->getParam('file_type') == Sz_Vendor_Model_Uploader::PRODUCT_FILE_CSV) echo 'selected="selected"'?>>
+                                                <?php echo $helper->__('CSV File') ?>
+                                            </option>
+                                            <option value="2" <?php if($this->getRequest()->getParam('file_type') == Sz_Vendor_Model_Uploader::PRODUCT_IMAGE) echo 'selected="selected"'?>>
+                                                <?php echo $helper->__('Image File') ?>
+                                            </option>
+
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <span class="wk_mp_td_span">
+                                            <?php echo $helper->__('From: ') ?>
+                                            <input name="from_date" id="special_from_date" class="input-text" value="<?php echo $this->getRequest()->getParam('from_date')?>" />
+                                        </span>                                
+                                        <span class="wk_mp_td_span">
+                                            <?php echo $helper->__('To: ') ?>
+                                            <input name="to_date" id="special_to_date" class="input-text" value="<?php echo $this->getRequest()->getParam('to_date')?>" />
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <select name="prostatus" class="input-text">
+                                            <option value=""><?php echo $helper->__('All') ?></option>
+                                            <option value="4" <?php if($this->getRequest()->getParam('status') == 4) echo 'selected="selected"'?>>
+                                                <?php echo $helper->__('Pending') ?>
+                                            </option>
+                                            <option value="1" <?php if($this->getRequest()->getParam('status') == Sz_Vendor_Model_Uploader::WORKING) echo 'selected="selected"'?>>
+                                                <?php echo $helper->__('Working') ?>
+                                            </option>
+                                            <option value="2" <?php if($this->getRequest()->getParam('status') == Sz_Vendor_Model_Uploader::COMPLETE) echo 'selected="selected"'?>>
+                                                <?php echo $helper->__('Complete') ?>
+                                            </option>
+                                            <option value="3" <?php if($this->getRequest()->getParam('status') == Sz_Vendor_Model_Uploader::ERROR) echo 'selected="selected"'?>>
+                                                <?php echo $helper->__('Error') ?>
+                                            </option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button class="button" title="Save" type="submit">
+                                            <span><span><span><?php echo $helper->__('Submit') ?></span></span></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <?php 
+                    if(count($this->getCollection())==0){ ?>        
+                        <div class="fieldset wk_mp_fieldset">
+                            <div class="wk_emptymsg">
+                                <?php echo $helper->__('No Files Available') ?>
+                            </div>
+                        </div>
+                        <?php 
+                    } else{ ?>
+                            <table cellspacing="0" class="border wk_mp_list_table wk_mp_list_container_table">
+                                <thead>
+                                    <tr class="wk_content">
+
+                                        <th class="wk_first_td">
+                                            <span class="label name">
+                                                <?php echo $helper->__('File Name')?>
+                                            </span>
+                                        </th>
+                                        <th>
+                                            <span class="label name">
+                                                <?php echo $helper->__('File Type')?>
+                                            </span>
+                                        </th>
+                                        <th>
+                                            <span class="label date">
+                                                <?php echo $helper->__('Uploaded Date')?>
+                                            </span>
+                                        </th>
+                                        <th>
+                                            <span class="label pro_status">
+                                                <?php echo $helper->__('Status')?>
+                                            </span>
+                                        </th>
+                                        <th>
+                                            <span class="label">
+                                                <?php echo $helper->__('Action')?>
+                                            </span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+                                    $i = 0;
+                                    $cnt = count($this->getCollection());
+                                    foreach($this->getCollection() as $files){
+                                        $i++;
+                                        ?>
+                                        <tr class="wk_row_view <?php echo $class = ($i == $cnt)? 'wk_last_tr':''?>">
+                                            <td class="wk_first_td">
+                                                <span class="label pro_status">
+                                                        <?php echo $helper->__($files->getFileName())?>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                if ($files->getFileType() == Sz_Vendor_Model_Uploader::PRODUCT_FILE_CSV) {
+                                                    ?>
+                                                    <span class="label pro_status">
+                                                        <?php echo $helper->__('CSV FILE')?>
+                                                    </span>
+                                                <?php
+                                                }
+                                                ?>
+                                                <?php
+                                                if ($files->getFileType() == Sz_Vendor_Model_Uploader::PRODUCT_IMAGE) {
+                                                    ?>
+                                                    <span class="label pro_status">
+                                                        <?php echo $helper->__('Image File')?>
+                                                    </span>
+                                                <?php
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <span class="label pro_status">
+                                                    <?php echo $helper->__($files->getCreatedAt())?>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                    if ($files->getStatus() == Sz_Vendor_Model_Uploader::COMPLETE) {
+                                                ?>
+                                                    <span class="label pro_status">
+                                                        <?php echo $helper->__('COMPLETE')?>
+                                                    </span>
+                                                <?php
+                                                    }
+                                                ?>
+                                                <?php
+                                                if ($files->getStatus() == Sz_Vendor_Model_Uploader::PENDING) {
+                                                    ?>
+                                                    <span class="label pro_status">
+                                                        <?php echo $helper->__('PENDING')?>
+                                                    </span>
+                                                <?php
+                                                }
+                                                ?>
+                                                <?php
+                                                if ($files->getStatus() == Sz_Vendor_Model_Uploader::ERROR) {
+                                                    ?>
+                                                    <span class="label pro_status">
+                                                        <?php echo $helper->__('ERROR')?>
+                                                    </span>
+                                                <?php
+                                                }
+                                                ?>
+                                                <?php
+                                                if ($files->getStatus() == Sz_Vendor_Model_Uploader::WORKING) {
+                                                    ?>
+                                                    <span class="label pro_status">
+                                                        <?php echo $helper->__('WORKING')?>
+                                                    </span>
+                                                <?php
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <span class="label wk_action">
+                                                    <a href="<?php echo Mage::getUrl('vendor/vendoraccount/download', array('_secure' => true, 'fileid'=>urlencode($files->getId()))); ?>" target="_top"><?php echo $helper->__('Download File')?></a>
+                                                </span>    
+                                            </td>                        
+                                        </tr>
+                                        <?php
+                                    }?>
+                                </tbody>
+                            </table>
+                        <?php
+                    }?>
+                </div>
+            </div>
+            <?php echo $this->getPagerHtml(); ?>        
+        </div>    
+        <div class="buttons-set">
+            <p class="back-link">
+                <a href="javascript:;" onclick="javascript: window.history.back();" class="left">&laquo; <?php echo $helper->__('Back') ?></a>
+            </p>
+        </div>
+    </div>
+    <script> 
+    var $wk_jq=jQuery.noConflict();
+    var newCustomerProductForm1 = new VarienForm('formmassdelete', true);
+    (function($wk_jq){
+        $wk_jq( "#special_from_date" ).datepicker({dateFormat: "yy-mm-dd"});
+        $wk_jq( "#special_to_date" ).datepicker({dateFormat: "yy-mm-dd"});
+        $wk_jq('body').delegate('.mp_edit','click',function(){
+            var id=$wk_jq(this).parents('.wk_row_view').find('.hidden_id').val();    
+            var dicision=confirm('<?php echo $helper->__(" Are you sure you want to edit this product ? ")?>');
+            if(dicision==true){            
+                var $type_id=$wk_jq(this).attr('data-type');                
+                if($type_id=='simple')
+                    window.location = "<?php echo $this->getUrl('vendor/vendoraccount/editapprovedsimple/') ?>".concat("id/",id);    
+                if($type_id=='downloadable')
+                    window.location = "<?php echo $this->getUrl('vendor/vendoraccount/editapproveddownloadable/') ?>".concat("id/",id);            
+                if($type_id=='virtual')
+                    window.location = "<?php echo $this->getUrl('vendor/vendoraccount/editapprovedvirtual/') ?>".concat("id/",id);        
+                if($type_id=='configurable')
+                    window.location = "<?php echo $this->getUrl('vendor/vendoraccount/editapprovedconfigurable/') ?>".concat("id/",id);
+                    <?php
+                    echo $this->getChildHtml('mpgrouped_productslist');
+                    echo $this->getChildHtml('mpbundle_productslist');
+                    ?>
+            }
+        });
+        $wk_jq('#mass_delete_butn').click(function(e){
+            var flag =0;
+            $wk_jq('.mpcheckbox').each(function(){
+                if (this.checked == true){
+                    flag =1;
+                }
+            });
+            if (flag == 0){
+                alert("<?php echo $helper->__(' No Checkbox is checked ') ?>");
+                return false;
+            }
+            else{
+                var dicisionapp=confirm('<?php echo $helper->__(" Are you sure you want to delete these product ? ")?>');
+                if(dicisionapp==true){
+                    $wk_jq('#form-customer-product-new').submit();
+                }else{
+                    return false;
+                }
+            }
+        });
+
+        $wk_jq('#mpselecctall').click(function(event) {
+            if(this.checked) {
+                $wk_jq('.mpcheckbox').each(function() {
+                    this.checked = true;      
+                });
+            }else{
+                $wk_jq('.mpcheckbox').each(function() {
+                    this.checked = false;           
+                });         
+            }
+        });
+
+        $wk_jq('.mp_delete').click(function(){
+            var id=$wk_jq(this).parents('.wk_row_view').find('.hidden_id').val();
+            var dicisionapp=confirm('<?php echo $helper->__(" Are you sure you want to delete this product ? ")?>');
+            if(dicisionapp==true)
+                window.location = "<?php echo $this->getUrl('vendor/vendoraccount/delete/') ?>".concat("id/",id);
+        });
+    })($wk_jq);
+    </script>
+    <?php 
+}else{
+    echo "<h2 class='wk_new_msg'>".$helper->__("To BECOME SELLER PLEASE CONTACT TO ADMIN.")."</h2>";
+}?>

@@ -1,0 +1,152 @@
+<?php 
+$isPartner= Mage::getModel('vendor/userprofile')->isPartner(); 
+$helper= Mage::helper('vendor');
+if($isPartner==1){
+	?>
+	<script type="text/javascript">
+	if (typeof jQuery == 'undefined'){
+	    document.write(unescape("%3Cscript src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+	}
+	</script>
+	<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<div class="page-title">
+		<h1 style="float:left;"><?php echo $helper->__('My Order History') ?></h1>
+	</div>
+		<div class="wk_mp_design">
+			<div class="block block-account">	
+				<div class="block-title">	
+					<strong><span><h4><?php echo $helper->__('Order History') ?></h4></span></strong>
+				</div>
+			</div>
+			<div class="fieldset wk_mp_fieldset">
+				<div class="grid">
+					<div class="hor-scroll">
+						<form action="<?php echo Mage::helper('core/url')->getCurrentUrl();?>" method="post">
+							<table cellspacing="0" class="border wk_mp_list_table">
+							    <thead>
+							        <tr id="wk_mp_tr_heading">
+							            <th><span><?php echo $helper->__('Order Id') ?></span></th>
+							            <th><span><?php echo $helper->__('Date') ?></span></th>
+							            <th><span><?php echo $helper->__('Order Status') ?></span></th>
+							            <th><span>&nbsp;</span></th>
+							        </tr>
+							    </thead>
+							    <tbody class="wk_mp_body">
+							    	<tr>
+							    		<td>
+							    			<input type="text" class="input-text" name="s" placeholder='<?php echo $helper->__('Search by Order Id') ?>' value="<?php echo $this->getRequest()->getParam('s')?>" style="width:99%;"/>
+							    		</td>
+							    		<td>
+							    			<span class="wk_mp_td_span">
+							    				<?php echo $helper->__('From: ') ?>
+							    				<input name="from_date" id="special_from_date" class="input-text" value="<?php echo $this->getRequest()->getParam('from_date')?>" />
+							    			</span>				    			
+							    			<span class="wk_mp_td_span">
+							    				<?php echo $helper->__('To: ') ?>
+							    				<input name="to_date" id="special_to_date" class="input-text" value="<?php echo $this->getRequest()->getParam('to_date')?>" />
+							    			</span>
+							    		</td>
+							    		<td>
+						    				<select name="orderstatus" class="input-text">
+						    					<option value=""><?php echo $helper->__('All') ?></option>
+						    					<?php 
+						    					$orderstatus_coll = Mage::getModel('sales/order_status')->getResourceCollection()->getData();
+						    					foreach ($orderstatus_coll as $orderstatus) {
+						    						?>
+						    						<option value="<?php echo $orderstatus['status']?>" <?php if($this->getRequest()->getParam('orderstatus') == $orderstatus['status']) echo 'selected="selected"'?>>
+								    					<?php echo $orderstatus['label'] ?>
+								    				</option>
+						    						<?php
+						    					}
+						    					?>
+							    			</select>
+							    		</td>
+							    		<td>
+							    			<button class="button" title="Save" id="save_butn" type="submit">
+												<span><span><span><?php echo $helper->__('Submit') ?></span></span></span>
+											</button>
+							    		</td>
+							    	</tr>
+							    </tbody>
+							</table>
+						</form>
+						<?php 
+						if(count($this->getCollection())==0){ ?>		
+							<div class="fieldset wk_mp_fieldset">
+								<div class="wk_emptymsg">
+									<?php echo $helper->__('No Order Available') ?>
+								</div>
+							</div>
+							<?php 
+						} else{ ?>
+							<?php $i=0;
+							foreach($this->getCollection() as $res){
+								$order = Mage::getModel('sales/order')->load($res['mageorderid']);
+								$status=$order->getStatus();
+								$name=$order->getCustomerName();
+								if($res['mageorderid']>0){
+									$i++;?>
+									<div class="wk_orderbox <?php if($i==1) echo "wk_first_order"?>">
+										<div style="padding:7px 7px 0px 7px;">
+											<div class="wk_orderbox_content1">
+												<div class="wk_orderbox_details">
+													<div class="color">
+														<span class="wk_ordertitle_label"><?php echo $helper->__('Order') ?></span> <strong>#<?php echo $res['magerealorderid']; ?></strong>
+													</div>
+													<div class="name">
+														<?php echo Mage::getModel('vendor/saleslist')->getpronamebyorder($res['mageorderid']); ?>													
+														<a href="<?php echo $this->getUrl('vendor/vendoraccount/vieworder',array('id'=>$res['mageorderid']))?>">
+															<button class="button" title="<?php echo $helper->__('View Order') ?>" type="button">
+																<span><span><span><?php echo $helper->__('View Order') ?></span></span></span>
+															</button>
+														</a>
+													</div>
+												</div>
+												<div class="wk_dash_orderstatus">
+													<label for="name" class="wk_dash_label">
+															<div class="status <?php echo strtolower($status); ?>"><?php echo strtoupper($status); ?> </div>
+													</label> 
+												</div>
+											</div>
+											<div class="wk_orderbox_content2">
+												<div class="wk_orderbox_details">
+													<span class="wk_title_label"><?php echo $helper->__('Customer: ');?></span>
+													<span class="wk_label"><?php echo $name;?></span>&nbsp;&nbsp;
+													<span class="wk_title_label"><?php echo $helper->__('Date: ');?></span>
+													<span class="wk_label"><?php echo $res['cleared_at'];?></span>
+												</div>
+												<div class="wk_orderbox_total">
+													<span class="wk_title_label"><?php echo $helper->__('Order Total- ');?></span>
+													<span class="wk_label"><strong><?php echo Mage::helper('core')->currency(Mage::getModel('vendor/saleslist')->getPricebyorder($res['mageorderid']));?></strong>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="wk_clear"></div>
+								<?php }
+							} 	?>
+							<?php
+						}?>
+					</div>
+				</div>
+				<?php echo $this->getPagerHtml(); ?>		
+			</div>	
+			<div class="buttons-set">
+				<p class="back-link">
+					<a href="javascript:;" onclick="javascript: window.history.back();" class="left">&laquo; <?php echo $helper->__('Back') ?></a>
+				</p>
+			</div>
+		</div>
+		<script> 
+		var $wk_jq=jQuery.noConflict();
+		(function($wk_jq){
+			$wk_jq( "#special_from_date" ).datepicker({dateFormat: "yy-mm-dd"});
+			$wk_jq( "#special_to_date" ).datepicker({dateFormat: "yy-mm-dd"});			
+		})($wk_jq);
+		</script>
+		<?php 
+}else{
+	echo "<h2 class='wk_new_msg'>".$helper->__("To BECOME SELLER PLEASE CONTACT TO ADMIN.")."</h2>";
+}?>

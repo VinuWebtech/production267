@@ -10,3 +10,4 @@ downloader/connect.cfg
 /index.php
 app/etc/fpc.xml
 a.php
+sitemap.xml

@@ -1,0 +1,58 @@
+<?php
+$customerId = Mage::getSingleton('customer/session')->getCustomer()->getId();
+$isPartner= Mage::getModel('vendor/userprofile')->isPartner();
+$allow_pro_type=Mage::getStoreConfig('vendor/vendor_options/allow_for_seller');
+$helper=Mage::helper('vendor');
+if($isPartner==1){ ?>
+
+	<form action="<?php echo $this->getUrl('vendor/vendoraccount/uploadImagePost') ?>" method="POST" enctype="multipart/form-data" id="form-customer-products-upload">
+        <div class="page-title">
+            <h1 style="float:left;"><?php echo $helper->__("Manage Configurable Product's Attribute") ?></h1>
+            <button class="button wk_mp_btn" title="<?php echo $helper->__('Upload Product CSV') ?>" type="submit">
+                <span><span><?php echo $helper->__('Upload') ?></span></span>
+            </button>
+
+        </div>
+		<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+		<div class="wk_mp_design">
+			<div class="block block-account">	
+				<div class="block-title">	
+					<strong><span><h4><?php echo $helper->__('Upload Product Image Zip') ?></h4></span></strong>
+				</div>
+			</div>
+			<div class="fieldset wk_mp_fieldset" id="associate_product">
+				<ul class="form-list" id="cust">
+					<li>
+						<label class="required"><em>*</em><?php echo $helper->__('Zip File :') ?></label>
+						<div class="input-box">
+							<input type="file" class="input-text required-entry" name="product_image_file" id="product_image_file" />
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</form>
+	<div class="buttons-set">
+		<p class="required">* <?php echo $helper->__('Required Fields') ?></p>		
+		<p class="back-link">
+			<a href="javascript:;" onclick="javascript: window.history.back();" class="left">&laquo; <?php echo $helper->__('Back') ?></a>
+		</p>
+	</div>
+	<script> 
+		$wk_jq=jQuery.noConflict();
+		(function($wk_jq){
+			$wk_jq(function(){
+
+				new VarienForm('form-customer-products-upload', true);
+				$wk_jq("button#save").click( function() { 
+					if($wk_jq('#apply_to').is(":visible")){
+						$wk_jq('#protype').attr('disabled', 'disabled');
+					}
+				});
+			});
+		})($wk_jq);												
+	</script>
+	<?php 
+}  else {
+    echo "<h2 class='wk_new_msg'>".$helper->__("To BECOME SELLER PLEASE CONTACT TO ADMIN.")."</h2>";
+} ?>
