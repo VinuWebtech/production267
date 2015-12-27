@@ -1,0 +1,19 @@
+<?php 
+$helper = Mage::helper('vendor');
+?>
+<div class="wk_mp_design">
+	<div class="block block-account">	
+		<div class="block-title">	
+			<strong><span><h4><?php echo $helper->__("SELLER'S CATEGORY") ?></h4></span></strong>
+		</div>
+	</div>
+	<div class="fieldset wk_mp_fieldset" style="padding: 5px 10px;">
+		<ul class="cat_menu">
+		<?php foreach($this->getCategoryList() as $key => $value){
+			if($value['category_id']!=1){?>
+			<li><a href="<?php echo $this->getUrl('vendor/seller/collection').$this->getProfileDetail()->getprofileurl()."/?&c=".$value['category_id'];?>" <?php if($_GET["c"] == $value['category_id']){ ?> class="current" <?php }?>><?php echo $value['name']." (".sprintf('%02d',$value['countCategory']).") "; ?></a></li>
+		<?php }
+		} ?>
+		</ul>
+	</div>
+</div>

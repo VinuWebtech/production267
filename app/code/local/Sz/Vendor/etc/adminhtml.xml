@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<config>
+   <menu>
+		<vendor module="vendor">
+			<title>Vendor Management</title>
+            <sort_order>70</sort_order>
+			<!--<children>
+				<vendor_products>
+					<title>Manage Vendor Products</title>
+					<sort_order>2</sort_order>
+					<action>vendor/adminhtml_products</action>
+				</vendor_products>
+			</children>-->
+            <children>
+                <vendor_process_products>
+                    <title>Process Product CSV</title>
+                    <sort_order>4</sort_order>
+                    <action>vendor/adminhtml_products/processcsv</action>
+                </vendor_process_products>
+            </children>
+			<children>
+				<vendor_partners>
+					<title>Manage Vendors</title>
+					<sort_order>1</sort_order>
+					<action>vendor/adminhtml_partners</action>
+				</vendor_partners>
+			</children>
+			<children>
+				<vendor_commision>
+					<title>Manage Vendor Commission</title>
+					<sort_order>3</sort_order>
+					<action>vendor/adminhtml_commisions</action>
+				</vendor_commision>
+			</children>
+			<children>
+				<vendor_transaction>
+					<title>Vendors Transaction</title>
+					<sort_order>4</sort_order>
+					<action>vendor/adminhtml_transaction</action>
+				</vendor_transaction>
+			</children>
+			<children>
+				<vendor_feedback>
+					<title>Manage Vendor Feedback</title>
+					<sort_order>5</sort_order>
+					<action>vendor/adminhtml_feedback</action>
+				</vendor_feedback>
+			</children>
+			<children>
+				<configurevendor>
+	                <title>Configuration</title>
+	                <sort_order>6</sort_order>
+	                <action>adminhtml/system_config/edit/section/vendor</action>
+	            </configurevendor>
+	        </children>
+		</vendor>
+	</menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <vendor translate="title" module="vendor">
+                                        <title>vendor</title>
+                                    </vendor>
+                                </children>
+                            </config>
+                        </children>
+                    </system>                
+					<vendor module="vendor">
+						<title>Vendor Management</title>  
+						<children>
+							<vendor_products>
+								<title>Manage Products</title>
+								<sort_order>1</sort_order>
+								<action>vendor/adminhtml_products</action>
+							</vendor_products>
+						</children>
+						<children>
+							<vendor_partners>
+								<title>Manage Vendor</title>
+								<sort_order>2</sort_order>
+								<action>vendor/adminhtml_partners</action>
+							</vendor_partners>
+						</children>
+						<children>
+							<vendor_commision>
+								<title>Manage Commission</title>
+								<sort_order>3</sort_order>
+								<action>vendor/adminhtml_commisions</action>
+							</vendor_commision>
+						</children>
+						<children>
+							<vendor_transaction>
+								<title>Vendors Transaction</title>
+								<sort_order>4</sort_order>
+								<action>vendor/adminhtml_transaction</action>
+							</vendor_transaction>
+						</children>
+						 <children>
+							<vendor_feedback>
+								<title>Manage Feedback</title>
+								<sort_order>5</sort_order>
+								<action>vendor/adminhtml_feedback</action>
+							</vendor_feedback>
+						</children>
+						<children>
+							<configurevendor>
+				                <title>Configuration</title>
+				                <sort_order>6</sort_order>
+				                <action>adminhtml/system_config/edit/section/vendor</action>
+				            </configurevendor>
+				        </children>
+					</vendor>	
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,10 @@
+<?php 
+	$partner=$this->getProfileDetail(); 
+	$logo=$partner->getlogopic()==''?"noimage.png":$partner->getlogopic();
+	$logo=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'avatar/'.$logo;
+?>
+<div class="wk_logo_block">
+	<a href="<?php echo $this->getUrl('vendor/seller/profile').$partner->getProfileurl() ?>" >
+		<img class="bannerpicrs" src="<?php echo $logo;?>" />
+	</a>
+</div>

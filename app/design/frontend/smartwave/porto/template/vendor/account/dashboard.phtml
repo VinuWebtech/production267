@@ -1,0 +1,25 @@
+<?php
+$helper=Mage::helper('vendor');
+$isPartner= Mage::getModel('vendor/userprofile')->isPartner();
+$allow_pro_type=Mage::getStoreConfig('vendor/vendor_options/allow_for_seller');
+if($isPartner==1) {
+?>
+<div class="dashboard">
+    <div class="page-title">
+        <h1><?php echo $this->__('My Dashboard') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+    <?php echo $this->getChildHtml('vendor_hello') ?>
+    <div class="box-account box-info">
+        <div class="box-head">
+            <h2><?php echo $this->__('Account Information') ?></h2>
+        </div>
+        <?php /* Extensions placeholder */ ?>
+        <?php echo $this->getChildHtml('customer.account.dashboard.extra') ?>
+        <?php echo $this->getChildHtml('vendor_info') ?>
+        <?php echo $this->getChildHtml('vendor_address') ?>
+    </div>
+</div>
+<?php } else {
+    echo "<h2 class='wk_new_msg'>".$helper->__("To BECOME SELLER PLEASE CONTACT TO ADMIN.")."</h2>";
+} ?>
