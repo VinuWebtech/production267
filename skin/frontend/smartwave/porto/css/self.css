@@ -183,11 +183,26 @@ body {
     opacity: 0.9;
 }
 
+.header .form-search #cat option:hover {
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#FAA51A, #F47A20);
+}
+
 .header .form-search button.button:hover {
     opacity: 0.9;
 }
 
+.sorter .view-mode strong i {
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+}
 
+.sorter .view-mode strong i:hover {
+    opacity: 0.9;
+}
+
+.sorter .view-mode a:hover i {
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    opacity: 0.9;
+}
 
 .btn-default {
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
@@ -413,8 +428,8 @@ span.text-content1 span {
 
 .sub-cat-list2{
     margin-bottom: 20px;
-    border: 1px solid #CCC;
-    padding: 15px;
+    /*border: 1px solid #CCC;*/
+    /*padding: 15px;*/
     font-size: 13px;
 } 
 
@@ -442,12 +457,14 @@ span.text-content1 span {
 }
 
 .sub-cat-list2 .catItem2 .catbox2 {
-    width: 200px;
+    width: 208px;
     height: 200px;
     position: relative;
     overflow: hidden;
-    border: 1px solid #DDD;
-    border-radius: 7px;
+    border-left: 1px solid #DDD;
+    border-top: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    border-radius: 7px 7px 0px 0px;
     padding: 3px;
 }
 
@@ -462,6 +479,15 @@ span.text-content1 span {
     font-size: 14px;
     font-weight: 700;
     padding: 10px;
+    background: #d9d9d8 none repeat scroll 0% 0%;
+    border-left: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    border-radius: 0px 0px 7px 7px;
+}
+
+.sub-cat-list2 .catItem2 .parent-category2 a.text-color{
+    color: #2B333B;
 }
 
 .sub-cat-list2 .catItem2 .parent-category2 a:hover {
@@ -471,9 +497,13 @@ span.text-content1 span {
 
 /* ----------------------for Homepage CMS page Categories display block 3 ------------------ */
 
+ul.list3 {
+    margin: 0 auto;
+}
+
 .parent-category13 {
-    margin: 8px 0px;
-    font: 16px/20px "ProximaBold",Arial Bold;
+    margin: 8px 0px 8px 10px;
+    font: 16px/20px Arial;
 }
 
 .sub-cat-list3 {
@@ -484,7 +514,11 @@ span.text-content1 span {
 } 
 
 ul.list3 li {
+    text-align: center;
     display: inline-block;
+    position: relative;
+    margin: 0 auto;
+    vertical-align: top;
 }
 
 .sub-cat-list3 .catItem3 {
@@ -497,7 +531,7 @@ ul.list3 li {
 .sub-cat-list3 .catItem3 .parent-category3 {
     text-align: center;
     margin: 8px 0px;
-    font: 12px/20px "ProximaBold",Arial Bold;
+    font: 14px/20px Arial;
 }
 
 .sub-cat-list3 .catItem3 img {
@@ -1034,7 +1068,7 @@ button.button2 {
 }
 .category-product-item h1 a {
     left: 10px;
-    font: 16px/20px "ProximaBold",Arial Bold;
+    font: 16px/20px Arial;
     text-align: center;
     text-transform: uppercase;
 }
@@ -1069,7 +1103,7 @@ a {
 
 .category-product-item h1 a {
     left: 10px;
-    font: 16px/20px "ProximaBold",Arial Bold;
+    font: 16px/20px Arial;
     text-align: center;
     text-transform: uppercase;
 }
@@ -1539,6 +1573,11 @@ ul.category-list {
     height: 22px;
 }
 
+.block-category-nav .block-title:hover::before {
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    opacity: 0.9;
+}
+
 /*-------- adjusting subcat text label accordingly & removing curved border ----------------*/
 .block-category-nav {
     border-radius: 0px;
@@ -1604,6 +1643,11 @@ dl#narrow-by-list dd >ol {
     width: 22px;
     height: 22px;
     top: 59%;
+}
+
+.block-layered-nav dt:hover::before {
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    opacity: 0.9;
 }
 
 /*------- adjusting attribute text label accordingly & removing curved border ----------------*/
