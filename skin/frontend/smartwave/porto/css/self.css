@@ -179,6 +179,33 @@ body {
     list-style: outside none none;
 }
 
+.header a.logo:hover {
+    text-decoration: none;
+}
+
+.header .logo img {
+    background-color: #1f497d;
+    border: 2px solid #385d8a;
+    border-radius: 8px;
+}
+
+.header .logo span.main-logo {
+    background-color: #1f497d;
+    border: 2px solid #385d8a;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 31.5px;
+    font-weight: 700;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 1px 2px #a5a5a5;/*rgba(0, 0, 0, 0.2);*/
+}
+
+.header .logo span span.ziffy {
+    color: #ffc000;
+    font-size: 31.5px;
+    font-weight: 700;
+}
+
 .header .form-search #cat:hover {
     opacity: 0.9;
 }
@@ -298,6 +325,10 @@ button.button span {
 
 .shipping h2:hover::before {
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8) !important;
+}
+
+.dashboard .welcome-msg {
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
 }
 
 /* ----------------------for Homepage CMS page block bottom padding ------------------ */
