@@ -179,6 +179,8 @@ body {
     list-style: outside none none;
 }
 
+/* ------------------ changes to set colour scheme similar on lines of thomas cook -------- */
+
 .header a.logo:hover {
     text-decoration: none;
 }
@@ -2343,6 +2345,28 @@ li.submitbutton {
 }
 
 
-/* ---------------------------------------------------------------------- */
+/* ------- newsletter success message as popup-------- */
 
-/* ------------------ changes to set colour scheme similar on lines of thomas cook -------- */
+/*#messages {
+    margin: 100px 0 0 280px;
+    position: absolute;
+    text-align: center;
+    width: 360px;
+    z-index: 99;
+}
+ 
+.msgclose {
+    color: #DF280A;
+    float: right;
+    font-family: Comic Sans MS;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 8px;
+    text-decoration: none;
+}
+ 
+.success-msg, .error-msg, .note-msg, .notice-msg {
+    padding: 40px;
+}*/
+
+
