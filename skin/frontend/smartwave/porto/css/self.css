@@ -2345,6 +2345,11 @@ li.submitbutton {
 }
 
 
+/*-------- moving totop button from right to left for twak.to insertion ------------*/
+#totop {
+    left: 15px;
+}
+
 /* ------- newsletter success message as popup-------- */
 
 /*#messages {
