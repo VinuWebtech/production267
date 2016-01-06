@@ -58,13 +58,6 @@
             <action method="addJs"><script>self/jquery.hc-sticky.min.js</script></action>
             <!-- changes end -->
             <action method="addItem"><type>skin_js</type><name>js/checkout.js</name></action>
-            <!-- SZ changes start added -->
-            <action method="addItem"><type>skin_js</type><name>js/productloader.js</name></action>
-            <action method="addItem">
-                <type>skin_css</type>
-                <name>css/productloader.css</name>
-            </action>
-            <!-- changes end -->
             <action method="addJs"><script>self/jquery.sticky-kit.min.js</script></action>
         </reference>
         <reference name="header">
@@ -163,18 +156,6 @@
             <action method="setTemplate" ifconfig="porto_settings/category/page_layout" condition="two_column_right"><template>page/2columns-right.phtml</template></action>
             <action method="setTemplate" ifconfig="porto_settings/category/page_layout" condition="three_column"><template>page/3columns.phtml</template></action>
         </reference>
-        <!-- SZ changes start added -->
-        <reference name="head">
-            <action method="addItem"><type>skin_js</type><name>js/productloader.js</name></action>
-            <action method="addItem">
-                <type>skin_css</type>
-                <name>css/productloader.css</name>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="core/template" name="productloader" template="productloader/productloader.phtml" after="-" />
-        </reference>
-        <!-- changes end -->
         <reference name="page.header">
             <action method="setTemplate"><template>catalog/category/page_header.phtml</template></action>
         </reference>
@@ -191,18 +172,6 @@
             <action method="setTemplate" ifconfig="porto_settings/category/page_layout" condition="two_column_right"><template>page/2columns-right.phtml</template></action>
             <action method="setTemplate" ifconfig="porto_settings/category/page_layout" condition="three_column"><template>page/3columns.phtml</template></action>
         </reference>
-        <!-- SZ changes start added -->
-        <reference name="head">
-            <action method="addItem"><type>skin_js</type><name>js/productloader.js</name></action>
-            <action method="addItem">
-                <type>skin_css</type>
-                <name>css/productloader.css</name>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="core/template" name="productloader" template="productloader/productloader.phtml" after="-" />
-        </reference>
-        <!-- changes end -->
         <reference name="page.header">
             <action method="setTemplate"><template>catalog/category/page_header.phtml</template></action>
         </reference>
@@ -285,18 +254,6 @@
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
-        <!-- SZ changes start added -->
-        <reference name="head">
-            <action method="addItem"><type>skin_js</type><name>js/productloader.js</name></action>
-            <action method="addItem">
-                <type>skin_css</type>
-                <name>css/productloader.css</name>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="core/template" name="productloader" template="productloader/productloader.phtml" after="-" />
-        </reference>
-        <!-- changes end -->
         <reference name="left">
             <block type="catalog/navigation" name="catalog.leftnav" after="currency" template="catalog/navigation/left.phtml"/>
             <!-- vinu changes to remove additional items from left navigation -->
@@ -316,18 +273,6 @@
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
-        <!-- SZ changes start added -->
-        <reference name="head">
-            <action method="addItem"><type>skin_js</type><name>js/productloader.js</name></action>
-            <action method="addItem">
-                <type>skin_css</type>
-                <name>css/productloader.css</name>
-            </action>
-        </reference>
-        <reference name="content">
-            <block type="core/template" name="productloader" template="productloader/productloader.phtml" after="-" />
-        </reference>
-        <!-- changes end -->
         <reference name="left">
             <block type="catalog/navigation" name="catalog.leftnav" after="currency" template="catalog/navigation/left.phtml"/>
             <!-- vinu changes to remove additional items from left navigation -->
