@@ -58,6 +58,7 @@
             <action method="addJs"><script>self/jquery.hc-sticky.min.js</script></action>
             <!-- changes end -->
             <action method="addItem"><type>skin_js</type><name>js/checkout.js</name></action>
+            <action method="addJs"><script>self/jquery.sticky-kit.min.js</script></action>
         </reference>
         <reference name="header">
             <action method="setTemplate" ifconfig="porto_settings/header/type" condition="0"><template>page/html/header_type1.phtml</template></action>
