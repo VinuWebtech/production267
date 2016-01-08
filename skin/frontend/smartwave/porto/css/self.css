@@ -1974,6 +1974,19 @@ input#checkout_email {
     width: 80%;
 }
 
+input#checkout-password {
+    width: 80%;
+}
+
+label.login-option {
+    margin-top: 5px;
+}
+
+p.checkout-password-control-smltext {
+    font-size: 11px;
+    text-align: justify;
+}
+
 .opc .a-item {
     padding: 15px;
     background: #FFF;
