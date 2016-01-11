@@ -91,6 +91,10 @@ body {
     color: #F3A847;
 }
 
+.top-links .custom-block i.icon-phone {
+    margin-right: 5px;
+}
+
 .top-links .custom-block .num {
     border-left: 1px solid #F3A847;
     padding : 0px 5px 0px;
@@ -107,6 +111,11 @@ body {
 
 .header-container .welcome-msg {
     color: #FFF;
+}
+
+#info-login-create {
+    min-width: 400px;
+    min-height: 200px;
 }
 
 .header-container.type4 .search-area {
@@ -206,6 +215,10 @@ body {
     color: #ffc000;
     font-size: 31.5px;
     font-weight: 700;
+    /*
+    background: -webkit-linear-gradient(#FAA51A, #F47A20);;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
 }
 
 .header .form-search #cat:hover {
@@ -1564,7 +1577,7 @@ table{
     display: inline-block;
     vertical-align: middle;
     padding: 0px 15px;
-    margin: 0px 40px 0px 0px;
+    margin: 5px 40px 0px 0px;
     padding-left: 0px;
     float: left !important;
 }
