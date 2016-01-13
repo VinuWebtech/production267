@@ -96,6 +96,10 @@
             <remove name="checkout_cart_link"/>
             <!-- vinu changes start added -->
             <remove name="store_language"/>
+            <action method="removeLinkByUrl">
+                <url helper="customer/getAccountUrl"/>
+            </action>
+            <action method="removeLinkBlock"><blockName>wishlist_link</blockName></action>
             <!-- changes end -->
         </reference>
         <reference name="top.menu">
@@ -347,5 +351,11 @@
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
     </sendfriend_product_send>
+
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="addLink" translate="label title" module="customer"><label>My Account</label><url helper="customer/getAccountUrl"/><title>My Account</title><prepare/><urlParams/><position>10</position></action>
+        </reference>
+    </customer_logged_in>
 
 </layout>

@@ -3,7 +3,7 @@
     <default>
         <reference name="top.links">
             <action method="addLink" translate="label title" module="vendor">
-                <label>Vendor</label>
+                <label>Sell With Us</label>
                 <url>vendor/account/</url>
                 <title>Vendor</title>
                 <prepare>true</prepare>
