@@ -9,9 +9,7 @@
             <action method="addBodyClass" ifconfig="porto_settings/header/type" condition="11"><classname>side-header</classname></action>
             <action method="addBodyClass" ifconfig="porto_settings/general/layout" condition="full_width"><classname>full-width</classname></action>
         </reference>
-        <reference name="head">
-            <!--<action method="addJs"><script>smartwave/jquery/jquery-1.10.2.min.js</script></action>-->
-            <action method="addJs"><script>smartwave/jquery/jquery-1.10.2.min.js</script></action>  
+        <reference name="head"> 
             <!--<action method="addJs"><script>smartwave/jquery/jquery-noconflict.js</script></action>-->
             <action method="addJs"><script>smartwave/jquery/jquery-noconflict.js</script><params>defer</params></action>  
             <!--<action method="addJs"><script>smartwave/jquery/jquery-ui-1.10.4.min.js</script></action>-->
