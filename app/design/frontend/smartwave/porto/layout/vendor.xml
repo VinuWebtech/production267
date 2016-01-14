@@ -148,6 +148,7 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <script>vendor/js/nicEdit-latest.js</script>
+                <params>defer</params>
             </action>
             <action method="addCss">
                 <stylesheet>vendor/colorpicker/css/colorpicker.css</stylesheet>
@@ -155,6 +156,7 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <script>vendor/js/nicEdit-latest.js</script>
+                <params>defer</params>
             </action>
 
         </reference>
@@ -167,10 +169,12 @@
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery.min.js</script>
+                <params>defer</params>
             </action>
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery-ui.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <reference name="content">
@@ -182,7 +186,7 @@
         <update handle="customer_account"/>
         <reference name="head">
 			<action method="addCss"><stylesheet>vendor/css/style.css</stylesheet></action>		
-			<action method="addItem"><type>skin_js</type><script>vendor/js/nicEdit-latest.js</script></action>		
+			<action method="addItem"><type>skin_js</type><script>vendor/js/nicEdit-latest.js</script><params>defer</params></action>		
 		</reference>
        <reference name="head">
            <action method="addCss">
@@ -191,10 +195,12 @@
            <action method="addItem">
                <type>js</type>
                <script>vendor/js/jquery.min.js</script>
+               <params>defer</params>
            </action>
            <action method="addItem">
                <type>js</type>
                <script>vendor/js/jquery-ui.js</script>
+               <params>defer</params>
            </action>
        </reference>
         <reference name="content">
@@ -211,10 +217,12 @@
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery.min.js</script>
+                <params>defer</params>
             </action>
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery-ui.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <reference name="content">
@@ -231,10 +239,12 @@
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery.min.js</script>
+                <params>defer</params>
             </action>
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery-ui.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <reference name="content">
@@ -250,10 +260,12 @@
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery.min.js</script>
+                <params>defer</params>
             </action>
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery-ui.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <reference name="head">
@@ -291,6 +303,7 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <script>vendor/js/nicEdit-latest.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <reference name="head">
@@ -300,10 +313,12 @@
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery.min.js</script>
+                <params>defer</params>
             </action>
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery-ui.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <update handle="customer_account" />
@@ -319,6 +334,7 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <script>vendor/js/nicEdit-latest.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <update handle="customer_account" />
@@ -334,6 +350,7 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <script>vendor/js/nicEdit-latest.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <update handle="customer_account" />
@@ -355,10 +372,12 @@
         <action method="addItem">
             <type>js</type>
             <script>vendor/js/jquery.min.js</script>
+            <params>defer</params>
         </action>
         <action method="addItem">
             <type>js</type>
             <script>vendor/js/jquery-ui.js</script>
+            <params>defer</params>
         </action>
         </reference>
         <reference name="content">
@@ -380,10 +399,12 @@
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery.min.js</script>
+                <params>defer</params>
             </action>
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery-ui.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <reference name="content">
@@ -398,6 +419,7 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <script>vendor/js/nicEdit-latest.js</script>
+                <params>defer</params>
             </action>
         </reference>
 
@@ -409,10 +431,12 @@
         <action method="addItem">
             <type>js</type>
             <script>vendor/js/jquery.min.js</script>
+            <params>defer</params>
         </action>
         <action method="addItem">
             <type>js</type>
             <script>vendor/js/jquery-ui.js</script>
+            <params>defer</params>
         </action>
         </reference>
         <reference name="content">
@@ -427,6 +451,7 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <script>vendor/js/nicEdit-latest.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <update handle="customer_account" />
@@ -437,10 +462,12 @@
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery.min.js</script>
+                <params>defer</params>
             </action>
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery-ui.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <reference name="content">
@@ -455,6 +482,7 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <script>vendor/js/nicEdit-latest.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <update handle="customer_account" />
@@ -465,7 +493,7 @@
 	<vendor_account_configurableproductedit>
 		<reference name="head">
 			<action method="addCss"><stylesheet>vendor/css/style.css</stylesheet></action>		
-			<action method="addItem"><type>skin_js</type><script>vendor/js/nicEdit-latest.js</script></action>		
+			<action method="addItem"><type>skin_js</type><script>vendor/js/nicEdit-latest.js</script><params>defer</params></action>		
 		</reference>
         <update handle="customer_account"/>
         <reference name="head">
@@ -475,10 +503,12 @@
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery.min.js</script>
+                <params>defer</params>
             </action>
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery-ui.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <reference name="content">
@@ -506,14 +536,17 @@
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery.min.js</script>
+                <params>defer</params>
             </action>
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/jquery-ui.js</script>
+                <params>defer</params>
             </action>
             <action method="addItem">
                 <type>js</type>
                 <script>vendor/js/chart.js</script>
+                <params>defer</params>
             </action>
         </reference>
         <reference name="content">
