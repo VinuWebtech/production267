@@ -21,7 +21,8 @@
         <reference name="head">
             <!--<action method="addJs"><script>jquery/jquery-1.7.2.min.js</script></action>-->
             <!--<action method="addJs"><script>jquery/jquery-noconflict.js</script></action>-->
-            <action method="addItem"><type>skin_js</type><name>js/ajaxlogin/messi.js</name></action>
+            <!--<action method="addItem"><type>skin_js</type><name>js/ajaxlogin/messi.js</name></action>-->
+            <action method="addItem"><type>skin_js</type><name>js/ajaxlogin/messi.js</name><params>defer</params></action>
             <reference name="head">
                 <action method="addItem">
                     <type>skin_css</type>
