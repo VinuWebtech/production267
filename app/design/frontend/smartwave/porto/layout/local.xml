@@ -15,10 +15,10 @@
             <action method="addJs"><script>smartwave/jquery/jquery-noconflict.js</script><params>defer</params></action>  
             <!--<action method="addJs"><script>smartwave/jquery/jquery-ui-1.10.4.min.js</script></action>-->
             <action method="addJs"><script>smartwave/jquery/jquery-ui-1.10.4.min.js</script><params>defer</params></action>  
-            <action method="addItem"><type>js_css</type><name>smartwave/jquery/jquery-ui-1.10.4.min.css</name></action>
+            <action method="addItem"><type>js_css</type><name>smartwave/jquery/jquery-ui-1.10.4.min.css</name><params>defer</params></action>
             <!--<action method="addJs"><script>smartwave/jquery/plugins/fancybox/js/jquery.fancybox.js</script></action>-->
             <action method="addJs"><script>smartwave/jquery/plugins/fancybox/js/jquery.fancybox.js</script><params>defer</params></action>  
-            <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/fancybox/css/jquery.fancybox.css</name></action>
+            <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/fancybox/css/jquery.fancybox.css</name><params>defer</params></action>
             <!--<action method="addItem"><type>skin_js</type><name>js/wow.min.js</name></action>-->
             <action method="addItem"><type>skin_js</type><name>js/wow.min.js</name><params>defer</params></action>
             <!--<action method="addItem"><type>js</type><name>smartwave/jquery/plugins/selectbox/jquery.selectbox.js</name><params/></action>-->
@@ -30,43 +30,43 @@
             <!--<action method="addJs"><script>smartwave/jquery/jquery.cookie.js</script></action>-->
             <action method="addJs"><script>smartwave/jquery/jquery.cookie.js</script><params>defer</params></action>
             <action method="addItem"><type>js</type><name>smartwave/respond.min.js</name><params/><if>lt IE 9</if></action>
-            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap.min.css</name></action>
-            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap.rtl.min.css</name></action>
-            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap-theme.min.css</name></action>
-            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap-theme.rtl.min.css</name></action>
+            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap.min.css</name><params>defer</params></action>
+            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap.rtl.min.css</name><params>defer</params></action>
+            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap-theme.min.css</name><params>defer</params></action>
+            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap-theme.rtl.min.css</name><params>defer</params></action>
             <!--<action method="addJs" ifconfig="porto_settings/general/rtl" condition="0"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.min.js</script></action>
             <action method="addJs" ifconfig="porto_settings/general/rtl" condition="1"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.rtl.min.js</script></action>-->
             <action method="addJs" ifconfig="porto_settings/general/rtl" condition="0"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.min.js</script><params>defer</params></action>
             <action method="addJs" ifconfig="porto_settings/general/rtl" condition="1"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.rtl.min.js</script><params>defer</params></action>
-            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.carousel.css</name></action>
-            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.carousel.rtl.css</name></action>
-            <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.theme.css</name></action>
-            <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.transitions.css</name></action>
-            <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/selectbox/selectbox.css</name></action>
-            <action method="addCss"><stylesheet>css/animate.css</stylesheet></action>
+            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.carousel.css</name><params>defer</params></action>
+            <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.carousel.rtl.css</name><params>defer</params></action>
+            <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.theme.css</name><params>defer</params></action>
+            <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.transitions.css</name><params>defer</params></action>
+            <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/selectbox/selectbox.css</name><params>defer</params></action>
+            <action method="addCss"><stylesheet>css/animate.css</stylesheet><params>defer</params></action>
             <!--<action method="addItem"><type>skin_js</type><name>js/porto.js</name></action>-->
             <action method="addItem"><type>skin_js</type><name>js/porto.js</name><params>defer</params></action>
             <!--<action method="addJs"><script>smartwave/bootstrap/js/bootstrap.min.js</script></action>-->
             <action method="addJs"><script>smartwave/bootstrap/js/bootstrap.min.js</script><params>defer</params></action>  
             
             <action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action> 
-            <action method="addCss"><stylesheet>icons/css/porto.css</stylesheet></action>
-            <action method="addCss"><stylesheet>icons/css/animation.css</stylesheet></action>
-            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="0"><stylesheet>css/local.css</stylesheet></action>
-            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl.css</stylesheet></action>
-            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="0"><stylesheet>css/responsive.css</stylesheet></action>
-            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl-responsive.css</stylesheet></action>
-            <action method="addCss" ifconfig="porto_settings/general/layout" condition="1024"><stylesheet>css/layout_1024.css</stylesheet></action>
-            <action method="addCss" ifconfig="porto_settings/general/layout" condition="1280"><stylesheet>css/layout_1280.css</stylesheet></action>
+            <action method="addCss"><stylesheet>icons/css/porto.css</stylesheet><params>defer</params></action>
+            <action method="addCss"><stylesheet>icons/css/animation.css</stylesheet><params>defer</params></action>
+            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="0"><stylesheet>css/local.css</stylesheet><params>defer</params></action>
+            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl.css</stylesheet><params>defer</params></action>
+            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="0"><stylesheet>css/responsive.css</stylesheet><params>defer</params></action>
+            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl-responsive.css</stylesheet><params>defer</params></action>
+            <action method="addCss" ifconfig="porto_settings/general/layout" condition="1024"><stylesheet>css/layout_1024.css</stylesheet><params>defer</params></action>
+            <action method="addCss" ifconfig="porto_settings/general/layout" condition="1280"><stylesheet>css/layout_1280.css</stylesheet><params>defer</params></action>
 			<action method="removeItem" ifconfig="porto_settings/general/disable_responsive" condition="1"><type>skin_css</type><name>css/responsive.css</name></action>
-			<action method="addItem" ifconfig="porto_settings/general/disable_responsive" condition="1"><type>skin_js</type><name>js/non_responsive.js</name></action>
-            <action method="addCss" ifconfig="porto_design/basic/dark_light" condition="dark"><stylesheet>css/dark.css</stylesheet></action>
-			<action method="addCss"><stylesheet helper="porto/cssconfig/getDesignFile"/></action>
-            <action method="addCss"><stylesheet helper="porto/cssconfig/getSettingsFile"/></action>
-            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="0"><stylesheet>css/custom.css</stylesheet></action>
-            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl-custom.css</stylesheet></action>
+			<action method="addItem" ifconfig="porto_settings/general/disable_responsive" condition="1"><type>skin_js</type><name>js/non_responsive.js</name><params>defer</params></action>
+            <action method="addCss" ifconfig="porto_design/basic/dark_light" condition="dark"><stylesheet>css/dark.css</stylesheet><params>defer</params></action>
+			<action method="addCss"><stylesheet helper="porto/cssconfig/getDesignFile"/><params>defer</params></action>
+            <action method="addCss"><stylesheet helper="porto/cssconfig/getSettingsFile"/><params>defer</params></action>
+            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="0"><stylesheet>css/custom.css</stylesheet><params>defer</params></action>
+            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl-custom.css</stylesheet><params>defer</params></action>
             <!-- Vinu changes start added -->
-            <action method="addCss"><stylesheet>css/self.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/self.css</stylesheet><params>defer</params></action>
             <!--<action method="addJs"><script>self/jquery.hc-sticky.min.js</script></action>-->
             <action method="addJs"><script>self/jquery.hc-sticky.min.js</script><params>defer</params></action>  
             <!-- changes end -->
