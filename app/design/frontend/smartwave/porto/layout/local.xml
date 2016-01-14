@@ -10,6 +10,7 @@
             <action method="addBodyClass" ifconfig="porto_settings/general/layout" condition="full_width"><classname>full-width</classname></action>
         </reference>
         <reference name="head"> 
+            <action method="addJs"><script>smartwave/jquery/jquery-1.10.2.min.js</script></action>
             <!--<action method="addJs"><script>smartwave/jquery/jquery-noconflict.js</script></action>-->
             <action method="addJs"><script>smartwave/jquery/jquery-noconflict.js</script><params>defer</params></action>  
             <!--<action method="addJs"><script>smartwave/jquery/jquery-ui-1.10.4.min.js</script></action>-->
@@ -165,8 +166,6 @@
             <block type="newsletter/subscribe" name="newsletter_popup">
                 <action method="setTemplate" ifconfig="porto_settings/newsletter_popup/enabled" condition="2"><template>newsletter/popup.phtml</template></action>
             </block>
-            <!--<action method="addJs"><script>smartwave/jquery/jquery-1.10.2.min.js</script></action>-->
-            <action method="addJs"><script>smartwave/jquery/jquery-1.10.2.min.js</script></action>
         </reference>
     </default>
     <catalog_category_default>
