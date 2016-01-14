@@ -151,11 +151,17 @@ Default layout, loads most of the pages
         <block type="page/html" name="root" output="toHtml" template="page/print.phtml">
 
             <block type="page/html_head" name="head" as="head">
-                <action method="addJs"><script>prototype/prototype.js</script></action>
+                <!--<action method="addJs"><script>prototype/prototype.js</script></action>
                 <action method="addJs"><script>mage/translate.js</script></action>
                 <action method="addJs"><script>lib/ccard.js</script></action>
                 <action method="addJs"><script>prototype/validation.js</script></action>
-                <action method="addJs"><script>varien/js.js</script></action>
+                <action method="addJs"><script>varien/js.js</script></action>-->
+
+                <action method="addJs"><script>prototype/prototype.js</script><params>defer</params></action>
+                <action method="addJs"><script>mage/translate.js</script><params>defer</params></action>
+                <action method="addJs"><script>lib/ccard.js</script><params>defer</params></action>
+                <action method="addJs"><script>prototype/validation.js</script><params>defer</params></action>
+                <action method="addJs"><script>varien/js.js</script><params>defer</params></action>
 
                 <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
                 <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 8</if></action>
