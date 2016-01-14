@@ -3,7 +3,7 @@
 	
 	<default>
         <reference name="head">
-        	<action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name></action>
+        	<action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name><params>defer</params></action>
             <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_css</type><name>css/iwd/opc/paypal.css</name><params/></action>
         </reference>
 	</default>
@@ -16,13 +16,13 @@
         </reference>
         
         <reference name="head">		
-        	<action method="addItem"><type>skin_js</type><name>js/iwd/opc/checkout.js</name></action>
-        	<action method="addItem"><type>skin_js</type><name>js/iwd/opc/extend.js</name></action>
-        	<action method="addJs"><file>mage/directpost.js</file></action>        
-			<action method="addItem"><type>skin_js</type><name>js/opcheckout.js</name></action>
-			<action method="addItem" ifconfig="opc/paypal/status"><type>skin_js</type><name>js/iwd/opc/lipp.js</name></action>
+        	<action method="addItem"><type>skin_js</type><name>js/iwd/opc/checkout.js</name><params>defer</params></action>
+        	<action method="addItem"><type>skin_js</type><name>js/iwd/opc/extend.js</name><params>defer</params></action>
+        	<action method="addJs"><file>mage/directpost.js</file><params>defer</params></action>        
+			<action method="addItem"><type>skin_js</type><name>js/opcheckout.js</name><params>defer</params></action>
+			<action method="addItem" ifconfig="opc/paypal/status"><type>skin_js</type><name>js/iwd/opc/lipp.js</name><params>defer</params></action>
             <action method="addCss"><stylesheet>css/iwd/opc/opc.css</stylesheet></action>
-            <action method="addJs" ifconfig="payment/braintree/active"><file>braintree/braintree-1.3.4.js</file></action>
+            <action method="addJs" ifconfig="payment/braintree/active"><file>braintree/braintree-1.3.4.js</file><params>defer</params></action>
             <action method="addCss" ifconfig="payment/braintree/active"><stylesheet>braintree/css/braintree.css</stylesheet></action>
 		</reference>
         
@@ -121,7 +121,7 @@
 
     <customer_account_login>
     	<reference name="head">           
-            <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name></action>    	
+            <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name><params>defer</params></action>    	
         </reference>
         <reference name="customer_form_login">
             <action method="setTemplate"><template>opc/customer/form/login.phtml</template></action>
@@ -133,7 +133,7 @@
 
     <customer_account_create>
     	<reference name="head">            
-            <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name></action>
+            <action method="addItem" ifconfig="opc/paypallogin/status"><type>skin_js</type><name>js/iwd/opc/login.js</name><params>defer</params></action>
         </reference>
         <reference name="customer_form_register">
             <action method="setTemplate"><template>opc/customer/form/register.phtml</template></action>
