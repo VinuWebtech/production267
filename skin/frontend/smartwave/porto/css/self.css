@@ -503,8 +503,8 @@ span.text-content1 span {
 }
 
 .sub-cat-list2 .catItem2 .catbox2 {
-    width: 208px;
-    height: 200px;
+    /*width: 208px;
+    height: 200px;*/
     position: relative;
     overflow: hidden;
     border-left: 1px solid #DDD;
