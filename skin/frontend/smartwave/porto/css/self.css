@@ -1,4 +1,5 @@
 
+
 body {
     font-family: Arial,sans-serif;
     font-size: 12px;
@@ -215,11 +216,62 @@ body {
     color: #ffc000;
     font-size: 31.5px;
     font-weight: 700;
-    /*
-    background: -webkit-linear-gradient(#FAA51A, #F47A20);;
+    
+    /*background: -webkit-linear-gradient(#FAA51A, #F47A20);;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;*/
 }
+
+/*.ziffy{
+    position: relative;
+    overflow: hidden;
+    height: 28px;
+}
+.ziffy,
+.ziffy .z1,
+.ziffy .z2,
+.ziffy .z3,
+.ziffy .z4,
+.ziffy .z5{
+    height: 28px;
+    position: absolute;
+    margin: 0;
+    top: 0px;
+    left: 0px;
+    color: #4a778b;
+    font-family: century gothic,helvetica,arial;
+    font-size: 23px;
+    font-weight: normal;
+    overflow: hidden;
+}
+.ziffy{
+    position: relative;
+}
+.ziffy .z5{
+    height: 10px;
+    color: #81a4b4;
+    z-index: 6;
+}
+.ziffy .z4{
+    height: 13px;
+    color: #789eae;
+    z-index: 5;
+}
+.ziffy .z3{
+    height: 16px;
+    color: #6f96a6;
+    z-index: 4;
+}
+.ziffy .z2{
+    height: 19px;
+    color: #618a9c;
+    z-index: 3;
+}
+.ziffy .z1{
+    height: 22px;
+    color: #547f92;
+    z-index: 2;
+}*/
 
 .header .form-search #cat:hover {
     opacity: 0.9;
@@ -485,7 +537,7 @@ span.text-content1 span {
 }
 
 .sub-cat-list2 .catItem2 {
-    width: 20%;
+    /*width: 20%;*/
     float: left;
     padding: 10px;
 }
@@ -658,10 +710,10 @@ ul.list3 li {
 
 .filter-products .product-image-area {
     text-align: center;
-    margin-left: 55px;
+    margin-left: 47px;
     min-height: 130px;
     max-height: 130px;
-    max-width: 90px;
+    max-width: 112px;
 }
 
 .filter-products .product-image-area .quickview-icon {
