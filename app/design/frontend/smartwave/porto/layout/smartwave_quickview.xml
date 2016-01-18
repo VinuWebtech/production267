@@ -3,10 +3,8 @@
     <default>
         <reference name="head">
             <block type="quickview/topJs"/>
-            <!--<action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script></action>
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script></action>-->
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script><params>defer</params></action>
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script><params>defer</params></action>
+            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script></action>
+            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script></action>
             <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/etalage/etalage.css</name></action>
         </reference>
     </default>

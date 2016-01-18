@@ -29,10 +29,8 @@
 
     <product_list>
         <reference name="head">
-            <!--<action method="addItem"><type>skin_js</type><name>js/configurableswatches/product-media.js</name></action>
-            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/swatches-list.js</name></action>-->
-            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/product-media.js</name><params>defer</params></action>
-            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/swatches-list.js</name><params>defer</params></action>
+            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/product-media.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/swatches-list.js</name></action>
         </reference>
         <reference name="product_list.name.after">
             <block type="core/template" name="product_list.swatches" template="configurableswatches/catalog/product/list/swatches.phtml" />
@@ -44,10 +42,8 @@
 
 	<default>
 		<reference name="head">
-			<!--<action method="addItem"><type>skin_js</type><name>js/lib/imagesloaded.js</name></action>
-			<action method="addItem"><type>skin_js</type><name>js/configurableswatches/app.js</name></action>-->
-            <action method="addItem"><type>skin_js</type><name>js/lib/imagesloaded.js</name><params>defer</params></action>
-            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/app.js</name><params>defer</params></action>
+			<action method="addItem"><type>skin_js</type><name>js/lib/imagesloaded.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/configurableswatches/app.js</name></action>
 			<action method="addCss"><stylesheet>css/configurableswatches.css</stylesheet></action>
 		</reference>
 	</default>
@@ -70,10 +66,8 @@
 
     <PRODUCT_TYPE_configurable>
         <reference name="head">
-            <!--<action method="addItem"><type>skin_js</type><name>js/configurableswatches/product-media.js</name></action>
-            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/swatches-product.js</name></action>-->
-            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/product-media.js</name><params>defer</params></action>
-            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/swatches-product.js</name><params>defer</params></action>
+            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/product-media.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/swatches-product.js</name></action>
         </reference>
         <reference name="product.info.media">
             <action method="setGalleryFilterHelper"><helper>configurableswatches/productimg</helper></action>
