@@ -934,6 +934,10 @@ ul.list3 li {
     padding: 0px;
 }
 
+.footer .social-icons a.icon3-class:hover {
+    background-color: #dd4b39;
+}
+
 .footer-middle {
     background-color: #FDFBFC;
     /*background-color: #232F3E;*/
@@ -2245,7 +2249,7 @@ aside {
 }
 
 #contact-info .social-links a.ln:hover {
-    background-color: #4975B6;
+    background-color: #dd4b39;
 }
 
 /*----------------------------------- privacy policy page ---------------------------*/

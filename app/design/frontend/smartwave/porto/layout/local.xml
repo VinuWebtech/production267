@@ -11,42 +11,31 @@
         </reference>
         <reference name="head"> 
             <action method="addJs"><script>smartwave/jquery/jquery-1.10.2.min.js</script></action>
-            <!--<action method="addJs"><script>smartwave/jquery/jquery-noconflict.js</script></action>-->
-            <action method="addJs"><script>smartwave/jquery/jquery-noconflict.js</script><params>defer</params></action>  
-            <!--<action method="addJs"><script>smartwave/jquery/jquery-ui-1.10.4.min.js</script></action>-->
-            <action method="addJs"><script>smartwave/jquery/jquery-ui-1.10.4.min.js</script><params>defer</params></action>  
+            <action method="addJs"><script>smartwave/jquery/jquery-noconflict.js</script></action>  
+            <action method="addJs"><script>smartwave/jquery/jquery-ui-1.10.4.min.js</script></action>
             <action method="addItem"><type>js_css</type><name>smartwave/jquery/jquery-ui-1.10.4.min.css</name></action>
-            <!--<action method="addJs"><script>smartwave/jquery/plugins/fancybox/js/jquery.fancybox.js</script></action>-->
-            <action method="addJs"><script>smartwave/jquery/plugins/fancybox/js/jquery.fancybox.js</script><params>defer</params></action>  
+            <action method="addJs"><script>smartwave/jquery/plugins/fancybox/js/jquery.fancybox.js</script></action> 
             <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/fancybox/css/jquery.fancybox.css</name></action>
-            <!--<action method="addItem"><type>skin_js</type><name>js/wow.min.js</name></action>-->
-            <action method="addItem"><type>skin_js</type><name>js/wow.min.js</name><params>defer</params></action>
-            <!--<action method="addItem"><type>js</type><name>smartwave/jquery/plugins/selectbox/jquery.selectbox.js</name><params/></action>-->
-            <action method="addItem"><type>js</type><name>smartwave/jquery/plugins/selectbox/jquery.selectbox.js</name><params>defer</params></action>
-            <!--<action method="addItem"><type>js</type><name>smartwave/jquery/plugins/parallax/jquery.stellar.min.js</name><params/></action>-->
-            <action method="addItem"><type>js</type><name>smartwave/jquery/plugins/parallax/jquery.stellar.min.js</name><params>defer</params></action>
-            <!--<action method="addItem"><type>js</type><name>smartwave/jquery/plugins/parallax/jquery.parallax.js</name><params/></action>-->
-            <action method="addItem"><type>js</type><name>smartwave/jquery/plugins/parallax/jquery.parallax.js</name><params>defer</params></action>
-            <!--<action method="addJs"><script>smartwave/jquery/jquery.cookie.js</script></action>-->
-            <action method="addJs"><script>smartwave/jquery/jquery.cookie.js</script><params>defer</params></action>
+            <action method="addItem"><type>skin_js</type><name>js/wow.min.js</name></action>
+            <action method="addItem"><type>js</type><name>smartwave/jquery/plugins/selectbox/jquery.selectbox.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>smartwave/jquery/plugins/parallax/jquery.stellar.min.js</name><params/></action>
+            <action method="addItem"><type>js</type><name>smartwave/jquery/plugins/parallax/jquery.parallax.js</name><params/></action>
+            <action method="addJs"><script>smartwave/jquery/jquery.cookie.js</script></action>
             <action method="addItem"><type>js</type><name>smartwave/respond.min.js</name><params/><if>lt IE 9</if></action>
             <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap.min.css</name></action>
             <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap.rtl.min.css</name></action>
             <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap-theme.min.css</name></action>
             <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/bootstrap/css/bootstrap-theme.rtl.min.css</name></action>
-            <!--<action method="addJs" ifconfig="porto_settings/general/rtl" condition="0"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.min.js</script></action>
-            <action method="addJs" ifconfig="porto_settings/general/rtl" condition="1"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.rtl.min.js</script></action>-->
-            <action method="addJs" ifconfig="porto_settings/general/rtl" condition="0"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.min.js</script><params>defer</params></action>
-            <action method="addJs" ifconfig="porto_settings/general/rtl" condition="1"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.rtl.min.js</script><params>defer</params></action>
+            <action method="addJs" ifconfig="porto_settings/general/rtl" condition="0"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.min.js</script></action>
+            <action method="addJs" ifconfig="porto_settings/general/rtl" condition="1"><script>smartwave/jquery/plugins/owl-carousel/owl.carousel.rtl.min.js</script></action>
             <action method="addItem" ifconfig="porto_settings/general/rtl" condition="0"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.carousel.css</name></action>
             <action method="addItem" ifconfig="porto_settings/general/rtl" condition="1"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.carousel.rtl.css</name></action>
             <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.theme.css</name></action>
             <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/owl-carousel/owl.transitions.css</name></action>
             <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/selectbox/selectbox.css</name></action>
             <action method="addCss"><stylesheet>css/animate.css</stylesheet></action>
-            <!--<action method="addItem"><type>skin_js</type><name>js/porto.js</name></action>-->
-            <action method="addItem"><type>skin_js</type><name>js/porto.js</name><params>defer</params></action>
-            <!--<action method="addJs"><script>smartwave/bootstrap/js/bootstrap.min.js</script></action>-->
+            <action method="addItem"><type>skin_js</type><name>js/porto.js</name></action>
+            <action method="addJs"><script>smartwave/bootstrap/js/bootstrap.min.js</script></action>
             <action method="addJs"><script>smartwave/bootstrap/js/bootstrap.min.js</script><params>defer</params></action>  
             
             <action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action> 
@@ -67,13 +56,10 @@
             <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl-custom.css</stylesheet></action>
             <!-- Vinu changes start added -->
             <action method="addCss"><stylesheet>css/self.css</stylesheet></action>
-            <!--<action method="addJs"><script>self/jquery.hc-sticky.min.js</script></action>-->
-            <action method="addJs"><script>self/jquery.hc-sticky.min.js</script><params>defer</params></action>  
+            <action method="addJs"><script>self/jquery.hc-sticky.min.js</script></action> 
             <!-- changes end -->
-            <!--<action method="addItem"><type>skin_js</type><name>js/checkout.js</name></action>-->
-            <action method="addItem"><type>skin_js</type><name>js/checkout.js</name><params>defer</params></action>
-            <!--<action method="addJs"><script>self/jquery.sticky-kit.min.js</script></action>-->
-            <action method="addJs"><script>self/jquery.sticky-kit.min.js</script><params>defer</params></action>  
+            <action method="addItem"><type>skin_js</type><name>js/checkout.js</name></action>
+            <action method="addJs"><script>self/jquery.sticky-kit.min.js</script></action> 
         </reference>
         <reference name="header">
             <action method="setTemplate" ifconfig="porto_settings/header/type" condition="0"><template>page/html/header_type1.phtml</template></action>
@@ -212,10 +198,8 @@
             <action method="setTemplate" ifconfig="porto_settings/product_view/page_layout" condition="three_column"><template>page/3columns.phtml</template></action>
         </reference>
         <reference name="head">
-            <!--<action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script></action>
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script></action>-->
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script><params>defer</params></action>
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script><params>defer</params></action>
+            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script></action>
+            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script></action>
             <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/etalage/etalage.css</name></action>
         </reference>
         <!--changes start added-->
@@ -342,10 +326,8 @@
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
-            <!--<action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script></action>
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script></action>-->
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script><params>defer</params></action>
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script><params>defer</params></action>
+            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script></action>
+            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script></action>
             <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/etalage/etalage.css</name></action>
         </reference>
         <reference name="product.info">
@@ -359,10 +341,8 @@
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
-            <!--<action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script></action>
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script></action>-->
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script><params>defer</params></action>
-            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script><params>defer</params></action>
+            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script></action>
+            <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script></action>
             <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/etalage/etalage.css</name></action>
         </reference>
     </review_product_view>
