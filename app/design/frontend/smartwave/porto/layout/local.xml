@@ -233,6 +233,7 @@
             <action method="setItemLimit" ifconfig="porto_settings/general/layout" condition="1024"><type>upsell</type><limit>3</limit></action>
         </reference>
     </catalog_product_view>
+
     <checkout_onepage_index>
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
