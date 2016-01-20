@@ -195,12 +195,6 @@ body {
     text-decoration: none;
 }
 
-.header .logo img {
-    background-color: #1f497d;
-    border: 2px solid #385d8a;
-    border-radius: 8px;
-}
-
 .header .logo span.main-logo {
     background-color: #1f497d;
     border: 2px solid #385d8a;
