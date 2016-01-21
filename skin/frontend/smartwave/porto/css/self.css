@@ -1867,13 +1867,13 @@ dl#narrow-by-list dd >ol {
     padding: 6px 16px;
     cursor: pointer;
     border-radius: 2px;
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#FAA51A, #F47A20);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
     /*background: #F3A847 none repeat scroll 0% 0%; /* fb blue #3A5795 porto blue #08C*/
     color: #FFF;
 }
 
 #submit-create-account span {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#FAA51A, #F47A20);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
     /*background: #F3A847 none repeat scroll 0% 0%; /* porto blue #08C*/
 }
 
@@ -1903,7 +1903,7 @@ dl#narrow-by-list dd >ol {
 .orBlock {
     width: 40px;
     line-height: 40px;
-    background-color: #041371;
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
     border-radius: 50%;
     color: #FFF;
     margin: 0px auto;
@@ -2024,7 +2024,7 @@ dl#narrow-by-list dd >ol {
 }
 
 .sp_login_seprator1 span {
-    background: #041371 none repeat scroll 0px 0px;
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
     left: -27px;
     padding: 17px 17px;
     position: relative;
