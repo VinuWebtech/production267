@@ -119,6 +119,15 @@ body {
     min-height: 200px;
 }
 
+.header-container.type4 .header > .logo {
+    padding: 0px 0px 0px 15px;
+}
+
+.header .logo img {
+    height: 50px;
+    max-width: none;
+}
+
 .header-container.type4 .search-area {
     margin-left: 165px;
 }
@@ -190,82 +199,6 @@ body {
 }
 
 /* ------------------ changes to set colour scheme similar on lines of thomas cook -------- */
-
-.header a.logo:hover {
-    text-decoration: none;
-}
-
-.header .logo span.main-logo {
-    background-color: #1f497d;
-    border: 2px solid #385d8a;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 31.5px;
-    font-weight: 700;
-    padding: 5px 10px;
-    box-shadow: 0px 0px 1px 2px #a5a5a5;/*rgba(0, 0, 0, 0.2);*/
-}
-
-.header .logo span span.ziffy {
-    color: #ffc000;
-    font-size: 31.5px;
-    font-weight: 700;
-    
-    /*background: -webkit-linear-gradient(#FAA51A, #F47A20);;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;*/
-}
-
-/*.ziffy{
-    position: relative;
-    overflow: hidden;
-    height: 28px;
-}
-.ziffy,
-.ziffy .z1,
-.ziffy .z2,
-.ziffy .z3,
-.ziffy .z4,
-.ziffy .z5{
-    height: 28px;
-    position: absolute;
-    margin: 0;
-    top: 0px;
-    left: 0px;
-    color: #4a778b;
-    font-family: century gothic,helvetica,arial;
-    font-size: 23px;
-    font-weight: normal;
-    overflow: hidden;
-}
-.ziffy{
-    position: relative;
-}
-.ziffy .z5{
-    height: 10px;
-    color: #81a4b4;
-    z-index: 6;
-}
-.ziffy .z4{
-    height: 13px;
-    color: #789eae;
-    z-index: 5;
-}
-.ziffy .z3{
-    height: 16px;
-    color: #6f96a6;
-    z-index: 4;
-}
-.ziffy .z2{
-    height: 19px;
-    color: #618a9c;
-    z-index: 3;
-}
-.ziffy .z1{
-    height: 22px;
-    color: #547f92;
-    z-index: 2;
-}*/
 
 .header .form-search #cat:hover {
     opacity: 0.9;
@@ -1413,7 +1346,8 @@ background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-grad
     white-space: nowrap;
     width: 185px;
     min-height: 330px;
-    border: 1px solid #E7E7E7;
+    /*border: 1px solid #E7E7E7;*/
+    background: #fff;
 }
 
 
@@ -1440,22 +1374,34 @@ background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-grad
     border-top: 1px solid #d5d5d5;
 }
 
+.main-nav .cat-level-header{
+    display:block;
+    padding:1px 0 6px 15px;
+    font-weight:700;
+    /*border-bottom: 1px solid #d5d5d5;*/
+    color: #2B333B;
+}
+
 .main-nav .third-level-header{
     display:block;
     padding:1px 0 3px 8px;
-    font-weight:700
+    font-weight:700;
+    color: #2B333B;
 }
 
-.main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a {
+.main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a.navbrand-title {
     display: block;
     padding: 2px;
     border: medium none;
+    line-height: 1.5;
+    color: #08C;
 }
 
-.main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a:hover {
-    background-color: #666;
-    color: #F9F8F3;
+.main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a.navbrand-title:hover {
+    /*background-color: #666;*/
+    color: #08C;
     text-decoration: none;
+    font-weight: 700;
 }
 /*--------------------------- navbar changes end --------------------------------------*/
 /*-------------------------------------------------------------------------------------*/
