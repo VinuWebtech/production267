@@ -127,6 +127,8 @@ class Smartwave_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
                     $html[] = '<div class="block1 col-sm-'.$columnsWidth.'">';
                     $html[] = '<div class="row">';                    
                     $html[] = '<ul>';
+                    $html[] = '<span class="cat-level-header top-brands">TOP CATEGORIES</span>
+        <ul class="list-level-3">';
                     $html[] = $this->drawColumns($activeChildren, $columns, count($activeChildren),'', 'wide');
                     $html[] = '</ul>';
                     $html[] = '</div>';
