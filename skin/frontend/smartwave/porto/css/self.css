@@ -1335,11 +1335,30 @@ background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-grad
     box-shadow: none;
 }*/
 
+.main-nav .menu > li:last-child .nav-sublist-dropdown{
+    right: 0;
+}
+
+/*------------- left static block in navbar ---------------------*/
+
+.navbarleft-heading {
+    color: #08c;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+}
+
+.navbarleft-subhead {
+    text-align: center;
+    padding: 3px;
+}
+
+.navbarleft-subheading {
+    font-size: 13px;
+    padding: 5px;
+}
 
 /*----------------to create box inside the dropdown------------*/
-
-
-
 
 .main-nav .menu li.menu-static-width .nav-sublist-dropdown .right-mega-block{
     float: none;
@@ -1347,7 +1366,7 @@ background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-grad
     white-space: nowrap;
     width: 185px;
     min-height: 330px;
-    /*border: 1px solid #E7E7E7;*/
+    border: 1px solid #E7E7E7;
     background: #fff;
 }
 
@@ -1589,10 +1608,6 @@ table{
     line-height: 0;
     text-indent: -999em;
     overflow: hidden;
-}
-
-.checkoutheader .logo img {
-    max-width: 140px;
 }
 
 /*-------------------------------------------------------------------------------------------------*/

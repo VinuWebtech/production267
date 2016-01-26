@@ -35,8 +35,7 @@
             <action method="addItem"><type>js_css</type><name>smartwave/jquery/plugins/selectbox/selectbox.css</name></action>
             <action method="addCss"><stylesheet>css/animate.css</stylesheet></action>
             <action method="addItem"><type>skin_js</type><name>js/porto.js</name></action>
-            <action method="addJs"><script>smartwave/bootstrap/js/bootstrap.min.js</script></action>
-            <action method="addJs"><script>smartwave/bootstrap/js/bootstrap.min.js</script><params>defer</params></action>  
+            <action method="addJs"><script>smartwave/bootstrap/js/bootstrap.min.js</script></action>  
             
             <action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action> 
             <action method="addCss"><stylesheet>icons/css/porto.css</stylesheet></action>
