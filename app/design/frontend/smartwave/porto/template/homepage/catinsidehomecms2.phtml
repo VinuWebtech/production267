@@ -3,36 +3,27 @@
 * List Sub catgories template
 */
 ?>
-
-<?php
-    $object = new Mage_Catalog_Block_Navigation();
-    $categoyrId = 2;
-    $actualCategory = Mage::getModel('catalog/category')->load($categoyrId);
-    $subCategories = explode(',', $actualCategory->getChildren()); 
-    $maxCategoryCount    = $this->getCategoryCount();
-?>
 <div class="sub-cat-list2">
-	<h3 class="filter-title l-height70">
+    <h3 class="filter-title l-height70">
         <span class="content">
             <strong>Shop by Categories</strong>
         </span>
     </h3>
-    <ul class="img-list2">
-        <?php $i; foreach ($subCategories as $subCategoryId): $i++; ?>
-            <?php if ($i > $maxCategoryCount): break; endif; ?>
-            <?php 
-        	   $category = Mage::getModel('catalog/category')->load($subCategoryId);
-        	   if ($category->getIsActive() ): 
-            ?>
-        	    <li class="catItem2">
-                    <div class="catbox2">
-            	        <?php if($category->getThumbnail()): ?>
-                	       <a href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt="<?php echo $category->getName(); ?>"  /></a>
-            	        <?php endif; ?> 
-                    </div>
-                    <h5 class="category-name parent-category2"><a class="text-color" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><?php echo $category->getName(); ?></a></h5>
-        	    </li>
-            <?php endif; ?>
-        <?php endforeach; ?>
-    </div> 
+    <?php 
+    $categories = Mage::getResourceModel('catalog/category_collection')->addAttributeToSelect('*')->addAttributeToFilter('is_active', 1)->addAttributeToFilter('parent_id', 2)->addAttributeToSort('position');
+    foreach ($categories as $_category): 
+        $cat = Mage::getModel('catalog/category')->load($_category->getId());
+        $count = $cat->getProductCount(); 
+    ?>  
+        <ul class="img-list2">
+            <li class="catItem2">
+                <div class="catbox2">
+                    <?php if($_category->getThumbnail()): ?>
+                        <a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $_category->getName() ?>"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $_category->getThumbnail(); ?>" alt="<?php echo $_category->getName(); ?>"  /></a>
+                    <?php endif; ?> 
+                </div>
+                <h5 class="category-name parent-category2"><a class="text-color" href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $_category->getName(); ?>"><?php echo $_category->getName(); ?></a></h5>
+            </li>
+        </ul> 
+    <?php endforeach; ?>
 </div>
