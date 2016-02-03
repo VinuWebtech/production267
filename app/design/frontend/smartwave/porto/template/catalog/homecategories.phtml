@@ -40,7 +40,7 @@
             	<?php $i=0; foreach ($newSubCategories as $newSubCategoryId): ?>
                 	<?php $newCategory = Mage::getModel('catalog/category')->load($newSubCategoryId); ?>
                 	<li>
-						<a class="inside-link" href="<?php echo Mage::getUrl($newCategory->getUrlPath()); ?>" title="<?php echo $newSubCategoryId->getName() ?>"><?php echo $newSubCategoryId->getName() ?></a>
+						<a class="inside-link" href="<?php echo $newCategory->getURL(); ?>" title="<?php echo $newCategory->getName(); ?>"><?php echo $newCategory->getName(); ?></a>
 					</li>
 				<?php 
 					$i++;
