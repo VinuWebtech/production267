@@ -16,7 +16,7 @@
 			<h5 class="levelonecats">
 				<a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" class="footer-cat text-color11" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?> : </a>
 			</h5>
-			<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+			<!--<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
             <?php $_subcategories = $_category->getChildrenCategories() ?>
 			<?php 
 			$i=0; 
@@ -29,9 +29,19 @@
 				<?php endif; ?>		
 			<?php 
 			$i++;
+			endforeach ?>-->
+			<?php $newSubCategories = explode(',', $_category->getChildren()); ?>
+            <?php $i=0; foreach ($newSubCategories as $newSubCategoryId): ?>
+                <?php $newCategory = Mage::getModel('catalog/category')->load($newSubCategoryId); ?>
+                <?php if($i==0): ?>
+					<a class="inside-link-first text-color11" href="<?php echo $newCategory->getURL(); ?>" title="<?php echo $newCategory->getName(); ?>"> <?php echo '&nbsp;'.$newCategory->getName().'&nbsp;' ?> </a>
+				<?php else: ?>
+					<a class="inside-link text-color11" href="<?php echo $newCategory->getURL(); ?>" title="<?php echo $newCategory->getName(); ?>"><span>|</span><?php echo '&nbsp;'.$newCategory->getName().'&nbsp;' ?> </a>
+				<?php endif; ?>
+            <?php 
+			$i++;
 			endforeach ?>
 		</div>
 	<?php endforeach ?>
 </div>
 <!-- Categories display end -->
-<!-- rechecking -->
