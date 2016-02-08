@@ -67,8 +67,6 @@ body {
 }
 
 .top-links-container {
-    /*background: transparent url("../images/toplink-background.png") repeat-x scroll 0px -2px;*/
-    /*background-color: #232F3E;*/
     background-image: url("../images/colorScheme/bg-diagonal-line.png");
     background-position: left top;
     background-repeat: repeat;
@@ -89,7 +87,6 @@ body {
 
 
 .top-links .custom-block i {
-    /*color: #F3A847;*/
     color: #FFC000;
 }
 
