@@ -104,7 +104,7 @@ if($enable_addtocart_sticky){
 <?php
 }
 ?>
-        <div class="row">
+        <div class="row product-page-options-block">
             <div class="product-img-box col-sm-5">
                 <?php echo $this->getChildHtml('media') ?>
             </div>
@@ -157,28 +157,26 @@ if($enable_addtocart_sticky){
                     </div>
                 <?php endif;?>
                 <!--vinu changes start added attributes row -->
-                <?php echo $this->getChildHtml('attributes'); ?>
+                <!--<?php echo $this->getChildHtml('attributes'); ?>-->
                 <!--changes end-->
-                <?php if(!$_product->isConfigurable()): ?>
-                    <div class="product-info">
-                        <div <?php if($enabled_richsnippets) echo $helper_richsnippets->getOfferItemscope(); ?>>
-                            <?php echo $this->getChildHtml('product_type_data'); ?>
-                            <?php echo $this->getTierPriceHtml(); ?>
-                            <?php echo $price_properties; ?>
-                        </div>
-                        <?php echo $this->getChildHtml('extrahint') ?>
-                        <!--changes start commenting out to remove display on frontend-->
-                        <!--<?php if ($this->canEmailToFriend()): ?>
-                            <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
-                        <?php endif; ?>-->
-                        <!--changes end-->
-                        <?php if($sku = $_product->getSku()): ?>
-                            <?php if($enabled_richsnippets): ?><meta itemprop="productID" content="sku:<?php echo $sku; ?>" /><?php endif; ?>
-                        <?php endif; ?>
-                        <?php echo $this->getChildHtml('alert_urls') ?>
-                        <?php echo $this->getChildHtml('other');?>
+                <div class="product-info">
+                    <div <?php if($enabled_richsnippets) echo $helper_richsnippets->getOfferItemscope(); ?>>
+                        <?php echo $this->getChildHtml('product_type_data'); ?>
+                        <?php echo $this->getTierPriceHtml(); ?>
+                        <?php echo $price_properties; ?>
                     </div>
-                <?php endif; ?>
+                    <?php echo $this->getChildHtml('extrahint') ?>
+                    <!--changes start commenting out to remove display on frontend-->
+                    <!--<?php if ($this->canEmailToFriend()): ?>
+                        <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+                    <?php endif; ?>-->
+                    <!--changes end-->
+                    <?php if($sku = $_product->getSku()): ?>
+                        <?php if($enabled_richsnippets): ?><meta itemprop="productID" content="sku:<?php echo $sku; ?>" /><?php endif; ?>
+                    <?php endif; ?>
+                    <?php echo $this->getChildHtml('alert_urls') ?>
+                    <?php echo $this->getChildHtml('other');?>
+                </div>
                 <?php if (!$this->hasOptions()):?>
                     <div class="clearer"></div>
                     <div class="add-to-box">
@@ -196,20 +194,21 @@ if($enable_addtocart_sticky){
                         <?php echo $this->getChildHtml('addto') ?>
                     </div>
                 <?php endif; ?>
-
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container2', '', true, false) ?>
+                <?php endif;?>
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, false) ?>
+                <?php endif;?>
                 
                 <!--changes start commenting out to remove display on frontend-->
                 <!--?php echo $this->getChildHtml('smartwave_sharetool'); ?>-->
                 <!--changes end-->
             </div>
+            
 
         </div>
-        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-            <?php echo $this->getChildChildHtml('container2', '', true, false) ?>
-        <?php endif;?>
-        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-            <?php echo $this->getChildChildHtml('container1', '', true, false) ?>
-        <?php endif;?>
+        
     </form>
 <?php if(Mage::getStoreConfig('ajaxcart/addtocart/enableproduct') && (Mage::app()->getFrontController()->getRequest()->getModuleName() == "catalog") || (Mage::app()->getFrontController()->getRequest()->getModuleName() == "quickview")): ?>
     <script type="text/javascript">

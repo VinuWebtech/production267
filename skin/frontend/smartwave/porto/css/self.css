@@ -1443,8 +1443,12 @@ ol, ul, li {
 /*--------------------------- navbar changes end --------------------------------------*/
 /*-------------------------------------------------------------------------------------*/
 
+.breadcrumbs span.breadcrumbs-split {
+    font-size: 8px;
+}
 
-.product-view .product-img-box {
+
+/*.product-view .product-img-box {
     width: 250px !important;
     margin-right: 50px;
     margin-bottom: 10px !important;
@@ -1452,17 +1456,66 @@ ol, ul, li {
 
 .product-view .product-shop {
     width: 65%;
+}*/
+
+
+/*------------------------- product view page ------------------------------*/
+
+.product-page-options-block {
+    margin: 0px 5px;
+}
+
+.product-view .product-img-box {
+    height: 350px;
+    width: 435px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    margin-bottom: 90px;
+}
+
+.product-view .product-img-box img {
+    max-width: 300px;
+    max-height: 400px;
+}
+
+.product-view .product-img-box li.etalage_thumb {
+    padding: 15px 50px 20px 50px;
+    border: none;
+}
+
+.product-view .product-shop {
+    padding: 0px 10px 0px 20px;
+    margin-top: -10px;
 }
 
 .product-view .product-name {
     font-size: 13px !important;
 }
 
+.product-view .product-name h1 {
+    font-size: 22px;
+    font-weight: normal;
+}
 
+.no-rating {
+    /*border-bottom: 1px solid #ebebeb;*/
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+}
 
+.regular-price .price {
+    font-weight: normal;
+}
 
+.product-view .product-shop .price-box .regular-price .price {
+    font-size: 20px;
+}
 
-
+/*.qty-changer > a {
+    height: 38px;
+    width: 35px;
+    font-size: 30px;
+}*/
 
 /*------------------------------Additional info attributes---------------------------*/
 

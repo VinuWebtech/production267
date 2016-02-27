@@ -31,77 +31,37 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
 $_jsonConfig = $this->getJsonConfig();
 $_renderers = $this->getChild('attr_renderers')->getSortedChildren();
 ?>
-<!--changes start added-->
-<table class="data-table configurable-items-table" id="insideconfigurable-product-table">
-    <thead>
-        <tr>
-            <th><?php echo $this->__('Product Name') ?></th>
-            <?php
-            $attrs  = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
-            foreach($attrs as $attr) 
-            {
-                $options = $attr['values']; 
-            ?>
-            <th><?php echo $this->escapeHtml($this->__($attr['label'])) ?></th>         
-            <?php        
-                }
-            ?>
-            <?php if ($this->getCanShowProductPrice($_product)): ?>
-            <th><?php echo $this->__('Price') ?></th>
-            <?php endif; ?>
-            <?php if ($_product->isSaleable()): ?>
-            <th><?php echo $this->__('Qty') ?></th>
-            <?php endif; ?>
-        </tr>
-    </thead>
-    <tbody>
-        <?php 
-        if($_product->getTypeId() == "configurable"):
-            $conf = Mage::getModel('catalog/product_type_configurable')->setProduct($_product);
-            $simple_collection = $conf->getUsedProductCollection()->addAttributeToSelect('*')->addFilterByRequiredOptions();
-            foreach($simple_collection as $simple_product){ 
-        ?> 
-        <tr>  
-            <td> 
-                <?php echo $simple_product->getName(); ?>
-            </td>
-            <?php
-            $attrs  = $_product->getTypeInstance(true)->getConfigurableAttributesAsArray($_product);
-            foreach($attrs as $attr) 
-            {
-                $options    = $attr['values']; 
-            ?>
-            <td>
-                <?php echo $simple_product->getAttributeText($attr['attribute_code']); ?>
-            </td>               
-            <?php        
-                }
-            ?> 
-            <td> 
-                <?php  echo Mage::helper('core')->currency($simple_product->getPrice()); ?>
-            </td> 
-            <td>
-                <?php if ($simple_product->isSaleable()) : ?>
-                    <div class="qty-value">
-                        <input type="text" name="super_group[<?php echo $simple_product->getId() ?>]" maxlength="12" value="1" "<?php echo $simple_product->getQty()*1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
-                        <div class="qty-updown">
-                            <a href="javascript:void(0)" class="qty_inc"><i class="icon-up-dir"></i></a>
-                            <a href="javascript:void(0)" class="qty_dec"><i class="icon-down-dir"></i></a>
-                        </div>
-                        <button type="button"  onclick="setLocation('<?php echo $this->getAddToCartUrl($simple_product) ?>' + 'qty/' + $(this).previous().previous().value)" class="config-button"><span>Add to Cart</span></button>
-                    </div>
-                <?php else: ?>
-                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                <?php endif; ?>
-            </td>
-        </tr> 
-        <?php  }
+<?php if ($_product->isSaleable() && count($_attributes)):?>
+    <dl>
+    <?php foreach($_attributes as $_attribute): ?>
+        <?php
+        $_rendered = false;
+        foreach ($_renderers as $_rendererName):
+            $_renderer = $this->getChild('attr_renderers')->getChild($_rendererName);
+            if (method_exists($_renderer, 'shouldRender') && $_renderer->shouldRender($_attribute, $_jsonConfig)):
+                $_renderer->setProduct($_product);
+                $_renderer->setAttributeObj($_attribute);
+                echo $_renderer->toHtml();
+                $_rendered = true;
+                break;
             endif;
+        endforeach;
+
+        if (!$_rendered):
         ?>
-    </tbody>
-</table>       
-<script type="text/javascript">
-    var spConfig = new Product.Config(<?php echo $_jsonConfig ?>);
-</script>
-<?php echo $this->getChildHtml('after') ?>
-<!--changes end-->
+        <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
+        <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+            <div class="input-box">
+                <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                    <option><?php echo $this->__('Choose an Option...') ?></option>
+                  </select>
+              </div>
+        </dd>
+        <?php endif; ?>
+    <?php endforeach; ?>
+    </dl>
+    <script type="text/javascript">
+        var spConfig = new Product.Config(<?php echo $_jsonConfig ?>);
+    </script>
+    <?php echo $this->getChildHtml('after') ?>
+<?php endif;?>
