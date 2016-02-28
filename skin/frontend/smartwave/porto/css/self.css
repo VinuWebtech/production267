@@ -67,12 +67,11 @@ body {
 }
 
 .top-links-container {
-    /*background: transparent url("../images/toplink-background.png") repeat-x scroll 0px -2px;*/
-    /*background-color: #232F3E;*/
     background-image: url("../images/colorScheme/bg-diagonal-line.png");
     background-position: left top;
     background-repeat: repeat;
-    background-color: #1C4154;
+    /*background-color: #1C4154;*/
+    background-color: #1F497D;
 }
 
 .top-links .custom-block {
@@ -89,7 +88,6 @@ body {
 
 
 .top-links .custom-block i {
-    /*color: #F3A847;*/
     color: #FFC000;
 }
 
@@ -166,6 +164,16 @@ body {
     top: -8px;
 }
 
+.header-container.type4 .mybag-link i {
+    color: #1F497D;
+}
+
+/*---------------- sticky header cart -----------------------------*/
+.header-container.sticky-header .menu-wrapper .mybag-link i {
+    color: #1F497D;
+}
+/*---------------------------------------------*/
+
 .owl-banner-carousel .content.type2 h2 {
     font-size: 26px;
 }
@@ -217,7 +225,7 @@ body {
 }
 
 .sorter .view-mode strong i {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
 }
 
 .sorter .view-mode strong i:hover {
@@ -225,12 +233,12 @@ body {
 }
 
 .sorter .view-mode a:hover i {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     opacity: 0.9;
 }
 
 .btn-default {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     background-repeat: repeat;
 }
 
@@ -240,15 +248,15 @@ body {
 }
 
 a.quickview-icon {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
 }
 
 .item:hover .details-area .actions a.addtocart {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
 }
 
 a.addtocart:hover {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
 }
 
 .item .details-area .actions a.addtocart:hover {
@@ -286,7 +294,7 @@ a.comparelink:hover {
 }
 
 button.button span {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
 }
 
 .link-wishlist {
@@ -320,19 +328,23 @@ button.button span {
 }
 
 .data-table button.button:hover > span {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
 }
 
 .cart .discount h2:hover::before {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
 }
 
 .shipping h2:hover::before {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8) !important;
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D) !important;
 }
 
 .dashboard .welcome-msg {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
+}
+
+.owl-theme .owl-controls .owl-page.active span {
+    background: #1F497D;
 }
 
 /* ----------------------for Homepage CMS page block bottom padding ------------------ */
@@ -709,7 +721,7 @@ ul.list3 li {
 .owl-item .sellon-title {
     text-align: center;
     font-size: 30px;
-    color: #08C;
+    color: #1F497D;
     line-height: 24px;
 }
 
@@ -720,7 +732,7 @@ ul.list3 li {
 .parallax-slider .owl-carousel a {
     padding: 12px 30px;
     font-weight: bold !important;
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     color: #fff !important;
     text-decoration: none;
     display: inline-block;
@@ -757,7 +769,8 @@ ul.list3 li {
     background-repeat: repeat;
     width: 100%;
     height: 100%;
-    background-color: #1C4154;
+    /*background-color: #1C4154;*/
+    background-color: #1F497D;
     border-top: 1px solid #DFDDDD;
 }
 
@@ -789,12 +802,13 @@ ul.list3 li {
 .footertop-bg-color {
     /*background-color: #232F3E;*/
     /*background-color: #FDFBFC;*/
+    /*background-color: #1C4154;*/
+    background-color: #1F497D;
     background-image: url("../images/colorScheme/bg-diagonal-line.png");
     background-position: left top;
     background-repeat: repeat;
     width: 100%;
     height: 100%;
-    background-color: #1C4154;
 }
 
 .footer-top .block .block-title {
@@ -999,12 +1013,13 @@ button.button2 {
     padding: 0px;
     /*background-color: #0C0C0C;*/
     /*background-color: #FDFBFC;*/
+    /*background-color: #1C4154;*/
+    background-color: #1F497D;
     background-image: url("../images/colorScheme/bg-diagonal-line.png");
     background-position: left top;
     background-repeat: repeat;
     width: 100%;
     height: 100%;
-    background-color: #1C4154;
 }
 
 .footer-bottom .custom-block {
@@ -1226,8 +1241,14 @@ ol, ul, li {
 
 .menu-all-pages-container > ul.menu > li:nth-child(1) {
     display: inline-block !important;
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19ADC8, #1939C8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     border-radius: 5px 0px 0px 5px;
+}
+
+.menu-all-pages-container > ul.menu > li:nth-child(1):hover {
+    display: inline-block !important;
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
+    border-radius: 5px 0px 0px 0px;
 }
 
 .header-container.type4 .main-nav ul.menu > li:first-child > a {
@@ -1255,7 +1276,7 @@ ol, ul, li {
 
 .view-all .nav-sublist-dropdown {
     background: #FFF none repeat scroll 0% 0% !important;
-    border-top: 5px solid #08C !important;
+    border-top: 5px solid #1F497D !important;
     width: 100%;
     background: #fff;
 }
@@ -1278,7 +1299,7 @@ ol, ul, li {
 }
 
 .main-nav .menu > li.view-all li.menu-item > h5.levelonecats a{
-    color: #08C;
+    color: #1F497D;
 }
 
 /* -------- navbar dropdown links ---------------------*/
@@ -1435,7 +1456,7 @@ ol, ul, li {
     padding: 2px;
     border: medium none;
     line-height: 1.5;
-    color: #08C;
+    color: #1F497D;
 }
 
 .main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a.navbrand-title:hover {
@@ -1447,8 +1468,11 @@ ol, ul, li {
 /*--------------------------- navbar changes end --------------------------------------*/
 /*-------------------------------------------------------------------------------------*/
 
+.breadcrumbs span.breadcrumbs-split {
+    font-size: 8px;
+}
 
-.product-view .product-img-box {
+/*.product-view .product-img-box {
     width: 250px !important;
     margin-right: 50px;
     margin-bottom: 10px !important;
@@ -1456,17 +1480,70 @@ ol, ul, li {
 
 .product-view .product-shop {
     width: 65%;
+}*/
+
+
+/*------------------------- product view page ------------------------------*/
+
+.product-page-options-block {
+    margin: 0px 5px;
+}
+
+.product-view .product-img-box {
+    height: 350px;
+    width: 435px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    margin-bottom: 90px;
+}
+
+.product-view .product-img-box img {
+    max-width: 300px;
+    max-height: 400px;
+}
+
+.product-view .product-img-box li.etalage_thumb {
+    padding: 15px 50px 20px 50px;
+    border: none;
+}
+
+.product-view .product-shop {
+    padding: 0px 10px 0px 20px;
+    margin-top: -10px;
 }
 
 .product-view .product-name {
     font-size: 13px !important;
 }
 
+.product-view .product-name h1 {
+    font-size: 22px;
+    font-weight: normal;
+}
 
+.no-rating {
+    /*border-bottom: 1px solid #ebebeb;*/
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+}
 
+.regular-price .price {
+    font-weight: normal;
+}
 
+.product-view .product-shop .price-box .regular-price .price {
+    font-size: 20px;
+}
 
+/*.qty-changer > a {
+    height: 38px;
+    width: 35px;
+    font-size: 30px;
+}*/
 
+.product-collateral {
+    padding-top: 50px;
+}
 
 /*------------------------------Additional info attributes---------------------------*/
 
@@ -1587,7 +1664,7 @@ table{
 
 #checkout-review-table tfoot tr.last td {
     /*background: #08C none repeat scroll 0% 0%;*/
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     color: #FFF;
 }
 
@@ -1652,7 +1729,7 @@ ul.category-list {
 }
 
 .block-category-nav .block-title:hover::before {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     opacity: 0.9;
 }
 
@@ -1724,7 +1801,7 @@ dl#narrow-by-list dd >ol {
 }
 
 .block-layered-nav dt:hover::before {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     opacity: 0.9;
 }
 
@@ -1849,13 +1926,13 @@ dl#narrow-by-list dd >ol {
     padding: 6px 16px;
     cursor: pointer;
     border-radius: 2px;
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     /*background: #F3A847 none repeat scroll 0% 0%; /* fb blue #3A5795 porto blue #08C*/
     color: #FFF;
 }
 
 #submit-create-account span {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     /*background: #F3A847 none repeat scroll 0% 0%; /* porto blue #08C*/
 }
 
@@ -1885,7 +1962,7 @@ dl#narrow-by-list dd >ol {
 .orBlock {
     width: 40px;
     line-height: 40px;
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     border-radius: 50%;
     color: #FFF;
     margin: 0px auto;
@@ -2006,7 +2083,7 @@ dl#narrow-by-list dd >ol {
 }
 
 .sp_login_seprator1 span {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     left: -27px;
     padding: 17px 17px;
     position: relative;
@@ -2103,7 +2180,7 @@ p.checkout-password-control-smltext {
 
 .opc .step-title h2 { font-size:12px; color:#bbb; clear:both; }
 .opc .allow .step-title { cursor:pointer; background:none; }
-.opc .allow .step-title .number { background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8); color:#fff; }
+.opc .allow .step-title .number { background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D); color:#fff; }
 .opc .allow .step-title h2 { color:#000; }
 .opc .active .step-title { 
     color:#ef0606; 
@@ -2360,7 +2437,7 @@ li.submitbutton {
     padding: 6px 16px;
     cursor: pointer;
     border-radius: 2px;
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     color: #FFF;
 }
 
@@ -2377,7 +2454,7 @@ li.submitbutton {
 }
 
 .trackpage_seprator1 span {
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     left: -27px;
     padding: 17px;
     position: relative;
@@ -2396,7 +2473,7 @@ li.submitbutton {
     padding: 6px 16px;
     cursor: pointer;
     border-radius: 2px;
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#19adc8, #1939c8);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     color: #FFF;
 }
 
