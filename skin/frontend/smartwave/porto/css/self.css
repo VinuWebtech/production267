@@ -205,6 +205,12 @@ body {
 }
 
 /* -------------------------------------------------------------------------------------*/
+
+#totop {
+    background-color: #ffc000;
+    color: #000;
+}
+
 .std ul {
     list-style: outside none none;
 }
@@ -1543,6 +1549,14 @@ ol, ul, li {
 
 .product-collateral {
     padding-top: 50px;
+}
+
+.product-tabs > ul li.active {
+    border-top-color: #1F497D;
+}
+
+.product-tabs > ul li a {
+    color: #1F497D;
 }
 
 /*------------------------------Additional info attributes---------------------------*/
