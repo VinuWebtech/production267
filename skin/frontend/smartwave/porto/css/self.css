@@ -211,6 +211,10 @@ body {
     color: #000;
 }
 
+#totop:hover {
+    background-color: #ffc000;
+}
+
 .std ul {
     list-style: outside none none;
 }
@@ -259,6 +263,7 @@ a.quickview-icon {
 
 .item:hover .details-area .actions a.addtocart {
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
+    border-color: #1F497D;
 }
 
 a.addtocart:hover {
