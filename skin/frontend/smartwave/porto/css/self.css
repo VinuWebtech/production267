@@ -1555,6 +1555,11 @@ ol, ul, li {
     padding-top: 50px;
 }
 
+.product-collateral h2 {
+    color: #1F497D;
+    font-weight: normal;
+}
+
 .product-tabs > ul li.active {
     border-top-color: #1F497D;
 }
