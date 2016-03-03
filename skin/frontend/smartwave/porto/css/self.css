@@ -236,10 +236,12 @@ body {
 
 .sorter .view-mode strong i {
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
+    border-color: #1F497D;
 }
 
 .sorter .view-mode strong i:hover {
     opacity: 0.9;
+    border-color: #1F497D;
 }
 
 .sorter .view-mode a:hover i {
@@ -1805,12 +1807,25 @@ ul.category-list {
 
 dl#narrow-by-list dd >ol {
     max-height: 150px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
 .block-layered-nav .block-content dl#narrow-by-list dd >ol li {
     height: 24px;
+}
+
+/*---------- placing collapse button to left & changing color for attributes -----*/
+.price-filter-slider .text-box input.go {
+    background-color: #1F497D;
+}
+
+.ui-slider .ui-slider-handle {
+    background-color: #1F497D;
+}
+
+.ui-slider .ui-slider-range {
+    background-color: #1F497D;
 }
 
 /*---------- placing collapse button to left & changing color for attributes -----*/
