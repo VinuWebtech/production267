@@ -16,13 +16,11 @@
     }
     $ratio = $ratio_height / $ratio_width;
     $rnd_str = rtrim(base64_encode(md5(microtime())),"=");
-	$hide_smallthumb_single = Mage::getStoreConfig("porto_settings/product_view/hide_single_smallthumb", $code);
-	if(!$hide_smallthumb_single)
-		$hide_smallthumb_single = "false";
-	else
-		$hide_smallthumb_single = "true";
-    $_imageLabel=$this->escapeHtml($this->getImageLabel());
-    if (empty($_imageLabel)) { $_imageLabel=$this->escapeHtml($_product->getName()); }
+    $hide_smallthumb_single = Mage::getStoreConfig("porto_settings/product_view/hide_single_smallthumb", $code);
+    if(!$hide_smallthumb_single)
+        $hide_smallthumb_single = "false";
+    else
+        $hide_smallthumb_single = "true";
 ?>
 <?php if (count($this->getGalleryImages()) > 0): ?>
 <ul id="etalage_<?php echo $rnd_str; ?>">
@@ -35,8 +33,8 @@
                 $image_src = $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);
         ?>
         <a rel="gallery" class="fancy-images fancy-images_<?php echo $rnd_str; ?>" href="<?php echo $image_src; ?>"><span class="glyphicon glyphicon-search"></span></a>
-        <img class="etalage_thumb_image" src="<?php echo $image_src; ?>" alt=""/>
-        <img class="etalage_source_image" src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize(100, 100*$ratio)?>" alt="<?php echo $_imageLabel ?>"/>
+        <img class="etalage_thumb_image" src="<?php echo $image_src; ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+        <img class="etalage_source_image" src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize(100, 100*$ratio)?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
     </li>
 <?php endforeach; ?>
 </ul>
@@ -50,8 +48,8 @@
                 $image_src = $this->helper('catalog/image')->init($_product, 'image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);
         ?>
         <a class="fancy-images fancy-images_<?php echo $rnd_str; ?>" href="<?php echo $image_src; ?>"><span class="glyphicon glyphicon-search"></span></a>
-        <img class="etalage_thumb_image" src="<?php echo $image_src; ?>" alt=""/>
-        <img class="etalage_source_image" src="<?php echo (!$aspect_ratio)?$this->helper('catalog/image')->init($_product, 'image')->resize(100, $ratio_height/$ratio_width*100):$this->helper('catalog/image')->init($_product, 'image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100);?>" alt="<?php echo $_imageLabel ?>" />
+        <img class="etalage_thumb_image" src="<?php echo $image_src; ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+        <img class="etalage_source_image" src="<?php echo (!$aspect_ratio)?$this->helper('catalog/image')->init($_product, 'image')->resize(100, $ratio_height/$ratio_width*100):$this->helper('catalog/image')->init($_product, 'image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(100);?>" alt="<?php echo $this->htmlEscape($this->getImageLabel()) ?>" />
     </li>
 </ul>
 <?php endif; ?>
