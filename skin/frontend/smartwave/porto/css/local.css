@@ -867,7 +867,7 @@ dl#narrow-by-list{margin:0}
 .col-main .category-products li.item .product-image img.hoverImage{position:absolute;top:0;left:0;opacity:0;filter:alpha(opacity=0)}
 .col-main .category-products li.item .product-image-area:hover .product-image img.defaultImage{opacity:0;filter:alpha(opacity=0)}
 .col-main .category-products li.item .product-image-area:hover .product-image img.hoverImage{opacity:1;filter:alpha(opacity=100)}
-.col-main .category-products .products-grid li.item .details-area{padding:10px;text-align:center}
+.col-main .category-products .products-grid li.item .details-area{padding:10px;}
 .col-main .category-products .products-grid li.item .details-area .product-name{margin:0 0 3px 0}
 .col-main .category-products .products-grid li.item .details-area .product-name a{font-size:14px}
 .col-main.filter-products .product-name a{color:#fff}

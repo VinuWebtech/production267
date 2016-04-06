@@ -150,12 +150,12 @@ if($enable_addtocart_sticky){
                     <h1 <?php if($enabled_richsnippets): ?>itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                 </div>
                 <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
-                <?php if ($_product->getShortDescription()):?>
+                <!--<?php if ($_product->getShortDescription()):?>
                     <div class="short-description">
                         <h2><?php echo $this->__('Quick Overview') ?></h2>
                         <div class="std" <?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                     </div>
-                <?php endif;?>
+                <?php endif;?>-->
                 <!--vinu changes start added attributes row -->
                 <!--<?php echo $this->getChildHtml('attributes'); ?>-->
                 <!--changes end-->
@@ -482,7 +482,13 @@ if($enable_addtocart_sticky){
                 <?php if ($title = $this->getChildData($alias, 'title')):?>
                     <h2><?php echo $this->escapeHtml($title); ?></h2>
                 <?php endif;?>
-                <?php echo $html; ?>
+                <?php if ($_product->getShortDescription()):?>
+                    <div class="short-description">
+                        <h2><?php echo $this->__('Quick Overview') ?></h2>
+                        <div class="std" <?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    </div>
+                <?php endif;?>
+                <!--<?php echo $html; ?>-->
             </div>
         <?php endforeach;?>
         <?php echo $this->getChildHtml('product_additional_data'); ?>
