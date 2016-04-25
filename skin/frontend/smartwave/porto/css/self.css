@@ -366,13 +366,18 @@ button.button span {
     padding: 20px 0px 20px;
 }
 
+@media (min-width:700px){
+    h3.filter-title {
+        margin: 10px 205px 15px;
+    }
+}
+
 h3.filter-title {
     
     font-style: normal;
     font-weight: 600;
     color: #7A859E;
     font-size: 16pt;
-    margin: 10px 205px 15px;
     text-align: center;
     border-bottom: 1px solid #D6D6D6;
     padding: 0px 115px 10px;
