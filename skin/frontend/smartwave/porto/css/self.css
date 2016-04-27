@@ -993,39 +993,47 @@ button.button2 {
     float: none;
 }*/
 
-.footer .container .shopAllCat {
-    border-bottom: 1px solid #E1E1DF;
-    padding: 10px 0px;
-    margin: 0px 0px 10px;
+@media (max-width: 400px) {
+    .footer-categories { display:none;}
 }
 
-.footer .container h5 {
-    font-size: 18px;
-    float: left;
-    line-height: 18px;
+@media (min-width: 400px) {
+    .footer .container .shopAllCat {
+        border-bottom: 1px solid #E1E1DF;
+        padding: 10px 0px;
+        margin: 0px 0px 10px;
+    }
+
+    .footer .container h5 {
+        font-size: 18px;
+        float: left;
+        line-height: 18px;
+    }
+
+    .footer-categories {
+        padding-left: 25px;
+        line-height: 18px;
+    }
+
+    .footer .container h5.levelonecats {
+        font-size: 12px; 
+        font-weight: 700;
+    }
+
+    .footer .container a.footer-cat {
+        float: left;
+    }
+
+    .footer .container a.inside-link {
+        float: left;
+    }
+
+    .footer .container a.inside-link-first {
+        float: left;
+    }
 }
 
-.footer-categories {
-    padding-left: 25px;
-    line-height: 18px;
-}
 
-.footer .container h5.levelonecats {
-    font-size: 12px; 
-    font-weight: 700;
-}
-
-.footer .container a.footer-cat {
-    float: left;
-}
-
-.footer .container a.inside-link {
-    float: left;
-}
-
-.footer .container a.inside-link-first {
-    float: left;
-}
 
 .footer-bottom {
     padding: 0px;
