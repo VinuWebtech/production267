@@ -230,6 +230,9 @@
         <reference name="product.info.upsell">
             <action method="setColumnCount" ifconfig="porto_settings/general/layout" condition="1024"><columns>3</columns></action>
             <action method="setItemLimit" ifconfig="porto_settings/general/layout" condition="1024"><type>upsell</type><limit>3</limit></action>
+            <!--Vinu changes for increasing no.of upsell products displayed on product page-->
+            <action method="setItemLimit"><type>upsell</type><limit>10</limit></action>
+            <!--Vinu changes end-->
         </reference>
     </catalog_product_view>
 
