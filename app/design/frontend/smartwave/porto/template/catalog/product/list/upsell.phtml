@@ -10,12 +10,14 @@ $code  = $store->getCode();
         <?php $_columnCount = 3; ?>
     <?php endif; ?>
     <?php $this->resetItemsIterator() ?>
-    <ul class="products-grid columns<?php echo $_columnCount; ?>">
+    <!--Vinu change adding horizontal scroll for products -->
+    <ul id="upsell-products" class="products-grid columns<?php echo $_columnCount; ?> owl-carousel owl-theme">
+    <!--Vinu changes end-->
 <?php for($_i=0;$_i<$this->getRowCount();$_i++): ?>
     <?php for($_j=0;$_j<$this->getColumnCount();$_j++): ?>
         <?php if($_product=$this->getIterableItem()): ?>
         <?php $product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
-            <li class="item"><div class="item-area">
+            <li class="item1"><div class="item-area">
                 <div class="product-image-area">
                     <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                     <?php
@@ -102,24 +104,30 @@ $code  = $store->getCode();
                     <?php 
                     endif;
                     ?>
-                    <?php echo $this->getPriceHtml($_product, true) ?>
-                    <div class="actions">
-                        <?php if (Mage::getStoreConfig("porto_settings/category_grid/show_addtolinks", $code) && $this->helper('wishlist')->isAllow()) : ?>
-                        <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtolinks/enablecategory", $code)):?>javascript:ajaxWishlist('<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>','<?php echo $_product->getId()?>');<?php else: ?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif; ?>" class="addtowishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><i class="icon-wishlist"></i></a>
-                        <?php endif; ?>
-                        <?php if (Mage::getStoreConfig("porto_settings/category_grid/show_addtocart", $code)): ?>
-                            <?php  if ( !($_product->getData('has_options') || $_product->isGrouped()) ) :  ?>
-                                <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:setLocationAjax('<?php echo $this->getAddToCartUrl($_product) ?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i>&nbsp;<?php echo $this->__('Add to Cart') ?></a>
-                            <?php else : ?>
-                                <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:showOptions('<?php echo $_product->getId()?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i>&nbsp;<?php echo $this->__('Add to Cart') ?></a>
-                                <a href='<?php echo $this->getUrl('ajaxcart/index/options',array('product_id'=>$_product->getId()));?>' class='fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Options</a>
-                            <?php endif;?>
-                        <?php endif; ?>
-                        <?php if(Mage::getStoreConfig("porto_settings/category_grid/show_addtolinks", $code) && Mage::getStoreConfig("porto_settings/category/compare", $code) && $_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-                            <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtolinks/enablecategory", $code)):?>javascript:ajaxCompare('<?php echo $_compareUrl ?>','<?php echo $_product->getId()?>');<?php else: ?><?php echo $_compareUrl ?><?php endif; ?>" class="comparelink" title="<?php echo $this->__('Add to Compare') ?>"><i class="icon-compare"></i></a>
-                        <?php endif; ?>
-                        <div class="clearer"></div>
-                    </div>
+                    <!--Vinu changes design adjustment of price & cart in one row-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <?php echo $this->getPriceHtml($_product, true) ?>
+                        </div>
+                        <div class="col-sm-6"><div class="actions">
+                            <?php if (Mage::getStoreConfig("porto_settings/category_grid/show_addtolinks", $code) && $this->helper('wishlist')->isAllow()) : ?>
+                            <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtolinks/enablecategory", $code)):?>javascript:ajaxWishlist('<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>','<?php echo $_product->getId()?>');<?php else: ?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif; ?>" class="addtowishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><i class="icon-wishlist"></i></a>
+                            <?php endif; ?>
+                            <?php if (Mage::getStoreConfig("porto_settings/category_grid/show_addtocart", $code)): ?>
+                                <?php  if ( !($_product->getData('has_options') || $_product->isGrouped()) ) :  ?>
+                                    <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:setLocationAjax('<?php echo $this->getAddToCartUrl($_product) ?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i><!--&nbsp;<?php echo $this->__('Add to Cart') ?>--></a>
+                                <?php else : ?>
+                                    <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:showOptions('<?php echo $_product->getId()?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i><!--&nbsp;<?php echo $this->__('Add to Cart') ?>--></a>
+                                    <a href='<?php echo $this->getUrl('ajaxcart/index/options',array('product_id'=>$_product->getId()));?>' class='fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Options</a>
+                                <?php endif;?>
+                            <?php endif; ?>
+                            <!--<?php if(Mage::getStoreConfig("porto_settings/category_grid/show_addtolinks", $code) && Mage::getStoreConfig("porto_settings/category/compare", $code) && $_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtolinks/enablecategory", $code)):?>javascript:ajaxCompare('<?php echo $_compareUrl ?>','<?php echo $_product->getId()?>');<?php else: ?><?php echo $_compareUrl ?><?php endif; ?>" class="comparelink" title="<?php echo $this->__('Add to Compare') ?>"><i class="icon-compare"></i></a>
+                            <?php endif; ?>-->
+                            <div class="clearer"></div>
+                        </div></div>
+                    </div>  
+                    <!--Vinu changes end-->  
                 </div>
             </div></li>
             <?php endif; ?>
@@ -134,5 +142,27 @@ $code  = $store->getCode();
             jQuery('.col-main .products-grid li:nth-child(4n)').addClass('nth-child-4n');
             jQuery('.col-main .products-grid li:nth-child(4n+1)').addClass('nth-child-4np1');
         </script>
+        <!--Vinu changes script that runs horizontal scroll-->
+        <script type="text/javascript">
+            jQuery(function($){
+                $("#upsell-products").owlCarousel({
+                    navigation : true, // Show next and prev buttons
+                    slideSpeed : 300,
+                    paginationSpeed : 400,
+                    //singleItem:true,
+                    pagination:false,
+                    stopOnHover: true,
+                    rewindNav: true,
+                    rewindSpeed: 400,
+                    autoPlay: false,
+                    <?php if (!Mage::getStoreConfig("porto_settings/general/rtl",$code)) : ?>
+                        navigationText:["<i class='icon-left-open'></i>","<i class='icon-right-open'></i>"]
+                    <?php else : ?>
+                        navigationText:["<i class='icon-right-open'></i>","<i class='icon-left-open'></i>"]
+                    <?php endif; ?>
+                });
+            });
+        </script>
+        <!--Vinu changes end-->
 </div>
     <?php endif; ?>
