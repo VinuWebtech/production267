@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+<modules>
+    <Auto_Cleancache>
+        <version>1.0.0</version>
+    </Auto_Cleancache>
+</modules>
+    <global>
+        <models>
+            <cleancache>
+                <class>Auto_Cleancache_Model</class>
+            </cleancache>
+        </models>
+    </global>
+    <crontab>
+        <jobs>
+            <clean_cache_aftercronrun><!-- identifier -->
+                 <schedule>
+                     <cron_expr>0 3 * * *</cron_expr> <!-- runign cronjob at 3 am after magento cron -->
+                 </schedule>
+                <run>
+                    <model>cleancache/Fire::fireCacheafterCronrun</model>
+                </run>
+            </clean_cache_aftercronrun>
+        </jobs>
+    </crontab>
+</config>
