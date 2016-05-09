@@ -11,7 +11,9 @@
     </h3>
     <?php 
     $categories = Mage::getResourceModel('catalog/category_collection')->addAttributeToSelect('*')->addAttributeToFilter('is_active', 1)->addAttributeToFilter('parent_id', 2)->addAttributeToSort('position');
-    foreach ($categories as $_category): 
+    $maxCategoryCount    = $this->getCategoryCount();
+    $i; foreach ($categories as $_category): $i++;
+        if ($i > $maxCategoryCount): break; endif;
         $cat = Mage::getModel('catalog/category')->load($_category->getId());
         //$count = $cat->getProductCount(); 
     ?>  
