@@ -13,19 +13,7 @@
     }
 ?>
 <?php echo $_imgHtml ?>
-<?php
-    if(!Mage::getStoreConfig("porto_settings/category/fullwidth_description",$code)){
-        if($_description=$_category->getDescription()){
-?>
-<div class="category-description std">
-<?php
-            echo $_helper->categoryAttribute($_category, $_description, 'description');
-?>
-</div>
-<?php
-        }
-    }
-?>
+
 <div class="page-title category-title">
     <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
         <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
@@ -48,3 +36,16 @@
     <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/subcategory.phtml')->toHtml(); ?>
     <?php echo $this->getProductListHtml() ?>
 <?php endif; ?>
+
+<!--Vinu changes moved description to bottom -->
+<?php
+    if(!Mage::getStoreConfig("porto_settings/category/fullwidth_description",$code)){
+        if($_description=$_category->getDescription()){
+?>
+<div class="category-description std">
+    <?php echo $_helper->categoryAttribute($_category, $_description, 'description'); ?>
+</div>
+<?php
+        }
+    }
+?>
