@@ -2,6 +2,9 @@
 <layout version="0.1.0">
     <default>
         <reference name="head">
+            <!-- Vinu changes to set quickview pages not to index -->
+            <action method="setRobots"><value>NOINDEX,NOFOLLOW</value></action>
+            <!-- Vinu changes end -->
             <block type="quickview/topJs"/>
             <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.etalage.min.js</script></action>
             <action method="addJs"><script>smartwave/jquery/plugins/etalage/jquery.zoom.min.js</script></action>
