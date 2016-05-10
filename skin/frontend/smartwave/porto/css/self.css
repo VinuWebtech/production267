@@ -263,6 +263,16 @@ a.quickview-icon {
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
 }
 
+.category-products .details-area .ratings {
+    background: none;
+}
+
+.item .details-area .actions a.addtocart {
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
+    border-color: #1F497D;
+    color: #fff;
+}
+
 .item:hover .details-area .actions a.addtocart {
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     border-color: #1F497D;
@@ -1259,7 +1269,8 @@ ol, ul, li {
 }
 
 .col-main .category-products .products-grid li.item:hover {
-    box-shadow: 0 1px 3px #444;
+    /*box-shadow: 0 1px 3px #444;*/
+    border: 1px solid #FFC000;
 }
 
 .product-image-area {
@@ -1648,6 +1659,11 @@ ol, ul, li {
 
 /*------------------------------Additional info attributes---------------------------*/
 
+#product-attribute-specs-table {
+    margin: -25px -10px;
+    border: none;
+}
+
 .border-box-area1 {
     /*border-bottom: 2px solid #000;*/
     border-bottom: 1px solid #EBEBEB;
@@ -1664,10 +1680,13 @@ ol, ul, li {
     font-weight: normal;
     color: #777;
     border-right: none;
+    padding: 8px 10px;
 }
 
 #product-attribute-specs-table tbody td {
     border-right: none;
+    padding: 8px 10px;
+    /*color: #333;*/
 }
 
 #product-attribute-specs-table1 table{
