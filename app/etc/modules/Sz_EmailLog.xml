@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Sz_EmailLog>
-            <active>false</active>
-            <codePool>local</codePool>
-        </Sz_EmailLog>
-    </modules>
-</config> 
