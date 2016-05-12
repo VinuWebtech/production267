@@ -156,6 +156,11 @@ var i = 0;
                         <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
                     </div>
                     <div class="action-area">
+                        <!-- Vinu changes for adding mrp price only if value is present for product -->
+                        <?php if($_product->getMrp_price()!= ''): ?>
+                            <span class="mrp-price list-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
+                        <?php endif; ?>
+                        <!-- Vinu changes end -->
                         <?php echo $this->getPriceHtml($_product, true) ?>
                         <div class="actions">
                             <?php if($_product->isSaleable()): ?>
@@ -174,7 +179,7 @@ var i = 0;
 
                             <!--<?php if(Mage::getStoreConfig("porto_settings/category/compare", $code) && $_compareUrl=$this->getAddToCompareUrl($_product)): ?>
                                 <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtolinks/enablecategory", $code)):?>javascript:ajaxCompare('<?php echo $_compareUrl ?>','<?php echo $_product->getId()?>');<?php else: ?><?php echo $_compareUrl ?><?php endif; ?>" class="comparelink" title="<?php echo $this->__('Add to Compare') ?>"><i class="icon-compare"></i></a>
-                            <?php endif; ?>-->
+                            <?php endif; ?>
                             <?php
                             if( Mage::getStoreConfig("quickview/general/enableview", $code) ){
                                 $base_url = $this->getUrl();
@@ -193,7 +198,7 @@ var i = 0;
                                 <a href="<?php echo $quickview_url; ?>" class="quickviewlink quickview-icon" title="<?php echo $this->__("Quick View"); ?>"><i class="icon-search"></i></a>
                             <?php
                             }
-                            ?>
+                            ?>-->
                             <div class="clearer"></div>
                         </div>
                     </div>
@@ -343,6 +348,11 @@ var i = 0;
                     <!--Vinu changes design adjustment of price & cart in one row-->
                     <div class="row">
                         <div class="col-sm-6">
+                            <!-- Vinu changes for adding mrp price only if value is present for product -->
+                            <?php if($_product->getMrp_price()!= ''): ?>
+                                <span class="mrp-price list-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
+                            <?php endif; ?>
+                            <!-- Vinu changes end -->
                             <?php echo $this->getPriceHtml($_product, true) ?>
                         </div>
                         <div class="col-sm-6"><div class="actions">
