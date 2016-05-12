@@ -1,5 +1,9 @@
 <?php $_product = $this->getProduct() ?>
-
+<!-- Vinu changes for adding mrp price only if value is present for product -->
+<?php if($_product->getMrp_price()!= ''): ?>
+	<span class="mrp-price view-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
+<?php endif; ?>
+<!-- Vinu changes end -->
 <?php echo $this->getPriceHtml($_product) ?>
 
 <?php if ($_product->isAvailable()): ?>

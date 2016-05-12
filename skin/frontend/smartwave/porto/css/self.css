@@ -46,6 +46,10 @@ body {
     padding-bottom: 0px;
 }
 
+.mrp-price {
+    text-decoration: line-through;
+}
+
 /*-------------------------------------------------------------------------------*/
 /* -------------------------for Header------------------ */
 
@@ -284,6 +288,12 @@ a.addtocart:hover {
 
 .item .details-area .actions a.addtocart:hover {
     opacity: 0.8;
+}
+
+.col-main .category-products .products-list li.item .details-area .actions a.addtocart {
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
+    border-color: #1F497D;
+    color: #fff;
 }
 
 a.addtowishlist {
@@ -1291,6 +1301,13 @@ ol, ul, li {
     font-weight: normal;
 }
 
+/********* MRP Price on category list page ***********/
+span.list-page {
+    font-size: 14px;
+}
+/*******/
+
+
 .top-container > .breadcrumbs {
     font-size: 12px;
 }
@@ -1633,6 +1650,12 @@ ol, ul, li {
 .product-view .product-shop .price-box .regular-price .price {
     font-size: 20px;
 }
+
+/********* MRP Price on category list page ***********/
+span.view-page {
+    font-size: 16px;
+}
+/*********/
 
 /*.qty-changer > a {
     height: 38px;
