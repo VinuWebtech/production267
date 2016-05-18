@@ -330,6 +330,10 @@ button.button span {
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
 }
 
+/*button.button span {
+    background: #6CBE42;
+}*/
+
 .link-wishlist {
     /*background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#FAA51A, #F47A20);*/
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#ffd500, #ffab00);
@@ -1265,7 +1269,7 @@ ol, ul, li {
 /*--------------------------------------------------------------------------------------------*/
 
 .col-main .category-products .products-grid li.item .details-area .product-name a {
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .col-main .category-products .products-grid.columns4{
@@ -1634,7 +1638,7 @@ span.list-page {
 }
 
 .product-view .product-name h1 {
-    font-size: 22px;
+    font-size: 19px;
     font-weight: normal;
 }
 
@@ -1649,7 +1653,7 @@ span.list-page {
 }
 
 .product-view .product-shop .price-box .regular-price .price {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 /********* MRP Price on category list page ***********/
