@@ -1547,7 +1547,7 @@ span.list-page {
     line-height: 1.5;
     text-transform: none;
     font-weight: 300;
-    padding: 2px;
+    padding: 2px 2px 8px 2px;
     border: medium;
     /*border-bottom: 1px solid #D5D5D5;*/
     margin: 0px;
