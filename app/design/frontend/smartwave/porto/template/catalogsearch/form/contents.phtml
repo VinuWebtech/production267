@@ -6,8 +6,8 @@
     <div class="form-search <?php if(!Mage::getStoreConfig("catalogcategorysearch/general/enabled", $code)): ?>no-padding<?php endif; ?>">
         <!--changes start added-->
         <label for="search"><?php echo $this->__('Search:') ?></label>
+        <input id="search" type="text" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>" class="input-text" />
         <?php $categorySearchHelper = $this->helper('catalogcategorysearch'); ?>
-        
         <?php if(Mage::getStoreConfig("catalogcategorysearch/general/enabled", $code)): ?>
         <select id="<?php echo $categorySearchHelper->getCategoryParamName() ?>" name="<?php echo $categorySearchHelper->getCategoryParamName() ?>">
             <option value=""><?php echo $this->__('All Categories') ?></option>
@@ -21,7 +21,6 @@
             <?php endforeach;?>
         </select>
         <?php endif; ?>
-        <input id="search" type="text" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>" class="input-text" />
         <button type="submit" title="<?php echo $this->__('Search') ?>" class="button"><i class="icon-search"></i></button>
         <div id="search_autocomplete" class="search-autocomplete"></div>
         <div class="clearer"></div>
