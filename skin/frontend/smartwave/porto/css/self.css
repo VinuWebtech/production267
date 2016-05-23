@@ -81,7 +81,8 @@ body {
 .top-links .custom-block {
     display: inline-block;
     text-align: left;
-    height: 24px;
+    height: 25px;
+    padding: 3px 0;
     float: left;
     color: #FFF;
 }
@@ -137,13 +138,13 @@ body {
 
 .header .form-search {
     border-radius: 10px;
-    border-left: 0px;
+    /*border-left: 0px;*/
 }
 
 .header .form-search #search {
-    position: absolute;
+    /*position: absolute;*/
+    width: 408px;
     left: 130px;
-    width: 280px;
     border-right: 1px solid #CCC;
     border-radius: 0px;
 }
@@ -1464,7 +1465,8 @@ span.list-page {
 /*--------------- change selected base category color -------*/
 .main-nav ul.menu > li.act {
     /*background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#FAA51A, #F47A20);*/
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#ffd500, #ffab00);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png");
+    background-color: #ffc000;
 }
 
 /*-------------- change base category color on hover -------*/
@@ -1481,7 +1483,8 @@ span.list-page {
 
 .main-nav ul.menu > li:hover {
     /*background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#FAA51A, #F47A20);*/
-    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#ffd500, #ffab00);
+    background-image: url("../images/colorScheme/bg-diagonal-line.png");
+    background-color: #ffc000;
 }
 
 
@@ -2024,8 +2027,8 @@ ul.category-list {
 
 dl#narrow-by-list dd >ol {
     max-height: 150px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: auto;
+    /*overflow-x: hidden;*/
 }
 
 .block-layered-nav .block-content dl#narrow-by-list dd >ol li {
