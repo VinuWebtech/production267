@@ -1544,21 +1544,23 @@ span.list-page {
     text-decoration: none;
 }*/
 
+.main-nav .menu > li .nav-sublist-dropdown .container ul .menu-item-has-children .nav-sublist {
+    padding :0;
+}
 
 .main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a.level1 {
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: 13px;
+    color: #1F497D;
+    line-height: 20px;
     text-transform: none;
-    font-weight: 300;
-    padding: 2px 2px 8px 2px;
-    border: medium;
-    /*border-bottom: 1px solid #D5D5D5;*/
-    margin: 0px;
+    font-weight: 600;
+    padding: 0px;
+    margin: 6px 0px 0px 0px;
 }
 
-.main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a.level1.firstchild {
+/*.main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a.level1.firstchild {
     border-top: 1px solid #d5d5d5;
-}
+}*/
 
 .main-nav .cat-level-header{
     display:block;
@@ -1583,7 +1585,7 @@ span.list-page {
     display: block;
     padding: 2px;
     border: medium none;
-    line-height: 1.5;
+    line-height: 20px;
     color: #1F497D;
 }
 
@@ -1593,6 +1595,14 @@ span.list-page {
     text-decoration: none;
     font-weight: 700;
 }
+
+/* ---------------- changing second level subcategories display ---------------- */
+.main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a {
+    padding: 0px;
+    margin: 0px 2px;
+    line-height: 20px;
+}
+
 /*--------------------------- navbar changes end --------------------------------------*/
 /*-------------------------------------------------------------------------------------*/
 
