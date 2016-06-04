@@ -1255,6 +1255,10 @@ ol, ul, li {
     list-style: outside none none;
 }
 
+.std ol li {
+    list-style: decimal outside;
+}
+
 .subcategory-links:hover{
     background-color: #85A5AF;
     color: #F9F8F3;
