@@ -1,0 +1,1 @@
+$jpprR4q = jQuery.noConflict(true);

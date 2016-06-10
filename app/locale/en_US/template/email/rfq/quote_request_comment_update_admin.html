@@ -1,0 +1,46 @@
+<!--@subject Quote Request #{{var quoteid}} Comment Added @-->
+<head>
+    <style>
+        .tcellheader{
+            font-size:14px;
+        }
+        body{
+            background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px;
+        }
+    </style>
+</head>
+<body>
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+    <td align="left" valign="top" style="padding:0">
+        <!-- [ header starts here] -->
+        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="100%" style="border:1px solid #E0E0E0;">
+        <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+                    Hello, {{htmlescape var=$adminname}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Quote request # <a href="{{var view_link_admin}}">{{var request_number}}</a> has a new comment: <br /><br />
+                    {{var comment}}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+					<p>You can view the quote request here: <a href="{{var view_link_admin}}">Quote Details</a> page</p>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center><p style="font-size:12px; margin:0;">Thank you again, <strong>{{var store.getFrontendName()}}</strong></p></center></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>

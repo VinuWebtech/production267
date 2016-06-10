@@ -1,0 +1,89 @@
+<!--@subject Quote Request #{{var quoteid}} Processed @-->
+<head>
+    <style>
+        .tcellheader{
+            font-size:14px;
+        }
+        body{
+            background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px;
+        }
+        .a-right{
+            text-align:right;
+        }
+        .shipbill{
+            font-size:10px;
+            border-left:1px solid #EAEAEA;
+            border-bottom:1px solid #EAEAEA;
+            border-right:1px solid #EAEAEA;
+        }
+    </style>
+</head>
+<body>
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+
+
+        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="100%" >
+        <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+                    Hello, {{htmlescape var=$customer_name}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Your quote request # <a href="{{var view_link}}">{{var request_number}}</a> was processed.
+                    {{var comment}}
+                </td>
+            </tr>
+            <tr>
+				<td>
+					<table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th align="left" width="50%" bgcolor="#EAEAEA" class="tcellheader"><table cellspacing="0" cellpadding="7" border="0" width="100%"><tr><td>Shipping Information:</td></tr></table></th>
+                            <th width="10"></th>
+                            <th align="left" width="50%" bgcolor="#EAEAEA" class="tcellheader"><table cellspacing="0" cellpadding="7" border="0" width="100%"><tr><td>Billing Information:</td></tr></table></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td align="left" valign="top" class="shipbill">
+                                <table cellspacing="0" cellpadding="7" border="0" width="100%"><tr><td>{{var quote.getShippingAddress().format('html')}}
+                                &nbsp;</td></tr></table>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td align="left" valign="top" class="shipbill">
+                                <table cellspacing="0" cellpadding="7" border="0" width="100%"><tr><td>{{var quote.getBillingAddress().format('html')}}</td></tr></table>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+				</td>
+			</tr>
+            </table>
+
+<table width="100%">
+    <tr>
+    <td>
+            <table width="100%">
+            <tr>
+                <td>
+					{{layout handle=$handler order=$quote}}
+                    {{depend pdfcomment}}{{var pdfcomment}}{{/depend}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+					<p>For more details or to place an order please visit the <a href="{{var view_link}}">Quote Details</a> page</p>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center><p style="font-size:12px; margin:0;">Thank you again, <strong>{{var store.getFrontendName()}}</strong></p></center></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>
+</body>

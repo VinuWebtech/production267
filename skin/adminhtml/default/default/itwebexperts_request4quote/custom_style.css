@@ -1,0 +1,8 @@
+#r4q_status{
+    width: 215px;
+}
+
+#r4q_decline_reason, #r4q_update_comment{
+    width: 200px;
+
+}

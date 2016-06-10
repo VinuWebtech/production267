@@ -1,0 +1,66 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_item = $this->getItem() ?>
+<?php $this->setPriceDataObject($_item) ?>
+<tr<?php if (!$this->canDisplayGiftmessage()): ?> class="border"<?php endif; ?>>
+    <td>
+        <?php if ($this->canDisplayContainer()): ?>
+        <div id="<?php echo $this->getHtmlId() ?>" class="item-container">
+        <?php endif; ?>
+        <div class="item-text">
+            <?php echo $this->getColumnHtml($_item, 'name') ?>
+            <?php echo $this->getConfigureButtonHtml($_item) ?>
+        </div>
+        <?php if ($this->canDisplayContainer()): ?>
+        </div>
+        <?php endif ?>
+    </td>
+    <td class="a-center"><?php echo $_item->getSku() ?><?php echo $_item->getId() ?></td>
+    <td class="a-center"><textarea name="r4q[item][<?php echo $_item->getId() ?>][remark]" rows="2" class="r4q-item-remark"><?php echo $this->htmlEscape($_item->getR4qNote()) ?></textarea></td>
+    <td class="a-center">
+        <?php echo $this->displayPriceAttribute('price') ?>
+    </td>
+    <td class="a-left">
+        <input type="text" style="width: 80px;" class="required-entry validate-zero-or-greater input-text" value="<?php echo $this->getPriceProposal() ?>" name="r4q[item][<?php echo $_item->getId() ?>][price_proposal]" />
+    </td>
+    <td class="a-center"><?php echo $this->getColumnHtml($_item, 'qty') ?></td>
+
+    
+    <td class="a-center">
+        <?php $totalPrice = $this->getPriceProposal()*$_item->getQty() ?>
+        <?php echo $this->displayRoundedPrices(
+            $totalPrice,
+            $totalPrice
+        ); ?>
+    </td>
+    
+    <td class="last">
+        <a href="<?php echo $this->getUrl('*/*/remove', array('item_id' => $_item->getId(), 'quote_id' => $_item->getQuoteId())) ?>"><?php echo $this->__('Remove') ?></a>
+    </td>
+</tr>
+<script type="text/javascript">
+</script>

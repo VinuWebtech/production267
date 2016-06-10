@@ -1,0 +1,27 @@
+<?php  $_quote = $this->getQuote() ?>
+<?php if (Mage::helper('request4quote')->showPricesandConfirm($_quote->getR4qStatus())) : ?>
+<div class="col1-set order-info-box">
+        <div class="r4q-accept-reject">
+            <div class="r4q-reject">
+                <?php if(Mage::helper('request4quote')->isAcceptRejectEnabled() && $_quote->getR4qStatus() == ITwebexperts_Request4quote_Model_Quote::STATUS_PROCESSED) : ?>
+                <form action="<?php echo $this->getUrl('request4quote_front/quote/reject', array('quote_id' => $_quote->getId())) ?>" method="post">
+                    <button type="submit" class="button r4q-btn-reject"><span><span><?php echo $this->__('Reject Quote') ?></span></span></button>
+                </form>
+                <?php endif ?>
+            </div>
+            <div class="r4q-accept">
+                <?php if(Mage::helper('request4quote')->isAcceptRejectEnabled() && $_quote->getR4qStatus() == ITwebexperts_Request4quote_Model_Quote::STATUS_PROCESSED) : ?>
+                <button class="button r4q-btn-accept btn-update" onclick="window.location.href = '<?php echo $this->getUrl('request4quote_front/quote/accept', array('quote_id' => $_quote->getId(), 'token'=> $_quote->getR4qToken())) ?>';" type="button" ><span><span><?php echo $this->__('Accept Quote') ?></span></span></button>
+          <br /><br />
+                <?php endif ?>
+                    <button onclick="window.location.href = '<?php echo $this->getUrl('request4quote_front/quote/order', array('quote_id' => $_quote->getId())) ?>';" type="button" class="button r4q-btn-accept btn-update"><span><span><?php echo $this->__('Accept and Checkout') ?></span></span></button>
+            </div>
+        </div>
+
+    <?php elseif(Mage::helper('request4quote')->showPricesandConfirm($_quote->getR4qStatus()) == false) : ?>
+        <br />
+                <?php echo $this->__('Your quote request is being processed. You will receive an email with pricing shortly.'); ?>
+    <?php endif ?>
+
+
+</div>
