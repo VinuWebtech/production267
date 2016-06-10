@@ -13,13 +13,11 @@
     <a href="javascript:void(0)" class="mybag-link">
         <!--<i class="icon-mini-cart"></i>--><span class="cart-info">
             <span class="cart-qty">
-                <?php echo $_cartQty = $this->getSummaryCount() ?>
+                <!--<?php echo $_cartQty = $this->getSummaryCount() ?>-->
                 <?php if ($_cartQty == 0): ?>
                     <?php echo $this->__('<a href="%s"><img src='.$this->getSkinUrl('images/empty-cart.png').' /></a>', $this->getUrl('checkout/cart')) ?>
-                <?php elseif ($_cartQty == 1): ?>
-                    <?php echo $this->__('<a href="%s" id="ico-cart"><img src='.$this->getSkinUrl('images/full-cart.png').' />1 item</a>', $this->getUrl('checkout/cart')) ?>
-                <?php else: ?>
-                    <?php echo $this->__('<a href="%s" id="ico-cart"><img src='.$this->getSkinUrl('images/full-cart.png').' />%s items</a>', $this->getUrl('checkout/cart'), $_cartQty) ?>
+                <?php elseif ($_cartQty >= 1): ?>
+                    <?php echo $this->__('<a href="%s" id="ico-cart"><img src='.$this->getSkinUrl('images/full-cart.png').' /><span class="count">%s</span></a>', $this->getUrl('checkout/cart'), $_cartQty) ?>
                 <?php endif ?>
             </span>
             <span><!--<?php echo $this->__('item(s)') ?>--></span>

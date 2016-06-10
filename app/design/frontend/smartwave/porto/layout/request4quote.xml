@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+    
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><script>request4quote/css/r4q.css</script></action>
+            <action method="addJs"><script>itwebexperts_request4quote/miniquote.js</script></action>
+        </reference>
+
+        <reference name="top.links">
+            <block type="request4quote/links" name="request4quote_quote_link">
+                <action method="addQuoteLink"></action>
+            </block>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="r4q.body.end" alias="r4qfooter" template="request4quote/footer.phtml"></block>
+        </reference>
+
+        <reference name="wishlist_sidebar">
+            <!--<block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" after="cart_sidebar" template="wishlist/sidebar.phtml" />-->
+            <action method="setTemplate">
+                <template>request4quote/wishlist/sidebar.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="header">
+            <block type="request4quote/checkout_quote_miniquote" name="miniquote_head" template="request4quote/checkout/cart/miniquote.phtml">
+                <block type="request4quote/checkout_quote_sidebar" name="miniquote_content" template="request4quote/checkout/cart/miniquote/items.phtml">
+                    <action method="addItemRender">
+                        <type>default</type>
+                        <block>request4quote/checkout_quote_item_renderer</block>
+                        <template>request4quote/checkout/cart/miniquote/default.phtml</template>
+                    </action>
+                    <action method="addItemRender">
+                        <type>simple</type>
+                        <block>request4quote/checkout_quote_item_renderer</block>
+                        <template>request4quote/checkout/cart/miniquote/default.phtml</template>
+                    </action>
+                    <action method="addItemRender">
+                        <type>grouped</type>
+                        <block>request4quote/checkout_quote_item_renderer</block>
+                        <template>request4quote/checkout/cart/miniquote/default.phtml</template>
+                    </action>
+                    <action method="addItemRender">
+                        <type>configurable</type>
+                        <block>request4quote/checkout_quote_item_renderer</block>
+                        <template>request4quote/checkout/cart/miniquote/default.phtml</template>
+                    </action>
+
+                    <block type="core/text_list" name="cart_sidebar.cart_promotion" as="cart_promotion" translate="label" module="checkout">
+                        <label>Mini-cart promotion block</label>
+                    </block>
+                    <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                        <label>Shopping Cart Sidebar Extra Actions</label>
+                    </block>
+                </block>
+            </block>
+        </reference>
+    </default>
+    
+    
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="sales"><name>quotes</name><path>request4quote_front/customer_quote/history</path><label>My Quotes</label></action>
+        </reference>
+    </customer_account>
+
+    <catalog_product_view translate="label">
+        <reference name="head">
+            <block type="request4quote/catalog_product_head" name="request4quote.head" alias="r4qhead" template="request4quote/catalog/product/head.phtml" />
+        </reference>
+        <reference name="product.info.addtocart">
+            <block type="request4quote/button" name="request4quote.button" alias="r4qbutton" template="request4quote/button.phtml" />
+        </reference>
+    </catalog_product_view>
+
+    <checkout_cart_index translate="label">
+        <reference name="content">
+            <block type="request4quote/navigation" name="r4q.navigation" template="request4quote/navigation.phtml" before="-">
+                <action method="setActiveItem"><value>cart</value></action>
+            </block>
+        </reference>
+    </checkout_cart_index>
+    
+    <request4quote_front_quote_index translate="label">
+        <label>Request for Quote</label>
+        <remove name="right"/>
+        <remove name="left"/>
+        <!-- Mage_Checkout -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="request4quote/navigation" name="r4q.navigation" template="request4quote/navigation.phtml">
+                <action method="setActiveItem"><value>quote</value></action>
+            </block>
+            <block type="request4quote/cart" name="checkout.cart">
+                <action method="setCartTemplate"><value>request4quote/cart.phtml</value></action>
+                <action method="setEmptyTemplate"><value>request4quote/cart/noItems.phtml</value></action>
+                <action method="chooseTemplate"/>
+                <action method="addItemRender"><type>simple</type><block>request4quote/cart_item_renderer</block><template>request4quote/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>request4quote/cart_item_renderer_grouped</block><template>request4quote/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>request4quote/cart_item_renderer_configurable</block><template>request4quote/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>reservation</type><block>request4quote/cart_item_renderer</block><template>request4quote/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>simple</type><block>request4quote/cart_item_renderer</block><template>request4quote/cart/item/default.phtml</template></action>
+                <action method="addItemRender"><type>bundle</type><block>request4quote/cart_item_renderer_bundle</block><template>request4quote/cart/item/default.phtml</template></action>
+                <block type="core/text_list" name="checkout.cart.top_methods" as="top_methods" translate="label">
+                    <label>Payment Methods Before Checkout Button</label>
+                    <block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/>
+                </block>
+                <block type="request4quote/cart_shipping" name="checkout.cart.shipping" as="shipping" template="checkout/cart/shipping.phtml"/>
+                <block type="request4quote/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+            </block>
+        </reference>
+    </request4quote_front_quote_index>
+    
+    <request4quote_front_quote_success translate="label">
+        <label>Request for Quote Success</label>
+        <remove name="right"/>
+        <remove name="left"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="request4quote/success" name="r4q.success" alias="success" template="request4quote/cart/success.phtml"></block>
+        </reference>
+    </request4quote_front_quote_success>
+    
+    <request4quote_front_quote_view translate="label">
+        <label>Request for Quote View</label>
+        <update handle="request4quote_front_customer_quote_view"/>
+        <remove name="right"/>
+        <remove name="left"/>
+        
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        
+    </request4quote_front_quote_view>
+
+    <request4quote_front_customer_quote_history translate="label">
+        <label>Request for Quote History</label>
+        <update handle="customer_account"/>
+        
+        <remove name="right"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left">
+            <action method="unsetChild"><name>left.permanent.callout</name></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="request4quote/quote_history" name="r4q.quote.history">
+                <block type="core/text_list" name="r4q.quote.history.info" as="info" translate="label">
+                    <label>Quote Requests History Info</label>
+                </block>
+            </block>
+            <block type="customer/account_dashboard" name="customer.account.link.back" template="customer/account/link/back.phtml"/>
+        </reference>
+        
+    </request4quote_front_customer_quote_history>
+    
+    <request4quote_front_customer_quote_view translate="label">
+        <label>Request for Quote Details</label>
+        <update handle="customer_account"/>
+        <remove name="right"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left">
+            <action method="unsetChild"><name>left.permanent.callout</name></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="request4quote/quote_info" as="info" name="request4quote.quote.info">
+                <block type="request4quote/quote_info_messages" as="r4q.messages" name="request4quote.quote.info.messages" />
+            </block>
+            <block type="request4quote/quote_view" name="request4quote.quote.view">
+                <block type="request4quote/quote_items" name="quote_items" template="request4quote/quote/items.phtml">
+                    <action method="addItemRender"><type>default</type><block>request4quote/quote_item_renderer_default</block><template>request4quote/quote/items/renderer/default.phtml</template></action>
+                    <action method="addItemRender"><type>configurable</type><block>request4quote/quote_item_renderer_configurable</block><template>request4quote/quote/items/renderer/default.phtml</template></action>
+                    <action method="addItemRender"><type>grouped</type><block>sales/order_item_renderer_grouped</block><template>request4quote/quote/items/renderer/default.phtml</template></action>
+                    <action method="addItemRender"><type>bundle</type><block>request4quote/quote_item_renderer_bundle</block><template>request4quote/quote/items/renderer/default.phtml</template></action>
+                    <block type="request4quote/quote_totals" template="request4quote/quote/totals.phtml" name="totals"/>
+                </block>
+
+                <block type="request4quote/quote_acceptandconfirm" template="request4quote/quote/acceptandconfirm.phtml" name="acceptconfirm" as="acceptconfirm" />
+                <block type="request4quote/quote_comments" template="request4quote/quote/comments.phtml" name="comments" as="comments" />
+            </block>
+
+        </reference>
+    </request4quote_front_customer_quote_view>
+    
+    <request4quote_email_items translate="label">
+        <label>Extend Notification Email Items</label>
+        <block type="sales/order_email_items" name="items" template="request4quote/email/order/items.phtml">
+            <action method="addItemRender"><type>default</type><block>sales/order_email_items_order_default</block><template>request4quote/email/order/items/order/default.phtml</template></action>
+            <action method="addItemRender"><type>grouped</type><block>sales/order_email_items_order_grouped</block><template>request4quote/email/order/items/order/default.phtml</template></action>
+            <block type="request4quote/quote_totals" template="request4quote/quote/totals.phtml" name="totals"/>
+        </block>
+        <block type="core/text_list" name="additional.product.info" />
+    </request4quote_email_items>
+    
+    <request4quote_email_items_rental translate="label">
+        <label>Extend Notification Email Items</label>
+        <block type="sales/order_email_items" name="items" template="request4quote/email/order/items.phtml">
+            <action method="addItemRender"><type>simple</type><block>request4quote/payperrentals_sales_order_items_renderer</block><template>request4quote/email/order/items/order/rental.phtml</template></action>
+            <action method="addItemRender"><type>reservation</type><block>request4quote/payperrentals_sales_order_items_renderer</block><template>request4quote/email/order/items/order/rental.phtml</template></action>
+            <action method="addItemRender"><type>configurable</type><block>request4quote/payperrentals_sales_order_items_renderer</block><template>request4quote/email/order/items/order/rental.phtml</template></action>
+            <action method="addItemRender"><type>bundle</type><block>request4quote/payperrentals_sales_order_items_bundle</block><template>request4quote/email/order/items/order/rental.phtml</template></action>
+            <block type="request4quote/quote_totals" template="request4quote/quote/totals.phtml" name="totals"/>
+        </block>
+        <block type="core/text_list" name="additional.product.info" />
+    </request4quote_email_items_rental>
+
+
+    <wishlist_index_index>
+        <reference name="customer.wishlist.item.cart">
+            <action method="setTemplate">
+                <template>request4quote/wishlist/item/column/cart.phtml</template>
+            </action>
+        </reference>
+        <reference name="customer.wishlist">
+            <action method="setTemplate">
+                <template>request4quote/wishlist/view.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="customer.wishlist">
+            <block type="core/text_list" name="custom.customer.wishlist.buttons" as="custom_control_buttons">
+                <block type="wishlist/customer_wishlist_button" name="customer.wishlist.button.share"
+                       template="wishlist/button/share.phtml"/>
+                <block type="wishlist/customer_wishlist_button" name="customer.wishlist.button.update"
+                       template="wishlist/button/update.phtml"/>
+            </block>
+        </reference>
+    </wishlist_index_index>
+    <checkout_cart_index>
+        <reference name="checkout.cart">
+            <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>request4quote/checkout/cart/item/default.phtml</template></action>
+            <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>request4quote/checkout/cart/item/default.phtml</template></action>
+            <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>request4quote/checkout/cart/item/default.phtml</template></action>
+            <action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>request4quote/checkout/cart/item/default.phtml</template></action>
+        </reference>
+    </checkout_cart_index>
+</layout>

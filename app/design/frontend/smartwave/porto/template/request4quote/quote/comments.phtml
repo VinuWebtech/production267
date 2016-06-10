@@ -1,0 +1,28 @@
+<?php  $_quote = $this->getQuote();
+$comments = Mage::getModel('request4quote/comments')->getCommentCustomerSide($this->getR4qId()); ?>
+<div class="order-additional order-comments" style="padding:0;">
+    <?php if(count($comments) >= 1): ?><h3 class="sub-title"><?php echo $this->getTitle() ?></h3>
+    <dl class="order-about" style="margin:0;">
+        <?php
+        $i = 1;
+        foreach ($comments as $_comment):?>
+        <dt>
+            <?php echo $this->helper('core')->formatDate($_comment->getCreatedAtDate(), 'medium') ?>
+            <?php echo $this->helper('core')->formatTime($_comment->getCreatedAtDate(), 'medium') ?>
+            <?php echo $this->helper('request4quote')->__('Comment from: ') . $_comment->getSubmittedBy() ?></dt>
+        <dd><?php echo $this->escapeHtml($_comment->getComment(), array('b', 'br', 'strong', 'i', 'u', 'a')) ?>
+        </dd><?php if($i != count($comments)): ?><br /><?php endif; ?>
+        <?php
+        $i++;
+        endforeach; ?>
+        </dl>
+    <?php endif ?>
+    <?php if($this->getNameInLayout() != 'commentspdf'): ?><br/><br /><h4 class="sub-title"><?php echo $this->getAddComment() ?></h4>
+
+    <form action="<?php echo $this->getFormAction() ?>">
+        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        <textarea name="comment" rows="3" cols="5" style="height:6em; width:99%;" id="history_comment"></textarea>
+        <input type="hidden" name="quoteid" value="<?php echo $_quote->getId() ?>">
+    <br /><br /><button type="submit" class="button r4q-btn-reject"><span><span><?php echo $this->__('Submit Comment') ?></span></span></button></form>
+    <?php endif ?>
+</div>

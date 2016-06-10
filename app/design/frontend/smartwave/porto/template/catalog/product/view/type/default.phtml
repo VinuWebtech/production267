@@ -1,7 +1,9 @@
 <?php $_product = $this->getProduct() ?>
-<!-- Vinu changes for adding mrp price only if value is present for product -->
-<?php if($_product->getMrp_price()!= ''): ?>
-	<span class="mrp-price view-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
+<!-- Vinu changes for adding mrp price display only if value is present for product & request quote is not enabled for product -->
+<?php if(!$_product->getR4qEnabled()) :?>
+	<?php if($_product->getMrp_price()!= ''): ?>
+		<span class="mrp-price view-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
+	<?php endif; ?>
 <?php endif; ?>
 <!-- Vinu changes end -->
 <?php echo $this->getPriceHtml($_product) ?>
