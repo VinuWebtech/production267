@@ -1,0 +1,16 @@
+<?php
+/**
+ * ITWebExperts
+ *
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 ITWebExperts
+ */
+?>
+<?php if ($this->isRequestEnabled()) : ?>
+	<?php
+	$buttonTitle = $this->__('Request for Quote');
+	?>
+	<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-r4q" clickfunc="sendForm('<?php echo $this->getUrl('request4quote_front/quote/add') ?>')"><span><span><?php echo $buttonTitle ?></span></span></button>
+<?php endif; ?>

@@ -1,0 +1,10 @@
+<script type="text/javascript">
+//<![CDATA[
+    Event.observe(document, 'dom:loaded', function () {
+        var totalsBlock = Element.down(document, 'div.totals');
+        if (totalsBlock) {
+            Element['<?php echo $this->getMode(); ?>'](totalsBlock);
+        }
+    });
+//]]>
+</script>

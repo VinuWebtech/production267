@@ -1,0 +1,41 @@
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $_quotes = $this->getQuotes(); ?>
+<div class="page-title">
+    <h1><?php echo $this->__('My Quote Requests') ?></h1>
+</div>
+<?php echo $this->getPagerHtml(); ?>
+<?php if($_quotes->getSize()): ?>
+<table class="data-table" id="my-quotes-table">
+    <col width="1" />
+    <col width="1" />
+    <col />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Quote #') ?></th>
+            <th><?php echo $this->__('Date') ?></th>
+            <th><span class="nobr"><?php echo $this->__('Request Status') ?></span></th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $_odd = ''; ?>
+        <?php foreach ($_quotes as $_quote): ?>
+        <tr>
+            <td><?php echo $_quote->getId() ?></td>
+            <td><span class="nobr"><?php echo $this->formatDate($_quote->getCreatedAt()) ?></span></td>
+            <td><em><?php echo $this->__($_quote->getStatusLabel($_quote->getR4qStatus())) ?></em></td>
+            <td class="a-center">
+                <span class="nobr"><a href="<?php echo $this->getViewUrl($_quote) ?>"><?php echo $this->__('View Quote Request') ?></a></span>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<script type="text/javascript">decorateTable('my-quotes-table');</script>
+<?php echo $this->getPagerHtml(); ?>
+<?php else: ?>
+    <p><?php echo $this->__('You have placed no quote requests.'); ?></p>
+<?php endif ?>

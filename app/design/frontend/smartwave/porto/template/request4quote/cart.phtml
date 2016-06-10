@@ -1,0 +1,297 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+<?php
+/**
+ * @var $this ITwebexperts_Request4quote_Block_Cart
+ */
+$_customer = $this->getCustomer();
+$_address = $this->getShippingAddress();
+?>
+<div class="cart">
+<div class="page-title title-buttons">
+    <h1><?php echo $this->__('Request for Quote') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php echo $this->getChildHtml('form_before') ?>
+<form action="<?php echo $this->getUrl('request4quote_front/quote/send') ?>" method="post" id="r4qQuoteForm">
+<fieldset>
+    <table id="shopping-cart-table" class="data-table cart-table">
+        <col width="1" />
+        <col />
+        <col width="1" />
+        <col />
+        <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+            <col width="1" />
+        <?php endif ?>
+        <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+            <col width="1" />
+        <?php endif; ?>
+        <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+            <col width="1" />
+        <?php endif; ?>
+        <col width="1" />
+        <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+            <col width="1" />
+        <?php endif; ?>
+        <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+            <col width="1" />
+        <?php endif; ?>
+        <col width="1" />
+
+        <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+        <thead>
+        <tr>
+            <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
+            <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
+            <th rowspan="<?php echo $mergedCells; ?>"></th>
+            <th rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Remarks with product') ?></th>
+            <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
+            <?php endif ?>
+            <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Unit Price') ?></span></th>
+            <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
+            <th class="a-center" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th>
+            <th rowspan="<?php echo $mergedCells; ?>" class="a-center">&nbsp;</th>
+        </tr>
+        <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+            <tr>
+                <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+            </tr>
+        <?php endif; ?>
+        </thead>
+        <tfoot>
+        <tr>
+            <td colspan="50" class="a-right">
+                <?php if($this->getContinueShoppingUrl()): ?>
+                    <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+                <?php endif; ?>
+                <button onclick="r4qForm.submit(this);" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Quote'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Quote'); ?></span></span></button>
+                <button onclick="r4qForm.submit(this);" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Clear Quote'); ?>" class="button btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Clear Quote'); ?></span></span></button>
+                <input type="hidden" id="update_cart_action_container" />
+                <input type="hidden" name="isrfq" value="1"/>
+            </td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <?php foreach($this->getItems() as $_item): ?>
+            <?php echo $this->getItemHtml($_item) ?>
+        <?php endforeach ?>
+        </tbody>
+    </table>
+    <script type="text/javascript">decorateTable('shopping-cart-table')</script>
+</fieldset>
+<div style="width: 100%;">
+
+        <div class="cart-collaterals r4q-collaterals" style="margin: auto !important;">
+            <div class="cart-rf4-details">
+                <h2><?php echo $this->__('Enter your details to get a price proposal') ?></h2>
+                <ul class="form-list">
+                    <li>
+                        <label for="r4qDetailsRemark"><?php echo $this->__('Do you have a general remark with this Quote Request?') ?></label>
+                        <div class="input-box"><textarea name="r4q[details][remark]" id="r4qDetailsRemark" class="r4q-remark"></textarea></div>
+                    </li>
+                    <li>
+                        <label class="required" for="r4qDetailsEmail"><em>*</em><?php echo $this->__('Email address') ?></label>
+                        <div class="input-box"><input type="text" class="input-text validate-email required-entry" name="r4q[details][email]" id="r4qDetailsEmail" value="<?php if ($_customer) echo $_customer->getEmail() ?>" /></div>
+                    </li>
+                    <li>
+                        <label class="required" for="r4qDetailsFirstname"><em>*</em><?php echo $this->__('First Name') ?></label>
+                        <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][firstname]" id="r4qDetailsFirstname" value="<?php if ($_address) echo $_address->getFirstname() ?>" /></div>
+                    </li>
+                    <li>
+                        <label class="required" for="r4qDetailsLastname"><em>*</em><?php echo $this->__('Last Name') ?></label>
+                        <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][lastname]" id="r4qDetailsLastname" value="<?php if ($_address) echo $_address->getLastname() ?>" /></div>
+                    </li>
+                    <li>
+                        <label class="required" for="r4qDetailsTelephone"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                        <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div>
+                    </li>
+                </ul>
+            </div>
+            <input type="hidden" value="<?php echo (int) $this->isBillingAddressRequired(); ?>" name="r4q[billing][is_required]" />
+            <input type="hidden" value="<?php echo (int) $this->isShippingAddressRequired(); ?>" name="r4q[shipping][is_required]" />
+            <?php $billingRequiredSign = $this->isBillingAddressRequired() ? '<em>*</em>' : ''; ?>
+            <?php $shippingRequiredSign = $this->isShippingAddressRequired() ? '<em>*</em>' : ''; ?>
+            <?php if ($this->canShowBillingAddress()): ?>
+                <div class="cart-rf4-billing">
+                    <h2><?php echo $this->__('Billing details') ?></h2>
+                    <ul class="form-list">
+                        <li>
+                            <label for="r4qBillingCompany"><?php echo $this->__('Company') ?></label>
+                            <div class="input-box"><input type="text" class="input-text" name="r4q[billing][company]" id="r4qBillingCompany" value="<?php if ($_address) echo $_address->getCompany() ?>" /></div>
+                        </li>
+                        <li>
+                            <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingAddress"><?php echo $billingRequiredSign; ?><?php echo $this->__('Address') ?></label>
+                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][address]" id="r4qBillingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" /></div>
+                        </li>
+                        <li>
+                            <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingCity"><?php echo $billingRequiredSign; ?><?php echo $this->__('City') ?></label>
+                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][city]" id="r4qBillingCity" value="<?php if ($_address) echo $_address->getCity() ?>" /></div>
+                        </li>
+                        <li>
+                            <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingPostcode"><?php echo $billingRequiredSign; ?><?php echo $this->__('Zip/Postal Code') ?></label>
+                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][postcode]" id="r4qBillingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>
+                        </li>
+                        <li>
+                            <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingCountry"><?php echo $billingRequiredSign; ?><?php echo $this->__('Country') ?></label>
+                            <div class="input-box"><?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect($this->getEstimateCountryId(), 'r4q[billing][country]', 'r4qBillingCountry') ?></div>
+                        </li>
+                        <li>
+                            <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingRegionId"><?php echo $billingRequiredSign; ?><?php echo $this->__(' State/Province
+        ') ?></label>
+                            <div class="input-box">
+                                <select id="r4qBillingRegionId" name="r4q[billing][region_id]" title="<?php echo $this->__('State/Province') ?>" style="display:none;" class="validate-select">
+                                    <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                                </select>
+                                <script type="text/javascript">
+                                    //<![CDATA[
+                                    if( $('region_id')) {
+                                        $('region_id').setAttribute('defaultValue', "<?php echo $this->getEstimateRegionId() ?>");
+                                    }
+                                    //]]>
+                                </script>
+                                <input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][region]" id="r4qBillingRegion" value="<?php if ($_address) echo $this->escapeHtml($_address->getRegion()) ?>" style="display:none;" />
+                            </div>
+                        </li>
+                        <?php if ($this->canShowShippingAddress()): ?>
+                            <li>
+                                <label for="shipping_same_as_billing" class="no-float"><?php echo Mage::helper('sales')->__('Use Same Address For Shipping') ?>
+                                    <div class="input-box"><input type="checkbox" checked="checked" id="shipping_same_as_billing" name="r4q[billing][shipping_same_as_billing]" onchange="Element.toggle(Element.down(document, '.cart-rf4-shipping'))"/></div>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+            <?php if ($this->canShowShippingAddress()): ?>
+                <div class="cart-rf4-shipping" style="<?php echo $this->canShowBillingAddress() ? 'display:none' : '' ?>">
+                    <h2><?php echo $this->__('Shipping details') ?></h2>
+                    <ul class="form-list">
+                        <li>
+                            <label for="r4qShippingCompany"><?php echo $this->__('Company') ?></label>
+                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[shipping][company]" id="r4qShippingCompany" value="<?php if ($_address) echo $_address->getCompany() ?>" /></div>
+                        </li>
+                        <li>
+                            <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingAddress"><?php echo $shippingRequiredSign; ?><?php echo $this->__('Address') ?></label>
+                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][address]" id="r4qShippingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" /></div>
+                        </li>
+                        <li>
+                            <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingCity"><?php echo $shippingRequiredSign; ?><?php echo $this->__('City') ?></label>
+                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][city]" id="r4qShippingCity" value="<?php if ($_address) echo $_address->getCity() ?>" /></div>
+                        </li>
+                        <li>
+                            <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingPostcode"><?php echo $shippingRequiredSign; ?><?php echo $this->__('Zip/Postal Code') ?></label>
+                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][postcode]" id="r4qShippingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>
+                        </li>
+                        <li>
+                            <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingCountry"><?php echo $shippingRequiredSign; ?><?php echo $this->__('Country') ?></label>
+                            <div class="input-box"><?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect($this->getEstimateCountryId(), 'r4q[shipping][country]', 'r4qShippingCountry') ?></div>
+                        </li>
+                        <li>
+                            <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingRegionId"><?php echo $shippingRequiredSign; ?><?php echo $this->__(' State/Province
+        ') ?></label>
+                            <div class="input-box">
+                                <select id="r4qShippingRegionId" name="r4q[shipping][region_id]" title="<?php echo $this->__('State/Province') ?>" style="display:none;" class="validate-select">
+                                    <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                                </select>
+                                <script type="text/javascript">
+                                    //<![CDATA[
+                                    if( $('region_id')) {
+                                        $('region_id').setAttribute('defaultValue', "<?php echo $this->getEstimateRegionId() ?>");
+                                    }
+                                    //]]>
+                                </script>
+                                <input type="text" class="input-text<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][region]" id="r4qShippingRegion" value="<?php if ($_address) echo $this->escapeHtml($_address->getRegion()) ?>" style="display:none;" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="r4q-actions">
+            <button type="button" value="proceed" title="<?php echo $this->__('Submit Quote Request') ?>" class="button btn-proceed-checkout btn-checkout" onclick="r4qForm.submit(this);"><span><span><?php echo $this->__('Submit Quote Request') ?></span></span></button>
+        </div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    <?php if ($this->canShowShippingAddress()): ?>
+    var shippingRegion = new RegionUpdater('r4qShippingCountry', 'r4qShippingRegion', 'r4qShippingRegionId', <?php echo $this->helper('directory')->getRegionJson() ?>);
+    <?php if (!$this->isShippingAddressRequired()): ?>
+    shippingRegion.config.regions_required = [];
+    shippingRegion.update();
+    <?php endif; ?>
+    <?php endif; ?>
+    <?php if ($this->canShowBillingAddress()): ?>
+    var billingRegion = new RegionUpdater('r4qBillingCountry', 'r4qBillingRegion', 'r4qBillingRegionId', <?php echo $this->helper('directory')->getRegionJson() ?>);
+    <?php if (!$this->isBillingAddressRequired()): ?>
+    billingRegion.config.regions_required = [];
+    billingRegion.update();
+    <?php endif; ?>
+    <?php endif; ?>
+    //]]>
+</script>
+</form>
+
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var r4qForm = new VarienForm('r4qQuoteForm');
+    r4qForm.submit = function(button) {
+        if(button.readAttribute('value') == 'proceed'){
+            if(this.validator && this.validator.validate()){
+                this.form.submit();
+            }else{
+                return false;
+            }
+        }else if(button.readAttribute('value') != 'proceed'){
+            $$('.required-entry').each(function(e){
+                e.toggleClassName('required-entry');
+            });
+            $$('.avalidate-select').each(function(e){
+                e.toggleClassName('avalidate-select');
+            });
+            $cartActionContainer = $('update_cart_action_container');
+            $cartActionContainer.setAttribute('name', 'update_cart_action');
+            $cartActionContainer.setValue(button.readAttribute('value'));
+            this.form.submit();
+        }else{
+            return false;
+        }
+        return false;
+    }.bind(r4qForm);
+    //]]>
+</script>

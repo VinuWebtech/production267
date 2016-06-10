@@ -1,0 +1,11 @@
+<?php
+	$_quote = $this->getQuote();
+?>
+
+<?php if ($_quote->getR4qStatus() == ITwebexperts_Request4quote_Model_Quote::STATUS_PROCESSING) : ?>
+	<ul class="messages">
+		<li class="notice-msg">
+			<ul><li><span><?php echo $this->__('Quote Request has been submitted. Please wait for your price proposal.') ?></span></li></ul>
+		</li>
+	</ul>
+<?php endif; ?>

@@ -1,0 +1,446 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <request4quote translate="label" module="request4quote">
+            <label>Request for quote module</label>
+            <tab>itwebexperts</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <version translate="label">
+                    <label><![CDATA[Current Version Installed]]></label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <current_version>
+                            <label><![CDATA[Current Version]]></label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <backend_model>request4quote/config_version</backend_model>
+                        </current_version>
+                    </fields>
+                </version>
+                <general translate="label">
+                    <label>General</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable_shipping_quotes_customer_side translate="label">
+                            <label>Enable shipping quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_shipping_quotes_customer_side>
+                        <enable_tax_estimates translate="label">
+                            <label>Enable tax estimates</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_tax_estimates>
+                        <enable_acceptreject>
+                            <label>Enable customer to accept or reject quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_acceptreject>
+                        <auto_select_status translate="label tooltip">
+                            <label>When processing a New quote submitted by customer, auto select this status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>request4quote/system_config_source_status</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>When processing quotes with status new in admin, it will auto-select this status default is Processed.</tooltip>
+                        </auto_select_status>
+                        <auto_select_status_admin translate="label tooltip">
+                            <label>When creating a new quote in admin, auto-select this status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>request4quote/system_config_source_status</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_select_status_admin>
+                        <importcomments>
+                            <label>Import request for quote comments to orders</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>When converting quotes to orders, the quote comments won't show on the order until it is saved.</tooltip>
+                        </importcomments>
+                        <showregularprice>
+                            <label>Show regular product price column</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>71</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Adds a column that shows what the regular product price would be on quotes</tooltip>
+                        </showregularprice>
+                        <shownav>
+                            <label>Show shopping cart navigation buttons when request 4 quote is empty?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>72</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>If set to Yes then the request 4 quote and shopping cart buttons will show on the shopping cart page always</tooltip>
+                        </shownav>
+                        <disable_redirect translate="label tooltip">
+                            <label>Disable redirect to cart after adding to quote in product detail</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>If your site uses an ajax add to cart module set to yes (when you click add to cart or quote there is a popup with a loading icon). Otherwise leave to default of no.</tooltip>
+                        </disable_redirect>
+                        <disable_redirect_listing translate="label tooltip">
+                            <label>Disable redirect to cart after adding to quote in product listing</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>If your site uses an ajax add to cart module set to yes (when you click add to cart or quote there is a popup with a loading icon). Otherwise leave to default of no.</tooltip>
+                        </disable_redirect_listing>
+                        <miniquote>
+                            <label>Enable miniquote?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Miniquote is like the minicart on the RWD (default Magento template since 1.9)</tooltip>
+                        </miniquote>
+                        <miniquoteclass>
+                            <label>Miniquote is inserted after the div with the class</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Not necessary to include the period in front of the class name</tooltip>
+                            <comment>Default is header-minicart</comment>
+                        </miniquoteclass>
+                        <allowchangequantity>
+                            <label>Allow customer to change quantity of items that are added from a quote to the shopping cart</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Sometimes the quote is based on a higher quantity, so if the customer reduces the quantity they would get too low of a price</tooltip>
+                        </allowchangequantity>
+                        <allowshowquotenav>
+                            <label>Show My Quote link on the Navigation bar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowshowquotenav>
+                    </fields>
+                </general>
+                <billing_address translate="label">
+                    <label>Billing Address</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_billing_address_for_quote_customer translate="label">
+                            <label>Show billing address for customer side quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>It's not recommended to set this to "No".</comment>
+                        </show_billing_address_for_quote_customer>
+                        <require_billing_address_for_quote_customer translate="label">
+                            <label>Require billing address for customer side quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><show_billing_address_for_quote_customer>1</show_billing_address_for_quote_customer></depends>
+                        </require_billing_address_for_quote_customer>
+                        <show_billing_address_for_quote_admin translate="label">
+                            <label>Show billing address for admin side quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>It's not recommended to set this to "No".</comment>
+                        </show_billing_address_for_quote_admin>
+                        <require_billing_address_for_quote_admin translate="label">
+                            <label>Require billing address for admin side quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><show_billing_address_for_quote_admin>1</show_billing_address_for_quote_admin></depends>
+                        </require_billing_address_for_quote_admin>
+                    </fields>
+                </billing_address>
+                <shipping_address translate="label">
+                    <label>Shipping Address</label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <allowchangeshipmethod>
+                            <label>Allow customer to change ship method on checkout from the quoted ship method on the quote</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowchangeshipmethod>
+                        <allowchangeshipaddress>
+                            <label>Allow customer to change shipping address on checkout from the quoted shipping address</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowchangeshipaddress>
+                        <show_shipping_address_for_quote_customer translate="label">
+                            <label>Show shipping address for customer side quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_shipping_address_for_quote_customer>
+                        <require_shipping_address_for_quote_customer translate="label">
+                            <label>Require shipping address for customer side quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><show_shipping_address_for_quote_customer>1</show_shipping_address_for_quote_customer></depends>
+                        </require_shipping_address_for_quote_customer>
+                        <show_shipping_address_for_quote_admin translate="label">
+                            <label>Show shipping address for admin side quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>It's not recommended to set this to "No".</comment>
+                        </show_shipping_address_for_quote_admin>
+                        <require_shipping_address_for_quote_admin translate="label">
+                            <label>Require shipping address for admin side quotes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><show_shipping_address_for_quote_admin>1</show_shipping_address_for_quote_admin></depends>
+                        </require_shipping_address_for_quote_admin>
+                    </fields>
+                </shipping_address>
+                <quote_settings translate="label">
+                    <label>Email Settings</label>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_pictures_email translate="label">
+                            <label>Show pictures in email for quoted items</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_pictures_email>
+                        <show_pictures_quote translate="label">
+                            <label>Show pictures of products in quotes in my account section</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_pictures_quote>
+                        <attach_pdf translate="label">
+                            <label>Attach PDF to request for quote emails?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </attach_pdf>
+                        <show_comments translate="label">
+                            <label>Show comment history in quote PDF</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_comments>
+                        <sender_name>
+                            <label>Quote Request Sender Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sender_name>
+                        <sender_email>
+                            <label>Quote Request Sender Email</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-email</validate>
+                            <backend_model>adminhtml/system_config_backend_email_address</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sender_email>
+                        <send_requests_to>
+                            <label>Email address(es) to send quote requests to</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Comma-separated.</comment>
+                        </send_requests_to>
+                        <bccto>
+                            <label>Email address(es) to send BCC of admin submitted quotes</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Comma-separated.</comment>
+                        </bccto>
+                    </fields>
+                </quote_settings>
+                <emails translate="label">
+                    <label>Email Templates</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    <quote_submitted translate="label tooltip">
+                        <label><![CDATA[Customer Submit Quote Request Sent To Customer]]></label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_email_template</source_model>
+                        <sort_order>60</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </quote_submitted>
+                        <quote_submitted_admin>
+                            <label><![CDATA[Customer Submit Quote Request Sent To Admin]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quote_submitted_admin>
+                        <quote_admin translate="label tooltip">
+                            <label><![CDATA[Admin Submit Quote Request Sent To Customer]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quote_admin>
+                        <quote_accepted translate="label tooltip">
+                            <label><![CDATA[Quote Request Accepted Sent To Admin]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quote_accepted>
+                        <quote_rejected translate="label tooltip">
+                            <label><![CDATA[Quote Request Rejected Sent To Admin]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quote_rejected>
+                        <quote_commentcustomer translate="label tooltip">
+                            <label><![CDATA[Quote Comment Update Sent To Customer]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quote_commentcustomer>
+                        <quote_commentadmin translate="label tooltip">
+                            <label><![CDATA[Quote Comment Update Sent To Admin]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quote_commentadmin>
+                    </fields>
+                </emails>
+            </groups>
+        </request4quote>
+    </sections>
+</config>

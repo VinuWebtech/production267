@@ -1,0 +1,20 @@
+<div class="page-title">
+    <h1><?php echo $this->__('Your Quote Request has been received') ?></h1>
+</div>
+
+<p><strong><?php echo $this->__('Thank you for your interest!') ?></strong></p>
+    <p>
+		<?php echo $this->__('Your quote request # is:') ?>
+		<?php if ($this->_isLoggedIn()) : ?>
+			<a href="<?php echo $this->getUrl('request4quote_front/customer_quote/view', array('quote_id' => $this->getLastQuoteId())) ?>"><?php echo $this->getLastQuoteId() ?></a>
+		<?php else: ?>
+			<?php echo $this->getLastQuoteId() ?>
+		<?php endif; ?>
+	</p>
+<?php echo $this->__('You will receive a Quote Request confirmation email with a link to track progress.') ?>
+<br />
+<br />
+<div class="buttons-set">
+	<button class="button" type="button" onclick="window.location='<?php echo $this->getUrl('') ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+                

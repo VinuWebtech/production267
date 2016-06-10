@@ -1,0 +1,46 @@
+<?php if ($this->isPriceHidden() && $this->helper('request4quote')->isRentalInstalled()) : ?>
+    <style type="text/css">
+        .product-view .priceList, .product-view .price-box { display: none; }
+    </style>
+    <script type="text/javascript">
+        $(document).observe('dom:loaded', function() {
+            $$('.product-view .priceList, .product-view .price-box').each(function(el) {
+                $(el).remove();
+            });
+        });
+    </script>
+<?php endif; ?>
+
+<?php if(Mage::getSingleton('customer/session')->isLoggedIn() && $this->getProduct()->getR4qEnabled()) :?>
+    <?php $dListOfquotesForCustomer =  $this->helper('request4quote')->getDropdownQuotes(); ?>
+
+    <script type="text/javascript">
+        var dl = '<?php echo $dListOfquotesForCustomer; ?>';
+        $(document).observe('dom:loaded', function() {
+            //insert dropdown with quotes-dates to add too.
+            $$('.product-options-bottom .add-to-cart').each(function(el) {
+                $(el).insert(dl);
+            });
+        });
+    </script>
+<?php endif; ?>
+
+<!--<script type="text/javascript">
+    $(document).observe('dom:loaded', function() {
+        $$('.super-attribute-select').each(function(el) {
+            var myclickfunc = '';
+            Event.observe($(el),'change',function(){
+                $$('.btn-r4q').each(function(elem){
+                    myclickfunc = $(elem).readAttribute('clickfunc');
+                    $(elem).observe('click', function() {
+                        // do something here
+
+                        eval( myclickfunc);
+                    });
+                });
+
+
+            });
+        });
+    });
+</script>-->
