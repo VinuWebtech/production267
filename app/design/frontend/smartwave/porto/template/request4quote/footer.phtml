@@ -1,0 +1,730 @@
+<?php
+// TODO add check to only run on checkout or cart page
+/** if quote is in cart, copy quote address to customer address book if it doesn't exist */
+$quoteInCartId = Mage::helper('request4quote')->cartHasQuoteItems();
+if($quoteInCartId){
+    $quote = Mage::getModel('request4quote/quote')->loadByIdWithoutStore($quoteInCartId);
+    $quoteAddress = $quote->getShippingAddress();
+    $shipMethod = $quote->getShippingAddress()->getShippingMethod();
+    Mage::helper('request4quote')->checkAndCopyAddress($quoteInCartId);
+}
+?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS) . 'itwebexperts_request4quote/jquery.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS) . 'itwebexperts_request4quote/noconflict.js'; ?>"></script>
+<script type="text/javascript">
+  var $buttonTitle = '<?php echo $this->__('Request for Quote'); ?>';
+  var $miniquoteClassAfter = '<?php echo Mage::getStoreConfig(ITwebexperts_Request4quote_Helper_Data::PATH_MINICARTCLASS); ?>';
+  var $quoteInCartId = '<?php echo $quoteInCartId;?>';
+  var $changeShipMethod = '<?php echo Mage::helper('request4quote')->allowChangeShipMethod()?>';
+  var $shipMethodQuote = '';
+  var $changeShipAddress = '<?php echo Mage::helper('request4quote')->allowChangeShipAddress()?>';
+  var $changeQuantity = '<?php echo Mage::helper('request4quote')->allowChangeQuantity()?>';
+  <?php if(isset($quoteAddress)): ?>
+  var $quoteShippingAddress = '<?php echo str_replace(array("\r","\n"),"",$quoteAddress->format('oneline')); ?>';
+  <?php endif; ?>
+  <?php if(isset($shipMethod)): ?>
+   $shipMethodQuote = '<?php echo $shipMethod ?>';
+  <?php endif;?>
+    getActionsDivRfq = function (obj, canBeLink) {
+        var retObj;
+        retObj = obj.closest('form').find('.btn-cart, .add-to-cart, .addtocart');
+        if(retObj.length == 0){
+            retObj = obj.parent().find('.btn-cart, .add-to-cart, .addtocart');
+        }
+        if(retObj.length == 0){
+            retObj = obj.parent().parent().find('.btn-cart, .add-to-cart, .addtocart');
+        }
+        if(typeof canBeLink !== 'undefined' && canBeLink == true) {
+            if (retObj.length == 0) {
+                retObj = obj.parent().find('a.button');
+            }
+            if (retObj.length == 0) {
+                retObj = obj.parent().parent().find('a.button');
+            }
+        }
+
+        if(retObj.length == 0){
+            retObj = obj.parent().find('button.button');
+        }
+        if(retObj.length == 0){
+            retObj = obj.parent().parent().find('button.button');
+        }
+        if(retObj.length == 0){
+            retObj = obj.parent().parent().parent().find('.btn-cart, .add-to-cart, .addtocart');
+        }
+        if(retObj.length == 0){
+            retObj = obj.parent().parent().parent().parent().find('.btn-cart, .add-to-cart, .addtocart');
+        }
+        return retObj.filter(":first");
+
+    };
+
+    // hide add to cart buttons
+    function getInternetExplorerVersion()
+    {
+        var rv = -1;
+        if (navigator.appName == 'Microsoft Internet Explorer')
+        {
+            var ua = navigator.userAgent;
+            var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+            if (re.exec(ua) != null)
+                rv = parseFloat( RegExp.$1 );
+        }
+        else if (navigator.appName == 'Netscape')
+        {
+            var ua = navigator.userAgent;
+            var re  = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
+            if (re.exec(ua) != null)
+                rv = parseFloat( RegExp.$1 );
+        }
+        return rv;
+    }
+    adjustHeightOfGridList = function () {
+
+        $jpprR4q('.products-grid .product-info').css('padding-bottom', '0px');
+        $jpprR4q('.products-grid .product-info').css('min-height', '');
+
+        var currentTallest = 0,
+            currentRowStart = 0,
+            rowDivs = new Array(),
+            $el,
+            topPosition = 0;
+        if(typeof $jpprR4q !== 'undefined') {
+            $jpprR4q('ul.products-grid li.item').each(function () {
+                $el = $jpprR4q(this);
+                topPosition = $el.position().top;
+                $el.css('padding-bottom', '0px');
+                if (currentRowStart != topPosition) {
+                    // we just came to a new row.  Set all the heights on the completed row
+                    for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+                        if (getInternetExplorerVersion() !== -1) {
+                            rowDivs[currentDiv].height(currentTallest - 100);
+                        }
+                        rowDivs[currentDiv].find('.product-info').css('min-height', '');
+                        rowDivs[currentDiv].find('.actions').css('position', 'static');
+                    }
+                    // set the variables for the new row
+                    rowDivs.length = 0; // empty the array
+                    currentRowStart = topPosition;
+                    currentTallest = $el.height();
+                    rowDivs.push($el);
+                } else {
+                    // another div on the current row.  Add it to the list and check if it's taller
+                    rowDivs.push($el);
+                    currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+                }
+
+                // do the last row
+                for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+                    if (getInternetExplorerVersion() !== -1) {
+                        rowDivs[currentDiv].height(currentTallest + 100);
+                    }
+                    rowDivs[currentDiv].find('.product-info').css('min-height', '');
+                    rowDivs[currentDiv].find('.actions').css('position', 'static');
+                }
+
+            });
+        }
+        //alignProductGridActions();
+    }
+
+  function removeAllOtherShippingMethods(){
+      // Set quote ship method to checked
+      $jpprR4q('#opc-shipping_method, .shipping-form').find('.sp-methods input[value="' + $shipMethodQuote + '"]').prop('checked',true);
+      // Hide radios of ship methods not allowed
+      $curentli = $jpprR4q('#opc-shipping_method, .shipping-form').find('.sp-methods input[value="' + $shipMethodQuote + '"]').closest('li');
+      $curentli.nextAll('li').remove();
+      $curentli.prevAll('li').remove();
+      $currentdd = $jpprR4q('#opc-shipping_method, .shipping-form').find('.sp-methods input[value="' + $shipMethodQuote + '"]').closest('dd');
+      $currentdd.nextAll('dd').remove();
+      $currentdd.prevAll('dd').remove();
+      $currentdd.nextAll('dt').remove();
+      $currentdd.prevAll('dt').remove();
+  }
+  if (typeof Checkout === 'function'){
+    Checkout.prototype.namespaceOriginalGotoSection = Checkout.prototype.gotoSection;
+    Checkout.prototype.gotoSection = function (section, reloadProgressBlock) {
+        /**
+         * Only show shipping method used with the quote
+         **/
+        if($changeShipMethod == 0){
+            removeAllOtherShippingMethods();
+        }
+        this.namespaceOriginalGotoSection(section, reloadProgressBlock);
+    };
+}
+  if($jpprR4q('.shipping-form').length > 0 && $changeShipMethod == 0){
+      removeAllOtherShippingMethods();
+  }
+
+  $jpprR4q(document).ready(function () {
+
+        /** Check if cart has quote items, lock quantity, ship method, ship address if enabled **/
+        if($quoteInCartId){
+            if($changeQuantity == 0){
+                /** we have to select the parent of the input boxes because the input boxes are disabled
+                and don't fire click events */
+                $jpprR4q('td.product-cart-actions-quote > .qty').parent().on('click',function() {
+                    alert('<?php echo $this->__('Changing quantity has been disabled because your quoted price is dependant on quantity'); ?>');
+                });
+                $jpprR4q('tr.qty-wrapper input.qty').parent().on('click',function() {
+                    alert('<?php echo $this->__('Changing quantity has been disabled because your quoted price is dependant on quantity'); ?>');
+                });
+                // Regular Cart
+                $jpprR4q('td.product-cart-actions-quote > .qty').prop('disabled', true);
+                // Mini Cart
+                $jpprR4q('tr.qty-wrapper input.qty').prop('disabled',true);
+            }
+
+            /** Disable ship address changes **/
+            if($changeShipAddress == 0){
+                /**
+                 * If continue button pressed and billing address is the same as shipping address
+                 * make sure it is the one used for the quote. If not show error and auto-select
+                 * address that they should use
+                 **/
+                // Unset on click
+                $jpprR4q('#billing-buttons-container button').prop('onclick',null);
+                $jpprR4q('#billing-buttons-container button').on('click',function(event){
+                    if(($jpprR4q('#billing-address-select').length > 0 && $jpprR4q('#billing-address-select option:selected').text() != $quoteShippingAddress) &&
+                        ($jpprR4q('#billing\\:use_for_shipping_yes').attr('checked') == 'checked')){
+                        event.preventDefault();
+                        alert('<?php echo $this->__('Since you are shipping to your billing address, you must use the same address as was used on your quote or use ship to a different address. We have auto-selected your quote address for you.') ?>');
+                        $jpprR4q('#billing-address-select option').filter(function(){
+                            return this.text == $quoteShippingAddress;
+                        }).attr('selected',true);
+                        return;
+                    }
+                    billing.save();
+                });
+
+                /**
+                 * On shipping information address selector select the one used for quote
+                 * and disable changing it
+                 **/
+                $shippingOptions = $jpprR4q('#shipping-address-select option');
+                $shippingAddressSelectToUse = $shippingOptions.filter(function() {
+                    return this.text == $quoteShippingAddress;
+                });
+                $shippingOptions.remove();
+                $jpprR4q('#shipping-address-select').append($shippingAddressSelectToUse);
+                $jpprR4q('#shipping\\:same_as_billing').parent().hide();
+
+                // $jpprR4q('#billing-address-select').prop('disabled',true);
+
+
+                }
+            }
+
+
+
+        /** get miniquote and show after minicart **/
+        <?php if(Mage::helper('request4quote')->miniquoteEnabled()): ?>
+        <?php
+        $quoteHead = Mage::app()->getLayout()->getBlock('miniquote_head');
+        $quoteHeadHtml = $quoteHead->toHtml();
+        ?>
+        $miniquote = <?php echo $quoteHeadHtml; ?>;
+        $jpprR4q($miniquote).insertBefore('.' + $miniquoteClassAfter);
+          truncateOptions();
+          decorateList('quote-sidebar', 'none-recursive');
+          var miniquoteOptions  = {formKey: '<?php echo Mage::getSingleton('core/session')->getFormKey();?>'}
+          var Mini = new Miniquote(miniquoteOptions);
+          Mini.init();
+      /** Re-add skip links (window open / close bind) since we have dynamically added
+       *   more content that needs it
+       */
+//       =============================================
+//       Skip Links
+//       =============================================
+
+      var skipContents = $jpprR4q('.header-miniquote .skip-content');
+      var skipLinks = $jpprR4q('.header-miniquote .skip-link');
+
+      // unbind the original skiplinks or it tries to attach 2 events to the minicart
+      skipLinks.unbind('click');
+      skipLinks.on('click', function (e) {
+          e.preventDefault();
+
+          var self = $jpprR4q(this);
+          // Use the data-target-element attribute, if it exists. Fall back to href.
+          var target = self.attr('data-target-element') ? self.attr('data-target-element') : self.attr('href');
+
+          // Get target element
+          var elem = $jpprR4q(target);
+
+          // Check if stub is open
+          var isSkipContentOpen = elem.hasClass('skip-active') ? 1 : 0;
+
+          // Hide all stubs
+          skipLinks.removeClass('skip-active');
+          skipContents.removeClass('skip-active');
+
+          // Toggle stubs
+          if (isSkipContentOpen) {
+              self.removeClass('skip-active');
+          } else {
+              self.addClass('skip-active');
+              elem.addClass('skip-active');
+          }
+      });
+
+      $jpprR4q('#header-quote').on('click', '.skip-link-close', function(e) {
+          var parent = $jpprR4q(this).parents('.skip-content');
+          var link = parent.siblings('.skip-link');
+
+          parent.removeClass('skip-active');
+          link.removeClass('skip-active');
+
+          e.preventDefault();
+      });
+        <?php endif; ?>
+
+        $$('.qty').each(function (item) {
+            if ( $jpprR4q('#wishlist-view-form').length) {
+                Event.observe(item, 'change', function () {
+                    $(item).up('tr').select('.btn-r4q')[0].setAttribute('onclick', 'window.location.href = \'<?php echo $this->getUrl('request4quote_front/quote/add') ?>product/' + $(item).up('tr').select('input[name="r4q_quote_enabled"]')[0].getValue() + '/qty/' + $(item).getValue() + '\'; return false;');
+                });
+            }
+        });
+
+        $jpprR4q('input[name="r4q_quote_enabled"]').each(function () {
+            if (!$jpprR4q('#wishlist-view-form').length) {
+                $jpprR4q(this).nextAll('input[name="r4q_quote_enabled"]').remove();
+                var qtyInp = '/from_listing/1';
+                var productVal = $jpprR4q(this).val();
+                var jButton = $jpprR4q('<button class="button btn btn-r4q btn-cart btn-primary add-to-cart" style="margin-top:-3px; margin-left:5px; border-radius:0px;" title="' + $buttonTitle + '"><span><span>' + $buttonTitle + '</span></span></button>');
+                //var jButton = $jpprR4q('<button class="button btn btn-r4q btn-cart btn-primary add-to-cart" style="margin-top:-3px; margin-left:5px; border-radius:0px;" title="' + $buttonTitle + '"><span><i class="fa fa-shopping-cart fa-quote-cart"></i></span></button>');
+
+                jButton.click(function(){
+                    window.location.href = '<?php echo $this->getUrl('request4quote_front/quote/add') ?>product/' + productVal + qtyInp;
+                    return false;
+
+                });
+                var nextDiv = getActionsDivRfq($jpprR4q(this), true);
+                if (nextDiv.length > 0) {
+                    nextDiv.addClass('btn-cart-view');
+                    nextDiv.after(jButton);
+                }
+            }
+            $jpprR4q(this).remove();
+        });
+
+
+        $jpprR4q('input[name="r4q_hidecart"]').each(function () {
+            if (! $jpprR4q('#wishlist-view-form').length) {
+                if ($jpprR4q(this).val() == '1') {
+                    $jpprR4q(this).parents('.item, .product-shop-container, .product-view, .product-shop, .product-shop-row, .add-to-row, .product_info_left').find('.btn-cart, .btn-cart1, .btn-cart-res, .btn-cart-view, .btn-primary, .addtocart').each(function () {
+                        if (!$jpprR4q(this).hasClass('btn-r4q')) {
+                            $jpprR4q(this).remove();
+                        }
+                    });
+                }
+            }
+        });
+
+        $$('.btn-r4q, .btn-cart').each(function (el) {
+            $(el).up('div').setStyle({
+                'position': 'static'
+            });
+        });
+
+        $$('.btn-r4q').each(function (el) {
+            var myclickfunc = $(el).readAttribute('clickfunc');
+            Event.observe($(el), 'click', function () {
+                eval(myclickfunc);
+            });
+        });
+        $jpprR4q('.btn-r4q').mouseover(function(){
+            setTimeout(putClick, 10);
+        });
+        $jpprR4q('.btn-r4q').mouseout(function(){
+            setTimeout(putClick, 10);
+        });
+
+        adjustHeightOfGridList();
+
+    });
+    putClick = function (){
+      $jpprR4q('.btn-r4q').removeAttr('onclick');
+    }
+    sendForm = function(url) {
+        var productAddToCartFormValid = new VarienForm('product_addtocart_form')
+        if (productAddToCartFormValid.validator.validate()) {
+        var form = $('product_addtocart_form');
+        var oldUrl = form.action;
+
+        if (url) {
+            form.action = url;
+        }
+        var e = null;
+        try {
+            form.submit();
+        } catch (e) {
+        }
+        form.action = oldUrl;
+        if (e) {
+            throw e;
+        }
+        }
+
+    };
+
+    (function(open) {
+        XMLHttpRequest.prototype.open = function(method, url, async, user, pass) {
+            this.addEventListener("readystatechange", function() {
+                if(this.readyState == 4){
+
+                    if (typeof this.responseURL != 'undefined' && this.responseURL != '') {
+                        setTimeout( function(){
+                            $jpprR4q('input[name="r4q_quote_enabled"]').each(function () {
+                                if (! $jpprR4q('#wishlist-view-form').length) {
+                                    $jpprR4q(this).nextAll('input[name="r4q_quote_enabled"]').remove();
+                                    var qtyInp = '/from_listing/1';
+                                    var productVal = $jpprR4q(this).val();
+                                    var jButton = $jpprR4q('<button class="button btn btn-r4q btn-cart btn-primary add-to-cart" style="margin-top:-3px; margin-left:5px; border-radius:0px;" title="' + $buttonTitle + '"><span><span>' + $buttonTitle + '</span></span></button>');
+                                    //var jButton = $jpprR4q('<button class="button btn btn-r4q btn-cart btn-primary add-to-cart" style="margin-top:-3px; margin-left:5px; border-radius:0px;" title="' + $buttonTitle + '"><span><i class="fa fa-shopping-cart fa-quote-cart"></i></span></button>');
+                                    jButton.click(function(){
+                                        window.location.href = '<?php echo $this->getUrl('request4quote_front/quote/add') ?>product/' + productVal + qtyInp;
+                                        return false;
+                                    });
+                                    var nextDiv = getActionsDivRfq($jpprR4q(this), true);
+                                    if (nextDiv.length > 0) {
+                                        nextDiv.addClass('btn-cart-view');
+                                        nextDiv.after(jButton);
+                                    }
+                                }
+                                $jpprR4q(this).remove();
+                            });
+
+                            $jpprR4q('input[name="r4q_hidecart"]').each(function () {
+                                if (! $jpprR4q('#wishlist-view-form').length) {
+                                    if ($jpprR4q(this).val() == '1') {
+                                        $jpprR4q(this).parents('.item, .product-shop-container, .product-view, .product-shop, .product-shop-row, .add-to-row, .product_info_left').find('.btn-cart, .btn-cart1, .btn-cart-res, .btn-cart-view, .btn-primary').each(function () {
+                                            if (!$jpprR4q(this).hasClass('btn-r4q')) {
+                                                $jpprR4q(this).remove();
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+
+                        }, 2000 );
+                    }
+
+                }
+            }, false);
+
+            open.call(this, method, url, async, user, pass);
+        };
+
+    })(XMLHttpRequest.prototype.open);
+
+</script>
+<?php if(Mage::registry('current_product') && Mage::registry('current_product')->getR4qIsHiddenPrice()): ?>
+    <style type="text/css">
+        .price-notice {
+            display: none;
+        }
+        .price-box{
+            display: none;
+        }
+    </style>
+<?php endif;?>
+<style type="text/css">
+    #success-message-container{
+        z-index:1000000 !important;
+        position:relative !important;
+    }
+    /* ============================================ *
+ * Checkout - Mini Quote
+ * ============================================ */
+    .header-miniquote {
+        display: inline-block;
+    }
+    @media only screen and (max-width: 770px) {
+        .header-miniquote {
+            display: block;
+        }
+    }
+    .header-miniquote .minicart-message {
+        display: block;
+        padding: 10px;
+    }
+    .header-miniquote .empty {
+        padding: 10px;
+        text-align: center;
+    }
+    .header-miniquote .minicart-wrapper {
+        clear: both;
+        position: relative;
+    }
+    .header-miniquote .minicart-wrapper:before, .header-miniquote .minicart-wrapper:after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        display: none;
+    }
+    .header-miniquote .minicart-wrapper:before {
+        background-color: white;
+        opacity: 0.8;
+        z-index: 2;
+    }
+    .header-miniquote .minicart-wrapper:after {
+        background-image: url("../images/opc-ajax-loader.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 3;
+    }
+    .header-miniquote .minicart-wrapper.loading {
+        position: relative;
+    }
+    .header-miniquote .minicart-wrapper.loading:before, .header-miniquote .minicart-wrapper.loading:after {
+        display: block;
+    }
+    .header-miniquote .block-cart {
+        display: none;
+    }
+    .header-miniquote .block-subtitle {
+        color: #50A4CF;
+        font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        line-height: 1.4;
+        padding: 5px;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+    }
+    .header-miniquote .block-subtitle .close {
+        width: 40px;
+        float: right;
+        display: block;
+        color: #636363;
+        text-decoration: none;
+        font-weight: normal;
+        font-size: 30px;
+        position: absolute;
+        top: -8px;
+        right: -3px;
+    }
+    .header-miniquote .mini-products-list {
+        padding: 10px;
+        padding-top: 0px;
+    }
+    .header-miniquote .mini-products-list li {
+        padding: 8px 5px 8px 11px;
+        border-bottom: 1px solid #DDDDDD;
+        position: relative;
+    }
+    .header-miniquote .mini-products-list li.last {
+        border: none;
+    }
+    .header-miniquote .mini-products-list li .product-details {
+        position: relative;
+    }
+    .header-miniquote .product-details .product-name {
+        padding-top: 0px;
+        font-weight: bold;
+    }
+    .header-miniquote .product-details .product-name a {
+        color: #3399cc;
+    }
+    .header-miniquote .info-wrapper {
+        margin-bottom: 0.5em;
+    }
+    .header-miniquote .info-wrapper th {
+        text-transform: uppercase;
+        padding-right: 10px;
+    }
+    .header-miniquote .info-wrapper td {
+        color: #3399cc;
+        clear: right;
+    }
+    .header-miniquote .info-wrapper .qty-wrapper td {
+        height: 33px;
+        line-height: 33px;
+    }
+    .header-miniquote .info-wrapper .qty {
+        padding-left: 4px;
+        padding-right: 4px;
+        margin-right: 2px;
+        width: 3.2em;
+        text-align: center;
+        height: 30px;
+    }
+    .header-miniquote .info-wrapper .quantity-button {
+        opacity: 0;
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -o-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 100ms;
+        -moz-transition-duration: 100ms;
+        -o-transition-duration: 100ms;
+        transition-duration: 100ms;
+    }
+    .header-miniquote .info-wrapper .quantity-button[disabled] {
+        cursor: default;
+    }
+    .header-miniquote .info-wrapper .quantity-button.visible {
+        opacity: 1;
+    }
+    .header-miniquote .subtotal {
+        background-color: #DDDDDD;
+        text-align: center;
+        line-height: 2em;
+    }
+    .header-miniquote .subtotal .label {
+        color: white;
+        text-transform: uppercase;
+    }
+    .header-miniquote .subtotal .price {
+        color: #3399cc;
+    }
+    .header-miniquote .minicart-actions {
+        padding: 10px;
+        margin-top: 0px;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+    }
+    .header-miniquote .minicart-actions .checkout-button {
+        min-width: 145px;
+    }
+    .header-miniquote .minicart-actions .cart-link {
+        height: 33px;
+        line-height: 39px;
+        text-transform: uppercase;
+        font-size: 13px;
+    }
+    .header-miniquote .minicart-actions .paypal-logo .paypal-or {
+        line-height: 1.6;
+    }
+    .header-miniquote #minicart-error-message {
+        text-align: center;
+        color: red;
+        display: none;
+    }
+    .header-miniquote #minicart-success-message {
+        text-align: center;
+        color: green;
+        display: none;
+    }
+    .header-miniquote .jcarousel-control-prev,
+    .header-miniquote .jcarousel-control-next {
+        display: none;
+    }
+
+    .header-miniquote.skip-active .block-cart,
+    .block-cart.skip-active {
+        display: block;
+    }
+
+    @media only screen and (min-width: 771px) {
+        .checkout-types.minicart {
+            float: none;
+            text-align: center;
+        }
+    }
+    @media only screen and (max-width: 479px) {
+        .header-miniquote a.skip-cart {
+            z-index: 1;
+        }
+    }
+    @media only screen and (max-width: 770px) {
+        .header-miniquote .subtotal .label {
+            color: #636363;
+        }
+        .header-miniquote .minicart-wrapper:before {
+            background-color: #EDEDED;
+        }
+        .header-miniquote .quantity-button {
+            float: none;
+        }
+        .header-miniquote .header-miniquote .block-cart {
+            padding: 15px;
+        }
+        .header-miniquote .header-miniquote .block-subtitle {
+            padding-top: 59px;
+        }
+        .header-miniquote .minicart-actions {
+            padding-bottom: 33px;
+        }
+        .header-miniquote .minicart-actions .cart-link {
+            bottom: 0;
+            right: 10px;
+            position: absolute;
+        }
+        .header-miniquote .minicart-actions .checkout-types.minicart li {
+            display: inline-block;
+        }
+        .header-miniquote .minicart-actions .checkout-types.minicart li .paypal-logo > a {
+            display: inline;
+        }
+        .header-miniquote .minicart-actions .checkout-types.minicart li .paypal-logo .bml_button {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .header-miniquote .minicart-actions .checkout-types.minicart li .paypal-logo .paypal-or {
+            width: auto;
+            float: none;
+            display: inline;
+            margin: 0 10px 5px 10px;
+            line-height: 40px;
+        }
+    }
+    @media only screen and (max-width: 740px) {
+        .header-miniquote .minicart-actions .cart-link {
+            right: auto;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+        .header-miniquote .minicart-actions .checkout-types.minicart li .paypal-logo .paypal-or,
+        .header-miniquote .minicart-actions .checkout-types.minicart li .paypal-logo .paypal-button {
+            width: 100%;
+            display: block;
+            margin-left: 0;
+        }
+        .header-miniquote .minicart-actions .checkout-types.minicart li .paypal-logo .paypal-or {
+            line-height: 1.6;
+        }
+    }
+    @media only screen and (max-width: 599px) {
+        .header-miniquote .minicart-actions .checkout-button {
+            width: 100%;
+        }
+    }
+    .hideprice .price{
+        display:none;
+    }
+    <?php $magentoVersion = Mage::getVersion(); ?>
+    <?php if(Mage::helper('request4quote')->miniquoteEnabled() && version_compare($magentoVersion, '1.9.0.1', '<=')): ?>
+    .skip-account{
+        right:225px;
+    }
+    <?php if(Mage::getSingleton('request4quote/cart')->getSummaryQty() > 0): ?>
+    .header-miniquote .skip-cart{
+        right:130px;
+    }
+    <?php else: ?>
+    .header-miniquote .skip-cart{
+        right:115px;
+    }
+    <?php endif; ?>
+    .header-miniquote.header-miniquote .skip-cart{
+        right:0px;
+    }
+    <?php endif; ?>
+    <?php if(Mage::helper('request4quote')->miniquoteEnabled()): ?>
+        @media only screen and (max-width: 770px) {
+            .header-miniquote.header-miniquote {
+                display: block;
+            }
+        }
+    <?php endif; ?>
+</style>

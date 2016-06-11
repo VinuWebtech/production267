@@ -1,0 +1,28 @@
+<!-- messages -->
+<?php echo $this->getChildHtml('r4q.messages') ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<!-- /messages -->
+
+<?php
+	$_quote = $this->getQuote();
+?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Quote Request %s', $_quote->getId()) ?></h1>
+</div>
+
+<p class="order-date"><?php echo $this->__('Quote Request Date: %s', $this->formatDate($_quote->getCreatedAt(), 'long')) ?></p>
+
+
+<!-- shippign information -->
+<div class="col2-set order-info-box">
+	<div class="col-1">
+		<h4><?php echo $this->__('Shipping Address') ?></h4>
+		<address><?php echo $_quote->getShippingAddress()->format('html') ?></address>
+	</div>
+	<div class="col-2">
+		<h4><?php echo $this->__('Shipping Method') ?></h4>
+		<em><?php echo $this->__('Shipping &amp; Handling price varies. Please select required quantity and checkout online to see applicable price.') ?></em>
+	</div>
+
+</div>

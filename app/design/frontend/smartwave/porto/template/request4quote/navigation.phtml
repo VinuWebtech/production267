@@ -1,0 +1,11 @@
+<?php
+/*
+ *
+ */
+?>
+<?php if(Mage::helper('request4quote/cart')->getCart()->getItemsCount() > 0 || Mage::helper('request4quote')->enabledShowNav()):?>
+<ul class="r4q-navigation">
+	<li<?php if ($this->getActiveItem() == ITwebexperts_Request4quote_Block_Navigation::CART_ITEM_NAME) : ?> class="active"<?php endif; ?>><a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo $this->__('Shopping Cart') ?></a></li>
+	<li<?php if ($this->getActiveItem() == ITwebexperts_Request4quote_Block_Navigation::R4Q_ITEM_NAME) : ?> class="active"<?php endif; ?>><a href="<?php echo $this->getUrl('request4quote_front/quote') ?>"><?php echo $this->__('Request for Quote') ?></a></li>
+</ul>
+<?php endif ?>

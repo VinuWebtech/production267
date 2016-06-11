@@ -1,0 +1,24 @@
+<?php
+if ($this->helper('request4quote')->isRentalInstalled() && !$this->helper('request4quote')->isPPRWarehouseInstalled() && !$this->helper('request4quote')->isOpenendedInstalled()) {
+	$templateFile = Mage::getDesign()->getTemplateFilename('request4quote/quote/create/data/payperrentals.phtml', array(
+		'_area' => $this->getArea(),
+		'_relative' => false
+	));
+}else if ($this->helper('request4quote')->isPPRWarehouseInstalled() && !$this->helper('request4quote')->isOpenendedInstalled()) {
+    $templateFile = Mage::getDesign()->getTemplateFilename('request4quote/quote/create/data/pprwarehouse.phtml', array(
+        '_area' => $this->getArea(),
+        '_relative' => false
+    ));
+}else if ($this->helper('request4quote')->isOpenendedInstalled()) {
+    $templateFile = Mage::getDesign()->getTemplateFilename('request4quote/quote/create/data/openended.phtml', array(
+		'_area' => $this->getArea(),
+		'_relative' => false
+	));
+} else {
+	$templateFile = Mage::getDesign()->getTemplateFilename('request4quote/quote/create/data/original.phtml', array(
+		'_area' => $this->getArea(),
+		'_relative' => false
+	));
+}
+require($templateFile);
+?>

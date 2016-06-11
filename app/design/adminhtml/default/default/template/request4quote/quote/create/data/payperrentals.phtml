@@ -1,0 +1,302 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+$_statusCollection = Mage::getModel('request4quote/quote_status')->getCollection();
+$_quote = $this->_getSession()->getQuote();
+?>
+<div class="page-create-order">
+    <div class="switcher">
+        <div class="currency-switcher">
+            <label for="currency_switcher"><?php echo Mage::helper('payperrentals')->__('Order Currency') . ':' ?></label>
+            <select id="currency_switcher" name="order[currency]" onchange="order.setCurrencyId(this.value); order.setCurrencySymbol(this.options[this.selectedIndex].getAttribute('symbol'));">
+                <?php foreach ($this->getAvailableCurrencies() as $_code): ?>
+                    <option value="<?php echo $_code ?>"<?php if ($_code == $this->getCurrentCurrencyCode()): ?> selected="selected"<?php endif; ?> symbol="<?php echo $this->getCurrencySymbol($_code) ?>"><?php echo $this->getCurrencyName($_code) ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <?php if (class_exists('ITwebexperts_Payperrentals_Helper_Calendar')){ ?>
+        <div id="topDates" style="display: inline-block;margin-left: 10px;">
+            <?php
+            $calendar = Mage::helper('payperrentals/calendar');
+            echo $calendar->getCalendar(null,(Mage::helper('payperrentals/config')->forceUseTimes()?true:false));
+            ?>
+            <button class="scalable change" id="changeButton" type="button" ><span><?php echo $this->__('Change All') ?></span></button>
+        </div>
+    <script type="text/javascript">
+        onDocReady();
+    </script>
+        <?php } ?>
+    </div>
+</div>
+
+<script type="text/javascript">order.setCurrencySymbol('<?php echo $this->getCurrencySymbol($this->getCurrentCurrencyCode()) ?>')</script>
+<table cellspacing="0" width="100%">
+    <tr>
+        <?php if ($this->getCustomerId()): ?>
+            <td class="side-col" style="background:none; padding:0;padding-right: 15px;">
+                <div id="order-sidebar"><?php echo $this->getChildHtml('sidebar') ?></div>
+            </td>
+        <?php endif; ?>
+        <td <?php if ($this->getCustomerId()): ?>class="main-col"<?php endif; ?>>
+            <div id="order-additional_area" style="display:none" class="order-additional-area"><?php echo $this->getChildHtml('additional_area') ?></div>
+            <div id="order-search" style="display:none" class="order-search-items"><?php echo $this->getChildHtml('search') ?></div>
+            <div id="order-items"><?php echo $this->getChildHtml('items') ?></div>
+            <div id="order-errors"><?php echo $this->getChildHtml('errors') ?></div>
+            <?php echo $this->getChildHtml('salesrep') ?>
+            <div id="order-form_account">
+                <?php
+                $templateChangeCustomer = Mage::getDesign()->getTemplateFilename('payperrentals/sales/order/create/changecustomer.phtml', array(
+                    '_area' => 'adminhtml',
+                    '_relative' => false
+                ));
+                if(file_exists($templateChangeCustomer)) {
+                    require($templateChangeCustomer);
+                }
+
+                ?>
+                <?php echo $this->getChildHtml('form_account') ?>
+            </div>
+            <?php if(!Mage::helper('payperrentals/config')->hideAdminAddresses()):?>
+            <div id="order-addresses">
+                <div id="order-billing_address" class="box-left"><?php echo $this->getChildHtml('billing_address') ?></div>
+                <div id="order-shipping_address" class="box-right"><?php echo $this->getChildHtml('shipping_address') ?></div>
+            </div>
+            <?php endif;?>
+
+            <?php if(Mage::helper('request4quote')->isShippingQuotesEnabled()){ ?>
+                <div class="clear"></div>
+                <div id="order-methods">
+                    <div id="order-shipping_method" class="box-right"><?php echo $this->getChildHtml('shipping_method') ?></div>
+                </div>
+            <?php } else { ?>
+                <div id="order-methods">
+                    <div id="order-shipping_method" class="box-right"><?php echo $this->getChildHtml('shipping_method') ?></div>
+                </div>
+                <script type="text/javascript">
+                    $('order-methods').setStyle({
+                       'display':'none'
+                    });
+                    order.setShippingMethod(0);
+                    if(document.getElementById('order-billing_address_customer_address_id').selectedIndex == 0 && document.getElementById('order-billing_address_customer_address_id').length > 1){
+                        document.getElementById('order-billing_address_customer_address_id').selectedIndex = 1;
+                        document.getElementById('order-shipping_same_as_billing').checked = true;
+                        order.selectAddress(document.getElementById('order-billing_address_customer_address_id'), 'order-billing_address_fields');
+                        order.setShippingAsBilling(true);
+                    }
+                </script>
+            <?php } ?>
+            <!--        <div class="clear"></div>-->
+            <div class="box-left entry-edit">
+                <div class="entry-edit-head"><h4><?php echo Mage::helper('sales')->__('Quote Comments') ?></h4></div>
+                <fieldset id="order-comment"><?php echo $this->getChildHtml('comments') ?></fieldset>
+            </div>
+            <!--        <div class="clear"></div>-->
+            <div class="box-right entry-edit" style="clear: right;">
+                <div class="entry-edit-head"><h4><?php echo $this->__('Submit Quote Request') ?></h4></div>
+                <div id="order-totals" class="order-totals">
+                    <?php echo $this->getChildHtml('totals') ?>
+
+                </div>
+                <fieldset>
+                    <button style="float:right" onclick="order.submit()" class="scalable save" type="button" title="<?php echo $this->__('Submit Quote') ?>" ><span><span><span><?php echo $this->__('Submit Quote') ?></span></span></span></button>
+                </fieldset>
+            </div>
+            <div class="clear"></div>
+        </td>
+    </tr>
+</table>
+</div>
+
+<?php
+if(Mage::helper('core')->isModuleOutputEnabled('ITwebexperts_Payperrentals')){
+    ?>
+    <script type="text/javascript">
+    updateAllDatesUrl = '<?php echo Mage::getUrl("adminhtml/ajax/getupdatealldates/", array('form_key'=> Mage::getSingleton('core/session')->getFormKey()))?>';
+    selectNewCustomerUrl = '<?php echo Mage::getUrl("adminhtml/ajax/getupdatecustomer/",array('form_key'=> Mage::getSingleton('core/session')->getFormKey()))?>'
+    estimateCreateUrl = '<?php echo Mage::getUrl("adminhtml/ajax/setEstimatedCreate/",array('form_key'=> Mage::getSingleton('core/session')->getFormKey()))?>'
+    /**
+     * Function used when change all button is pushed to update all dates in an order
+     */
+    function updateInputValsAll() {
+        Element.show('loading-mask');
+        $jppr.ajax({
+                cache: false,
+                dataType: 'json',
+                type: 'post',
+                url: updateAllDatesUrl,
+                data: $jppr('#topDates').find('*').serialize(),
+                success: function (data) {
+                    Element.hide('loading-mask');
+                    if (data.itemId) {
+                        var fields = [];
+                        $jppr.each(data.itemId, function (key1, item) {
+                            fields.push(new Element('input', {type: 'hidden', name: 'item[' + item + '][configured]', value: 1}));
+                            $jppr.each(data.itemConfigs[item], function (keyConfig, itemConfig) {
+
+                                if (Object.prototype.toString.call(itemConfig) === '[object Object]') {
+                                    for (var key in itemConfig) {
+                                        if(Object.prototype.toString.call(itemConfig[key]) === '[object Array]' || Object.prototype.toString.call(itemConfig[key]) === '[object Object]') {
+                                            $jppr.each(itemConfig[key], function(bpKey, bpItem){
+                                                fields.push(new Element('input', {type: 'hidden', name: 'item[' + item + '][' + keyConfig + '][' + key + '][' + bpKey + ']', value: bpItem}));
+                                            });
+                                        } else {
+                                            fields.push(new Element('input', {type: 'hidden', name: 'item[' + item + '][' + keyConfig + '][' + key + ']', value: itemConfig[key]}));
+                                        }
+                                    }
+                                } else {
+                                    fields.push(new Element('input', {type: 'hidden', name: 'item[' + item + '][' + keyConfig + ']', value: itemConfig}));
+                                }
+                            });
+                        });
+                        productConfigure.addFields(fields);
+                        order.itemsUpdate();
+                    }
+                    order.loadArea(['items'], true);
+                }}
+        );
+    }
+
+    $jppr('#select-new-customer').change(function () {
+        Element.show('loading-mask');
+        $jppr.ajax({
+            cache: false,
+            dataType: 'json',
+            type: 'post',
+            url: selectNewCustomerUrl,
+            data: 'customer_id=' + $jppr('#select-new-customer').val(),
+            success: function (data) {
+                Element.hide('loading-mask');
+                order.customerId = $jppr('#select-new-customer').val();
+                order.loadArea(['header', 'shipping_method', 'billing_method', 'totals','search', 'items', 'giftmessage', 'shipping_address', 'billing_address', 'data'], true);
+            }
+        });
+    });
+
+    if(startTimeInitial) {
+        $jppr('#topDates').find('.start_time option[value="' + startTimeInitial + '"]').attr("selected", "selected");
+        $jppr('#topDates').find('.end_time option[value="' + endTimeInitial + '"]').attr("selected", "selected");
+    }
+
+    /**
+     * Function used to show the qty avail/price/etc when popup configuration window appears in admin
+     * @param itemId
+     * @param wind
+     */
+
+    function calculatePriceGeneral(itemId, wind) {
+        var needConfigure = ($jppr('a[product_id="' + itemId + '"]').parent().parent().attr('is_pressed') == '0');
+
+        if (wind && needConfigure) {
+            wind._showWindow();
+        }
+    }
+
+    ProductConfigure.prototype._requestItemConfiguration = ProductConfigure.prototype._requestItemConfiguration.wrap(function (parentMethod, listType, itemId) {
+            if (!this.listTypes[listType].urlFetch) {
+                return false;
+            }
+            var url = this.listTypes[listType].urlFetch;
+            if (url) {
+                new Ajax.Request(url, {
+                    parameters: {id: itemId},
+                    onSuccess: function (transport) {
+                        var response = transport.responseText;
+                        if (response.isJSON()) {
+                            response = response.evalJSON();
+                            if (response.error) {
+                                this.blockMsg.show();
+                                this.blockMsgError.innerHTML = response.message;
+                                this.blockCancelBtn.hide();
+                                this.setConfirmCallback(listType, null);
+                                if (listType == 'product_to_add') {
+                                    calculatePriceGeneral(itemId, this);//todo check if we can replace this call with some data attribute from getprice and availability
+                                } else {
+                                    this._showWindow();
+                                }
+
+                            }
+                        } else if (response) {
+                            response = response + '';
+                            this.blockFormFields.update(response);
+
+                            // Add special div to hold mage data, e.g. scripts to execute on every popup show
+                            var mageData = {};
+                            var scripts = response.extractScripts();
+                            mageData.scripts = scripts;
+
+                            var scriptHolder = new Element('div', {'style': 'display:none'});
+                            scriptHolder.mageData = mageData;
+                            this.blockFormFields.insert(scriptHolder);
+                            if (listType == 'product_to_add') {
+                                calculatePriceGeneral(itemId, this);
+                            } else {
+                                this._showWindow();
+                            }
+
+                        }
+                    }.bind(this)
+                });
+            }
+
+        }
+    );
+
+    AdminOrder.prototype.accountGroupChange = AdminOrder.prototype.accountGroupChange.wrap(function (parentMethod) {
+        this.loadArea(['data, search'], true, this.serializeData('order-form_account').toObject());
+    });
+    AdminOrder.prototype.showQuoteItemConfiguration = AdminOrder.prototype.showQuoteItemConfiguration.wrap(function(parentMethod, itemId){
+        var listType = 'quote_items';
+        var qtyElement = $('order-items_grid').select('input[name="item\['+itemId+'\]\[qty\]"]')[0];
+        productConfigure.setConfirmCallback(listType, function() {
+            // sync qty of popup and qty of grid
+            var confirmedCurrentQty = productConfigure.getCurrentConfirmedQtyElement();
+            if (qtyElement && confirmedCurrentQty && !isNaN(confirmedCurrentQty.value)) {
+                qtyElement.value = confirmedCurrentQty.value;
+            }
+            this.productConfigureAddFields['item['+itemId+'][configured]'] = 1;
+            this.itemsUpdate();//
+        }.bind(this));
+        productConfigure.setShowWindowCallback(listType, function() {
+            // sync qty of grid and qty of popup
+            var formCurrentQty = productConfigure.getCurrentFormQtyElement();
+            if (formCurrentQty && qtyElement && !isNaN(qtyElement.value)) {
+                formCurrentQty.value = qtyElement.value;
+            }
+        }.bind(this));
+        productConfigure.showItemConfiguration(listType, itemId);
+    });
+
+    //$jppr(document).ready(function () {
+    $jppr('#changeButton').click(function () {
+        updateInputValsAll();
+    });
+
+    //});
+
+    </script>
+
+<?php } ?>
+
+
