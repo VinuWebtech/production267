@@ -146,37 +146,70 @@ if($enable_addtocart_sticky){
             <?php
                 }
             ?>
-                <div class="product-name">
-                    <h1 <?php if($enabled_richsnippets): ?>itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-                </div>
-                <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
-                <!--<?php if ($_product->getShortDescription()):?>
-                    <div class="short-description">
-                        <h2><?php echo $this->__('Quick Overview') ?></h2>
-                        <div class="std" <?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="product-name">
+                        <h1 <?php if($enabled_richsnippets): ?>itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                        <!-- Vinu changes to add brand logo & link 
+                        <?php 
+                            $brand=$_product->getAttributeText('manufacturer');
+                            $brandId = $_product->getManufacturer();
+                            //$filename= Mage::getBaseUrl('media').'catalog/brands/'.str_replace(' ', '_',$brand).'.png';
+                        ?>
+                        <a href="<?php echo Mage::getBaseUrl().'catalogsearch/advanced/result/?manufacturer=$brandId'; ?>"><img style="float: right; margin: 2px;" src="<?php echo Mage::getBaseUrl('media').'catalog/brands/'.str_replace(' ', '_',$brand).'.png';?>" alt="<?php echo $brand; ?>"/></a>
+                        Vinu changes for brand logo end -->
                     </div>
-                <?php endif;?>-->
-                <!--vinu changes start added attributes row -->
-                <!--<?php echo $this->getChildHtml('attributes'); ?>-->
-                <!--changes end-->
-                <div class="product-info">
-                    <div <?php if($enabled_richsnippets) echo $helper_richsnippets->getOfferItemscope(); ?>>
-                        <?php echo $this->getChildHtml('product_type_data'); ?>
-                        <?php echo $this->getTierPriceHtml(); ?>
-                        <?php echo $price_properties; ?>
-                    </div>
-                    <?php echo $this->getChildHtml('extrahint') ?>
-                    <!--changes start commenting out to remove display on frontend-->
-                    <!--<?php if ($this->canEmailToFriend()): ?>
-                        <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
-                    <?php endif; ?>-->
+                    
+                    <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                    <!--<?php if ($_product->getShortDescription()):?>
+                        <div class="short-description">
+                            <h2><?php echo $this->__('Quick Overview') ?></h2>
+                            <div class="std" <?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                        </div>
+                    <?php endif;?>-->
+                    <!--vinu changes start added attributes row -->
+                    <!--<?php echo $this->getChildHtml('attributes'); ?>-->
                     <!--changes end-->
-                    <?php if($sku = $_product->getSku()): ?>
-                        <?php if($enabled_richsnippets): ?><meta itemprop="productID" content="sku:<?php echo $sku; ?>" /><?php endif; ?>
-                    <?php endif; ?>
-                    <?php echo $this->getChildHtml('alert_urls') ?>
-                    <?php echo $this->getChildHtml('other');?>
+                    <div class="product-info">
+                        <div <?php if($enabled_richsnippets) echo $helper_richsnippets->getOfferItemscope(); ?>>
+                            <?php echo $this->getChildHtml('product_type_data'); ?>
+                            <?php 
+                                $brand=$_product->getAttributeText('manufacturer');
+                                $filename= '{{store url=""}}media/catalog/brands/'.str_replace(' ', '_',$brand).'.png';
+                                if (file_exists($filename)) { 
+                                    echo '<a href="/'.str_replace(' ', '_',$brand).'"><img style="float: right; margin: 2px;" src="/media/catalog/brands/'.str_replace(' ', '_',$brand).'.gif" alt="'.$brand.'"/></a>' ;
+                                } 
+                            ?>
+                            <?php echo $this->getTierPriceHtml(); ?>
+                            <?php echo $price_properties; ?>
+                        </div>
+                        <?php echo $this->getChildHtml('extrahint') ?>
+                        <!--changes start commenting out to remove display on frontend-->
+                        <!--<?php if ($this->canEmailToFriend()): ?>
+                            <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+                        <?php endif; ?>-->
+                        <!--changes end-->
+                        <?php if($sku = $_product->getSku()): ?>
+                            <?php if($enabled_richsnippets): ?><meta itemprop="productID" content="sku:<?php echo $sku; ?>" /><?php endif; ?>
+                        <?php endif; ?>
+                        <?php echo $this->getChildHtml('alert_urls') ?>
+                        <?php echo $this->getChildHtml('other');?>
+                    </div>
                 </div>
+                <div class="col-sm-3">
+                    <!-- Vinu changes to add brand logo & link -->
+                    <div class="brand-logo">
+                        <?php
+                            $manufacturerName = $_product->getAttributeText('manufacturer'); 
+                            $manufacturerId = $_product->getManufacturer(); 
+                            echo '<a href="catalogsearch/result/?manufacturer='.$manufacturerId.'&q='.$manufacturerName.'">' 
+                        ?> 
+                            <img src="media/catalog/brands/<?php echo str_replace(' ', '_',$manufacturerName); ?>.png" alt="<?php echo $manufacturerName; ?>" title="<?php echo $this->__('to see more from') ?>&nbsp;<?php echo $manufacturerName; ?>&nbsp;<?php echo $this->__('click here') ?>" />
+                        </a>
+                    </div>
+                    <!-- Vinu changes for brand logo end -->
+                </div>
+            </div>
                 <?php if (!$this->hasOptions()):?>
                     <div class="clearer"></div>
                     <div class="add-to-box">
