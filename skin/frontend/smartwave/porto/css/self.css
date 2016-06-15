@@ -80,21 +80,25 @@ img.quote-icon {
     opacity: 0;
     position: absolute;
     left: 167px;
-    top: -6px;
+    top: -10px;
     z-index: 6;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+    font-size: 16px;
 }
 
 .item:hover a.addtowishlist {
     visibility: visible;
     opacity: 1;
     filter: Alpha(Opacity=100);
-    left: 135px;
-    top: -6px;
+    left: 145px;
+    top: -10px;
 }
 
 .item .details-area .actions a.addtocart {
-    right: 15px;
-    position: absolute;
+    right: -40px;
+    position: relative;
 }
 
 
@@ -352,6 +356,7 @@ body {
 .sorter .view-mode a:hover i {
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     opacity: 0.9;
+    border-color: #1F497D;
 }
 
 .btn-default {
@@ -1696,7 +1701,7 @@ span.list-page {
 
 .main-nav .menu > li.menu-static-width .nav-sublist-dropdown .container ul > li > a.navbrand-title:hover {
     /*background-color: #666;*/
-    color: #08C;
+    color: #1F497D;
     text-decoration: none;
     font-weight: 700;
 }
@@ -2072,15 +2077,14 @@ table{
 /*------------------------- Layered nav srollbar for attribute ----------------------*/
 
 /*---------- adding scroll bar to subcategories box in layered nav -----------------*/
-ul.category-list {
-    max-height: 100px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
+/*ul.category-list {
+    max-height: 150px;
+    overflow: auto;
+}*/
 
 /*---------- placing collapse button to left & changing color for subcat box ------*/
 .block-category-nav .block-title::before {
-    left: 10px;
+    left: 5px;
     border: 1px solid #777;
     color: #777;
     width: 22px;
@@ -2104,9 +2108,10 @@ ul.category-list {
 }
 
 .block-category-nav .block-title {
-    padding: 10px 45px;
+    padding: 10px 35px;
     border-radius: 0px;
     font-weight: normal;
+    text-transform: none;
 }
 
 .block-category-nav .block-title.closed {
@@ -2118,10 +2123,17 @@ ul.category-list {
     border-style: none;
     background-color: #fff;
     /*border-bottom: 1px solid;*/
+    max-height: 150px;
+    overflow: auto;
 }
 
-.block-category-nav .category-list li {
-    height: 24px;
+.block-category-nav .category-list a {
+    line-height: 24px;
+}
+
+.block-category-nav .category-list a.plus {
+    line-height: 24px;
+    color: #1F497D;
 }
 
 .col2-left-layout .col-left.sidebar {
@@ -2139,10 +2151,9 @@ ul.category-list {
     border-bottom: 1px solid #ddd;
 }
 
-dl#narrow-by-list dd >ol {
+.block.block-layered-nav .block-content dl#narrow-by-list dd {
     max-height: 150px;
     overflow: auto;
-    /*overflow-x: hidden;*/
 }
 
 .block-layered-nav .block-content dl#narrow-by-list dd >ol li {
@@ -2164,7 +2175,7 @@ dl#narrow-by-list dd >ol {
 
 /*---------- placing collapse button to left & changing color for attributes -----*/
 .block-layered-nav dt::before {
-    left: 10px;
+    left: 5px;
     border: 1px solid #777;
     color: #777;
     width: 22px;
@@ -2179,13 +2190,14 @@ dl#narrow-by-list dd >ol {
 
 /*------- adjusting attribute text label accordingly & removing curved border ----------------*/
 .block-layered-nav dt {
-    padding: 8px 45px;
+    padding: 8px 35px;
     margin-top: 0px;
     border-radius: 0px;
     border: 0px;
     background-color: #F5F5F5;
     border: 1px solid #DDD;
     font-weight: normal;
+    text-transform: none;
 }
 
 .block-layered-nav dt.closed {
@@ -2883,4 +2895,20 @@ li.submitbutton {
     padding: 40px;
 }*/
 
+.pager .pages .current {
+    border: 1px solid #1F497D;
+    background-color: #1F497D;
+}
 
+.pager li > a:hover, .pager li > a:focus {
+    background-color: #1F497D;
+    border-color: #1F497D;
+}
+
+.theme-border-color {
+    border-color: #1F497D;
+}
+
+.topCartContent::before {
+    border-bottom-color: #1F497D;
+}

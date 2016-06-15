@@ -13,5 +13,8 @@
 <?php else: ?>
 	<p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('Out of stock') ?></span></p>
 <?php endif; ?>
+<?php 
+$productQuantity = Mage::getModel("cataloginventory/stock_item")->loadByProduct($_product);
+echo $this->__('Min. Orderable Qty : ').$productQuantity->getMinSaleQty(); ?>
 
 <?php echo $this->getChildHtml('product_type_data_extra') ?>
