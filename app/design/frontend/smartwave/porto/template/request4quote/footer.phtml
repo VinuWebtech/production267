@@ -379,7 +379,7 @@ if($quoteInCartId){
                         setTimeout( function(){
                             $jpprR4q('input[name="r4q_quote_enabled"]').each(function () {
                                 if (! $jpprR4q('#wishlist-view-form').length) {
-                                    $jpprR4q(this).nextAll('input[name="r4q_quote_enabled"]').remove();
+                                    //$jpprR4q(this).nextAll('input[name="r4q_quote_enabled"]').remove();
                                     var qtyInp = '/from_listing/1';
                                     var productVal = $jpprR4q(this).val();
                                     var jButton = $jpprR4q('<button class="button btn btn-r4q btn-cart btn-primary add-to-cart" style="margin-top:-3px; margin-left:5px; border-radius:0px;" title="' + $buttonTitle + '"><span><span>' + $buttonTitle + '</span></span></button>');
