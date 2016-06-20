@@ -10,19 +10,15 @@
         $_subtotal = $this->helper('checkout')->formatPrice(Mage::getSingleton('checkout/cart')->getQuote()->getGrandTotal())
     ?>
     <?php $_items = $this->getRecentItems() ?>
-    <a href="javascript:void(0)" class="mybag-link">
-        <!--<i class="icon-mini-cart"></i>--><span class="cart-info">
-            <span class="cart-qty">
-                <!--<?php echo $_cartQty = $this->getSummaryCount() ?>-->
-                <?php if ($_cartQty == 0): ?>
-                    <?php echo $this->__('<a href="%s"><img src='.$this->getSkinUrl('images/empty-cart.png').' /></a>', $this->getUrl('checkout/cart')) ?>
-                <?php elseif ($_cartQty >= 1): ?>
-                    <?php echo $this->__('<a href="%s" id="ico-cart"><img src='.$this->getSkinUrl('images/full-cart.png').' /><span class="count">%s</span></a>', $this->getUrl('checkout/cart'), $_cartQty) ?>
-                <?php endif ?>
-            </span>
-            <span><!--<?php echo $this->__('item(s)') ?>--></span>
-        </span>
-    </a>
+    <!--Vinu changes for new cart icon image on empty & loaded cart-->
+    <!--<a href="javascript:void(0)" class="mybag-link"><i class="icon-mini-cart"></i><span class="cart-info"><span class="cart-qty"><?php echo $_cartQty = $this->getSummaryCount() ?></span><span><?php echo $this->__('item(s)') ?></span></span></a>-->
+    
+    <?php if ($_cartQty == 0): ?>
+        <?php echo $this->__('<a href="javascript:void(0)"><img src='.$this->getSkinUrl('images/empty-cart.png').' /></a>') ?>
+    <?php elseif ($_cartQty >= 1): ?>
+        <?php echo $this->__('<a href="javascript:void(0)" id="ico-cart"><img src='.$this->getSkinUrl('images/full-cart.png').' /><span class="count">%s</span></a>', $_cartQty) ?>
+    <?php endif ?>
+    <!--Vinu changes end-->
         <div class="topCartContent block-content theme-border-color">
             <div class="inner-wrapper"><?php /*extra div to smooth slideUp and slideDown*/ ?>
                 <?php $_items = $this->getRecentItems() ?>

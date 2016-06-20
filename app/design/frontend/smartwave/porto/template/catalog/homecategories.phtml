@@ -12,7 +12,7 @@
 		$count = $cat->getProductCount(); 
 	?>
 		<li class="menu-item" style="list-style: none; float:left">
-			<h5 class="levelonecats"><a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a></h5>
+			<h2 class="levelonecats"><a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a></h2>
 			<ul>
 				<!--<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
             	<?php $_subcategories = $_category->getChildrenCategories() ?>

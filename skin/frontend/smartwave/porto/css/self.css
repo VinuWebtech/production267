@@ -96,9 +96,93 @@ img.quote-icon {
     top: -10px;
 }
 
+.item a.addtowishlist-bestsellers {
+    margin: 10px 1px;
+    vertical-align: middle;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    right: 5px;
+    top: 3px;
+    z-index: 6;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#ffd500, #ffab00);
+    border: 0px;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.item:hover a.addtowishlist-bestsellers {
+    visibility: visible;
+    opacity: 1;
+    filter: Alpha(Opacity=100);
+    right: 35px;
+    top: 3px;
+}
+
+a.addtowishlist-bestsellers .fa-star {
+    font-style: normal;
+}
+
 .item .details-area .actions a.addtocart {
     right: -40px;
     position: relative;
+}
+
+.item .details-area .actions a.addtocart-bestsellers {
+    right: -10px;
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    color: #fff;
+    background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
+    color: #fff;
+    font-size: 14px;
+    padding: 0 10px 0 5px;
+    display: inline-block;
+    height: 32px;
+    line-height: 30px;
+    border-radius: 5px;
+    border: 1px solid #1F497D;
+}
+
+.item .details-area .actions a.addtocart-bestsellers:hover {
+    opacity: 0.8;
+}
+
+.homepage-products .owl-item .item:hover {
+    border: 1px solid #FFC000;
+}
+
+.item1 a.addtowishlist {
+    margin: 10px 1px;
+    vertical-align: middle;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    right: 5px;
+    top: -5px;
+    z-index: 6;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+    font-size: 16px;
+}
+
+.item1:hover a.addtowishlist {
+    visibility: visible;
+    opacity: 1;
+    filter: Alpha(Opacity=100);
+    right: 15px;
+    top: -5px;
+}
+
+.filter-products .details-area .ratings {
+    background: none;
 }
 
 
@@ -283,8 +367,9 @@ body {
 }
 /*---------------------------------------------*/
 
-.owl-banner-carousel .content.type2 h2 {
+.owl-banner-carousel .content.type2 h3 {
     font-size: 26px;
+    border-top: 5px solid #08c;
 }
 
 .owl-banner-carousel .content.type2 h2.slide {
@@ -292,7 +377,7 @@ body {
 }
 
 
-.owl-banner-carousel .content.type2 h3 {
+.owl-banner-carousel .content.type2 h5 {
     font-size: 20px;
 }
 
@@ -805,7 +890,7 @@ ul.list3 li {
 
 .filter-products .product-image-area {
     text-align: center;
-    margin-left: 47px;
+    margin-left: 30px;
     min-height: 130px;
     max-height: 130px;
     max-width: 112px;
@@ -1528,13 +1613,13 @@ span.list-page {
 }
 
 /* ----- vinu changes added (31-7-15) for base categories headings ------*/
-.main-nav .menu > li.view-all li.menu-item > h5.levelonecats{
+.main-nav .menu > li.view-all li.menu-item > h2.levelonecats{
     text-transform: uppercase;
     font-size: 15px;
     font-weight: 600;
 }
 
-.main-nav .menu > li.view-all li.menu-item > h5.levelonecats a{
+.main-nav .menu > li.view-all li.menu-item > h2.levelonecats a{
     color: #1F497D;
 }
 
@@ -1958,7 +2043,7 @@ table{
 }
 
 .col-main .category-products .products-grid li.item1:hover {
-    box-shadow: 0 1px 3px #444;
+    border: 1px solid #FFC000;
 }
 
 .product-image-area {
