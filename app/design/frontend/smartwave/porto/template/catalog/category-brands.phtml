@@ -1,0 +1,18 @@
+<?php
+$category = Mage::registry('current_category');
+$layer = Mage::getSingleton('catalog/layer');
+$layer->setCurrentCategory($category);
+$attributes = $layer->getFilterableAttributes();
+$manufacturers = array();
+foreach ($attributes as $attribute) {
+    if ($attribute->getAttributeCode() == 'manufacturer') {
+        $filterBlockName = 'catalog/layer_filter_attribute';
+        $result = Mage::app()->getLayout()->createBlock($filterBlockName)->setLayer($layer)->setAttributeModel($attribute)->init();
+        foreach($result->getItems() as $option) {
+            $manufacturers[$option->getValue()] = $option->getLabel();
+            echo $option->getLabel();
+        }
+    }
+}
+//var_dump($manufacturers);
+?>

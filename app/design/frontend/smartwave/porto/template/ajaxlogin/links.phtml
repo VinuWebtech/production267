@@ -25,7 +25,7 @@
     </div>
     <div id="forgot-password" class="login-create-popup" style="display:none">
         <div class="sign-box-head row">
-            <h2 class="popup-title f-left"><?php echo $this->__('Forgot Password') ?></h2>
+            <div class="popup-title f-left"><?php echo $this->__('Forgot Password') ?></div>
         </div>
         <form onsubmit="formSubmitByAjax('gform-forgot-password', '<?php echo $this->getUrl('ajaxlogin/account/szforgotpass')?>');return false;" method="post" id="gform-forgot-password">
             <div class="fieldset">
@@ -54,7 +54,7 @@
                             <a href="javascript:void(0);" id="login"><?php echo $this->__('Log In') ?></a>
                         </span>
                     </span>
-                    <h2 class="popup-title f-left"><?php echo $this->__('Sign Up') ?></h2>
+                    <div class="popup-title f-left"><?php echo $this->__('Sign Up') ?></div>
                 </div>
             </div>
             <div class="">
