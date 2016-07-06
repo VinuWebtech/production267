@@ -41,7 +41,7 @@
 
     <a href="<?php echo $this->helper('request4quote/cart')->getCartUrl(); ?>" data-target-element="#header-quote" class="skip-quote skip-link skip-cart <?php if($_cartQty <= 0): ?> no-count<?php endif; ?>">
         <!--Vinu changes adding icon image & removing quote label display-->
-        <span class="icon"><?php echo $this->__('<img class="quote-icon" src='.$this->getSkinUrl('images/quote-icon.png').' />') ?></span>
+        <span class="icon"><?php echo $this->__('<img class="quote-icon" src='.$this->getSkinUrl('images/quote-icon.png').' alt="Quote icon" />') ?></span>
         <!--<span class="label"><?php echo $this->__('Quote'); ?></span>-->
         <?php if ($_cartQty >= 1): ?>
             <span class="count"><?php echo $_cartQty; ?></span>

@@ -2246,6 +2246,7 @@ table{
 
 .block-layered-nav .block-content dl#narrow-by-list dd >ol li {
     height: 24px;
+    overflow: hidden;
 }
 
 /*---------- placing collapse button to left & changing color for attributes -----*/
