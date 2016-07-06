@@ -14,9 +14,9 @@
     <!--<a href="javascript:void(0)" class="mybag-link"><i class="icon-mini-cart"></i><span class="cart-info"><span class="cart-qty"><?php echo $_cartQty = $this->getSummaryCount() ?></span><span><?php echo $this->__('item(s)') ?></span></span></a>-->
     
     <?php if ($_cartQty == 0): ?>
-        <?php echo $this->__('<a href="javascript:void(0)"><img src='.$this->getSkinUrl('images/empty-cart.png').' /></a>') ?>
+        <?php echo $this->__('<a href="javascript:void(0)"><img src='.$this->getSkinUrl('images/empty-cart.png').' alt="Empty cart" /></a>') ?>
     <?php elseif ($_cartQty >= 1): ?>
-        <?php echo $this->__('<a href="javascript:void(0)" id="ico-cart"><img src='.$this->getSkinUrl('images/full-cart.png').' /><span class="count">%s</span></a>', $_cartQty) ?>
+        <?php echo $this->__('<a href="javascript:void(0)" id="ico-cart"><img src='.$this->getSkinUrl('images/full-cart.png').' alt="Loaded cart" /><span class="count">%s</span></a>', $_cartQty) ?>
     <?php endif ?>
     <!--Vinu changes end-->
         <div class="topCartContent block-content theme-border-color">
