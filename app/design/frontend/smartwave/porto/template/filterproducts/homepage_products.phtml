@@ -114,16 +114,16 @@
                                     </div>
                                 <?php else : ?>
                                     <!--Vinu changes design adjustment of price & cart in one row-->
-                                    <div class="row">
-                                        <div class="col-sm-6">
+                                    <!--<div class="row">
+                                        <div class="col-sm-6">-->
                                             <!-- Vinu changes for adding mrp price only if value is present for product -->
                                             <?php if($_product->getMrp_price()!= ''): ?>
                                                 <span class="mrp-price list-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
                                             <?php endif; ?>
                                             <!-- Vinu changes end -->
                                             <?php echo $this->getPriceHtml($_product, true) ?>
-                                        </div>
-                                        <div class="col-sm-6"><div class="actions">
+                                        <!--</div>
+                                        <div class="col-sm-6">--><div class="actions">
                                             <!--<?php if ($this->helper('wishlist')->isAllow()) : ?>
                                             <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtolinks/enablecategory", $code)):?>javascript:ajaxWishlist('<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>','<?php echo $_product->getId()?>');<?php else: ?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif; ?>" class="addtowishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><i class="icon-wishlist"></i></a>
                                             <?php endif; ?>-->
@@ -137,8 +137,8 @@
                                                 <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtolinks/enablecategory", $code)):?>javascript:ajaxCompare('<?php echo $_compareUrl ?>','<?php echo $_product->getId()?>');<?php else: ?><?php echo $_compareUrl ?><?php endif; ?>" class="comparelink" title="<?php echo $this->__('Add to Compare') ?>"><i class="icon-compare"></i></a>
                                             <?php endif; ?>-->
                                             <div class="clearer"></div>
-                                        </div></div>
-                                    </div>
+                                        </div><!--</div>
+                                    </div>-->
                                 <?php endif; ?>   
                             <?php endif; ?>
                             <!--Vinu changes end-->                            
