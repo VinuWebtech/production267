@@ -102,9 +102,9 @@
                                         <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtolinks/enablecategory", $code)):?>javascript:ajaxWishlist('<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>','<?php echo $_product->getId()?>');<?php else: ?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif; ?>" class="addtowishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><i class="icon-wishlist"></i></a>
                                         <?php endif; ?>-->
                                         <?php  if ( !($_product->getTypeInstance(true)->hasOptions($_product)/*$_product->getData('has_options')*/ || $_product->isGrouped()) ) :  ?>
-                                            <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:setLocationAjax('<?php echo $this->getAddToCartUrl($_product) ?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i><span>&nbsp;<?php echo $this->__('Add to Cart') ?></span></a>
+                                            <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:setLocationAjax('<?php echo $this->getAddToCartUrl($_product) ?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i><!--<span>&nbsp;<?php echo $this->__('Add to Cart') ?></span>--></a>
                                         <?php else : ?>
-                                            <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:showOptions('<?php echo $_product->getId()?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i><span>&nbsp;<?php echo $this->__('Add to Cart') ?></span></a>
+                                            <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:showOptions('<?php echo $_product->getId()?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i><!--<span>&nbsp;<?php echo $this->__('Add to Cart') ?></span>--></a>
                                             <a href='<?php echo $this->getUrl('ajaxcart/index/options',array('product_id'=>$_product->getId()));?>' class='fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Options</a>
                                         <?php endif;?>
                                         <!--<?php if(Mage::getStoreConfig("porto_settings/category/compare", $code) && $_compareUrl=$this->getAddToCompareUrl($_product)): ?>
@@ -114,31 +114,31 @@
                                     </div>
                                 <?php else : ?>
                                     <!--Vinu changes design adjustment of price & cart in one row-->
-                                    <!--<div class="row">
-                                        <div class="col-sm-6">-->
+                                    <div class="row">
+                                        <div class="col-sm-6">
                                             <!-- Vinu changes for adding mrp price only if value is present for product -->
                                             <?php if($_product->getMrp_price()!= ''): ?>
                                                 <span class="mrp-price list-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
                                             <?php endif; ?>
                                             <!-- Vinu changes end -->
                                             <?php echo $this->getPriceHtml($_product, true) ?>
-                                        <!--</div>
-                                        <div class="col-sm-6">--><div class="actions">
+                                        </div>
+                                        <div class="col-sm-6"><div class="actions">
                                             <!--<?php if ($this->helper('wishlist')->isAllow()) : ?>
                                             <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtolinks/enablecategory", $code)):?>javascript:ajaxWishlist('<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>','<?php echo $_product->getId()?>');<?php else: ?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif; ?>" class="addtowishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><i class="icon-wishlist"></i></a>
                                             <?php endif; ?>-->
                                             <?php  if ( !($_product->getTypeInstance(true)->hasOptions($_product)/*$_product->getData('has_options')*/ || $_product->isGrouped()) ) :  ?>
-                                                <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:setLocationAjax('<?php echo $this->getAddToCartUrl($_product) ?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i><span>&nbsp;<?php echo $this->__('Add to Cart') ?></span></a>
+                                                <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:setLocationAjax('<?php echo $this->getAddToCartUrl($_product) ?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i><!--<span>&nbsp;<?php echo $this->__('Add to Cart') ?></span>--></a>
                                             <?php else : ?>
-                                                <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:showOptions('<?php echo $_product->getId()?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i><span>&nbsp;<?php echo $this->__('Add to Cart') ?></span></a>
+                                                <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtocart/enablecategory", $code)):?>javascript:showOptions('<?php echo $_product->getId()?>')<?php else: ?><?php echo $this->getAddToCartUrl($_product) ?><?php endif; ?>" class="addtocart" title="<?php echo $this->__('Add to Cart') ?>"><i class="icon-cart"></i><!--<span>&nbsp;<?php echo $this->__('Add to Cart') ?></span>--></a>
                                                 <a href='<?php echo $this->getUrl('ajaxcart/index/options',array('product_id'=>$_product->getId()));?>' class='fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Options</a>
                                             <?php endif;?>
                                             <!--<?php if(Mage::getStoreConfig("porto_settings/category/compare", $code) && $_compareUrl=$this->getAddToCompareUrl($_product)): ?>
                                                 <a href="<?php if(Mage::getStoreConfig("ajaxcart/addtolinks/enablecategory", $code)):?>javascript:ajaxCompare('<?php echo $_compareUrl ?>','<?php echo $_product->getId()?>');<?php else: ?><?php echo $_compareUrl ?><?php endif; ?>" class="comparelink" title="<?php echo $this->__('Add to Compare') ?>"><i class="icon-compare"></i></a>
                                             <?php endif; ?>-->
                                             <div class="clearer"></div>
-                                        </div><!--</div>
-                                    </div>-->
+                                        </div></div>
+                                    </div>
                                 <?php endif; ?>   
                             <?php endif; ?>
                             <!--Vinu changes end-->                            
