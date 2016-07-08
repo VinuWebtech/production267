@@ -1,3 +1,6 @@
+.item button.btn-r4q {
+    margin: 10px 20px 0 !important;
+}
 
 .r4q-accept button.r4q-btn-accept, .r4q-reject button.r4q-btn-reject {
     display: inline-block;
