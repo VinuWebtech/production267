@@ -169,7 +169,6 @@ a.addtowishlist-bestsellers .fa-star {
 }
 
 .item1 .details-area .actions a.addtocart {
-    right: -40px;
     position: relative;
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
     border-color: #1F497D;
@@ -1124,6 +1123,10 @@ ul.list3 li {
 
 .footer .social-icons a.icon3-class:hover {
     background-color: #dd4b39;
+}
+
+.footer .social-icons a.icon4-class:hover {
+    background-color: #F87F14;
 }
 
 .footer-middle {
