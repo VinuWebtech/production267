@@ -1125,6 +1125,10 @@ ul.list3 li {
     background-color: #dd4b39;
 }
 
+.footer .social-icons a.icon4-class:hover {
+    background-color: #F87F14;
+}
+
 .footer-middle {
     background-color: #FDFBFC;
     /*background-color: #232F3E;*/
