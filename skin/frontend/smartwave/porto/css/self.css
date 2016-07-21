@@ -1,3 +1,12 @@
+
+.product-view .product-shop .availability {
+    font-size: 13px;
+}
+
+.product-view .add-to-links {
+    float: left;
+}
+
 .item button.btn-r4q {
     margin: 10px 20px 0 !important;
 }
