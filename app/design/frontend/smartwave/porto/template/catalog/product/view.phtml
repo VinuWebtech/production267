@@ -205,7 +205,7 @@ if($enable_addtocart_sticky){
                             $_getBase = Mage::app()->getStore()->getBaseUrl();
                             echo '<a href="'.$_getBase.'catalogsearch/result/?manufacturer='.$manufacturerId.'&q='.$manufacturerName.'" rel="nofollow">' 
                         ?> 
-                            <img src="media/catalog/brands/<?php echo str_replace(' ', '_',$manufacturerName); ?>.png" alt="<?php echo $manufacturerName; ?>" title="<?php echo $this->__('To see more from') ?>&nbsp;<?php echo $manufacturerName; ?>&nbsp;<?php echo $this->__('click here') ?>" />
+                            <img src="<?php echo Mage::app()->getStore()->getBaseUrl(); ?>media/catalog/brands/<?php echo str_replace(' ', '_',$manufacturerName); ?>.png" alt="<?php echo $manufacturerName; ?>" title="<?php echo $this->__('To see more from') ?>&nbsp;<?php echo $manufacturerName; ?>&nbsp;<?php echo $this->__('click here') ?>" />
                         </a>
                     </div>
                     <!-- Vinu changes for brand logo end -->

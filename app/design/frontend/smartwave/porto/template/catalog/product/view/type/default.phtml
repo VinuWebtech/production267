@@ -15,6 +15,13 @@
 <?php endif; ?>
 <?php 
 $productQuantity = Mage::getModel("cataloginventory/stock_item")->loadByProduct($_product);
-echo $this->__('Min. Orderable Qty : ').$productQuantity->getMinSaleQty(); ?>
+echo $this->__('<strong>Min. Orderable Qty: </strong>').$productQuantity->getMinSaleQty(); ?>
+<!-- Vinu changes for adding delivery days -->
+    <?php if($_product->getDelivery_period()!= ''): ?>
+        <div class="delivery-box">
+            <span class="delivery-period"><?php echo '<strong>Estimated Delivery time: </strong>'.$_product->getDelivery_period(); ?></span>
+        </div>
+    <?php endif; ?>
+<!-- Vinu changes end for delivery days -->
 
 <?php echo $this->getChildHtml('product_type_data_extra') ?>
