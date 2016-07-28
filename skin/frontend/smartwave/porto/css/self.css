@@ -1,4 +1,8 @@
 
+#product-attribute-specs-table > .data li {
+    list-style-type: disc;
+}
+
 .product-view .product-shop .availability {
     font-size: 13px;
 }
