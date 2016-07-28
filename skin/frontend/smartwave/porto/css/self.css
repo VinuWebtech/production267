@@ -1,5 +1,9 @@
 
-#product-attribute-specs-table > .data li {
+#product-attribute-specs-table td.last ul {
+    padding-left: 1.5em;
+}
+
+#product-attribute-specs-table td.last li {
     list-style-type: disc;
 }
 
