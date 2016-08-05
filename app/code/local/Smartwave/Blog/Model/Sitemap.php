@@ -104,7 +104,8 @@ class Smartwave_Blog_Model_Sitemap extends Mage_Sitemap_Model_Sitemap
         foreach ($collection as $item) {
             $xml = sprintf(
                 '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
-                htmlspecialchars($baseUrl . $item->getUrl()), $date, $changefreq, $priority
+                //htmlspecialchars($baseUrl . $item->getUrl()), $date, $changefreq, $priority
+                htmlspecialchars($baseUrl . $item->getUrl()), substr(Mage::getModel('cms/page')->load($item->getId())->getUpdateTime(),0,10), $changefreq, $priority
             );
             $this->sitemapFileAddLine($xml);
         }
