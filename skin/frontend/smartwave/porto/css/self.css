@@ -1,3 +1,11 @@
+.short-description {
+    margin-bottom: 15px;
+}
+
+a.more {
+    color: #08c;
+}
+
 .price-box {
     display: inline-block;
 }
@@ -39,7 +47,7 @@
 }
 
 .qty-order {
-    right: -3px;
+    right: -15px;
     display: inline-block;
     position: absolute;
 }
