@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Buildmatic_Defaultdestination>
+			<version>1.3.0</version>
+		</Buildmatic_Defaultdestination>
+	</modules>
+	<global>
+	<models>
+		<defaultdestination>
+			<class>Buildmatic_Defaultdestination_Model</class>
+		</defaultdestination>
+	</models>
+	    <events>
+		<sales_quote_collect_totals_before>
+		    <observers>
+		        <buildmatic_defaultdestination>
+		            <class>defaultdestination/observer</class>
+		            <method>handleCollect</method>
+		        </buildmatic_defaultdestination>
+		    </observers>
+		</sales_quote_collect_totals_before>
+	    </events>
+	</global>
+</config>

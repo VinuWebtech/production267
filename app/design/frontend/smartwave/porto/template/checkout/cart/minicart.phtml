@@ -7,7 +7,10 @@
     <?php $_cartQty = $this->getSummaryCount(); ?>
     <?php
         if(!$_cartQty) $_cartQty = 0;
-        $_subtotal = $this->helper('checkout')->formatPrice(Mage::getSingleton('checkout/cart')->getQuote()->getGrandTotal())
+        $_subtotal = $this->helper('checkout')->formatPrice(Mage::getSingleton('checkout/cart')->getQuote()->getGrandTotal());
+        //Vinu changes added to get shipping amount to display in minicart
+        $_shipping = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingAmount();
+        //Vinu changes to get shipping amount end
     ?>
     <?php $_items = $this->getRecentItems() ?>
     <!--Vinu changes for new cart icon image on empty & loaded cart-->
@@ -28,6 +31,14 @@
                             <?php echo $this->getItemHtml($_item) ?>
                         <?php endforeach; ?>
                     </ol>
+                    <!--Vinu changes added to display shipping amount if it is greater than zero -->
+                    <?php if($_shipping != '0'): ?>
+                        <div style="text-align: center; font-size: 15px; font-weight: 300;">
+                            <span class="label"><?php echo 'Shipping'?>: </span>
+                            <span class="price-total"><?php echo $this->helper('checkout')->formatPrice($_shipping) ?></span>
+                        </div>
+                    <?php endif; ?>
+                    <!--Vinu changes for display of shipping amount end -->
                     <div class="totals">
                         <span class="label"><?php echo $this->__('Total')?>: </span>
                         <span class="price-total"><?php echo $_subtotal ?></span>

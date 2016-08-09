@@ -1,21 +1,11 @@
 <?php $_product = $this->getProduct() ?>
-<!-- Vinu changes for adding mrp price display only if value is present for product & request quote is not enabled for product -->
-<?php if(!$_product->getR4qEnabled()) :?>
-	<?php if($_product->getMrp_price()!= ''): ?>
-		<span class="mrp-price view-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
-	<?php endif; ?>
-<?php endif; ?>
-<!-- Vinu changes end -->
-<?php echo $this->getPriceHtml($_product) ?>
-
+<!--<?php echo $this->getPriceHtml($_product) ?>-->
 <?php if ($_product->isAvailable()): ?>
 	<p class="availability in-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('In stock') ?></span></p>
 <?php else: ?>
 	<p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('Out of stock') ?></span></p>
 <?php endif; ?>
-<?php 
-$productQuantity = Mage::getModel("cataloginventory/stock_item")->loadByProduct($_product);
-echo $this->__('<strong>Min. Orderable Qty: </strong>').$productQuantity->getMinSaleQty(); ?>
+
 <!-- Vinu changes for adding delivery days -->
     <?php if($_product->getDelivery_period()!= ''): ?>
         <div class="delivery-box">

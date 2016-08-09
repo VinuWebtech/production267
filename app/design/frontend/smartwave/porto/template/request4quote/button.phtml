@@ -8,10 +8,30 @@
  * @copyright   Copyright (c) 2013 ITWebExperts
  */
 ?>
-<?php if ($this->isRequestEnabled()) : ?>
+<!--<?php if ($this->isRequestEnabled()) : ?>
 	<?php
 	$buttonTitle = $this->__('Request for Quote');
 	?>
 	<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-r4q" clickfunc="sendForm('<?php echo $this->getUrl('request4quote_front/quote/add') ?>')"><span><span><?php echo $buttonTitle ?></span></span></button>
+<?php endif; ?>-->
+
+<!-- Vinu changes for getting bulk quote of product or RFQ button of product based on setting -->
+<?php if ($this->isRequestEnabled() && $this->isRequestOrderDisabled()) : ?>
+	<?php
+	$buttonTitle = $this->__('Request for Quote');
+	?>
+	<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-r4q" clickfunc="sendForm('<?php echo $this->getUrl('request4quote_front/quote/add') ?>')"><span><span><?php echo $buttonTitle ?></span></span></button>
+<?php elseif ($this->isRequestEnabled() && !$this->isRequestOrderDisabled()) : ?>
+	<div class="bulk-quote" style="margin-top: 15px;">
+		<?php if($this->isDiscountOffered()!= ''): ?>
+			<?php echo "Upto ".$this->isDiscountOffered()." OFF for Bulk Orders on this product : " ; ?>
+		<?php else: ?>
+			<?php echo "For Bulk Enquiry on this product : " ; ?>
+		<?php endif; ?>
+		<?php
+		$buttonTitle = $this->__('Get Quote');
+		?>
+		<button type="button" title="<?php echo $buttonTitle ?>" class="bulk-r4q" clickfunc="sendForm('<?php echo $this->getUrl('request4quote_front/quote/add') ?>')"><span><span><?php echo $buttonTitle ?></span></span></button>
+	</div>
 <?php endif; ?>
-<!--check-->
+<!-- Vinu changes for getting bulk quote button end -->
