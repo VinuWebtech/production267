@@ -165,12 +165,14 @@ if($enable_addtocart_sticky){
                             <?php $featuresTable = array(); ?>
                             <?php $attributes = $_product->getAttributes(); ?>
                             <?php foreach ($attributes as $attribute): ?>
-                                <?php if ($attribute->getIsVisibleOnFront() && ((string)$attribute->getFrontend()->getValue($_product) != '')) { ?>
-                                    <?php
-                                        $label = $attribute->getFrontend()->getLabel($_product); 
-                                        $value = $attribute->getFrontend()->getValue($_product);
-                                        array_push($featuresTable, $label.'*yyy*'.$value);
-                                    ?>
+                                <?php if ($attribute->getIsVisibleOnFront()) { ?>
+                                    <?php if (!is_null($_product->getData($attribute->getAttributeCode())) && ((string)$attribute->getFrontend()->getValue($_product) != '')) { ?>
+                                        <?php
+                                            $label = $attribute->getFrontend()->getLabel($_product);
+                                            $value = $attribute->getFrontend()->getValue($_product);
+                                            array_push($featuresTable, $label.'*yyy*'.$value);
+                                        ?>
+                                    <?php } ?>
                                 <?php } ?>
                             <?php endforeach ?>
                             <?php if(count($featuresTable) > 1) { ?>
@@ -269,18 +271,16 @@ if($enable_addtocart_sticky){
                             </div>
                             <!-- Vinu changes end for moving prices display to right side -->
                             <!-- Vinu changes to display add to links block to right side -->
-                            <?php if (!$this->hasOptions()):?>
+                            <?php if($_product->isSaleable()): ?>
                                 <div class="clearer"></div>
                                 <div class="add-to-box">
-                                    <?php if($_product->isSaleable()): ?>
-                                        <?php echo $this->getChildHtml('addtocart') ?>
-                                        <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                                        <?php endif; ?>
+                                    <?php echo $this->getChildHtml('addtocart') ?>
+                                    <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
                                     <?php endif; ?>
                                     <?php echo $this->getChildHtml('addto') ?>
                                 </div>
                                 <?php echo $this->getChildHtml('extra_buttons') ?>
-                            <?php elseif (!$_product->isSaleable()): ?>
+                            <?php else: ?>
                                 <div class="clearer"></div>
                                 <div class="add-to-box">
                                     <?php echo $this->getChildHtml('addto') ?>

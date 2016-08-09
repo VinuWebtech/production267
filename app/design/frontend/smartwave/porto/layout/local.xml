@@ -213,6 +213,10 @@
         <reference name="product.info">
             <block type="catalog/product_view_attributes" name="attributes" template="catalog/product/view/attributes.phtml"/>
         </reference>
+        <reference name="product.info.options.wrapper.bottom">
+            <action method="unsetChild"><name>product.info.addtocart</name></action>
+            <action method="unsetChild"><name>product.info.addto</name></action>
+        </reference>
         <!--changes end-->
         <reference name="product.info.additional">
             <action method="unsetChild"><name>product_tag_list</name></action>
