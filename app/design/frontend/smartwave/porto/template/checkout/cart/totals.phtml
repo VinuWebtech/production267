@@ -32,6 +32,9 @@
  * @var $this Mage_Checkout_Block_Cart_Totals
  */
 ?>
+<!--Vinu changes added to get shipping amt for placing condition to display when amt greater than 0-->
+<?php $_shipping = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingAmount(); ?>
+<!--Vinu changes end to get shipping amt -->
 <?php if ($this->canApplyMsrp()): ?>
     <div class="cart-msrp-totals"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></div>
 <?php else: ?>
@@ -42,7 +45,11 @@
             <?php echo $this->renderTotals('footer'); ?>
         </tfoot>
         <tbody>
-            <!--<?php echo $this->renderTotals(); ?>-->
+            <!--Vinu changes added to display subtotal & shipping amount if it is greater than zero -->
+            <?php if($_shipping != '0'): ?>
+                <?php echo $this->renderTotals(); ?>
+            <?php endif; ?>
+            <!--Vinu changes for display of shipping amount end -->
         </tbody>
     </table>
 <?php endif; ?>
