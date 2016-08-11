@@ -10,6 +10,7 @@
                 <a href="javascript:void(0)" class="qty_inc"><i class="icon-up-dir"></i></a>
                 <a href="javascript:void(0)" class="qty_dec"><i class="icon-down-dir"></i></a>
             </div>
+            
             <div class="qty-order">
                 <?php $productQuantity = Mage::getModel("cataloginventory/stock_item")->loadByProduct($_product); ?>
                 <?php echo $this->__('<strong>Min. Order Qty : </strong>').$productQuantity->getMinSaleQty(); ?>
