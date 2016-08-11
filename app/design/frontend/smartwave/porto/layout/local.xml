@@ -213,6 +213,10 @@
         <reference name="product.info">
             <block type="catalog/product_view_attributes" name="attributes" template="catalog/product/view/attributes.phtml"/>
         </reference>
+        <reference name="product.info.options.wrapper.bottom">
+            <action method="unsetChild"><name>product.info.addtocart</name></action>
+            <action method="unsetChild"><name>product.info.addto</name></action>
+        </reference>
         <!--changes end-->
         <reference name="product.info.additional">
             <action method="unsetChild"><name>product_tag_list</name></action>
@@ -267,6 +271,15 @@
         </reference>
         <!--changes end-->
     </checkout_onepage_index>
+
+    <!--Vinu changes to remove shipping estimate block on cart page-->
+    <checkout_cart_index>
+        <reference name="content">
+            <remove name="checkout.cart.shipping"/>
+        </reference>
+    </checkout_cart_index>
+    <!--Vinu changes end to remove shipping estimate block on cart page-->
+
     <catalogsearch_result_index>
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>

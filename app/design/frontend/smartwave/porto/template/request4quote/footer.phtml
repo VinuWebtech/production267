@@ -328,7 +328,14 @@ if($quoteInCartId){
                 'position': 'static'
             });
         });
-
+        // Vinu changes for adding bulk quote form submit action
+        $$('.bulk-r4q').each(function (el) {
+            var myclickfunc = $(el).readAttribute('clickfunc');
+            Event.observe($(el), 'click', function () {
+                eval(myclickfunc);
+            });
+        });
+        // Vinu changes for bulk quote end
         $$('.btn-r4q').each(function (el) {
             var myclickfunc = $(el).readAttribute('clickfunc');
             Event.observe($(el), 'click', function () {

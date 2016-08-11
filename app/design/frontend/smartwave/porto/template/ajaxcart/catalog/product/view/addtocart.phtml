@@ -10,6 +10,12 @@
                 <a href="javascript:void(0)" class="qty_inc"><i class="icon-up-dir"></i></a>
                 <a href="javascript:void(0)" class="qty_dec"><i class="icon-down-dir"></i></a>
             </div>
+            
+            <div class="qty-order">
+                <?php $productQuantity = Mage::getModel("cataloginventory/stock_item")->loadByProduct($_product); ?>
+                <?php echo $this->__('<strong>Min. Order Qty : </strong>').$productQuantity->getMinSaleQty(); ?>
+            </div>
+            <!--vinu changes end for adding min sale qty display-->
         </div>
         <?php endif; ?>
         <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><i class="icon-cart"></i><?php echo $buttonTitle ?></span></span></button>

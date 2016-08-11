@@ -28,10 +28,17 @@
  * @see Mage_Checkout_Block_Cart_Totals
  */
 ?>
+<!--Vinu changes added to get shipping amt for placing condition to display when amt greater than 0-->
+<?php $_shipping = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getShippingAmount(); ?>
+<!--Vinu changes end to get shipping amt -->
 <?php if ($this->getTotals()): ?>
 <tfoot>
     <?php $_colspan = $this->helper('tax')->displayCartBothPrices() ? 5 : 3; ?>
-    <!--<?php echo $this->renderTotals(null, $_colspan); ?>-->
+    <!--Vinu changes added to display subtotal & shipping amount if it is greater than zero -->
+    <?php if($_shipping != '0'): ?>
+        <?php echo $this->renderTotals(null, $_colspan); ?>
+    <?php endif; ?> 
+    <!--Vinu changes for display of shipping amount end -->
     <?php echo $this->renderTotals('footer', $_colspan); ?>
     <?php if ($this->needDisplayBaseGrandtotal()):?>
     <tr>
