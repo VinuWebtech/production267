@@ -161,7 +161,7 @@ if($enable_addtocart_sticky){
                                     <div class="std" <?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                                 </div>
                             <?php endif;?>-->
-                        
+                            <!--Vinu changes for adding features block -->
                             <?php $featuresTable = array(); ?>
                             <?php $attributes = $_product->getAttributes(); ?>
                             <?php foreach ($attributes as $attribute): ?>
@@ -182,7 +182,11 @@ if($enable_addtocart_sticky){
                                         <?php 
                                         for ($i=1; $i < 6; $i++) { 
                                             $featureRow = explode('*yyy*', $featuresTable[$i]);
-                                            echo "<li><span>".$featureRow[0]."</span> : ".$featureRow[1]."</li>"; 
+                                            if ($featureRow[0] == '') {
+                                                break;
+                                            }else{
+                                                echo "<li><span>".$featureRow[0]."</span> : ".$featureRow[1]."</li>";
+                                            } 
                                         }
                                         ?>
                                         <?php if(count($featuresTable) > 6) { ?>
@@ -191,7 +195,7 @@ if($enable_addtocart_sticky){
                                     </ul>
                                 </div>
                             <?php } ?>
-                            
+                            <!--Vinu changes end for addition of features block-->
                             <div class="product-info">
                                 
                                 <div <?php if($enabled_richsnippets) echo $helper_richsnippets->getOfferItemscope(); ?>>
