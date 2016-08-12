@@ -106,7 +106,6 @@ a#Features_Link_From_Top:hover {
 
 .features {
     margin: 0 0 0 3px;
-    float: left;
 }
 
 .features .subHeading {
@@ -118,7 +117,6 @@ a#Features_Link_From_Top:hover {
 .features ul {
     font-size: 13px;
     line-height: 20px;
-    width: 340px;
     vertical-align: middle;
 }
 
