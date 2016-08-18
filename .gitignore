@@ -10,5 +10,5 @@ downloader/connect.cfg
 /index.php
 app/etc/fpc.xml
 a.php
-sitemap.xml
 BingSiteAuth.xml
+app/code/local/Mage/Core/Model/Layout.php
