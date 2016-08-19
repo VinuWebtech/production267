@@ -95,7 +95,7 @@ class Mage_Shipping_Model_Carrier_Flatrate
 	        $cur_fproduct = Mage::getModel('catalog/product')->load($items->getProduct_id());
 	        $product_shipping_price = $_helper->productAttribute($cur_fproduct, $cur_fproduct->getShippingFlatratePerProduct(), 'shipping_flatrate_per_product');
 	        if ($product_shipping_price == '') {
-	            $flat_shipping_price = ($items) * ($this->getConfigData('price'));
+	            $flat_shipping_price += ($items) * ($this->getConfigData('price'));
 	        }
 	    }
         $shippingPrice = $custom_ship + $flat_shipping_price;
