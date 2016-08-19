@@ -85,7 +85,7 @@ class Mage_Shipping_Model_Carrier_Flatrate
         //$shippingPrice = $this->getFinalPriceWithHandlingFee($shippingPrice);
         $custom_ship = $this->get_pro_ship();
 
-        Mage::getSingleton('core/session', array('name'=>'frontend'));
+        /*Mage::getSingleton('core/session', array('name'=>'frontend'));
     	$session = Mage::getSingleton('checkout/session');
     	$cart_items = $session->getQuote()->getAllItems();
     	$_helper = Mage::helper('catalog/output');
@@ -97,8 +97,9 @@ class Mage_Shipping_Model_Carrier_Flatrate
 	        if ($product_shipping_price == '') {
 	            $flat_shipping_price += ($items) * ($this->getConfigData('price'));
 	        }
-	    }
-        $shippingPrice = $custom_ship + $flat_shipping_price;
+	    }*/
+        //$shippingPrice = $custom_ship + $flat_shipping_price;
+        $shippingPrice = $custom_ship;
 
         if ($shippingPrice !== false) {
             $method = Mage::getModel('shipping/rate_result_method');
