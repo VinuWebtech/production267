@@ -35,8 +35,8 @@
             jQuery(function($){
                 $('ul.term-list').each(function(){ 
                     var LiN = $(this).find('li').length;
-                    if( LiN > 6){    
-                        $('li', this).eq(5).nextAll().hide().addClass('extras');
+                    if( LiN > 5){    
+                        $('li', this).eq(4).nextAll().hide().addClass('extras');
                         $(this).append('<div class="more" style="text-align: center; padding: 5px; background:#f2f2f2; color:#333; font-size: 12px; margin-bottom:10px; text-transform: uppercase;">Show More Categories</div>');    
                     }
                 });
