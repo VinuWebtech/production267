@@ -915,6 +915,7 @@ span.text-content1 span {
 
 ul.list3 {
     margin: 0 auto;
+    text-align: center;
 }
 
 .parent-category13 {
@@ -938,7 +939,7 @@ ul.list3 li {
 }
 
 .sub-cat-list3 .catItem3 {
-    width:130px;
+    width:160px;
     margin: 20px 1px 10px;
     padding: 2px 5px;
     box-sizing: border-box;
@@ -1662,11 +1663,8 @@ span.list-page {
 }
 
 .category-description {
-    margin: 10px;
     border: 1px solid #ddd;
-    background-color: #fff;
-    max-height: 130px;
-    overflow: auto;
+    background-color: #F5F5F5;
     padding: 10px;
 }
 
@@ -2388,7 +2386,7 @@ table{
 }
 
 .block-layered-nav .block-content dl#narrow-by-list dd >ol li {
-    height: 24px;
+    height: 25px;
     overflow: hidden;
 }
 
