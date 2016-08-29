@@ -1672,7 +1672,7 @@ span.list-page {
     /*border-bottom: 2px solid #1F497D;*/
     border-radius: 0;
     padding: 10px 0px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-size: 18px;
     font-weight: 400;
 }
