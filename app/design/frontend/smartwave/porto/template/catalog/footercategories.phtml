@@ -14,7 +14,10 @@
 	?>	
 		<div class="row footer-categories">
 			<div class="levelonecats">
-				<a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" class="footer-cat text-color11" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?> : </a>
+				<!--Vinu changes to remove link on base category text-->
+				<!--<a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" class="footer-cat text-color11" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?> : </a>-->
+				<a class="footer-cat text-color11"><?php echo $_category->getName() ?> : </a>
+				<!--Vinu changes end to remove link on base category text-->
 			</div>
 			<!--<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
             <?php $_subcategories = $_category->getChildrenCategories() ?>

@@ -1385,6 +1385,10 @@ button.button2 {
         line-height: 18px;
     }
 
+    .footer .container .levelonecats:hover .footer-cat {
+        text-decoration: none;
+    }
+
     .footer .container a.footer-cat {
         float: left;
     }
