@@ -98,6 +98,14 @@ if (Mage::helper('request4quote')->isRentalInstalled()) {
 		{
 			return $this->getProductOptions();
 		}
+
+		//vinu changes added for display of option for configurable product 
+		public function getCItemOptions()
+		{
+			$helper = Mage::helper('catalog/product_configuration');
+			$options = $helper->getConfigurableOptions($this->getItem());
+			return $options;
+		}
 		
 	}
 	
