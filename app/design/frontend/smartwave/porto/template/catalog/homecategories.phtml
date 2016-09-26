@@ -1,59 +1,27 @@
-<!-- Categories display start -->
 <ul class="clearfix" style="margin-bottom:15px;">
-	<?php 
-	$categories = Mage::getResourceModel('catalog/category_collection')
-    ->addAttributeToSelect('*')
-    ->addAttributeToFilter('is_active', 1) //only active categories
-    ->addAttributeToFilter('parent_id', 2)//get only subcategories of the category with id 2 (root category)
-    ->addAttributeToSort('position')//sort by position
-	;
-	foreach ($categories as $_category): 
-		$cat = Mage::getModel('catalog/category')->load($_category->getId());
-		$count = $cat->getProductCount(); 
+	<?php
+		$categories = Mage::getModel('catalog/category')->load(Mage::app()->getStore()->getRootCategoryId())->getChildrenCategories();
+		foreach ($categories as $_category):
 	?>
 		<li class="menu-item" style="list-style: none; float:left">
-			<h2 class="levelonecats"><a href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a></h2>
+			<h2 class="levelonecats"><a href="<?php echo $_category->getURL(); ?>" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a></h2>
 			<ul>
-				<!--<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
-            	<?php $_subcategories = $_category->getChildrenCategories() ?>
-				<?php 
-				$i=0; 
-				foreach ($_subcategories as $subcategory): 
-					$subcat = Mage::getModel('catalog/category')->load($subcategory->getId()); ?>
-						<li>
-							<a class="inside-link" href="<?php echo Mage::getUrl($subcat->getUrlPath()); ?>" title="<?php echo $subcategory->getName() ?>"><?php echo $subcategory->getName() ?></a>
-						</li>			
-					<?php 
-					$i++;
-					if($i==3) break;
-				endforeach ?>
-				<?php
-				$i=0;
-				foreach ($_subcategories as $subcategory){
-				$i++; } ?>
-				<?php if($i > 3): ?>
-					<li class="w-all">
-						<a class="lev" href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>"><?php echo $total_count=($i-3)." ".__('more..') ?></a>
-					</li>
-				<?php endif; ?>-->
-				<?php $newSubCategories = explode(',', $_category->getChildren()); ?>
-            	<?php $i=0; foreach ($newSubCategories as $newSubCategoryId): ?>
-                	<?php $newCategory = Mage::getModel('catalog/category')->load($newSubCategoryId); ?>
+				<?php $SubCategories = $_category->getChildrenCategories(); ?>
+            	<?php $i=0; foreach ($SubCategories as $SubCategory): ?>
                 	<li>
-						<a class="inside-link" href="<?php echo $newCategory->getURL(); ?>" title="<?php echo $newCategory->getName(); ?>"><?php echo $newCategory->getName(); ?></a>
+						<a class="inside-link" href="<?php echo $SubCategory->getURL(); ?>" title="<?php echo $SubCategory->getName(); ?>"><?php echo $SubCategory->getName(); ?></a>
 					</li>
 				<?php 
 					$i++;
 					if($i==3) break;
 				endforeach ?>
-				<?php $i=0; foreach ($newSubCategories as $newSubCategoryId){ $i++; } ?>
+				<?php $i=0; foreach ($SubCategories as $SubCategory) { $i++; } ?>
 				<?php if($i > 3): ?>
 					<li class="w-all">
-						<a class="lev" href="<?php echo Mage::getUrl($cat->getUrlPath()); ?>"><?php echo $total_count=($i-3)." ".__('more..') ?></a>
+						<a class="lev" href="<?php echo $_category->getURL(); ?>"><?php echo $total_count=($i-3)." ".__('more..') ?></a>
 					</li>
 				<?php endif; ?>
 			</ul>
 		</li>
 	<?php endforeach ?>
 </ul>
-<!-- Categories display end -->
