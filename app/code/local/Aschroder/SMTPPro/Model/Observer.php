@@ -65,5 +65,18 @@ class Aschroder_SMTPPro_Model_Observer extends Varien_Object {
         Mage::helper('smtppro')->log($observer->getEvent()->getMail());
         $observer->getEvent()->getTransport()->setTransport(Mage::helper('smtppro')->getTransport());
     }
+
+    /**
+     * Clear Mage_Core_Model_Email_Queue recipients after saving it
+     *
+     * @param Varien_Event_Observer $observer
+     */
+    public function clearCoreEmailQueueRecipientsAfterSave(Varien_Event_Observer $observer){
+        $object = $observer->getObject();
+
+        if ($object instanceof Mage_Core_Model_Email_Queue) {
+            $object->clearRecipients();
+        }
+    }
 	
 }

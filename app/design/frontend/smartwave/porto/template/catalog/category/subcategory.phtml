@@ -16,14 +16,14 @@
         <h5 class="category-name parent-category13"><?php echo Mage::registry('current_category')->getName().' ' ?>Categories</h5>
         <div class="sub-cat-list3">
             <ul class="list3 term-list" >
-                <?php $i; foreach ($subCategories as $subCategoryId): $i++; ?>
+                <?php $i=0; foreach ($subCategories as $subCategoryId): $i++; ?>
                     <?php 
                 	   $category = Mage::getModel('catalog/category')->load($subCategoryId);
                 	   if ($category->getIsActive() ): 
                     ?>
                 	    <li class="catItem3 term-item">
                     	    <?php if($category->getThumbnail()): ?>
-                        	    <a href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt=""  /></a>
+                        	    <a href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $category->getThumbnail(); ?>" alt="<?php echo $category->getName(); ?>"  /></a>
                     	    <?php endif; ?>
                             <h5 class="category-name parent-category3"><a class="text-color" href="<?php echo $category->getURL(); ?>" title="<?php echo $category->getName(); ?>"><?php echo $category->getName(); ?></a></h5>
                 	    </li>

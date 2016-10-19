@@ -133,6 +133,16 @@
                     </aschroder_smtppro_queue_before_send_observer>
                 </observers>
             </aschroder_smtppro_queue_before_send>
+            <!-- Mage_Core_Model_Email_Queue has no $_eventPrefix -->
+            <model_save_after>
+                <observers>
+                    <aschroder_smtppro_core_email_queue_save_after>
+                        <type>singleton</type>
+                        <class>smtppro/observer</class>
+                        <method>clearCoreEmailQueueRecipientsAfterSave</method>
+                    </aschroder_smtppro_core_email_queue_save_after>
+                </observers>
+            </model_save_after>
 		</events>
 	</global>
 	<adminhtml>
