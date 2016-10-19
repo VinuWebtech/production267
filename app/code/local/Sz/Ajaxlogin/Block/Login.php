@@ -22,7 +22,7 @@ class Sz_Ajaxlogin_Block_Login extends Mage_Core_Block_Template
             $this->numEnabled++;
         }
 
-        Mage::register('sz_ajaxlogin_button_text', $this->__('Login'));
+        Mage::register('sz_ajaxlogin_button_text1', $this->__('Login'));
 
         $this->setTemplate('ajaxlogin/socialconnect/login.phtml');
     }

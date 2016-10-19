@@ -24,20 +24,26 @@
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
 <?php if($this->isContentMode()): ?>
-    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/subcategory.phtml')->toHtml(); ?>
     <?php echo $this->getCmsBlockHtml() ?>
+    <?php // Vinu changes to add subcategories block to category view page ?>
+    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/subcategory.phtml')->toHtml(); ?>
+    <?php // Vinu changes end to add subcategories block to category view page ?>
 
 <?php elseif($this->isMixedMode()): ?>
-    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/subcategory.phtml')->toHtml(); ?>
     <?php echo $this->getCmsBlockHtml() ?>
+    <?php // Vinu changes to add subcategories block to category view page ?>
+    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/subcategory.phtml')->toHtml(); ?>
+    <?php // Vinu changes end to add subcategories block to category view page ?>
     <?php echo $this->getProductListHtml() ?>
 
 <?php else: ?>
+    <?php // Vinu changes to add subcategories block to category view page ?>
     <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/subcategory.phtml')->toHtml(); ?>
+    <?php // Vinu changes end to add subcategories block to category view page ?>
     <?php echo $this->getProductListHtml() ?>
 <?php endif; ?>
 
-<!--Vinu changes moved description to bottom -->
+<?php // Vinu changes moved description to bottom ?>
 <?php
     if(!Mage::getStoreConfig("porto_settings/category/fullwidth_description",$code)){
         if($_description=$_category->getDescription()){
@@ -49,3 +55,15 @@
         }
     }
 ?>
+<?php /*
+    if(Mage::getStoreConfig("porto_settings/category/fullwidth_description",$code)){
+        if($_description=$_category->getDescription()){
+?>
+<div class="category-description std">
+    <?php echo $_helper->categoryAttribute($_category, $_description, 'description'); ?>
+</div>
+<?php
+        }
+    }
+*/ ?>
+<?php // Vinu changes end to move description to bottom ?>
