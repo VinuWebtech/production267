@@ -197,7 +197,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
     protected function insertAddress(&$page, $store = null)
     {
         $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
-        $font = $this->_setFontRegular($page, 10);
+        $font = $this->_setFontRegular($page, 9);
         $page->setLineWidth(0);
         $this->y = $this->y ? $this->y : 815;
         $top = 815;
@@ -284,7 +284,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
         $page->drawRectangle(25, $top, 570, $top - 55);
         $page->setFillColor(new Zend_Pdf_Color_GrayScale(1));
         $this->setDocHeaderCoordinates(array(25, $top, 570, $top - 55));
-        $this->_setFontRegular($page, 10);
+        $this->_setFontRegular($page, 9);
 
         if ($putOrderId) {
             $page->drawText(
@@ -350,7 +350,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
         $page->setFillColor(new Zend_Pdf_Color_GrayScale(1));
         $page->drawRectangle(25, ($top - 25), 570, $top - 33 - $addressesHeight);
         $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
-        $this->_setFontRegular($page, 10);
+        $this->_setFontRegular($page, 8);
         $this->y = $top - 40;
         $addressesStartY = $this->y;
 
@@ -401,7 +401,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
             $this->y -=10;
             $page->setFillColor(new Zend_Pdf_Color_GrayScale(1));
 
-            $this->_setFontRegular($page, 10);
+            $this->_setFontRegular($page, 9);
             $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
 
             $paymentLeft = 35;
@@ -466,7 +466,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
                 $page->drawText(Mage::helper('sales')->__('Number'), 410, $yShipments - 7, 'UTF-8');
 
                 $yShipments -= 20;
-                $this->_setFontRegular($page, 8);
+                $this->_setFontRegular($page, 9);
                 foreach ($tracks as $track) {
 
                     $CarrierCode = $track->getCarrierCode();
@@ -788,7 +788,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
      * @param  int $size
      * @return Zend_Pdf_Resource_Font
      */
-    protected function _setFontRegular($object, $size = 7)
+    protected function _setFontRegular($object, $size = 6)
     {
         //$font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/LinLibertineFont/LinLibertine_Re-4.4.1.ttf');
         $font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/dejavu-sans/DejaVuSans.ttf');
@@ -803,7 +803,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
      * @param  int $size
      * @return Zend_Pdf_Resource_Font
      */
-    protected function _setFontBold($object, $size = 7)
+    protected function _setFontBold($object, $size = 6)
     {
         //$font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/LinLibertineFont/LinLibertine_Bd-2.8.1.ttf');
         $font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/dejavu-sans/DejaVuSans.ttf');
@@ -818,7 +818,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
      * @param  int $size
      * @return Zend_Pdf_Resource_Font
      */
-    protected function _setFontItalic($object, $size = 7)
+    protected function _setFontItalic($object, $size = 6)
     {
         //$font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/LinLibertineFont/LinLibertine_It-2.8.2.ttf');
         $font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/dejavu-sans/DejaVuSans.ttf');
@@ -931,7 +931,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
             foreach ($lines as $line) {
                 $maxHeight = 0;
                 foreach ($line as $column) {
-                    $fontSize = empty($column['font_size']) ? 10 : $column['font_size'];
+                    $fontSize = empty($column['font_size']) ? 9 : $column['font_size'];
                     if (!empty($column['font_file'])) {
                         $font = Zend_Pdf_Font::fontWithPath($column['font_file']);
                         $page->setFont($font, $fontSize);
