@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+    <productrestriction_adminhtml_productrestriction_index>
+            <reference name="content">
+                <block type="productrestriction/adminhtml_productrestriction" name="productrestriction" />
+            </reference>
+        </productrestriction_adminhtml_productrestriction_index>
+    <productrestriction_adminhtml_productrestriction_edit>
+        <update handle="editor"/>
+    </productrestriction_adminhtml_productrestriction_edit>
+    
+    <productrestriction_adminhtml_productrestriction_product>
+       <block type="core/text_list" name="root" output="toHtml">
+           <block type="productrestriction/adminhtml_productrestriction_edit_tab_grid" name="product.grid"/>
+           <block type="adminhtml/widget_grid_serializer" name="grid_serializer">
+               <reference name="grid_serializer">
+                   <action method="initSerializerBlock">
+                       <grid_block_name>product.grid</grid_block_name>
+                       <data_callback>getSelectedProducts</data_callback>
+                       <hidden_input_name>selected_products</hidden_input_name>
+                       <reload_param_name>products</reload_param_name>
+                   </action>
+                   <action method="addColumnInputName">
+                       <input_name>position</input_name>
+                   </action>
+               </reference>
+           </block>
+       </block>
+   </productrestriction_adminhtml_productrestriction_product>
+   <productrestriction_adminhtml_productrestriction_productgrid>
+            <block type="core/text_list" name="root" output="toHtml">
+                <block type="productrestriction/adminhtml_productrestriction_edit_tab_grid" name="product.grid"/>
+            </block>
+    </productrestriction_adminhtml_productrestriction_productgrid>
+   
+</layout>
