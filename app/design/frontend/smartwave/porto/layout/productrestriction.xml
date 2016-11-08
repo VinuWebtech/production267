@@ -1,0 +1,33 @@
+<layout version="0.1.0">
+<default>
+	<reference name="head">
+		  <action method="addItem" ifconfig="productrestriction/general/enabled"><type>skin_css</type><name>css/productrestriction/productrestriction.css</name></action>
+		  <action method="addItem" ifconfig="productrestriction/general/enabled_jquery"><type>skin_js</type><name>js/productrestriction/jquery-1.7.1-min.js</name></action>
+		   <action method="addItem" ifconfig="productrestriction/general/enabled_jquery"><type>skin_js</type><name>js/productrestriction/jQuery.noConflict.js</name></action>
+	</reference>	  
+</default>
+<catalog_product_view>
+		 <reference name="alert.urls">
+			 <block type="core/template" name="checkcode"   after="upsell_products"> 
+                <action method="setTemplate" >
+                    <template>productrestriction/productrestriction.phtml</template> 
+                </action>
+			</block> 
+		 </reference>
+	</catalog_product_view>
+	
+	 
+	     <!--
+    One page checkout payment methods block
+    -->
+    <checkout_onepage_paymentmethod>
+        <remove name="right"/>
+        <remove name="left"/>
+
+        <block type="checkout/onepage_payment_methods" name="root" output="toHtml" template="productrestriction/payment_methods.phtml">
+            <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
+            <block type="core/template" name="checkout.onepage.payment.methods.scripts" as="scripts" />
+            <block type="core/template" name="checkout.onepage.payment.methods.additional" as="additional" />
+        </block>
+    </checkout_onepage_paymentmethod>
+</layout>

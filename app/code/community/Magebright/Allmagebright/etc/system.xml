@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+	 <tabs>
+        <magebright translate="label" module="allmagebright">
+            <label>Magebright Extension</label>
+            <sort_order>100</sort_order>
+        </magebright>
+    </tabs>
+	
+</config>

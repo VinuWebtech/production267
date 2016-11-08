@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+    <config>
+        <modules>
+            <Magebright_Productrestriction>
+                <version>0.1.2</version>
+            </Magebright_Productrestriction>
+        </modules>
+     
+        <admin>
+            <routers>
+                <productrestriction>
+                    <use>admin</use>
+                    <args>
+                        <module>Magebright_Productrestriction</module>
+                        <frontName>productrestriction</frontName>
+                    </args>
+                </productrestriction>
+            </routers>
+        </admin>
+        <adminhtml>
+            <menu>
+            <productrestriction translate="title" module="productrestriction">
+                <title>Magebright Zipcode</title>
+                <sort_order>72</sort_order>
+                 <action>productrestriction/adminhtml_productrestriction</action>
+             </productrestriction>
+            </menu>
+            <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <productrestriction translate="title" module="productrestriction">
+                                        <title>productrestriction</title>
+                                        <sort_order>999</sort_order>
+                                    </productrestriction>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                <productrestriction>
+	                <title>Productrestriction All</title>
+	                <sort_order>72</sort_order>
+	              	<children>
+	                	<productrestrictionlist module="productrestriction">
+	                   	 <title>Magebright Productrestriction</title>
+	                   	 <sort_order>72</sort_order>
+	                 	</productrestrictionlist>
+	           		</children>
+       		 </productrestriction>
+                    
+                </children>
+            </admin>
+        </resources>
+    </acl>
+            <layout>
+                <updates>
+                    <productrestriction>
+                        <file>productrestriction.xml</file>
+                    </productrestriction>
+                </updates>
+            </layout>
+        </adminhtml>   
+         <frontend>
+		  <routers>
+                <productrestriction>
+                    <use>standard</use>
+                    <args>
+                        <module>Magebright_Productrestriction</module>
+                        <frontName>productrestriction</frontName>
+                    </args>
+                </productrestriction>
+             <checkout>
+		            <args>
+		               <modules>
+		                  <Magebright_Productrestriction before="Mage_Checkout">Magebright_Productrestriction</Magebright_Productrestriction>
+		               </modules>
+		            </args>
+         	</checkout>
+            </routers> 
+	        <layout>
+	            <updates>
+	                <productrestriction> 
+	                    <file>productrestriction.xml</file>
+	                </productrestriction>
+	            </updates>
+	        </layout> 
+        	<!--
+	       <events>
+        	<controller_action_predispatch>
+				<observers>
+					<controller_action_before>
+						<class>productrestriction/observer</class>
+						<method>addToCartBeforeDispatch</method>
+					</controller_action_before>
+				</observers>
+			</controller_action_predispatch>
+
+			<add_to_cart_before>
+				<observers>
+					<add_to_cart_before>
+						<class>productrestriction/observer</class>
+						<method>addToCartBefore</method>
+					</add_to_cart_before>
+				</observers>
+			</add_to_cart_before>
+	      </events> -->
+	    </frontend>
+        <global>
+             <helpers>
+                <productrestriction>
+                    <class>Magebright_Productrestriction_Helper</class>
+                </productrestriction>
+            </helpers>
+            
+            <models>
+                <productrestriction>
+                    <class>Magebright_Productrestriction_Model</class>
+                    <resourceModel>productrestriction_mysql4</resourceModel>
+                </productrestriction>
+                <productrestriction_mysql4>
+                    <class>Magebright_Productrestriction_Model_Mysql4</class>
+                    <entities>
+                        <productrestriction>
+                            <table>productrestriction</table>
+                        </productrestriction>
+                    </entities>
+                </productrestriction_mysql4>
+               <!-- <checkout>
+	                <rewrite>
+	                    <cart>Magebright_Productrestriction_Model_Checkout_Cart</cart>
+	                </rewrite>
+                </checkout>-->
+            </models>
+       
+            <resources>
+                <productrestriction_setup>
+                    <setup>
+                        <module>Magebright_Productrestriction</module>
+                   </setup>
+                    <connection>
+                        <use>core_setup</use>
+                    </connection>
+                </productrestriction_setup>
+                <productrestriction_write>
+                    <connection>
+                        <use>core_write</use>
+                    </connection>
+     
+     
+                </productrestriction_write>
+                <productrestriction_read>
+                    <connection>
+                        <use>core_read</use>
+                    </connection>
+                </productrestriction_read>
+            </resources>
+            <blocks>
+                <productrestriction>
+                    <class>Magebright_Productrestriction_Block</class>
+                </productrestriction>
+            </blocks>
+        </global>
+        <default>
+	        <productrestriction>
+	        	<general>
+	        		<product_msg>This product is not availabe on this zipcode, please check with valid zipcode.</product_msg>
+	        		<zipcode_msg>Invalid Zipcode</zipcode_msg>
+	        		<cod_msg>Cash on Delevery is not available.</cod_msg>
+	        	</general>
+	        </productrestriction>
+        </default>
+    </config>

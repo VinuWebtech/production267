@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <productrestriction>
+            <label>Product Restriction</label>
+            <tab>magebright</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+             <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                          <enabled translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </enabled>
+						  
+						  <enabled_jquery translate="label">
+                            <label>Enable jQuery</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </enabled_jquery>
+                        
+                          
+                          
+                          <product_msg translate="label">
+                            <label>Product Detail Page Error message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </product_msg>
+                           
+                          <zipcode_msg translate="label">
+                            <label>Checkout Page Error message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>83</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </zipcode_msg>
+                          
+                           <cod_msg translate="label">
+                            <label>Cash On Delivery message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>86</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </cod_msg>
+			 
+		     </fields>
+                  </general>
+                <export_import translate="label comment">
+                    <label>Export / Import Zipcode</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <upload_productrestriction translate="label">
+                            <label>Import Zipcode</label>
+                            <frontend_type>import</frontend_type>
+                            <backend_model>productrestriction/import</backend_model>
+                            <sort_order>95</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                             <comment><![CDATA[You can upload here zipcode .Please click <a href="http://ext5.magebright.com/productrestriction/export.csv" target="_blank">here</a> for sample csv file.]]></comment>
+                        </upload_productrestriction>
+                        <download_productrestriction translate="label">
+                            <label>Export Zipcode</label>
+                            <frontend_model>productrestriction/adminhtml_export</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </download_productrestriction>
+                    </fields>
+                </export_import>
+                 <export_import_zipproduct translate="label comment">
+                    <label>Export / Import Product for Zipcode</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <upload_productzipcode translate="label">
+                            <label>Import Product Id</label>
+                            <frontend_type>import</frontend_type>
+                            <backend_model>productrestriction/importproduct</backend_model>
+                            <sort_order>95</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                             <comment><![CDATA[You can upload here product id associated with zip code. Please click <a href="http://ext5.magebright.com/productrestriction/product_zipcode.csv" target="_blank">here</a> for sample csv file.]]></comment>   
+                        </upload_productzipcode>
+                        <download_productzipcode translate="label">
+                            <label>Export Product Id </label>
+                            <frontend_model>productrestriction/adminhtml_exportproductzipcode</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </download_productzipcode>
+                    </fields>
+                </export_import_zipproduct>
+            </groups>
+        </productrestriction>
+    </sections>
+</config>
