@@ -427,4 +427,8 @@
             $this->_redirect('*/*/'); // redirect to previous page
         }
     }
+
+    protected function _isAllowed(){
+        return true;
+    }
   }
