@@ -44,8 +44,8 @@ class Fooman_EmailAttachments_Model_Order_Pdf_Order extends Mage_Sales_Model_Ord
             $page = $pdf->newPage(Zend_Pdf_Page::SIZE_A4);
             $pdf->pages[] = $page;
 
-            /* Add image */
-            $this->insertLogo($page, $order->getStore());
+            /* Add Header Text */
+            $this->insertHeaderText($page);
 
             /* Add address */
             $this->insertAddress($page, $order->getStore());
@@ -63,14 +63,22 @@ class Fooman_EmailAttachments_Model_Order_Pdf_Order extends Mage_Sales_Model_Ord
 
             $this->_printItems($order, $page);
 
+            $this->_drawLine($page);
+
             /* Add totals */
             $order->setOrder($order);
             $page = $this->insertTotals($page, $order);
+
+            $this->_drawLine($page);
+
             $this->_printComments($order, $page);
 
             if ($order->getStoreId()) {
                 Mage::app()->getLocale()->revert();
             }
+
+            /* Add image */
+            $this->insertLogo($page, $order->getStore());
         }
 
         $this->_afterGetPdf();
@@ -78,6 +86,22 @@ class Fooman_EmailAttachments_Model_Order_Pdf_Order extends Mage_Sales_Model_Ord
 
         return $pdf;
     }
+
+    /**
+     * Draw header for page
+     *
+     * @param Zend_Pdf_Page $page
+     * @return void
+     */
+    protected function insertHeaderText(Zend_Pdf_Page $page)
+    {
+        /* Add page header */
+        $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
+        $font = $this->_setFontBold($page, 13);
+        $page->drawText("Order Details", 25, 815, 'UTF-8');
+    }
+
+    
 
     protected function _printItems($order, $page)
     {
