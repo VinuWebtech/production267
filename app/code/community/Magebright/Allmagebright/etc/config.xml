@@ -1,0 +1,14 @@
+<config>
+	<modules>
+		<Magebright_Allmagebright>
+			<version>0.1.0</version>
+		</Magebright_Allmagebright>
+	</modules>
+	<global>
+	<helpers>
+			<allmagebright>
+				<class>Magebright_Allmagebright_Helper</class>
+			</allmagebright>
+	</helpers>
+	</global>
+</config>
