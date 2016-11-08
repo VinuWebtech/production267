@@ -43,8 +43,8 @@ class Mage_Sales_Model_Order_Pdf_Invoice extends Mage_Sales_Model_Order_Pdf_Abst
     {
         /* Add page header */
         $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
-        $font = $this->_setFontBold($page, 9);
-        $page->drawText("Retail/Tax Invoice/Cash Memorandum", 25, 830, 'UTF-8');
+        $font = $this->_setFontBold($page, 12);
+        $page->drawText("Retail/Tax Invoice/Cash Memorandum", 25, 800, 'UTF-8');
     }
 
     /**

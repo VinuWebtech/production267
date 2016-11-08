@@ -350,7 +350,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
         }
 
         $page->setFillColor(new Zend_Pdf_Color_GrayScale(1));
-        $page->drawLine(25, $top - $addressesHeight, 570, $top - $addressesHeight);
+        $page->drawLine(25, $top - ($addressesHeight - 10), 570, $top - ($addressesHeight - 10));
         $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
         $this->_setFontRegular($page, 8);
         $this->y = $top - 30;
