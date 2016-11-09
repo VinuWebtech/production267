@@ -191,11 +191,54 @@ class Mage_Sales_Model_Order_Pdf_Invoice extends Mage_Sales_Model_Order_Pdf_Abst
             $this->_drawLine($page);
             $this->y -= 10;
             //$page->drawText("I / We certify that my / our registration certificate under the Maharastra Value Added Tax Act, 2002 is in force on the date on which the sale of the goods specified in this tax invoice is made by me / us and that the transaction of sale covered by this tax invoice has been effected by me / us and it shall be accounted for in the turnover of sales while filing of return and the due tax, if any, payable on th sale has been paid or shall be paid.", 35, $this->y - 25, 'UTF-8');
+
+            /* Add For stamp sign */
+            $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
+            $font = $this->_setFontBold($page, 9);
+            $page->drawText("For Vedhaansh Engineering Pvt Ltd.", 385, $this->y - 20, 'UTF-8');
+
             $page->setFillColor(new Zend_Pdf_Color_GrayScale(1));
-            $page->drawRectangle(370, $this->y - 25, 560, $this->y - 95);
+            $page->drawRectangle(385, $this->y - 25, 560, $this->y - 75);
+
+            $image = Mage::getBaseDir('media') . '/Invoice-Sign.png';
+            if (is_file($image)) {
+                $image       = Zend_Pdf_Image::imageWithPath($image);
+                $top         = $this->y - 28; //bottom border of the page
+                $widthLimit  = 120; //half of the page width
+                $heightLimit = 25; //assuming the image is not a "skyscraper"
+                $width       = $image->getPixelWidth();
+                $height      = $image->getPixelHeight();
+
+                //preserving aspect ratio (proportions)
+                $ratio = $width / $height;
+                if ($ratio > 1 && $width > $widthLimit) {
+                    $width  = $widthLimit;
+                    $height = $width / $ratio;
+                } elseif ($ratio < 1 && $height > $heightLimit) {
+                    $height = $heightLimit;
+                    $width  = $height * $ratio;
+                } elseif ($ratio == 1 && $height > $heightLimit) {
+                    $height = $heightLimit;
+                    $width  = $widthLimit;
+                }
+
+                $y1 = $top - $height;
+                $y2 = $top;
+                $x1 = 400;
+                $x2 = $x1 + $width;
+
+                //coordinates after transformation are rounded by Zend
+                $page->drawImage($image, $x1, $y1, $x2, $y2);
+
+                $this->y = $y1 - 10;
+            }
+
+            $page->setFillColor(new Zend_Pdf_Color_GrayScale(0.5));
+            $font = $this->_setFontBold($page, 9);
+            $page->drawText("(Authorised Signatory)", 415, $this->y - 5, 'UTF-8');
             
             $page->setLineWidth(0.5);
-            $page->drawLine(25, $this->y - 105, 570, $this->y - 105);
+            $page->drawLine(25, $this->y - 15, 570, $this->y - 15);
             $this->y -= 10;
             //$this->_drawLine($page);
             /* Add image */

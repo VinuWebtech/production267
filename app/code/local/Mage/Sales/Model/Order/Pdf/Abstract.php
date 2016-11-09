@@ -151,7 +151,7 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
     protected function insertLogo(&$page, $store = null)
     {
         //$this->y = $this->y ? $this->y : 815;
-        $this->y -= 95;
+        $this->y -= 15;
         $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
         $font = $this->_setFontRegular($page, 8);
         $page->drawText("For more information on orders visit http://www.buildmatic.in ", 35, $this->y - 70, 'UTF-8');
