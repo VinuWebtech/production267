@@ -154,10 +154,10 @@ $_address = $this->getShippingAddress();
                 <div class="cart-rf4-billing">
                     <h2><?php echo $this->__('Billing details') ?></h2>
                     <ul class="form-list">
-                        <li>
+                        <?php /* <li>
                             <label for="r4qBillingCompany"><?php echo $this->__('Company') ?></label>
                             <div class="input-box"><input type="text" class="input-text" name="r4q[billing][company]" id="r4qBillingCompany" value="<?php if ($_address) echo $_address->getCompany() ?>" /></div>
-                        </li>
+                        </li> */ ?>
                         <li>
                             <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingAddress"><?php echo $billingRequiredSign; ?><?php echo $this->__('Address') ?></label>
                             <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][address]" id="r4qBillingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" /></div>
@@ -204,10 +204,10 @@ $_address = $this->getShippingAddress();
                 <div class="cart-rf4-shipping" style="<?php echo $this->canShowBillingAddress() ? 'display:none' : '' ?>">
                     <h2><?php echo $this->__('Shipping details') ?></h2>
                     <ul class="form-list">
-                        <li>
+                        <?php /* <li>
                             <label for="r4qShippingCompany"><?php echo $this->__('Company') ?></label>
                             <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[shipping][company]" id="r4qShippingCompany" value="<?php if ($_address) echo $_address->getCompany() ?>" /></div>
-                        </li>
+                        </li> */ ?>
                         <li>
                             <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingAddress"><?php echo $shippingRequiredSign; ?><?php echo $this->__('Address') ?></label>
                             <div class="input-box"><input type="text" class="input-text<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][address]" id="r4qShippingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" /></div>
