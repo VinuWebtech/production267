@@ -137,8 +137,12 @@ $_address = $this->getShippingAddress();
                         <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][lastname]" id="r4qDetailsLastname" value="<?php if ($_address) echo $_address->getLastname() ?>" /></div>
                     </li>
                     <li>
-                        <label class="required" for="r4qDetailsTelephone"><em>*</em><?php echo $this->__('Telephone') ?></label>
-                        <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div>
+                        <?php /* <label class="required" for="r4qDetailsTelephone"><em>*</em><?php echo $this->__('Telephone') ?></label> */ ?>
+                        <label class="required" for="r4qDetailsTelephone"><em>*</em><?php echo $this->__('Mobile') ?></label>
+                        <?php /* vinu changes for changing landline field to mobile field */ ?>
+                        <?php /* <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div> */ ?>
+                        <div class="input-box"><input type="text" class="input-text required-entry validate-mobileno validate-egmobileno" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div>
+                        <?php /* vinu changes for changing landline field to mobile field further down in script tag */ ?>
                     </li>
                 </ul>
             </div>
@@ -164,7 +168,7 @@ $_address = $this->getShippingAddress();
                         </li>
                         <li>
                             <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingPostcode"><?php echo $billingRequiredSign; ?><?php echo $this->__('Zip/Postal Code') ?></label>
-                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][postcode]" id="r4qBillingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>
+                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?> <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?> validate-pincode maximum-length-6 minimum-length-6 validate-digits" name="r4q[billing][postcode]" id="r4qBillingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>
                         </li>
                         <li>
                             <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingCountry"><?php echo $billingRequiredSign; ?><?php echo $this->__('Country') ?></label>
@@ -247,6 +251,69 @@ $_address = $this->getShippingAddress();
 </div>
 <script type="text/javascript">
     //<![CDATA[
+    //vinu changes added for mobile number & Pincode fields validation 
+    if(Validation) {
+        Validation.addAllThese([
+            ['validate-mobileno','Please enter correct 10 digit mobile number (Eg:9393066990)',
+                function(v){
+                    var timePat ="^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}9[0-9](\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$";
+                    // var matchArray = v.match(timePat);
+                    if(v.length > 0){
+                        if(v.length !=10){
+                            return false;
+                        //}else if(v[0] != 9 || v[1] != 1 ){
+
+                        //    return false;
+                        }else if(v[0]!=9 && v[0]!=8 && v[0]!=7){
+
+                            return false;
+                        }
+
+                        return true;
+
+                    }else {
+                        return false;
+                    }
+
+                }
+            ],
+            ['validate-egmobileno','Please donot enter Eg number',
+                function(v){
+                    var timePat ="^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}9[0-9](\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$";
+                    // var matchArray = v.match(timePat);
+                    if(v.length > 0){
+                        if (v[0]==9 && v[1]==3 && v[2]==9 && v[3]==3 && v[4]==0 && v[5]==6 && v[6]==6 && v[7]==9 && v[8]==9 && v[9]==0){
+                            //Validation.add("Please donot enter Eg number");
+                            return false;
+                        }
+
+                        return true;
+
+                    }else {
+                        return false;
+                    }
+
+                }
+            ],
+            ['validate-pincode', 'Please enter a valid 6 digit pincode.', function (v, elm) {
+                var reMax = new RegExp(/^maximum-length-[0-9]+$/);
+                var reMin = new RegExp(/^minimum-length-[0-9]+$/);
+                var result = true;
+                $w(elm.className).each(function(name, index) {
+                    if (name.match(reMax) && result) {
+                       var length = name.split('-')[2];
+                       result = (v.length <= length);
+                    }
+                    if (name.match(reMin) && result && !Validation.get('IsEmpty').test(v)) {
+                        var length = name.split('-')[2];
+                        result = (v.length >= length);
+                    }
+                });
+                return result;
+            }]
+        ])
+    };
+    //vinu changes for mobile number & Pincode fields validation end
     <?php if ($this->canShowShippingAddress()): ?>
     var shippingRegion = new RegionUpdater('r4qShippingCountry', 'r4qShippingRegion', 'r4qShippingRegionId', <?php echo $this->helper('directory')->getRegionJson() ?>);
     <?php if (!$this->isShippingAddressRequired()): ?>
