@@ -139,8 +139,6 @@ class Mage_Shipping_Model_Carrier_Flatrate
         foreach( $cart_items as $items ){ 
             $cur_fproduct = Mage::getModel('catalog/product')->load($items->getProduct_id());
             if ($cur_fproduct->getQtyBasedShipping() == '1') {
-                $custom_ship +=($items->getQty())*($_helper->productAttribute($cur_fproduct, $cur_fproduct->getShippingFlatratePerProduct(), 'shipping_flatrate_per_product'));
-            }elseif ($cur_fproduct->getQtyBasedShipping() == '0') {
                 $custom_ship += $_helper->productAttribute($cur_fproduct, $cur_fproduct->getShippingFlatratePerProduct(), 'shipping_flatrate_per_product');
             }else{
                 $custom_ship +=($items->getQty())*($_helper->productAttribute($cur_fproduct, $cur_fproduct->getShippingFlatratePerProduct(), 'shipping_flatrate_per_product'));
