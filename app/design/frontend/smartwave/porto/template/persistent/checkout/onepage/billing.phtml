@@ -208,7 +208,7 @@ if ($this->getAddress()->getEmail()) {
 </form>
 <script type="text/javascript">
 //<![CDATA[
-    //vinu changes added for mobile number & Pincode fileds validation 
+    //vinu changes added for mobile number & Pincode fields validation 
     if(Validation) {
         Validation.addAllThese([
             ['validate-mobileno','Please enter correct 10 digit mobile number (Eg:9393066990)',
@@ -270,7 +270,7 @@ if ($this->getAddress()->getEmail()) {
             }]
         ])
     };
-    //vinu changes for mobile number validation end
+    //vinu changes for mobile number & Pincode fields validation end
     var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('checkout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('checkout/onepage/saveBilling') ?>');
     var billingForm = new VarienForm('co-billing-form');
 
