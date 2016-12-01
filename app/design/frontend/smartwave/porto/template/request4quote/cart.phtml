@@ -141,7 +141,7 @@ $_address = $this->getShippingAddress();
                         <label class="required" for="r4qDetailsTelephone"><em>*</em><?php echo $this->__('Mobile') ?></label>
                         <?php /* vinu changes for changing landline field to mobile field */ ?>
                         <?php /* <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div> */ ?>
-                        <div class="input-box"><input type="text" class="input-text required-entry validate-mobileno validate-egmobileno" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div>
+                        <div class="input-box"><input type="text" class="input-text required-entry validate-mobileno validate-egmobileno  validate-digits" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div>
                         <?php /* vinu changes for changing landline field to mobile field further down in script tag */ ?>
                     </li>
                 </ul>
