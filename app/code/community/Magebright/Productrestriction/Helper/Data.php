@@ -49,7 +49,6 @@ class Magebright_Productrestriction_Helper_Data extends Mage_Core_Helper_Abstrac
 				$response['cod-valid'] = $cashod;
 				if($cashod==1){$cmsg='Available';}else{$cmsg='Not Available';}
 				$response['cod'] = $cmsg;
-
 			}
 			else
 			{
@@ -153,28 +152,97 @@ class Magebright_Productrestriction_Helper_Data extends Mage_Core_Helper_Abstrac
 
     public function checkSingleProductrestrictionData($zipcode,$productId)
     {
-		$allzipcodeid = "*"; 
-		//here * represents that product ids having this as pincode are shipped to all other pincodes that exist in the system
+		if (ctype_digit($zipcode)) 
+    	{
+    		$allzipcodeid = "*"; 
+			//here * represents that product ids having this as pincode are shipped to all other pincodes that exist in the system
 
-		// Load the collection of the entered pincode
-		$collection = Mage::getModel('productrestriction/productrestriction')->getCollection();
-		$collection->addFieldToFilter('pin_code',$zipcode);
-		$collection->getSelect()->limit(1);
+			// Load the collection of the entered pincode
+			$collection = Mage::getModel('productrestriction/productrestriction')->getCollection();
+			$collection->addFieldToFilter('pin_code',$zipcode);
+			$collection->getSelect()->limit(1);
 
-		$invalidproduct=0;
-		$response = array();
+			$invalidproduct=0;
+			$response = array();
 
-		//check if product id exists with * pincode in zipcodeproduct table collection
-		$check = Mage::getModel('productrestriction/zipcodeproduct')->getCollection()->addFieldToFilter('pin_code',$allzipcodeid)->addFieldToSelect('product_id');
-		$checkproductids = $check->getData();
-		foreach ($checkproductids as $checkproductid) 
-		{
-			if ($checkproductid['product_id'] == $productId) 
+			//check if product id exists with * pincode in zipcodeproduct table collection
+			$check = Mage::getModel('productrestriction/zipcodeproduct')->getCollection()->addFieldToFilter('pin_code',$allzipcodeid)->addFieldToSelect('product_id');
+			$checkproductids = $check->getData();
+			foreach ($checkproductids as $checkproductid) 
 			{
-				// Now Product is shipped to all pincodes in the system as its id is in * pincode. To check if the entered pincode exists in the system(serviceable pincode), check the loaded collection size of entered pincode
-				if($collection->getSize()>0)
+				if ($checkproductid['product_id'] == $productId) 
 				{
-					//set the response data for the found pincode
+					// Now Product is shipped to all pincodes in the system as its id is in * pincode. To check if the entered pincode exists in the system(serviceable pincode), check the loaded collection size of entered pincode
+					if($collection->getSize()>0)
+					{
+						//set the response data for the found pincode
+						foreach($collection as $zipdata)
+						{
+							$DeliveryDays = $zipdata->getDeliveryDays();
+							$city = $zipdata->getCity();
+							$cashod= $zipdata->getCod();
+						}
+						$response['valid'] = 1;
+						$response['Delivery_Days'] = $DeliveryDays;
+						$response['city'] = $city;
+						$response['cod-valid'] = $cashod;
+						if($cashod==1){$cmsg='Available';}else{$cmsg='Not Available';}
+						$response['cod'] = $cmsg;
+					}
+					else
+					{
+						//if collection is not loaded for entered pincode, check with range condition i.e; entered pincode is part of a range and not individual entry in the system
+						$flag=0;
+						$key='-';
+						$descollection = Mage::getModel('productrestriction/productrestriction')->getCollection();
+						$descollection->addFieldToFilter('pin_code',array('like'=>'%'.$key.'%'));
+						if($descollection->getSize()>0)
+						{
+							foreach($descollection as $szipdata)
+							{
+								$zipcodestr = $szipdata->getPinCode();
+								$desadmincode = explode("-", $zipcodestr);
+								$desstart=$desadmincode[0];
+								$desend=$desadmincode[1];
+								if($zipcode >= $desstart &&  $zipcode <= $desend)
+								{
+									//set the response data from the found pincode range data
+									$des_DeliveryDays = $szipdata->getDeliveryDays();
+									$DES_FINALCOD = $szipdata->getCity();
+									$cashod=$szipdata->getCod();
+									$response['valid'] = 1;
+									$response['Delivery_Days'] = $des_DeliveryDays;
+									$response['city'] = $DES_FINALCOD;
+									$response['cod-valid'] = $cashod;
+									if($cashod==1){$cmsg='Available';}else{$cmsg='Not Available';}
+									$response['cod'] = $cmsg;
+									$flag=1;
+									break;
+								}
+							}
+						}
+						if($flag==0)
+						{	
+							//if entered pincode is not found in pincodes as range also then return not valid result
+							$invalidproduct = $productId;
+							$response['valid'] = 0;
+							$response['cod-valid'] = 0;
+					        $response['invalid-product']=$invalidproduct;
+						}
+					}
+					//skip further checks and return result
+					goto end;
+				}
+			}
+			
+			//if no match is found with * pincode, check with rest of individual or range serviceable pincodes
+			if($collection->getSize()>0)
+			{
+	            $invalidproduct= $this->checkProductZipcode($zipcode,$productId);
+
+	            if($invalidproduct=='')
+				{
+					// No invalid product is returned, Product is serviceable to the entered pincode, return pincode data
 					foreach($collection as $zipdata)
 					{
 						$DeliveryDays = $zipdata->getDeliveryDays();
@@ -190,22 +258,34 @@ class Magebright_Productrestriction_Helper_Data extends Mage_Core_Helper_Abstrac
 				}
 				else
 				{
-					//if collection is not loaded for entered pincode, check with range condition i.e; entered pincode is part of a range and not individual entry in the system
-					$flag=0;
-					$key='-';
-					$descollection = Mage::getModel('productrestriction/productrestriction')->getCollection();
-					$descollection->addFieldToFilter('pin_code',array('like'=>'%'.$key.'%'));
-					if($descollection->getSize()>0)
+					// invalid product is returned, return not valid result
+					$response['valid'] = 0;
+					$response['cod-valid'] = 0;
+					$response['invalid-product']=$invalidproduct;
+				}
+			}
+			else
+			{
+				//if collection is not loaded for entered pincode, check with range condition i.e; entered pincode is part of a range and not individual entry in the system
+				$flag=0;
+				$key='-';
+				$descollection = Mage::getModel('productrestriction/productrestriction')->getCollection();
+				$descollection->addFieldToFilter('pin_code',array('like'=>'%'.$key.'%'));
+				if($descollection->getSize()>0)
+				{
+					foreach($descollection as $szipdata)
 					{
-						foreach($descollection as $szipdata)
+						$zipcodestr = $szipdata->getPinCode();
+						$desadmincode = explode("-", $zipcodestr);
+						$desstart=$desadmincode[0];
+						$desend=$desadmincode[1];
+						if($zipcode >= $desstart &&  $zipcode <= $desend)
 						{
-							$zipcodestr = $szipdata->getPinCode();
-							$desadmincode = explode("-", $zipcodestr);
-							$desstart=$desadmincode[0];
-							$desend=$desadmincode[1];
-							if($zipcode >= $desstart &&  $zipcode <= $desend)
-							{
-								//set the response data from the found pincode range data
+							//check if product id exists with range pincode collection
+			  				$invalidproduct= $this->checkProductZipcode($zipcodestr,$productId);
+		  					if($invalidproduct=='')
+		  					{
+		  						// No invalid product is returned, Product is serviceable to the range pincode, return range pincode data for the entered pincode
 								$des_DeliveryDays = $szipdata->getDeliveryDays();
 								$DES_FINALCOD = $szipdata->getCity();
 								$cashod=$szipdata->getCod();
@@ -217,97 +297,26 @@ class Magebright_Productrestriction_Helper_Data extends Mage_Core_Helper_Abstrac
 								$response['cod'] = $cmsg;
 								$flag=1;
 								break;
-							}
+				  			}
 						}
 					}
-					if($flag==0)
-					{	
-						//if entered pincode is not found in pincodes as range also then return not valid result
-						$invalidproduct = $productId;
-						$response['valid'] = 0;
-						$response['cod-valid'] = 0;
-				        $response['invalid-product']=$invalidproduct;
-					}
 				}
-				//skip further checks and return result
-				goto end;
-			}
-		}
-		
-		//if no match is found with * pincode, check with rest of individual or range serviceable pincodes
-		if($collection->getSize()>0)
-		{
-            $invalidproduct= $this->checkProductZipcode($zipcode,$productId);
-
-            if($invalidproduct=='')
-			{
-				// No invalid product is returned, Product is serviceable to the entered pincode, return pincode data
-				foreach($collection as $zipdata)
-				{
-					$DeliveryDays = $zipdata->getDeliveryDays();
-					$city = $zipdata->getCity();
-					$cashod= $zipdata->getCod();
+				if($flag==0)
+				{	
+					//if entered pincode is not found in pincodes as range also then return not valid result
+					$invalidproduct = $productId;
+					$response['valid'] = 0;
+					$response['cod-valid'] = 0;
+			        $response['invalid-product']=$invalidproduct;
 				}
-				$response['valid'] = 1;
-				$response['Delivery_Days'] = $DeliveryDays;
-				$response['city'] = $city;
-				$response['cod-valid'] = $cashod;
-				if($cashod==1){$cmsg='Available';}else{$cmsg='Not Available';}
-				$response['cod'] = $cmsg;
-			}
-			else
-			{
-				// invalid product is returned, return not valid result
-				$response['valid'] = 0;
-				$response['cod-valid'] = 0;
-				$response['invalid-product']=$invalidproduct;
 			}
 		}
 		else
 		{
-			//if collection is not loaded for entered pincode, check with range condition i.e; entered pincode is part of a range and not individual entry in the system
-			$flag=0;
-			$key='-';
-			$descollection = Mage::getModel('productrestriction/productrestriction')->getCollection();
-			$descollection->addFieldToFilter('pin_code',array('like'=>'%'.$key.'%'));
-			if($descollection->getSize()>0)
-			{
-				foreach($descollection as $szipdata)
-				{
-					$zipcodestr = $szipdata->getPinCode();
-					$desadmincode = explode("-", $zipcodestr);
-					$desstart=$desadmincode[0];
-					$desend=$desadmincode[1];
-					if($zipcode >= $desstart &&  $zipcode <= $desend)
-					{
-						//check if product id exists with range pincode collection
-		  				$invalidproduct= $this->checkProductZipcode($zipcodestr,$productId);
-	  					if($invalidproduct=='')
-	  					{
-	  						// No invalid product is returned, Product is serviceable to the range pincode, return range pincode data for the entered pincode
-							$des_DeliveryDays = $szipdata->getDeliveryDays();
-							$DES_FINALCOD = $szipdata->getCity();
-							$cashod=$szipdata->getCod();
-							$response['valid'] = 1;
-							$response['Delivery_Days'] = $des_DeliveryDays;
-							$response['city'] = $DES_FINALCOD;
-							$response['cod-valid'] = $cashod;
-							if($cashod==1){$cmsg='Available';}else{$cmsg='Not Available';}
-							$response['cod'] = $cmsg;
-							$flag=1;
-							break;
-			  			}
-					}
-				}
-			}
-			if($flag==0)
-			{	
-				//if entered pincode is not found in pincodes as range also then return not valid result
-				$invalidproduct = $productId;
-				$response['valid'] = 0;
-				$response['cod-valid'] = 0;
-		        $response['invalid-product']=$invalidproduct;
-			}
+			$invalidproduct = $productId;
+			$response['valid'] = 0;
+			$response['cod-valid'] = 0;
+	        $response['invalid-product']=$invalidproduct;
 		}
 		end:
 		return $response;
