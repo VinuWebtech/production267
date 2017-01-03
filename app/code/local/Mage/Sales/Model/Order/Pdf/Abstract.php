@@ -292,19 +292,19 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
 
         if ($putOrderId) {
             $page->drawText(
-                Mage::helper('sales')->__('Order ID: ') . $order->getRealOrderId(), 285, ($top -= 30), 'UTF-8'
+                Mage::helper('sales')->__('Order ID: ') . $order->getRealOrderId(), 285, ($top), 'UTF-8'
             );
         }
-        $page->drawText(
+        /*$page->drawText(
             Mage::helper('sales')->__('Order Date: ') . Mage::helper('core')->formatDate(
                 $order->getCreatedAtStoreDate(), 'medium', false
             ),
             285,
             ($top -= 15),
             'UTF-8'
-        );
+        );*/
 
-        $top -= 10;
+        $top -= 45;
     
         $page->setLineWidth(1);
         $page->drawLine(25, $top, 570, $top);
@@ -518,6 +518,21 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
         $this->_setFontRegular($page, 9);
         $docHeader = $this->getDocHeaderCoordinates();
         $page->drawText($text, 285, $docHeader[1] - 15, 'UTF-8');
+    }
+
+    /**
+     * Insert title and date for concrete document type
+     *
+     * @param  Zend_Pdf_Page $page
+     * @param  string $text
+     * @return void
+     */
+    public function insertInvoiceDate(Zend_Pdf_Page $page, $text)
+    {
+        //$page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
+        $this->_setFontRegular($page, 9);
+        $docHeader = $this->getDocHeaderCoordinates();
+        $page->drawText($text, 285, $docHeader[1] - 30, 'UTF-8');
     }
 
     /**
