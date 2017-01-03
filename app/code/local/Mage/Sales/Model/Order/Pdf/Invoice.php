@@ -166,10 +166,14 @@ class Mage_Sales_Model_Order_Pdf_Invoice extends Mage_Sales_Model_Order_Pdf_Abst
                 $order,
                 Mage::getStoreConfigFlag(self::XML_PATH_SALES_PDF_INVOICE_PUT_ORDER_ID, $order->getStoreId())
             );
-            /* Add document text and number */
+            /* Add document number & date*/
             $this->insertDocumentNumber(
                 $page,
                 Mage::helper('sales')->__('Invoice Number: ') . $invoice->getIncrementId()
+            );
+            $this->insertInvoiceDate(
+                $page,
+                Mage::helper('sales')->__('Invoice date: ') . Mage::helper('core')->formatDate($invoice->getCreatedAt(), 'medium', false)
             );
             /* Add table */
             $this->_drawHeader($page);
