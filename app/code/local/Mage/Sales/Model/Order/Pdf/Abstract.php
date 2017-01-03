@@ -349,9 +349,6 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
             $addressesHeight = max($addressesHeight, $this->_calcAddressHeight($shippingAddress));
         }
 
-        $linepointer = $top - $addressesHeight;
-        $page->setFillColor(new Zend_Pdf_Color_GrayScale(1));
-        $page->drawLine(25, $linepointer, 570, $linepointer);
         $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
         $this->_setFontRegular($page, 8);
         $this->y = $top - 30;
@@ -503,6 +500,9 @@ abstract class Mage_Sales_Model_Order_Pdf_Abstract extends Varien_Object
             $this->y = $currentY;
             $this->y -= 15;
         }*/
+        $page->setFillColor(new Zend_Pdf_Color_GrayScale(1));
+        $page->drawLine(25, $this->y, 570, $this->y);
+        $page->setFillColor(new Zend_Pdf_Color_GrayScale(0));
     }
 
     /**
