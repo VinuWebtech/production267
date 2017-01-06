@@ -57,12 +57,17 @@ if(empty($_cartQty)) {
                 <?php endforeach; ?>
             </ul>
 
-        <div class="minicart-actions">
-            <a class="cart-link" href="<?php echo $this->getUrl('request4quote_front/quote'); ?>">
+        <?php /* <div class="minicart-actions" style="background-color:#dade45">
+            <a class="cart-link" style="font-weight: bold; background-color:#dade45; width:318px; height:59px; font-size:13px" href="<?php echo $this->getUrl('request4quote_front/quote'); ?>">
                 <?php echo $this->__('View Quote'); ?>
             </a>
-        </div>
+        </div> */ ?>
 
+        <   a class="cart-link" style="font-weight: bold" href="<?php echo $this->getUrl('request4quote_front/quote'); ?>">
+            <div class="minicart-actions" style="background-color:#dade45; width:318px; height:59px; font-size:13px">
+                <span><?php echo $this->__('View Quote'); ?></span>
+            </div>
+        </a>    <!--onkar-->
     <?php else: ?>
         <p class="empty"><?php echo $this->__('You have no items in your quote.') ?></p>
 

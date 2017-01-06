@@ -78,7 +78,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif ?>
     </td>
     <td class="a-left">
-        <textarea name="r4q[item][<?php echo $_item->getId() ?>][remark]" rows="2" class="r4q-item-remark"></textarea>
+        <textarea name="r4q[item][<?php echo $_item->getId() ?>][remark]" rows="2" class="r4q-item-remark" width="230px" height="50px"></textarea> <!--onkar-->
     </td>
     <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
     <td class="a-center">

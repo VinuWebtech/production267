@@ -1,4 +1,4 @@
-<?php $_categories = $this->getCurrentChildCategories() ?>
+    <?php $_categories = $this->getCurrentChildCategories() ?>
 <?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
 <?php
 	function cmpCatPosition($a, $b) {
@@ -32,7 +32,7 @@
     }
 ?>
 <?php if($_count): ?>
-<div class="block block-category-nav">
+<div class="block block-category-nav visible-md visible-lg">    <!--onkar-->
     <div class="block-title">
         <!-- vinu changes start (12-11-15) -->
         <span><?php echo Mage::registry('current_category')->getName(); ?></span>
