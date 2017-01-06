@@ -36,7 +36,7 @@
     $customerEmail = Mage::getModel('customer/session')->getGuestEmail()?
         Mage::getModel('customer/session')->getGuestEmail():'';
 ?>
-<div class="col3-set">
+<div class="col3-set" style="height: 370px">
     <?php echo $this->getChildHtml('login_before')?>
     <div class="col-1">
         <h3><?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?><?php echo $this->__('Register or Login') ?><?php else: ?><?php echo $this->__('Register to Create an Account') ?><?php endif; ?></h3>
@@ -54,14 +54,14 @@
             <ul class="form-list">
 
                 <li>
-                    <label for="email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                    <label for="email" class="required" style="color:#010C12"><em>*</em><?php echo $this->__('Email Address') ?></label>
                     <div class="input-box">
-                        <input type="text" name="checkout_email" value="<?php echo $this->escapeHtml($customerEmail) ?>" id="checkout_email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+                        <input type="text" name="checkout_email" value="<?php echo $this->escapeHtml($customerEmail) ?>" id="checkout_email" class="checkout-text validation-emailaddr required-entry" title="<?php echo $this->__('Email Address') ?>" />
                     </div>
                     <p><?php echo $this->__('Your order details will be sent to this email address.') ?></p>
                 </li>
                 <li id="checkout_register" class="control" style="display:none;">
-                    <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" /><label for="login:register"><?php echo $this->__('Register') ?></label>
+                    <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" checked/><label for="login:register"><?php echo $this->__('Register') ?></label>
                     <h4><?php echo $this->__('Register and save time!') ?></h4>
                     <p><?php echo $this->__('Register with us for future convenience:') ?></p>
                     <ul class="ul">
@@ -76,7 +76,7 @@
                 <li id="password_cntrl" style="display:none;">
                 <label for="login-password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
                 <div class="input-box">
-                    <input type="password" class="input-text required-entry" id="checkout-password" name="checkout-password" />
+                    <input type="password" class="checkout-text required-entry" id="checkout-password" name="checkout-text" />
                 </div>
                 <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="f-left"><?php echo $this->__('Forgot your password?') ?></a>
                 </li>
@@ -85,8 +85,20 @@
         <?php else: ?>
             <input type="hidden" name="checkout_method" id="login:register" value="register" checked="checked" />
         <?php endif; ?>
-        <div class="buttons-set">
-            <p class="required">&nbsp;</p>
+        
+    </div>
+    <div class="col-2">
+        <div class="sp_login_seprator1">
+            <span class=" c999"> OR </span>
+            <!--<div class="pos-rel vcheckoutorBlock">- OR -</div>-->
+        </div>
+    </div>
+    <div class="col-3 vcheckout-social">
+        <?php echo $this->getChildHtml('ajaxlogin_checkout');?>
+        <h3 class="social-label">Sign up With your Social Account </h3> <!--onkar-->
+    </div>
+    <div class="buttons-set">
+            <!--onkar <p class="required">&nbsp;</p> -->
             <p class="required"><?php echo $this->__('* Required Fields') ?></p>
             <?php if ($this->getQuote()->isAllowedGuestCheckout()): ?>
                 <button id="onepage-guest-register-button" type="button" class="button" onclick="checkout.setMethod();"><span><span><?php echo $this->__('Continue') ?></span></span></button>
@@ -97,18 +109,9 @@
                     <button id="onepage-guest-register-button" type="submit" class="button"><span><span><?php echo $this->__('Register') ?></span></span></button>
                 </form>
             <?php endif; ?>
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="sp_login_seprator1">
-            <span class=" c999"> OR </span>
-            <!--<div class="pos-rel vcheckoutorBlock">- OR -</div>-->
-        </div>
-    </div>
-    <div class="col-3 vcheckout-social">
-        <?php echo $this->getChildHtml('ajaxlogin_checkout');?>
     </div>
 </div>
+
 
 <script type="text/javascript">
 //<![CDATA[
@@ -131,6 +134,15 @@
 </script>
 
 <script type="text/javascript">
+    if(Validation) {
+        Validation.addAllThese([
+            ['validation-emailaddr', 'Please enter a valid email address. For example abc@mail.com.', function (v) {
+                        //return Validation.get('IsEmpty').test(v) || /\w{1,}[@][\w\-]{1,}([.]([\w\-]{1,})){1,3}$/.test(v)
+                        //return Validation.get('IsEmpty').test(v) || /^[\!\#$%\*/?|\^\{\}`~&\'\+\-=_a-z0-9][\!\#$%\*/?|\^\{\}`~&\'\+\-=_a-z0-9\.]{1,30}[\!\#$%\*/?|\^\{\}`~&\'\+\-=_a-z0-9]@([a-z0-9_-]{1,30}\.){1,5}[a-z]{2,4}$/i.test(v)
+                        return Validation.get('IsEmpty').test(v) || /^([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*@([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*\.(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]){2,})$/i.test(v)
+                    }],
+        ])
+    };
     var checkEmailURL = '<?php echo $this->getUrl('checkout/onepage/checkEmail', array('_secure'=>true)); ?>';
     var emailChecker = new emailChecker(
         'checkout_email',

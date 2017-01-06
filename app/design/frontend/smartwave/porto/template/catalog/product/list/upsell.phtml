@@ -9,15 +9,20 @@ $code  = $store->getCode();
     <?php if(Mage::getStoreConfig("porto_settings/general/layout",$code) == "1024"): ?>
         <?php $_columnCount = 3; ?>
     <?php endif; ?>
-    <?php $this->resetItemsIterator() ?>
+    <?php $this->resetItemsIterator() ?><!-- -->
     <!--Vinu change adding horizontal scroll for products -->
     <ul id="upsell-products" class="products-grid columns<?php echo $_columnCount; ?> owl-carousel owl-theme">
     <!--Vinu changes end-->
 <?php for($_i=0;$_i<$this->getRowCount();$_i++): ?>
     <?php for($_j=0;$_j<$this->getColumnCount();$_j++): ?>
         <?php if($_product=$this->getIterableItem()): ?>
-        <?php $product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
-            <li class="item1"><div class="item-area">
+        <?php $product = Mage::getModel('catalog/product')->load($_product->getId()); ?> 
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+        if (screen.width<480px){ $( ".item1" ).wrap( "<center></center>" ); }
+        </script>   -->     
+            <li class="item1">
+                <div class="item-area">
                 <div class="product-image-area">
                     <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
                     <?php
@@ -158,7 +163,8 @@ $code  = $store->getCode();
                     </div>  
                     //Vinu changes end-->  
                 </div>
-            </div></li>
+                </div>
+            </li>
             <?php endif; ?>
         <?php endfor; ?>
     <?php endfor; ?>
@@ -191,7 +197,9 @@ $code  = $store->getCode();
                     <?php endif; ?>
                 });
             });
+
         </script>
         <!--Vinu changes end-->
+
 </div>
     <?php endif; ?>

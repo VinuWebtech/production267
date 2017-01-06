@@ -9,11 +9,11 @@ if(Mage::getStoreConfig('productrestriction/general/enabled') == 1 )
 ?>
 	<div class="zipcode-box">
 		<div id="zipcode-feed" class="zipcode_cont1">
-			<span><?php echo $this->__('Check Availability at'); ?></span>
-			<div class="zipcode_cont2">
+			<span><?php echo $this->__('Check Availability at'); ?></span><br class="small-360"/>
+			<span class="zipcode_cont2">
 				<input type="hidden" name="zipcode_hidden" id="zipcode_hidden" value="" />
 				<?php if(!Mage::helper('customer')->isLoggedIn()){?>
-					<input type="text" name="zipcode" id="zipcode" onFocus="resetZipcode(this)" onkeypress="keyEventhandle(event,this.value);"  onBlur="resetZipcode(this)" value="<?php echo $this->__('Enter Pincode') ?>"  /> 
+					<input type="text" name="zipcode" id="zipcode" style="width:150px; height:36px; border:0px; border-radius:0px; border-bottom:2px solid #bcbaa6" onFocus="resetZipcode(this)" onkeypress="keyEventhandle(event,this.value);"  onBlur="resetZipcode(this)" value="<?php echo $this->__('Enter Pincode') ?>" /><!--onkar--> <button  onclick="verifyzipcode(document.getElementById('zipcode').value);" class="button" title="<?php echo $this->__('Check Pincode'); ?>" type="button"><span><?php echo $this->__('Check'); ?></span></button>
 				<?php }else
 				{
 				
@@ -27,14 +27,14 @@ if(Mage::getStoreConfig('productrestriction/general/enabled') == 1 )
 				  		//print_r($allow);
 					}  
 				?>
-					<input type="text" name="zipcode" id="zipcode" onFocus="resetZipcode(this)" onkeypress="keyEventhandle(event,this.value);"  onBlur="resetZipcode(this)" value="<?php echo $zip ?>"  /> 
+					<input type="text" name="zipcode" id="zipcode" style="width:150px; height:36px;" onFocus="resetZipcode(this)" onkeypress="keyEventhandle(event,this.value);"  onBlur="resetZipcode(this)" value="<?php echo $zip ?>"  /> <button  onclick="verifyzipcode(document.getElementById('zipcode').value);" class="button" title="<?php echo $this->__('Check Pincode'); ?>" type="button"><span><?php echo $this->__('Check'); ?></span></button>
 					<div class="zipcode-msg">
 						<?php
 							if($allow['valid']==0){echo  Mage::getStoreConfig('productrestriction/general/product_msg');}else{echo $this->__("Delivery Available at this location.");}
 					echo " </div>";
 			 	} ?>
-				<button onclick="verifyzipcode(document.getElementById('zipcode').value);" class="button" title="<?php echo $this->__('Check Pincode'); ?>" type="button"><span><?php echo $this->__('Check'); ?></span></button>
-			</div>
+				
+			</span>
 			<div id="zipcode-loader" style="display:none;"><img src="<?php echo Mage::getDesign()->getSkinUrl('css/productrestriction/ajax-loader.gif');?>" /></div>
 			<span class="validation-advice" id="message-field" style="display:none;"><?php echo $this->__('Please enter a valid pincode.') ?></span>
 		</div>				

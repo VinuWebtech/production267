@@ -1,7 +1,7 @@
-.zipcode-box {/*border: 1px solid #c4c1bc;*/ margin: 10px 0; padding: 8px 9px 8px 0px; width: 300px;}
+.zipcode-box {/*border: 1px solid #c4c1bc;*/ margin: 10px 0; padding: 8px 9px 8px 0px; width: 400px;/*onkar*/}
 .zipcode_cont2 {margin:5px 0 0 0;}
-.zipcode_cont2 input {padding:3px 4px; border: 1px solid #bebebe;}
-.zipcode_cont1 span { color: #666; font-weight: bold; }
+.zipcode_cont2 input {padding:3px 4px; border: 1px solid #bebebe; border-radius: 5px}
+.zipcode_cont1 span { color: #666; font-weight: bold; font-family: Arial; font-size: 13px;/*onkar*/}
 .zipcode_cont1 #zipcode-loader { padding:6px 0 1px 0; }
 .col-left .zipcode-box { width:auto; }
 .col-left .zipcode_cont2 input {width: 105px;}

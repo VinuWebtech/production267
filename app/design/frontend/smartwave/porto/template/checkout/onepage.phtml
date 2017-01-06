@@ -30,17 +30,24 @@
 </div>-->
 <script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
-<div class="opc" id="checkoutSteps">
+<div class="opc" id="checkoutSteps" style="overflow: auto"><!--onkar-->
 <?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
 <?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
     <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
         <div class="step-title">
-            <span class="number"><?php echo "Step"." ".$i.":" ?></span>
+            <span class="number"><?php echo "Step"." ".$i?></span> <!--onkar-->
             <h2><?php echo $_stepInfo['label'] ?></h2>
             <a href="#"><?php echo $this->__('Edit') ?></a>
         </div>
-        <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
-            <?php echo $this->getChildHtml($_stepId) ?>
+        <!--onkar<div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none">-->
+        <?php if ($_stepId == 'login'):?>
+         <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none; height: 500px">    <!--onkar-->
+        <?php elseif ($_stepId == 'billing'):?>
+            <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none; height: auto"> <!--onkar-->
+        <?php else:?>
+            <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none; height: auto"> <!--onkar-->
+        <?php endif; ?>
+                    <?php echo $this->getChildHtml($_stepId) ?>
         </div>
     </li>
 <?php endforeach ?>

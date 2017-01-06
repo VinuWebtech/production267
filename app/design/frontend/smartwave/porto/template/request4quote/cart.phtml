@@ -114,92 +114,153 @@ $_address = $this->getShippingAddress();
     </table>
     <script type="text/javascript">decorateTable('shopping-cart-table')</script>
 </fieldset>
+<br>
 <div style="width: 100%;">
+    <div class="cart-collaterals r4q-collaterals" style="margin: auto !important;" >
+        <div class="cart-rf4-details">
+            <h2><?php echo $this->__('Enter your details to get a price proposal') ?></h2>
+                <table border="0" width="100%">         <!--onkar entire table-->
+                    <tr>
+                        <td class="col-xs-12 col-md-6 request-info-table first-td" width="50%" style="text-align: center">
+                            <ul class="form-list">
+                                
+                                <table border="0" style="padding: 10px" cellspacing="10" cellpadding="10" width="40%">
+                                    <tr>    
+                                        <td width="50%" class="request-info-td">
+                                            <li class="li-cus-details">
+                                                <label class="required" for="r4qDetailsFirstname"><em>*</em><?php echo $this->__('First Name') ?></label>
+                                                <!--<div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][firstname]" id="r4qDetailsFirstname" value="<?php if ($_address) echo $_address->getFirstname() ?>" /></div>-->
+                                                <div class="input-box"><input type="text" class="r4q" name="r4q[details][firstname]" id="r4qDetailsFirstname" value="<?php if ($_address) echo $_address->getFirstname() ?>" /></div>
+                                            </li>
+                                        </td>
+                                        <td width="50%" class="request-info-td">
+                                            <li class="li-cus-details">
+                                                <label class="required" for="r4qDetailsLastname"><em>*</em><?php echo $this->__('Last Name') ?></label>
+                                                <!--<div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][lastname]" id="r4qDetailsLastname" value="<?php if ($_address) echo $_address->getLastname() ?>" /></div>-->
+                                                <div class="input-box"><input type="text" class="r4q" name="r4q[details][lastname]" id="r4qDetailsLastname" value="<?php if ($_address) echo $_address->getLastname() ?>" /></div>
+                                            </li>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" class="request-info-td">
+                                            <li class="li-cus-details">
+                                                <label class="required" for="r4qDetailsEmail"><em>*</em><?php echo $this->__('Email address') ?></label>
+                                                <!--<div class="input-box"><input type="text" class="input-text validate-email required-entry" name="r4q[details][email]" id="r4qDetailsEmail" value="<?php if ($_customer) echo $_customer->getEmail() ?>" /></div>-->
+                                                <div class="input-box"><input type="text" class="r4q" name="r4q[details][email]" id="r4qDetailsEmail" value="<?php if ($_customer) echo $_customer->getEmail() ?>" />
+                                            </li>
+                                        </td>
+                                        <td width="50%" class="request-info-td">
+                                            <li class="li-cus-details">
+                                                <?php /* <label class="required" for="r4qDetailsTelephone"><em>*</em><?php echo $this->__('Telephone') ?></label> */ ?>
+                                                <label class="required" for="r4qDetailsTelephone"><em>*</em><?php echo $this->__('Mobile') ?></label>
+                                                <?php /* vinu changes for changing landline field to mobile field */ ?>
+                                                <?php /* <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div> */ ?>
+                                                <!--<div class="input-box"><input type="text" class="input-text required-entry validate-mobileno validate-egmobileno  validate-digits" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div>-->
+                                                 <div class="input-box"><input type="text" class="r4q" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div>
+                                                <?php /* vinu changes for changing landline field to mobile field further down in script tag */ ?>
+                                            </li>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="request-info-td">
+                                            <li class="li-cus-details">
+                                                <label for="r4qDetailsRemark"><?php echo $this->__('Do you have a general remark with this Quote Request?') ?></label>
+                                                <div class="input-box"><textarea name="r4q[details][remark]" id="r4qDetailsRemark" class="r4q-remark"></textarea></div>
+                                            </li>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                        </td>
+                        
+                        <td class="col-xs-12 col-md-6 request-info-table" width="50%" style="text-align:center">
 
-        <div class="cart-collaterals r4q-collaterals" style="margin: auto !important;">
-            <div class="cart-rf4-details">
-                <h2><?php echo $this->__('Enter your details to get a price proposal') ?></h2>
-                <ul class="form-list">
-                    <li>
-                        <label for="r4qDetailsRemark"><?php echo $this->__('Do you have a general remark with this Quote Request?') ?></label>
-                        <div class="input-box"><textarea name="r4q[details][remark]" id="r4qDetailsRemark" class="r4q-remark"></textarea></div>
-                    </li>
-                    <li>
-                        <label class="required" for="r4qDetailsEmail"><em>*</em><?php echo $this->__('Email address') ?></label>
-                        <div class="input-box"><input type="text" class="input-text validate-email required-entry" name="r4q[details][email]" id="r4qDetailsEmail" value="<?php if ($_customer) echo $_customer->getEmail() ?>" /></div>
-                    </li>
-                    <li>
-                        <label class="required" for="r4qDetailsFirstname"><em>*</em><?php echo $this->__('First Name') ?></label>
-                        <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][firstname]" id="r4qDetailsFirstname" value="<?php if ($_address) echo $_address->getFirstname() ?>" /></div>
-                    </li>
-                    <li>
-                        <label class="required" for="r4qDetailsLastname"><em>*</em><?php echo $this->__('Last Name') ?></label>
-                        <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][lastname]" id="r4qDetailsLastname" value="<?php if ($_address) echo $_address->getLastname() ?>" /></div>
-                    </li>
-                    <li>
-                        <?php /* <label class="required" for="r4qDetailsTelephone"><em>*</em><?php echo $this->__('Telephone') ?></label> */ ?>
-                        <label class="required" for="r4qDetailsTelephone"><em>*</em><?php echo $this->__('Mobile') ?></label>
-                        <?php /* vinu changes for changing landline field to mobile field */ ?>
-                        <?php /* <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div> */ ?>
-                        <div class="input-box"><input type="text" class="input-text required-entry validate-mobileno validate-egmobileno  validate-digits" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div>
-                        <?php /* vinu changes for changing landline field to mobile field further down in script tag */ ?>
-                    </li>
-                </ul>
-            </div>
-            <input type="hidden" value="<?php echo (int) $this->isBillingAddressRequired(); ?>" name="r4q[billing][is_required]" />
-            <input type="hidden" value="<?php echo (int) $this->isShippingAddressRequired(); ?>" name="r4q[shipping][is_required]" />
-            <?php $billingRequiredSign = $this->isBillingAddressRequired() ? '<em>*</em>' : ''; ?>
-            <?php $shippingRequiredSign = $this->isShippingAddressRequired() ? '<em>*</em>' : ''; ?>
-            <?php if ($this->canShowBillingAddress()): ?>
-                <div class="cart-rf4-billing">
-                    <h2><?php echo $this->__('Billing details') ?></h2>
-                    <ul class="form-list">
-                        <?php /* <li>
-                            <label for="r4qBillingCompany"><?php echo $this->__('Company') ?></label>
-                            <div class="input-box"><input type="text" class="input-text" name="r4q[billing][company]" id="r4qBillingCompany" value="<?php if ($_address) echo $_address->getCompany() ?>" /></div>
-                        </li> */ ?>
-                        <li>
-                            <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingAddress"><?php echo $billingRequiredSign; ?><?php echo $this->__('Address') ?></label>
-                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][address]" id="r4qBillingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" /></div>
-                        </li>
-                        <li>
-                            <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingCity"><?php echo $billingRequiredSign; ?><?php echo $this->__('City') ?></label>
-                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][city]" id="r4qBillingCity" value="<?php if ($_address) echo $_address->getCity() ?>" /></div>
-                        </li>
-                        <li>
-                            <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingPostcode"><?php echo $billingRequiredSign; ?><?php echo $this->__('Zip/Postal Code') ?></label>
-                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?> <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?> validate-pincode maximum-length-6 minimum-length-6 validate-digits" name="r4q[billing][postcode]" id="r4qBillingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>
-                        </li>
-                        <li>
-                            <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingCountry"><?php echo $billingRequiredSign; ?><?php echo $this->__('Country') ?></label>
-                            <div class="input-box"><?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect($this->getEstimateCountryId(), 'r4q[billing][country]', 'r4qBillingCountry') ?></div>
-                        </li>
-                        <li>
-                            <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingRegionId"><?php echo $billingRequiredSign; ?><?php echo $this->__(' State/Province
-        ') ?></label>
-                            <div class="input-box">
-                                <select id="r4qBillingRegionId" name="r4q[billing][region_id]" title="<?php echo $this->__('State/Province') ?>" style="display:none;" class="validate-select">
-                                    <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
-                                </select>
-                                <script type="text/javascript">
-                                    //<![CDATA[
-                                    if( $('region_id')) {
-                                        $('region_id').setAttribute('defaultValue', "<?php echo $this->getEstimateRegionId() ?>");
-                                    }
-                                    //]]>
-                                </script>
-                                <input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][region]" id="r4qBillingRegion" value="<?php if ($_address) echo $this->escapeHtml($_address->getRegion()) ?>" style="display:none;" />
-                            </div>
-                        </li>
-                        <?php if ($this->canShowShippingAddress()): ?>
-                            <li>
-                                <label for="shipping_same_as_billing" class="no-float"><?php echo Mage::helper('sales')->__('Use Same Address For Shipping') ?>
-                                    <div class="input-box"><input type="checkbox" checked="checked" id="shipping_same_as_billing" name="r4q[billing][shipping_same_as_billing]" onchange="Element.toggle(Element.down(document, '.cart-rf4-shipping'))"/></div>
-                            </li>
-                        <?php endif; ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
+                            <input type="hidden" value="<?php echo (int) $this->isBillingAddressRequired(); ?>" name="r4q[billing][is_required]" />
+                            <input type="hidden" value="<?php echo (int) $this->isShippingAddressRequired(); ?>" name="r4q[shipping][is_required]" />
+                            <?php $billingRequiredSign = $this->isBillingAddressRequired() ? '<em>*</em>' : ''; ?>
+                            <?php $shippingRequiredSign = $this->isShippingAddressRequired() ? '<em>*</em>' : ''; ?>
+                            <?php if ($this->canShowBillingAddress()): ?>
+                                
+                                <div class="cart-rf4-billing">
+                                    <?php /*<h2><?php echo $this->__('Billing details') ?></h2> */ ?>
+                                    <ul class="form-list">
+                                        <?php /* <li>
+                                            <label for="r4qBillingCompany"><?php echo $this->__('Company') ?></label>
+                                            <div class="input-box"><input type="text" class="input-text" name="r4q[billing][company]" id="r4qBillingCompany" value="<?php if ($_address) echo $_address->getCompany() ?>" /></div>
+                                        </li> */ ?>
+                                        <table border="0" width="50%">
+                                            <tr>
+                                                <td  class="request-info-td"style="padding-right:10px" colspan="2">
+                                                    <li class="li-cus-details">
+                                                        <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingAddress"><?php echo $billingRequiredSign; ?><?php echo $this->__('Address') ?></label>
+                                                       <!-- <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][address]" id="r4qBillingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" /></div>-->
+                                                        <div class="input-box"><!--<textarea type="text" class="r4q-remark<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][address]" id="r4qBillingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" ></textarea> -->
+                                                            <input type="text" placeholder="Address line1" style="width:300px; padding:2px" class="r4q<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][address]" id="r4qBillingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" /><br>
+                                                            <input type="text" placeholder="Address line2" style="width:300px; padding:2px" class="r4q<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][address]" id="r4qBillingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" /><br>
+                                                            
+                                                        </div>
+                                                    </li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="request-info-td" style="padding-right:10px" width="50%">
+                                                    <li class="li-cus-details">
+                                                        <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingCity"><?php echo $billingRequiredSign; ?><?php echo $this->__('City') ?></label>
+                                                        <!--<div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][city]" id="r4qBillingCity" value="<?php if ($_address) echo $_address->getCity() ?>" /></div>-->
+                                                        <div class="input-box"><input type="text" class="r4q<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][city]" id="r4qBillingCity" value="<?php if ($_address) echo $_address->getCity() ?>" /></div>
+                                                    </li>
+                                                </td>
+                        
+                                                <td style="padding-right:10px" width="50%" class="request-info-td">
+                                                    <li class="li-cus-details">
+                                                        <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingPostcode"><?php echo $billingRequiredSign; ?><?php echo $this->__('Zip/Postal Code') ?></label>
+                                                        <!--<div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?> <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?> validate-pincode maximum-length-6 minimum-length-6 validate-digits" name="r4q[billing][postcode]" id="r4qBillingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>-->
+                                                        <div class="input-box"><input type="text" class="r4q<?php echo $this->getBillingRequiredEntryClass(); ?> <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?> validate-pincode maximum-length-6 minimum-length-6 validate-digits" name="r4q[billing][postcode]" id="r4qBillingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>
+                                                    </li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="25%" style="padding-right:10px" class="request-info-td">
+                                                    <li class="li-cus-details" style="margin-top: -10px"><!--onkar made margin in minus for adjustment-->
+                                                        <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingCountry"><?php echo $billingRequiredSign; ?><?php echo $this->__('Country') ?></label>
+                                                        <div class="r4q-selectCountry"><?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect($this->getEstimateCountryId(), 'r4q[billing][country]', 'r4qBillingCountry') ?></div>
+                                                    </li>
+                                                </td>
+                        
+                                                <td style="padding-right:10px" class="request-info-td">
+                                                    <li class="li-cus-details">
+                                                        <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingRegionId"><?php echo $billingRequiredSign; ?><?php echo $this->__(' State/Province ') ?></label>
+                                                        <div class="input-box">
+                                                            <select id="r4qBillingRegionId" name="r4q[billing][region_id]"  title="<?php echo $this->__('State/Province') ?>" style="display:none;" class="r4q-select">
+                                                                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                                                            </select>
+                                                            <script type="text/javascript">
+                                                                //<![CDATA[
+                                                                if( $('region_id')) {
+                                                                    $('region_id').setAttribute('defaultValue', "<?php echo $this->getEstimateRegionId() ?>");
+                                                                }
+                                                                //]]>
+                                                            </script>
+                                                            <input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][region]" id="r4qBillingRegion" value="<?php if ($_address) echo $this->escapeHtml($_address->getRegion()) ?>" style="display:none;" />
+                                                        </div>
+                                                    </li>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <?php if ($this->canShowShippingAddress()): ?>
+                                            <li class="li-cus-details">
+                                                <label for="shipping_same_as_billing" class="no-float"><?php echo Mage::helper('sales')->__('Use Same Address For Shipping') ?>
+                                                    <!--<div class="input-box">--><input type="checkbox" checked="checked" id="shipping_same_as_billing" name="r4q[billing][shipping_same_as_billing]" onchange="Element.toggle(Element.down(document, '.cart-rf4-shipping'))"/></div>
+                                            </li>
+                                        <?php endif; ?>
+                                    </ul>
+                                </div>
+                                
+                            <?php endif; ?>
+                        </td>
+                    
+                    </tr>
+                </table>
             <?php if ($this->canShowShippingAddress()): ?>
                 <div class="cart-rf4-shipping" style="<?php echo $this->canShowBillingAddress() ? 'display:none' : '' ?>">
                     <h2><?php echo $this->__('Shipping details') ?></h2>
@@ -208,27 +269,38 @@ $_address = $this->getShippingAddress();
                             <label for="r4qShippingCompany"><?php echo $this->__('Company') ?></label>
                             <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[shipping][company]" id="r4qShippingCompany" value="<?php if ($_address) echo $_address->getCompany() ?>" /></div>
                         </li> */ ?>
+                        <table border="0">
+                        </tr>
+                        <td rowspan="2" style="padding-right:10px">
                         <li>
                             <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingAddress"><?php echo $shippingRequiredSign; ?><?php echo $this->__('Address') ?></label>
-                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][address]" id="r4qShippingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" /></div>
+                            <div class="input-box"><textarea type="text" class="r4q-remark<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][address]" id="r4qShippingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>"></textarea> </div>
                         </li>
+                        </td>
+                        <td style="padding-right:10px">
                         <li>
                             <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingCity"><?php echo $shippingRequiredSign; ?><?php echo $this->__('City') ?></label>
-                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][city]" id="r4qShippingCity" value="<?php if ($_address) echo $_address->getCity() ?>" /></div>
+                    
+                            <div class="input-box"><input type="text" class="r4q<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][city]" id="r4qShippingCity" value="<?php if ($_address) echo $_address->getCity() ?>" /></div>
                         </li>
+                        </td>
+                        <td style="padding-right:10px">
                         <li>
                             <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingPostcode"><?php echo $shippingRequiredSign; ?><?php echo $this->__('Zip/Postal Code') ?></label>
-                            <div class="input-box"><input type="text" class="input-text<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][postcode]" id="r4qShippingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>
+                            <div class="input-box"><input type="text" class="r4q<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][postcode]" id="r4qShippingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>
                         </li>
+                        </td>
+                        <td style="padding-right:10px" width="25%">
                         <li>
                             <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingCountry"><?php echo $shippingRequiredSign; ?><?php echo $this->__('Country') ?></label>
-                            <div class="input-box"><?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect($this->getEstimateCountryId(), 'r4q[shipping][country]', 'r4qShippingCountry') ?></div>
+                            <div class="r4q-selectCountry"><?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect($this->getEstimateCountryId(), 'r4q[shipping][country]', 'r4qShippingCountry') ?></div>
                         </li>
+                        </td>
+                        <td style="padding-right:10px">
                         <li>
-                            <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingRegionId"><?php echo $shippingRequiredSign; ?><?php echo $this->__(' State/Province
-        ') ?></label>
+                            <label class="<?php echo $this->getShippingRequiredClass(); ?>" for="r4qShippingRegionId"><?php echo $shippingRequiredSign; ?><?php echo $this->__(' State/Province') ?></label>
                             <div class="input-box">
-                                <select id="r4qShippingRegionId" name="r4q[shipping][region_id]" title="<?php echo $this->__('State/Province') ?>" style="display:none;" class="validate-select">
+                                <select id="r4qShippingRegionId" name="r4q[shipping][region_id]" title="<?php echo $this->__('State/Province') ?>" style="display:none;" class="r4q-select">
                                     <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
                                 </select>
                                 <script type="text/javascript">
@@ -241,12 +313,19 @@ $_address = $this->getShippingAddress();
                                 <input type="text" class="input-text<?php echo $this->getShippingRequiredEntryClass(); ?>" name="r4q[shipping][region]" id="r4qShippingRegion" value="<?php if ($_address) echo $this->escapeHtml($_address->getRegion()) ?>" style="display:none;" />
                             </div>
                         </li>
+                        </td>
+                        </tr>
+                        </table>
                     </ul>
                 </div>
             <?php endif; ?>
         </div>
+                </ul>
+            </div>
         <div class="r4q-actions">
-            <button type="button" value="proceed" title="<?php echo $this->__('Submit Quote Request') ?>" class="button btn-proceed-checkout btn-checkout" onclick="r4qForm.submit(this);"><span><span><?php echo $this->__('Submit Quote Request') ?></span></span></button>
+            <!--<button type="button" value="proceed" title="<?php echo $this->__('Submit Quote Request') ?>" class="button btn-proceed-checkout btn-checkout" onclick="r4qForm.submit(this);"><span><span><?php echo $this->__('Submit Quote Request') ?></span></span></button>-->
+
+            <button type="button" style="color: blue" value="proceed" title="<?php echo $this->__('Submit Quote Request') ?>" class="btn-quote-request" onclick="r4qForm.submit(this);"><span><span><?php echo $this->__('Submit Quote Request') ?></span></span></button>
         </div>
 </div>
 <script type="text/javascript">

@@ -1,4 +1,4 @@
-<?php
+<?php 
     $store = Mage::app()->getStore();
     $code  = $store->getCode();
     
@@ -23,7 +23,7 @@
 
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 
-<?php if($this->isContentMode()): ?>
+<?php if($this->isContentMode()): ?>subcategory
     <?php echo $this->getCmsBlockHtml() ?>
     <?php // Vinu changes to add subcategories block to category view page ?>
     <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/category/subcategory.phtml')->toHtml(); ?>

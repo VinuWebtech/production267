@@ -77,9 +77,9 @@
 
     <checkout_cart_index translate="label">
         <reference name="content">
-            <block type="request4quote/navigation" name="r4q.navigation" template="request4quote/navigation.phtml" before="-">
+            <!--<block type="request4quote/navigation" name="r4q.navigation" template="request4quote/navigation.phtml" before="-">
                 <action method="setActiveItem"><value>cart</value></action>
-            </block>
+            </block>--> <!--onkar-->
         </reference>
     </checkout_cart_index>
     

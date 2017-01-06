@@ -91,7 +91,7 @@ if($enable_addtocart_sticky){
 						<p class="availability in-stock"><span>(<?php echo $this->__('In stock') ?>)</span></p>
 					<?php else: ?>
 						<p class="availability out-of-stock"><span>(<?php echo $this->__('Out of stock') ?>)</span></p>
-					<?php endif; ?>
+					<?php endif; ?>    
                 </div>
                 <?php if($_product->isSaleable()): ?>
                 <?php $buttonTitle = $this->__('Add to Cart'); ?>
@@ -105,10 +105,12 @@ if($enable_addtocart_sticky){
 }
 ?>
         <div class="row product-page-options-block">
-            <div class="product-img-box col-sm-5">
+            <!--<div class="product-img-box col-sm-5"> onkar-->
+            <div class="product-img-box col-md-5">
                 <?php echo $this->getChildHtml('media') ?>
             </div>
-            <div class="product-shop col-sm-7">
+            <!--<div class="product-shop col-sm-7"> onkar-->
+            <div class="product-shop col-md-7">
             <?php
                 if (Mage::getStoreConfig("porto_settings/product_view/prev_next",$code)){
             ?>
@@ -178,25 +180,36 @@ if($enable_addtocart_sticky){
                             <?php if(count($featuresTable) > 1) { ?>
                                 <div class="features">
                                     <div class="subHeading">Features</div>
-                                    <ul>
+                                      <ul>
                                         <?php 
                                         for ($i=1; $i < 6; $i++) { 
+                                         
+
                                             $featureRow = explode('*yyy*', $featuresTable[$i]);
                                             if ($featureRow[0] == '') {
                                                 break;
-                                            }else{
-                                                echo "<li><span>".$featureRow[0]."</span> : ".$featureRow[1]."</li>";
-                                            } 
+                                            }
+                                            else{   /*onkar*/
+                                                echo "<li><div class=row><span class=prop>".$featureRow[0]."</span>"."<span class=propDetails> : ".$featureRow[1]."</span></div></li>";
+                                            }
+                                                  
                                         }
                                         ?>
                                         <?php if(count($featuresTable) > 6) { ?>
                                             <a class="more" href="#Features_Link_From_Top" rel="noindex">More Details</a>
                                         <?php } ?>
-                                    </ul>
+                                    </ul> 
                                 </div>
                             <?php } ?>
                             <!--Vinu changes end for addition of features block-->
                             <div class="product-info">
+                                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                                    <?php echo $this->getChildChildHtml('container2', '', true, false) ?>
+                                <?php endif;?>
+                    
+                                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                                    <?php echo $this->getChildChildHtml('container1', '', true, false) ?>
+                                <?php endif;?>
                                 
                                 <div <?php if($enabled_richsnippets) echo $helper_richsnippets->getOfferItemscope(); ?>>
                                     <?php echo $this->getChildHtml('product_type_data'); ?>
@@ -232,7 +245,14 @@ if($enable_addtocart_sticky){
                                 <!-- Vinu changes for adding mrp price display only if value is present for product & percentage discount calculation -->
                                 <?php if($_product->getR4q_enabled() && !$_product->getR4q_order_disabled()) :?>
                                     <?php if($_product->getMrp_price()!= ''): ?>
-                                        <?php echo $this->__('MRP : '); ?><span class="mrp-price view-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
+
+          <span class="mrp" font-weight:bold><?php echo $this->__('MRP :');?></span> <span class="mrp-price view-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>   <!--onkar-->
+
+
+                           <?php /* <?php echo $this->__('MRP : '); ?><span class="mrp-price view-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
+                            onkar*/?>
+
+
                                     <?php endif; ?>
                                     <?php 
                                         $MrpPrice = $_product->getMrp_price();
@@ -242,11 +262,16 @@ if($enable_addtocart_sticky){
                                             $percentage = round(($MrpPrice - $MainPrice) * 100 / $MrpPrice);
                                         }
 
-                                        if ($percentage) { echo $this->__('(%s', $percentage . '% off)'); } 
+                                      /*  if ($percentage) { echo $this->__('(%s', $percentage . '% off)'); } */ 
+/*onkar*/
+                                        if($percentage)  { echo
+                                      "<span class=discount>(".$this->__('%s',$percentage. '%off)')."</span>"; }
+                                       
                                     ?>
                                 <?php elseif(!$_product->getR4q_enabled()) :?>
                                     <?php if($_product->getMrp_price()!= ''): ?>
-                                        <?php echo $this->__('MRP : '); ?><span class="mrp-price view-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
+                                        <span class="mrp" style="font-weight:bold"><?php echo $this->__('MRP :');?></span> <span class="mrp-price view-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
+                                        <!--onkar-->
                                     <?php endif; ?>
                                     <?php 
                                         $MrpPrice = $_product->getMrp_price();
@@ -256,16 +281,24 @@ if($enable_addtocart_sticky){
                                             $percentage = round(($MrpPrice - $MainPrice) * 100 / $MrpPrice);
                                         }
 
-                                        if ($percentage) { echo $this->__('(%s', $percentage . '% off)'); } 
+                                       /* if ($percentage) { echo $this->__('(%s', $percentage . '% off)'); } */
+/*onkar*/
+                                      if($percentage)  { echo
+                                       "<span class=discount>(".$this->__('%s',$percentage. '%off)')."</span>"; }
+                                   
+
+
                                     ?> 
                                 <?php endif; ?>
                                 <!-- Vinu changes end for mrp & discount percentage display-->
                                 <!-- Vinu changes to display price in right side -->
-                                <div <?php if($enabled_richsnippets) echo $helper_richsnippets->getOfferItemscope(); ?>>
+                                <div class="final-price"> <?php/*onkar*/?><?php if($enabled_richsnippets) echo $helper_richsnippets->getOfferItemscope(); ?>
                                     <?php if($_product->getR4q_enabled() && !$_product->getR4q_order_disabled()) :?>
-                                        <?php echo $this->__('Price : '); ?>
-                                    <?php elseif(!$_product->getR4q_enabled()) :?>
-                                        <?php echo $this->__('Price : '); ?>
+                                       
+                                       <span class="price" style="font-weight:bold"> <?php echo $this->__('Price : '); ?> </span> <!--onkar-->
+
+                                   <?php elseif(!$_product->getR4q_enabled()) :?>
+                                        <span class="price" style="font-weight:bold"><?php echo $this->__('Price : '); ?></span> <!--onkar-->
                                     <?php endif; ?>
                                     <?php echo $this->getPriceHtml($_product) ?>
                                     <?php echo $this->getTierPriceHtml(); ?>
@@ -295,12 +328,7 @@ if($enable_addtocart_sticky){
                     </div>
                     <!-- Vinu changes end to display product data with some part to right -->
 
-                    <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                        <?php echo $this->getChildChildHtml('container2', '', true, false) ?>
-                    <?php endif;?>
-                    <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                        <?php echo $this->getChildChildHtml('container1', '', true, false) ?>
-                    <?php endif;?>
+                    
                 
                 <!--changes start commenting out to remove display on frontend-->
                 <!--?php echo $this->getChildHtml('smartwave_sharetool'); ?>-->
@@ -579,7 +607,7 @@ if($enable_addtocart_sticky){
 
     <!-- Vinu changes to link more button on click to specifications from features block at top -->
     <a id="Features_Link_From_Top">
-        <div class="product-collateral">
+        <div class="product-collateral" style="padding-top: 0px; margin-top: 0px;"> <!--onkar-->
             <!-- Vinu changes to Description display to show it outside tabs (commented out for now) -->
             <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
                 <div class="box-collateral <?php echo "box-{$alias}"?>">
@@ -594,7 +622,7 @@ if($enable_addtocart_sticky){
             <?php if ($_product->getShortDescription()):?>
                 <div class="short-description">
                     <h2><?php echo $this->__('Quick Overview') ?></h2>
-                    <div class="std" <?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    <div class="std"><?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                 </div>
             <?php endif;?>
             <!-- Vinu changes end to display short desciprion -->

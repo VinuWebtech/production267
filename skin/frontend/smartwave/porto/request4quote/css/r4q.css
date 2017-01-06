@@ -19,44 +19,70 @@
     width:100% !important;
 }
 .r4q-item-remark {
-    width: 98%;
+    /*width: 98%; onkar*/
+    width: 230px;
+    height: 50px;
 }
 .form-list .r4q-remark {
-    width: 98%;
-}
-.cart-rf4-details{
-    width:48%;
-    float:left;
+    /*width: 98%;*/
+    width:340px;
+    height: 74px;
 }
 
-.cart-rf4-details .form-list .input-box {
+/*.cart-rf4-details .form-list .input-box {
     width: auto;
+}*/
+.cart-rf4-details .form-list .r4q-selectCountry {
+    width: 200px;
+}
+
+.cart-rf4-details .form-list .r4q-selectCountry select{/*onkar*/
+    width: 100%;
+    margin: 0px;
+    border-right: 0px;
+    box-shadow: none;
+    border: 0px;
+    border-bottom: 2px solid #bcbaa6;
+    border-radius: 0px;
 }
 .r4q-actions {
     text-align: right;
     clear:both;
     padding:10px;
 }
-.cart-rf4-billing{
-    width:48%;
-    float:right;
-}
-.cart-rf4-shipping {
+/*.cart-rf4-details{
+    width:100%;
     float:left;
-    width:48%;
-}
+}*/
+/*.cart-rf4-billing{
+    width:100%;
+    float:left;
+}*/
+/*.cart-rf4-shipping {
+    float:left;
+    width:100%;
+}*/
 .cart-rf4-details, .cart-rf4-shipping, .cart-rf4-billing {
-    border:1px solid #d0cbc1;
-    background:#fff url(../images/bkg_block-title.gif) 0 0 repeat-x;
-    padding:12px 15px;
-    margin:0 0 18px;
+    /*border:1px solid #d0cbc1;*/
+    /*background:#fff url(../images/bkg_block-title.gif) 0 0 repeat-x;*/
+    /*padding:12px 15px;*/
+    margin:10px;
 }
 .r4q-collaterals {
     margin-left: 300px;
 }
-.cart-rf4-details h2, .cart-rf4-shipping h2, .cart-rf4-billing h2  { background-image: url("../images/i_discount.gif"); background-position:0 0; background-repeat:no-repeat; font:bold 13px/16px Arial, Helvetica, sans-serif; padding:0 0 0 21px; color:#e26703; text-transform:uppercase; }
+.cart-rf4-details h2, .cart-rf4-shipping h2, .cart-rf4-billing h2  {/* background-image: url("../images/i_discount.gif");*/ background-position:0 0; background-repeat:no-repeat; font:bold 13px/16px Arial, Helvetica, sans-serif; padding:0 0 0 21px; color:#e26703; text-transform:uppercase; }
 .r4q-remark {
-    width: 98%;
+    width: 440px;
+    height: 100px;
+    border: 0px;
+    border-radius: 0px;
+    border-bottom: 2px solid #bcbaa6;
+}
+
+.rf4-details-li3{
+    float: left;
+    display: inline-block;
 }
 .r4q-data-table{
     margin-top:1px;
