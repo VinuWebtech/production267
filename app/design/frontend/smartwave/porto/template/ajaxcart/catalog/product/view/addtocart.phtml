@@ -12,9 +12,10 @@
                 </div> 
             </div>
             <!--vinu changes for adding min sale qty display-->
-            <div class="qty-order row"> <!--onkar-->
+            <div class="qty-order row"><center> <!--onkar-->
                 <?php $productQuantity = Mage::getModel("cataloginventory/stock_item")->loadByProduct($_product); ?>
-                <?php echo $this->__('<strong>Min. Order Qty : </strong>').$productQuantity->getMinSaleQty(); ?>
+                <?php echo $this->__('<div><strong>Min. Order Qty : </strong></div><div>').$productQuantity->getMinSaleQty().$this->__('</div>') ?>
+                </center>
             </div>
         <!--vinu changes end for adding min sale qty display-->
         <?php endif; ?>

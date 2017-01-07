@@ -12,10 +12,10 @@
             </div>
         </div>
         <!--vinu changes for adding min sale qty display-->
-        <div class="qty-order">
+        <div class="qty-order"><center>
             <?php $productQuantity = Mage::getModel("cataloginventory/stock_item")->loadByProduct($_product); ?>
-            <?php echo $this->__('<strong>Min. Order Qty : </strong>').$productQuantity->getMinSaleQty(); ?>
-        </div>
+            <?php echo $this->__('<div><strong>Min. Order Qty : </strong></div><div>').$productQuantity->getMinSaleQty().$this->__('</div>')?> <!--onkar -->
+        </center></div>
         <!--vinu changes end for adding min sale qty display-->
         <?php endif; ?>
         <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><i class="icon-cart"></i><?php echo $buttonTitle ?></span></span></button>
