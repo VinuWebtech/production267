@@ -17,12 +17,12 @@
 <!-- shippign information -->
 <div class="col2-set order-info-box">
 	<div class="col-1">
-		<h4><?php echo $this->__('Shipping Address') ?></h4>
-		<address><?php echo $_quote->getShippingAddress()->format('html') ?></address>
+		<h4 style="font-size: 15px; font-weight:bold"><?php echo $this->__('Shipping Address') ?></h4>
+		<address style="font-size: 13px"><?php echo $_quote->getShippingAddress()->format('html') ?></address>
 	</div>
-	<div class="col-2">
-		<h4><?php echo $this->__('Shipping Method') ?></h4>
-		<em><?php echo $this->__('Shipping &amp; Handling price varies. Please select required quantity and checkout online to see applicable price.') ?></em>
+	<div class="col-2"> <!--onkar-->
+		<h4 style="font-size: 15px; font-weight:bold"><?php echo $this->__('Shipping Method') ?></h4>
+		<em style="font-size: 13px"><?php echo $this->__('Shipping &amp; Handling price varies. Please select required quantity and checkout online to see applicable price.') ?></em>
 	</div>
 
 </div>
