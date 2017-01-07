@@ -42,7 +42,7 @@ $_address = $this->getShippingAddress();
 <div class="page-title title-buttons">
     <h1><?php echo $this->__('Request for Quote') ?></h1>
 </div>
-<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php /*echo $this->getMessagesBlock()->getGroupedHtml() */?>  <!--onkar-->
 <?php echo $this->getChildHtml('form_before') ?>
 <form action="<?php echo $this->getUrl('request4quote_front/quote/send') ?>" method="post" id="r4qQuoteForm">
 <fieldset>
