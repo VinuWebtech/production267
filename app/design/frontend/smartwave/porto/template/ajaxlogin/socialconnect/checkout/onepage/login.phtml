@@ -40,7 +40,7 @@
     <?php echo $this->getChildHtml('login_before')?>
     <div class="col-1">
         <h3><?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?><?php echo $this->__('Register or Login') ?><?php else: ?><?php echo $this->__('Register to Create an Account') ?><?php endif; ?></h3>
-        <!--<?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+        <?php /* <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
             <p><?php echo $this->__('Register with us for future convenience:') ?></p>
         <?php else: ?>
             <p><strong><?php echo $this->__('Register and save time!') ?></strong><br />
@@ -49,7 +49,7 @@
                 <li><?php echo $this->__('Fast and easy check out') ?></li>
                 <li><?php echo $this->__('Easy access to your order history and status') ?></li>
             </ul>
-        <?php endif; ?>-->
+        <?php endif; ?> onkar */?>
         <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
             <ul class="form-list">
 
@@ -62,12 +62,13 @@
                 </li>
                 <li id="checkout_register" class="control" style="display:none;">
                     <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" checked/><label for="login:register"><?php echo $this->__('Register') ?></label>
+                    <?php /*
                     <h4><?php echo $this->__('Register and save time!') ?></h4>
                     <p><?php echo $this->__('Register with us for future convenience:') ?></p>
                     <ul class="ul">
                         <li><?php echo $this->__('Fast and easy check out') ?></li>
                         <li><?php echo $this->__('Easy access to your order history and status') ?></li>
-                    </ul>
+                    </ul> onkar */ ?>
                 </li>
                 <li id="login_cntrl" class="control" style="display:none;">
                     <input type="radio" name="checkout_method" id="login:login" value="login" class="radio" />
@@ -84,8 +85,21 @@
 
         <?php else: ?>
             <input type="hidden" name="checkout_method" id="login:register" value="register" checked="checked" />
-        <?php endif; ?>
-        
+        <?php endif; ?> 
+        <div class="buttons-set">
+            <!--onkar <p class="required">&nbsp;</p> -->
+            <?php /* <p class="required"><?php echo $this->__('* Required Fields') ?></p> */ ?>
+            <?php if ($this->getQuote()->isAllowedGuestCheckout()): ?>
+                <button style="float:left" id="onepage-guest-register-button" type="button" class="button" onclick="checkout.setMethod();"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+            <?php elseif ($this->helper('checkout')->isCustomerMustBeLogged()): ?>
+                <button id="onepage-guest-register-button" type="button" class="button" onclick="window.location='<?php echo $this->helper('checkout/url')->getRegistrationUrl();?>'"><span><span><?php echo $this->__('Register') ?></span></span></button>
+            <?php else: ?>
+                <form action="<?php echo $this->getUrl('persistent/index/saveMethod'); ?>">
+                    <button id="onepage-guest-register-button" type="submit" class="button"><span><span><?php echo $this->__('Register') ?></span></span></button>
+                </form>
+            <?php endif; ?>
+    </div>
+
     </div>
     <div class="col-2">
         <div class="sp_login_seprator1">
@@ -97,11 +111,11 @@
         <?php echo $this->getChildHtml('ajaxlogin_checkout');?>
         <h3 class="social-label">Sign up With your Social Account </h3> <!--onkar-->
     </div>
-    <div class="buttons-set">
+    <?php /*<div class="col-1 buttons-set">
             <!--onkar <p class="required">&nbsp;</p> -->
             <p class="required"><?php echo $this->__('* Required Fields') ?></p>
             <?php if ($this->getQuote()->isAllowedGuestCheckout()): ?>
-                <button id="onepage-guest-register-button" type="button" class="button" onclick="checkout.setMethod();"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+                <button style="float:left" id="onepage-guest-register-button" type="button" class="button" onclick="checkout.setMethod();"><span><span><?php echo $this->__('Continue') ?></span></span></button>
             <?php elseif ($this->helper('checkout')->isCustomerMustBeLogged()): ?>
                 <button id="onepage-guest-register-button" type="button" class="button" onclick="window.location='<?php echo $this->helper('checkout/url')->getRegistrationUrl();?>'"><span><span><?php echo $this->__('Register') ?></span></span></button>
             <?php else: ?>
@@ -109,7 +123,7 @@
                     <button id="onepage-guest-register-button" type="submit" class="button"><span><span><?php echo $this->__('Register') ?></span></span></button>
                 </form>
             <?php endif; ?>
-    </div>
+    </div> onkar */ ?>
 </div>
 
 

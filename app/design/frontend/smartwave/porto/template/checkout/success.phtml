@@ -40,7 +40,7 @@
         <p style="font-size:14px"><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p><!--onkar-->
     <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
         <p style="font-size:13px">
-            <?php echo $this->__('Click <a href="%s" style="color:green;" onclick="this.target=\'_blank\'">here</a> to print a copy of your order confirmation.', $this->getPrintUrl()) ?><!--onkar-->
+            <?php echo $this->__('Click <a href="%s" style="color:#08c;" onclick="this.target=\'_blank\'">here</a> to print a copy of your order confirmation.', $this->getPrintUrl()) ?><!--onkar-->
             <?php echo $this->getChildHtml() ?>
         </p>
     <?php endif;?>
