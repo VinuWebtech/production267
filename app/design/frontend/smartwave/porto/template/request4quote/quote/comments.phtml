@@ -21,7 +21,8 @@ $comments = Mage::getModel('request4quote/comments')->getCommentCustomerSide($th
 
     <form action="<?php echo $this->getFormAction() ?>">
         <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
-        <textarea name="comment" rows="3" cols="5" style="height:6em; width:99%;" id="history_comment"></textarea>
+        <textarea name="comment" style="width: 50%;height: 10em;line-height: 1.4;border-radius: 0px;border: 0px;border-bottom: 2px solid #bcbaa6;padding: 10px;box-shadow: none;" id="history_comment">
+        </textarea>
         <input type="hidden" name="quoteid" value="<?php echo $_quote->getId() ?>">
     <br /><br /><button type="submit" class="button r4q-btn-reject"><span><span><?php echo $this->__('Submit Comment') ?></span></span></button></form>
     <?php endif ?>

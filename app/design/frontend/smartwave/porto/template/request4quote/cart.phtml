@@ -39,13 +39,15 @@ $_customer = $this->getCustomer();
 $_address = $this->getShippingAddress();
 ?>
 <div class="cart">
-<div class="page-title title-buttons">
-    <h1><?php echo $this->__('Request for Quote') ?></h1>
+<div class="page-title title-buttons" style="margin:0px">
+    <center><h1 style="margin:0px; color:black"><?php echo $this->__('Request for Quote') ?></h1></center>
 </div>
 <?php /*echo $this->getMessagesBlock()->getGroupedHtml() */?>  <!--onkar-->
 <?php echo $this->getChildHtml('form_before') ?>
 <form action="<?php echo $this->getUrl('request4quote_front/quote/send') ?>" method="post" id="r4qQuoteForm">
-<fieldset>
+<div class="row">
+<!-- <span class="col-md-1"></span> -->
+<fieldset class="col-md-10">
     <table id="shopping-cart-table" class="data-table cart-table">
         <col width="1" />
         <col />
@@ -72,17 +74,20 @@ $_address = $this->getShippingAddress();
         <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
         <thead>
         <tr>
-            <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
-            <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
-            <th rowspan="<?php echo $mergedCells; ?>"></th>
-            <th rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Remarks with product') ?></th>
-            <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
-                <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
-            <?php endif ?>
-            <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Unit Price') ?></span></th>
-            <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
-            <th class="a-center" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th>
-            <th rowspan="<?php echo $mergedCells; ?>" class="a-center">&nbsp;</th>
+            <th rowspan="<?php echo $mergedCells; ?>" style="font-weight:normal">&nbsp;</th>
+            <th rowspan="<?php echo $mergedCells; ?>" style="font-weight:normal"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
+            <?php /* <th rowspan="<?php echo $mergedCells; ?>"></th> onkar */?>
+            <th rowspan="<?php echo $mergedCells; ?>" style="font-weight:normal"><?php echo $this->__('Remarks with product') ?></th>
+            <?php /*
+                <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                <th rowspan="<?php echo $mergedCells; ?>" class="a-center" style="font-weight:normal"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
+                <?php endif ?>
+
+            <?php /* <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Unit Price') ?></span></th> onkar  */?>
+            <th rowspan="<?php echo $mergedCells; ?>" class="a-center" style="font-weight:normal"><?php echo $this->__('Qty') ?></th>
+             <?php/* <th class="a-center" style="font-weight:normal" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th> onkar */?>
+            <?php /* <th rowspan="<?php echo $mergedCells; ?>" class="a-center">&nbsp;</th> onkar */?>
+
         </tr>
         <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
             <tr>
@@ -93,19 +98,21 @@ $_address = $this->getShippingAddress();
             </tr>
         <?php endif; ?>
         </thead>
-        <tfoot>
-        <tr>
-            <td colspan="50" class="a-right">
-                <?php if($this->getContinueShoppingUrl()): ?>
-                    <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
-                <?php endif; ?>
-                <button onclick="r4qForm.submit(this);" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Quote'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Quote'); ?></span></span></button>
-                <button onclick="r4qForm.submit(this);" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Clear Quote'); ?>" class="button btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Clear Quote'); ?></span></span></button>
-                <input type="hidden" id="update_cart_action_container" />
-                <input type="hidden" name="isrfq" value="1"/>
-            </td>
-        </tr>
-        </tfoot>
+        <?php /*
+            <tfoot>
+            <tr>
+                <td colspan="50" class="a-right">
+                    <?php if($this->getContinueShoppingUrl()): ?>
+                        <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+                    <?php endif; ?>
+                    <button onclick="r4qForm.submit(this);" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Quote'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Quote'); ?></span></span></button>
+                    <button onclick="r4qForm.submit(this);" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Clear Quote'); ?>" class="button btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Clear Quote'); ?></span></span></button>
+                    <input type="hidden" id="update_cart_action_container" />
+                    <input type="hidden" name="isrfq" value="1"/>
+                </td>
+            </tr>
+            </tfoot>
+        onkar */?>     
         <tbody>
         <?php foreach($this->getItems() as $_item): ?>
             <?php echo $this->getItemHtml($_item) ?>
@@ -114,11 +121,13 @@ $_address = $this->getShippingAddress();
     </table>
     <script type="text/javascript">decorateTable('shopping-cart-table')</script>
 </fieldset>
+<span class="col-md-2"></span>
+</div>
 <br>
 <div style="width: 100%;">
     <div class="cart-collaterals r4q-collaterals" style="margin: auto !important;" >
         <div class="cart-rf4-details">
-            <h2><?php echo $this->__('Enter your details to get a price proposal') ?></h2>
+            <h2 style="color:black"><?php echo $this->__('Enter your details to get a price proposal') ?></h2>
                 <table border="0" width="100%">         <!--onkar entire table-->
                     <tr>
                         <td class="col-xs-12 col-md-6 request-info-table first-td" width="50%" style="text-align: center">
@@ -130,14 +139,14 @@ $_address = $this->getShippingAddress();
                                             <li class="li-cus-details">
                                                 <label class="required" for="r4qDetailsFirstname"><em>*</em><?php echo $this->__('First Name') ?></label>
                                                 <!--<div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][firstname]" id="r4qDetailsFirstname" value="<?php if ($_address) echo $_address->getFirstname() ?>" /></div>-->
-                                                <div class="input-box"><input type="text" class="r4q" name="r4q[details][firstname]" id="r4qDetailsFirstname" value="<?php if ($_address) echo $_address->getFirstname() ?>" /></div>
+                                                <div class="input-box"><input type="text" class="r4q-only required-entry" name="r4q[details][firstname]" id="r4qDetailsFirstname" value="<?php if ($_address) echo $_address->getFirstname() ?>" /></div> <!--onkar-->
                                             </li>
                                         </td>
                                         <td width="50%" class="request-info-td">
                                             <li class="li-cus-details">
                                                 <label class="required" for="r4qDetailsLastname"><em>*</em><?php echo $this->__('Last Name') ?></label>
                                                 <!--<div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][lastname]" id="r4qDetailsLastname" value="<?php if ($_address) echo $_address->getLastname() ?>" /></div>-->
-                                                <div class="input-box"><input type="text" class="r4q" name="r4q[details][lastname]" id="r4qDetailsLastname" value="<?php if ($_address) echo $_address->getLastname() ?>" /></div>
+                                                <div class="input-box"><input type="text" class="r4q-only required-entry" name="r4q[details][lastname]" id="r4qDetailsLastname" value="<?php if ($_address) echo $_address->getLastname() ?>" /></div><!--onkar-->
                                             </li>
                                         </td>
                                     </tr>
@@ -146,7 +155,7 @@ $_address = $this->getShippingAddress();
                                             <li class="li-cus-details">
                                                 <label class="required" for="r4qDetailsEmail"><em>*</em><?php echo $this->__('Email address') ?></label>
                                                 <!--<div class="input-box"><input type="text" class="input-text validate-email required-entry" name="r4q[details][email]" id="r4qDetailsEmail" value="<?php if ($_customer) echo $_customer->getEmail() ?>" /></div>-->
-                                                <div class="input-box"><input type="text" class="r4q" name="r4q[details][email]" id="r4qDetailsEmail" value="<?php if ($_customer) echo $_customer->getEmail() ?>" />
+                                                <div class="input-box"><input type="text" class="r4q-only validation-emailaddr required-entry validate-email" name="r4q[details][email]" id="r4qDetailsEmail" value="<?php if ($_customer) echo $_customer->getEmail() ?>" /> <!--onkar-->
                                             </li>
                                         </td>
                                         <td width="50%" class="request-info-td">
@@ -156,7 +165,7 @@ $_address = $this->getShippingAddress();
                                                 <?php /* vinu changes for changing landline field to mobile field */ ?>
                                                 <?php /* <div class="input-box"><input type="text" class="input-text required-entry" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div> */ ?>
                                                 <!--<div class="input-box"><input type="text" class="input-text required-entry validate-mobileno validate-egmobileno  validate-digits" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div>-->
-                                                 <div class="input-box"><input type="text" class="r4q" name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div>
+                                                 <div class="input-box"><input type="text" class="r4q-only validate-mobileno validate-egmobileno required-entry validate-digits " name="r4q[details][telephone]" id="r4qDetailsTelephone" value="<?php if ($_address) echo $_address->getTelephone() ?>" /></div><!--onkar-->
                                                 <?php /* vinu changes for changing landline field to mobile field further down in script tag */ ?>
                                             </li>
                                         </td>
@@ -175,8 +184,8 @@ $_address = $this->getShippingAddress();
                         
                         <td class="col-xs-12 col-md-6 request-info-table" width="50%" style="text-align:center">
 
-                            <input type="hidden" value="<?php echo (int) $this->isBillingAddressRequired(); ?>" name="r4q[billing][is_required]" />
-                            <input type="hidden" value="<?php echo (int) $this->isShippingAddressRequired(); ?>" name="r4q[shipping][is_required]" />
+                <?php /*            <input type="hidden" value="<?php echo (int) $this->isBillingAddressRequired(); ?>" name="r4q[billing][is_required]" />
+                            <input type="hidden" value="<?php echo (int) $this->isShippingAddressRequired(); ?>" name="r4q[shipping][is_required]" />  */?>
                             <?php $billingRequiredSign = $this->isBillingAddressRequired() ? '<em>*</em>' : ''; ?>
                             <?php $shippingRequiredSign = $this->isShippingAddressRequired() ? '<em>*</em>' : ''; ?>
                             <?php if ($this->canShowBillingAddress()): ?>
@@ -190,7 +199,7 @@ $_address = $this->getShippingAddress();
                                         </li> */ ?>
                                         <table border="0" width="50%">
                                             <tr>
-                                                <td  class="request-info-td"style="padding-right:10px" colspan="2">
+                                                <td class="request-info-td" style="padding-right:10px" colspan="2">
                                                     <li class="li-cus-details">
                                                         <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingAddress"><?php echo $billingRequiredSign; ?><?php echo $this->__('Address') ?></label>
                                                        <!-- <div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][address]" id="r4qBillingAddress" value="<?php if ($_address) echo $_address->getStreetFull() ?>" /></div>-->
@@ -207,7 +216,7 @@ $_address = $this->getShippingAddress();
                                                     <li class="li-cus-details">
                                                         <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingCity"><?php echo $billingRequiredSign; ?><?php echo $this->__('City') ?></label>
                                                         <!--<div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][city]" id="r4qBillingCity" value="<?php if ($_address) echo $_address->getCity() ?>" /></div>-->
-                                                        <div class="input-box"><input type="text" class="r4q<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][city]" id="r4qBillingCity" value="<?php if ($_address) echo $_address->getCity() ?>" /></div>
+                                                        <div class="input-box"><input type="text" class="r4q-only<?php echo $this->getBillingRequiredEntryClass(); ?>" name="r4q[billing][city]" id="r4qBillingCity" value="<?php if ($_address) echo $_address->getCity() ?>" /></div>
                                                     </li>
                                                 </td>
                         
@@ -215,7 +224,7 @@ $_address = $this->getShippingAddress();
                                                     <li class="li-cus-details">
                                                         <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingPostcode"><?php echo $billingRequiredSign; ?><?php echo $this->__('Zip/Postal Code') ?></label>
                                                         <!--<div class="input-box"><input type="text" class="input-text<?php echo $this->getBillingRequiredEntryClass(); ?> <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?> validate-pincode maximum-length-6 minimum-length-6 validate-digits" name="r4q[billing][postcode]" id="r4qBillingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>-->
-                                                        <div class="input-box"><input type="text" class="r4q<?php echo $this->getBillingRequiredEntryClass(); ?> <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?> validate-pincode maximum-length-6 minimum-length-6 validate-digits" name="r4q[billing][postcode]" id="r4qBillingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>
+                                                        <div class="input-box"><input type="text" class="r4q-only<?php echo $this->getBillingRequiredEntryClass(); ?> <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?> validate-pincode maximum-length-6 minimum-length-6 validate-digits" name="r4q[billing][postcode]" id="r4qBillingPostcode" value="<?php if ($_address) echo $_address->getPostcode() ?>" /></div>
                                                     </li>
                                                 </td>
                                             </tr>
@@ -247,12 +256,12 @@ $_address = $this->getShippingAddress();
                                                 </td>
                                             </tr>
                                         </table>
-                                        <?php if ($this->canShowShippingAddress()): ?>
+                                        <?php /* <?php if ($this->canShowShippingAddress()): ?>
                                             <li class="li-cus-details">
                                                 <label for="shipping_same_as_billing" class="no-float"><?php echo Mage::helper('sales')->__('Use Same Address For Shipping') ?>
                                                     <!--<div class="input-box">--><input type="checkbox" checked="checked" id="shipping_same_as_billing" name="r4q[billing][shipping_same_as_billing]" onchange="Element.toggle(Element.down(document, '.cart-rf4-shipping'))"/></div>
                                             </li>
-                                        <?php endif; ?>
+                                        <?php endif; ?> onkar */?>
                                     </ul>
                                 </div>
                                 
@@ -325,7 +334,7 @@ $_address = $this->getShippingAddress();
         <div class="r4q-actions">
             <!--<button type="button" value="proceed" title="<?php echo $this->__('Submit Quote Request') ?>" class="button btn-proceed-checkout btn-checkout" onclick="r4qForm.submit(this);"><span><span><?php echo $this->__('Submit Quote Request') ?></span></span></button>-->
 
-            <button type="button" style="color: blue" value="proceed" title="<?php echo $this->__('Submit Quote Request') ?>" class="btn-quote-request" onclick="r4qForm.submit(this);"><span><span><?php echo $this->__('Submit Quote Request') ?></span></span></button>
+            <button type="button" style="color: blue" value="proceed" title="<?php echo $this->__('Submit Quote Request') ?>" class="button" onclick="r4qForm.submit(this);"><span><span><?php echo $this->__('Submit Quote Request') ?></span></span></button> <!--onkar changed the class to button ..from "btn-quote-request" -->
         </div>
 </div>
 <script type="text/javascript">
@@ -415,6 +424,15 @@ $_address = $this->getShippingAddress();
 
 <script type="text/javascript">
     //<![CDATA[
+    if(Validation) {
+        Validation.addAllThese([
+            ['validation-emailaddr', 'Please enter a valid email address. For example abc@mail.com.', function (v) {
+                        //return Validation.get('IsEmpty').test(v) || /\w{1,}[@][\w\-]{1,}([.]([\w\-]{1,})){1,3}$/.test(v)
+                        //return Validation.get('IsEmpty').test(v) || /^[\!\#$%\*/?|\^\{\}`~&\'\+\-=_a-z0-9][\!\#$%\*/?|\^\{\}`~&\'\+\-=_a-z0-9\.]{1,30}[\!\#$%\*/?|\^\{\}`~&\'\+\-=_a-z0-9]@([a-z0-9_-]{1,30}\.){1,5}[a-z]{2,4}$/i.test(v)
+                        return Validation.get('IsEmpty').test(v) || /^([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*@([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*\.(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]){2,})$/i.test(v)
+                    }],
+        ])
+    };
     var r4qForm = new VarienForm('r4qQuoteForm');
     r4qForm.submit = function(button) {
         if(button.readAttribute('value') == 'proceed'){

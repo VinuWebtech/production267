@@ -10,16 +10,32 @@
 <div class="page-title">
     <h1><?php echo $this->__('Quote Request %s', $_quote->getId()) ?></h1>
 </div>
+<span style="margin-bottom:10px"> <!--onkar-->
+                <?php if(Mage::helper('request4quote')->enabledShowRegularPrice()):?>
+                <?php else: ?>
+                <?php endif; ?>
+                <strong><?php echo $this->__('Quote status:') ?></strong>
+                <?php echo $this->__($_quote->getStatusLabel($_quote->getR4qStatus())) ?>
+        </span>
 
-<p class="order-date"><?php echo $this->__('Quote Request Date: %s', $this->formatDate($_quote->getCreatedAt(), 'long')) ?></p>
+<p class="order-date"><?php echo $this->__('Quote Request Date: %s', $this->formatDate($_quote->getCreatedAt(), 'long')) ?> </p>
+
+<span style="margin-bottom:10px"> <!--onkar-->
+                <?php if(Mage::helper('request4quote')->enabledShowRegularPrice()):?>
+                <?php else: ?>
+                <?php endif; ?>
+                <strong style="font-size:14px; line-height:10%"><?php echo $this->__('Quote status:') ?></strong>
+                <?php echo $this->__($_quote->getStatusLabel($_quote->getR4qStatus())) ?>
+        </span>
 
 
 <!-- shippign information -->
-<div class="col2-set order-info-box">
+<div class="col2-set order-info-box" style="padding-top:10px">
 	<div class="col-1">
 		<h4 style="font-size: 15px; font-weight:bold"><?php echo $this->__('Shipping Address') ?></h4>
 		<address style="font-size: 13px"><?php echo $_quote->getShippingAddress()->format('html') ?></address>
 	</div>
+	<div style="float:left; height:100px; width:2px; background-color:black"></div>
 	<div class="col-2"> <!--onkar-->
 		<h4 style="font-size: 15px; font-weight:bold"><?php echo $this->__('Shipping Method') ?></h4>
 		<em style="font-size: 13px"><?php echo $this->__('Shipping &amp; Handling price varies. Please select required quantity and checkout online to see applicable price.') ?></em>
