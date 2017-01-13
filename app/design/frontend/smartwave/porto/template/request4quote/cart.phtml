@@ -48,7 +48,7 @@ $_address = $this->getShippingAddress();
 <div class="row">
 <!-- <span class="col-md-1"></span> -->
 <fieldset class="col-md-10">
-    <table id="shopping-cart-table" class="data-table cart-table">
+    <table id="shopping-cart-table" class="data-table cart-table" style="border-collapse: collapse;">
         <col width="1" />
         <col />
         <col width="1" />
@@ -73,7 +73,7 @@ $_address = $this->getShippingAddress();
 
         <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
         <thead>
-        <tr>
+        <tr >
             <th rowspan="<?php echo $mergedCells; ?>" style="font-weight:normal">&nbsp;</th>
             <th rowspan="<?php echo $mergedCells; ?>" style="font-weight:normal"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
             <?php /* <th rowspan="<?php echo $mergedCells; ?>"></th> onkar */?>
@@ -81,11 +81,12 @@ $_address = $this->getShippingAddress();
             <?php /*
                 <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
                 <th rowspan="<?php echo $mergedCells; ?>" class="a-center" style="font-weight:normal"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
-                <?php endif ?>
+                <?php endif ?> 
+            */ ?>
 
             <?php /* <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Unit Price') ?></span></th> onkar  */?>
             <th rowspan="<?php echo $mergedCells; ?>" class="a-center" style="font-weight:normal"><?php echo $this->__('Qty') ?></th>
-             <?php/* <th class="a-center" style="font-weight:normal" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th> onkar */?>
+             <?php /* <th class="a-center" style="font-weight:normal" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th> onkar */?>
             <?php /* <th rowspan="<?php echo $mergedCells; ?>" class="a-center">&nbsp;</th> onkar */?>
 
         </tr>
