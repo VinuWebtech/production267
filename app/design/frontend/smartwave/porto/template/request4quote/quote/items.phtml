@@ -25,7 +25,7 @@
  */
 ?>
 <?php  $_quote = $this->getQuote() ?>
-<table class="data-table" id="my-orders-table" summary="<?php echo $this->__('Items Ordered') ?>">
+<table class="data-table" id="my-orders-table" summary="<?php echo $this->__('Items Ordered') ?>" style="border-collapse:collapse">
     <col width="50%" />
     <col />
     <col width="1" />
@@ -56,6 +56,11 @@
             <?php echo $this->getItemHtml($_item) ?>
         </tbody>
         <?php endforeach; ?>
+        <tfoot style="margin-bottom:10px">
+        <?php if(Mage::helper('request4quote')->showPricesandConfirm($_quote->getR4qStatus())) echo $this->getChildHtml('totals') ?>
+        </tfoot>
+</table>
+<?php /*<table>
         <tbody>
             <tr>
                 <td <?php if(Mage::helper('request4quote')->enabledShowRegularPrice()):?>
@@ -68,8 +73,11 @@
                 </td>
             </tr>
         </tbody>
+</table> */ ?> <!--onkar-->
+
+<?php /*<table class="data-table" id="my-orders-table" style="width:50%; padding:10px"><!--onkar-->
         <tfoot>
         <?php if(Mage::helper('request4quote')->showPricesandConfirm($_quote->getR4qStatus())) echo $this->getChildHtml('totals') ?>
         </tfoot>
-</table>
+</table> */ ?>
 <script type="text/javascript">decorateTable('my-orders-table', {'tbody' : ['odd', 'even'], 'tbody tr' : ['first', 'last']})</script>

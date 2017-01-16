@@ -8,10 +8,11 @@
 </default>
 <catalog_product_view>
 		 <reference name="alert.urls">
-			 <block type="core/template" name="checkcode"   after="upsell_products"> 
+			 <block type="core/template" name="checkproductsalestatus"   after="upsell_products"> 
                 <action method="setTemplate" >
                     <template>productrestriction/productrestriction.phtml</template> 
                 </action>
+                <block type="core/template" name="checkcode" template="productrestriction/productrestriction/productrestriction.phtml"/>
 			</block> 
 		 </reference>
 	</catalog_product_view>

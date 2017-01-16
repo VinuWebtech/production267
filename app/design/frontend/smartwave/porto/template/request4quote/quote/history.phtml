@@ -6,12 +6,12 @@
 <?php echo $this->getPagerHtml(); ?>
 <?php if($_quotes->getSize()): ?>
 <table class="data-table" id="my-quotes-table">
-    <col width="1" />
-    <col width="1" />
+    <col /> <!--onkar removed width="1"-->
+    <col /> <!--onkar removed width="1"-->
     <col />
-    <col width="1" />
-    <col width="1" />
-    <col width="1" />
+    <col /> <!--onkar removed width="1"-->
+    <col /> <!--onkar removed width="1"-->
+    <col /> <!--onkar removed width="1"-->
     <thead>
         <tr>
             <th><?php echo $this->__('Quote #') ?></th>
@@ -23,19 +23,19 @@
     <tbody>
         <?php $_odd = ''; ?>
         <?php foreach ($_quotes as $_quote): ?>
-        <tr>
-            <td><?php echo $_quote->getId() ?></td>
-            <td><span class="nobr"><?php echo $this->formatDate($_quote->getCreatedAt()) ?></span></td>
-            <td><em><?php echo $this->__($_quote->getStatusLabel($_quote->getR4qStatus())) ?></em></td>
-            <td class="a-center">
-                <span class="nobr"><a href="<?php echo $this->getViewUrl($_quote) ?>"><?php echo $this->__('View Quote Request') ?></a></span>
+        <tr>    <!--onkar removed border from td-->
+            <td style="font-size:14px;border: none;"><?php echo $_quote->getId() ?></td>
+            <td style="font-size:14px;border: none;"><span class="nobr"><?php echo $this->formatDate($_quote->getCreatedAt()) ?></span></td>
+            <td style="font-size:14px;border: none;"><em><?php echo $this->__($_quote->getStatusLabel($_quote->getR4qStatus())) ?></em></td>
+            <td class="a-center" style="font-size:14px;border: none;">
+                <span class="nobr" ><a href="<?php echo $this->getViewUrl($_quote) ?>"><?php echo $this->__('View Quote Request') ?></a></span>
             </td>
         </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
 <script type="text/javascript">decorateTable('my-quotes-table');</script>
-<?php echo $this->getPagerHtml(); ?>
+
 <?php else: ?>
     <p><?php echo $this->__('You have placed no quote requests.'); ?></p>
 <?php endif ?>

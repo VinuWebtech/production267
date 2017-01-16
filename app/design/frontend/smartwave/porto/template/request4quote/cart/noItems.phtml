@@ -30,5 +30,6 @@
 <div class="cart-empty">
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <p><?php echo $this->__('No Items to display.') ?></p>
-    <p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', $this->getContinueShoppingUrl()) ?></p>
+    <?php /*<p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', $this->getContinueShoppingUrl()) ?></p> */ ?>
+    <p>Click <a href="<?php echo Mage::getBaseUrl(); ?>">here</a> to continue shopping.</p>
 </div>
