@@ -7,11 +7,15 @@
 <?php if(!$_productCollection->count()): ?>
     <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
 <?php else: ?>
-    <div id="filter-products" class="owl-carousel owl-theme filter-products">
+    <?php /*<div id="filter-products" class="owl-carousel owl-theme filter-products">*/ ?>
+    <div id="filter-products" class="filter-products">
         <?php $_collectionSize = $_productCollection->count() ?>
         <!--<div class="products small-list">-->
             <?php $i=0; foreach ($_productCollection as $_product): ?>
+            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+            
                 <div class="bestseller-item"> <!--onkar-->
+
                     <div class="item-area">
                         <!-- Vinu changes adding wishlist at the top & also changing icon of wishlist in the box -->
                         <!--<?php if ($this->helper('wishlist')->isAllow()) : ?>
@@ -98,6 +102,7 @@
                         </div>
                         <div class="clearer"></div>
                     </div>
+
                 </div>
             <?php endforeach ?>
         </div>
@@ -108,18 +113,24 @@
                 navigation : true, // Show next and prev buttons
                 slideSpeed : 300,
                 paginationSpeed : 400,
+                //items : 3,
                 //singleItem:true,
                 pagination:false,
                 stopOnHover: true,
                 rewindNav: true,
                 rewindSpeed: 400,
-                autoPlay: true,
+                //autoPlay: true,
                 <?php if (!Mage::getStoreConfig("porto_settings/general/rtl",$code)) : ?>
                     navigationText:["<i class='icon-left-open'></i>","<i class='icon-right-open'></i>"]
                 <?php else : ?>
                     navigationText:["<i class='icon-right-open'></i>","<i class='icon-left-open'></i>"]
                 <?php endif; ?>
             });
+        });
+        $(document).ready(function(){
+            if($(window).width()<400){
+                $(".bestseller-item").wrap("<center></center>");
+            }
         });
     </script>
 <?php endif; ?>
