@@ -517,7 +517,7 @@ tr.summary-details-excluded{font-style:italic}
 .header .form-search #search{border:0;height:38px;background-color:transparent;padding:10px 15px;color:#999;font-family:Arial;width:100%;margin:0;font-size:13px;line-height:20px;border-radius:20px 0 0 20px}
 .header .form-search #cat{margin:0;width:130px;height:38px;background-color:transparent;border:1px solid #ccc;border-top:0;border-bottom:0;font-family:Arial;font-size:13px;color:#777;padding:2px 0;padding-left:10px;position:absolute;right:40px;border-radius:0;-moz-appearance:none;-webkit-appearance:none}
 .header .form-search #cat option{color:#000;background:#fff}
-.header .form-search button.button{width:40px;height:38px;color:#777;background-color:transparent;font-size:14px;position:absolute;right:0;top:0;border-radius:0 20px 20px 0}
+.header .form-search button.button{width:40px;height:38px;color:#777;background-color:transparent;font-size:14px;position:absolute;right:0;top:0;/*border-radius:0 20px 20px 0*/color: #fff;}
 .header .form-search .search-autocomplete{z-index:999}
 .header .form-search .search-autocomplete ul{border:1px solid #ddd;background-color:#fff}
 .header .form-search .search-autocomplete li{text-align:left;padding:5px 10px;cursor:pointer;color:#777}
@@ -1175,9 +1175,12 @@ div.star-rating a{transition:initial}
 .product-tabs>ul {position:relative;bottom:-1px}
 .product-tabs>ul li{padding:10px 15px;float:left;border:1px solid #eee;border-width:3px 1px 0 1px;border-radius:5px 5px 0 0;margin-right:1px;background-color:#f4f4f4}
 .product-tabs>ul li a{color:#08c;font-size:16px ;line-height:1}/*onkar*/
+@media (max-width: 371px){
+	.product-tabs>ul li a{color:#08c;font-size:14px ;line-height:1}/*onkar*/
+}
 .product-tabs>ul li.active a{}
 .product-tabs>ul li.active{background-color:#fff;border-top-color:#08c}
-.product-tabs .tab-content{padding:37px 15px;border:1px solid #eee;min-height:200px;border-radius:0 0 3px 3px;box-shadow:0 1px 2px #eee;background-color:#fff}
+.product-tabs .tab-content{padding:37px 15px;border:1px solid #eee;min-height:200px;border-radius:0 0 3px 3px;box-shadow:0 1px 2px #eee;background-color:#fff; padding-top: 10px}
 .product-tabs .tab-content >h2{display:none}
 .box-tags >h2{display:none}
 
@@ -2006,6 +2009,11 @@ li.etalage_small_thumbs{margin-top:8px;top:100%}
 #totop:hover{background-color:#555}
 
 .footer .social-icons{float:left}
+@media (max-width: 399px){
+	.footer .social-icons {
+    	float: none;
+	}
+}
 .social-icons a:first-child{margin:0}
 .footer .social-icons a{background-color:#9e9e9e;border-radius:50%}
 .footer .social-icons a.icon1-class:hover{background-color:#3c599b}
@@ -2394,7 +2402,7 @@ h2.sidebar-title{margin-bottom:20px;font-size:16px;font-weight:bold;text-transfo
 .slide .product .add_to_cart_button{display:inline-block;margin:15px 0}
 div.filter-title,h2.filter-title{background:url(../images/slider-bar.png) right no-repeat;font-size:16px;font-weight:300;line-height:42px;margin:0;color:#313131;text-transform:uppercase;text-align:left}
 div.filter-title .content,h2.filter-title .content{background-color:#fff;padding-right:20px;display:inline}
-p.filter-title,h3.filter-title{background:url(../images/slider-bar.png) right no-repeat;font-size:1.7em;font-weight:400;line-height:24px;margin:0 0 32px 0;color:#08c}
+p.filter-title,h3.filter-title{background:url(../images/slider-bar.png) right no-repeat;font-size:1.7em;font-weight:400;/*line-height:24px;*/margin:0 0 32px 0;color:#08c}
 p.filter-title .content,h3.filter-title .content{background-color:#fff;padding-right:20px}
 
 .filterproducts-tab .filter-title ul{list-style:none;padding:0;padding-right:20px}
@@ -3250,3 +3258,10 @@ ol#products-list .bottom-home-dailydeal ul.time-left li span.text-time{font-size
 .quickview-index-view .product-collateral{display:none}
 .store-switcher{text-align:right}
 .store-switcher:before{content:"";display:block;clear:both}
+
+@media (max-width: 991px){
+	.cart .cart-table-wrap{
+		margin-bottom: 0px;
+		padding-bottom: 5px;
+	}
+}

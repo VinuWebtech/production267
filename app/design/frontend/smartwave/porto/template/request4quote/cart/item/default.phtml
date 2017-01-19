@@ -84,7 +84,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif ?>
     </td> onkar */?>
     <td class="a-left" style="border-bottom:0px">
-        <textarea name="r4q[item][<?php echo $_item->getId() ?>][remark]" rows="2" class="r4q-item-remark" width="230px" height="50px"></textarea> <!--onkar-->
+        <textarea name="r4q[item][<?php echo $_item->getId() ?>][remark]" rows="2" class="r4q-item-remark" width="230px" height="50px" placeholder=""></textarea> <!--onkar-->
     </td>
     <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
     <?php /* <td class="a-center" style="border-bottom:0px">
@@ -202,6 +202,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     <?php endif; ?>          
     */ ?>   <!--onkar-->
     <td class="a-center" style="border-bottom:0px">
+    <span class="qty-responsive">Qty</span>
         <input name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
     </td>
     <?php if (($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()) && !$_item->getNoSubtotal()): ?>
@@ -314,4 +315,9 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                     }],
         ])
     };
+    $(document).ready(function(){
+    if ($(window).width()<1200){
+        $(".a-left").attr("placeholder","Enter Product Review");
+    }
+    });
 </script>
