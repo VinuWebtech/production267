@@ -67,7 +67,7 @@
     .category-boxed-banner .banner-text p{font-size:17px}
     .category-boxed-banner .banner-text a.shop-now{margin-left:16px;font-size:14px}
     
-    .col1-layout .product-shop .product-options-bottom,.col1-layout .add-to-box{float:none;width:auto;border-bottom:1px solid #ebebeb}
+    .col1-layout .product-shop .product-options-bottom,.col1-layout .add-to-box{float:none;width:auto;/*border-bottom:1px solid #ebebeb onkar*/}
     .col1-layout .sharing-tool-area{float:none}
     
     .owl-banner-carousel .content.type1 h2{font-size:48px}
@@ -953,8 +953,8 @@
 
     .category-banner .banner-text h2{font-size:14px}
     .category-boxed-banner .banner-text h2{font-size:14px}
-    .col1-layout .product-view .product-info{float:none;width:auto;border-bottom:1px solid #ebebeb}
-    .col1-layout .product-options{float:none;width:auto;border-bottom:1px solid #ebebeb}
+    .col1-layout .product-view .product-info{float:none;width:auto;/*border-bottom:1px solid #ebebeb*/}
+    .col1-layout .product-options{float:none;width:auto;/*border-bottom:1px solid #ebebeb onkar*/}
     .col1-layout .product-view .product-options + div.clearer,.col1-layout .product-view .product-info + div.clearer{border:0}
     .homepage-grid-banner .grid1 .content h2{font-size:25px}
     .homepage-grid-banner .grid1 .content p{font-size:17.68px;margin-bottom:6px;margin-right:2.4px}
