@@ -3389,11 +3389,17 @@ button.button span.prodButton{background-color: #4CAF50;}/*onkar*/
     }
 }/*onkar*/
 
-@media (max-width: 360px){
-     img.right {
+/*@media (max-width: 360px){
+     img.right { onkar
         width: 300px;
     }
-}/*onkar*/
+}onkar*/
+@media (max-width: 550px){
+    .right{
+        float: left;
+        width: 250px;
+    }
+}
 
 @media (max-width: 560px){
     .fb-login{
@@ -3547,3 +3553,14 @@ h3.filter-title {
     margin: auto;
     padding: auto;
 }
+
+@media (max-width: 767px){
+    .col1-layout .add-to-box{
+    float:none;
+    width:auto;
+    }
+    .add-to-cart button.button{
+    margin-left: 15px;
+    margin-top: -15px;
+    }
+} /*onkar*/

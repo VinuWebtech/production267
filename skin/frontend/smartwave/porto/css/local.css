@@ -52,8 +52,10 @@ ul,ol{list-style:none;margin:0;padding:0}
 .v-middle{vertical-align:middle;width: 7px;height: 13px}/*onkar*/
 .f-left,
 .left{float:left !important}
-.f-right,
-.right{float:right !important}
+/*.f-right,
+.right{float:right !important}onkar */
+.f-right{float:right !important}
+.right{float:right}	/*onkar removed important, since it was coming to right for small screen*/
 .f-none{float:none !important}
 .f-fix{float:left;width:100%}
 .label{color:#000}
@@ -3265,3 +3267,4 @@ ol#products-list .bottom-home-dailydeal ul.time-left li span.text-time{font-size
 		padding-bottom: 5px;
 	}
 }
+
