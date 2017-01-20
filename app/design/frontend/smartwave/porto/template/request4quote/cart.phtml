@@ -257,12 +257,12 @@ $_address = $this->getShippingAddress();
                                                 </td>
                                             </tr>
                                         </table>
-                                        <?php /* <?php if ($this->canShowShippingAddress()): ?>
-                                            <li class="li-cus-details">
+                                        <?php if ($this->canShowShippingAddress()): ?>
+                                            <li class="li-cus-details" style="visibility: hidden">
                                                 <label for="shipping_same_as_billing" class="no-float"><?php echo Mage::helper('sales')->__('Use Same Address For Shipping') ?>
                                                     <!--<div class="input-box">--><input type="checkbox" checked="checked" id="shipping_same_as_billing" name="r4q[billing][shipping_same_as_billing]" onchange="Element.toggle(Element.down(document, '.cart-rf4-shipping'))"/></div>
                                             </li>
-                                        <?php endif; ?> onkar */?>
+                                        <?php endif; ?>
                                     </ul>
                                 </div>
                                 
