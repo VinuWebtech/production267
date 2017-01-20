@@ -72,11 +72,11 @@ $ratio = ($aspect_ratio || (!$aspect_ratio && Mage::getStoreConfig("porto_settin
         <?php if ($addInfoBlock): ?>
             <?php echo $addInfoBlock->setItem($_item)->toHtml() ?>
         <?php endif;?>
-        <div>
+        <?php /* <div>
         <?php if ($isVisibleProduct): ?>
             <a href="<?php echo $this->helper('wishlist')->getMoveFromCartUrl($_item->getId()); ?>" class="link-wishlist use-ajax" style="color: #08c;background: transparent none repeat scroll 0% 0%; font-size: 13px;"><?php echo $this->__('Add to Wishlist'); ?></a>
         <?php endif ?>
-        <div> 
+        <div> onkar */?>
     </td>
     <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
     <?php /* <td style="border-bottom:0px">

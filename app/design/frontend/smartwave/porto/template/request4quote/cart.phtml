@@ -239,10 +239,10 @@ $_address = $this->getShippingAddress();
                         
                                                 <td style="padding-right:10px" class="request-info-td">
                                                     <li class="li-cus-details">
-                                                        <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingRegionId"><?php echo $billingRequiredSign; ?><?php echo $this->__(' State/Province ') ?></label>
-                                                        <div class="input-box">
+                                                        <label class="<?php echo $this->getBillingRequiredClass(); ?>" for="r4qBillingRegionId"><?php echo $billingRequiredSign; ?><?php echo $this->__(' State ') ?></label>
+                                                        <div class="input-box"> <!--onkar-->
                                                             <select id="r4qBillingRegionId" name="r4q[billing][region_id]"  title="<?php echo $this->__('State/Province') ?>" style="display:none;" class="r4q-select">
-                                                                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                                                                <option value=""><?php echo $this->__('Please select state') ?></option>
                                                             </select>
                                                             <script type="text/javascript">
                                                                 //<![CDATA[
@@ -400,6 +400,8 @@ $_address = $this->getShippingAddress();
                 });
                 return result;
             }]
+
+
         ])
     };
     //vinu changes for mobile number & Pincode fields validation end

@@ -26,7 +26,7 @@
                 <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
                     <?php echo $this->getBlockHtml('formkey'); ?>
                     <fieldset>
-                        <table id="shopping-cart-table" class="data-table cart-table">
+                        <table id="shopping-cart-table" class="data-table cart-table" style="border-collapse: collapse;"> <!--onkar-->
                             <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
                             <thead>
                             <tr>
@@ -113,7 +113,7 @@
             <div class="cart-collaterals">
                 <?php /* Extensions placeholder */ ?>
                 <?php echo $this->getChildHtml('checkout.cart.extra') ?>
-                <?php echo $this->getChildHtml('coupon') ?>
+                <?php /*echo $this->getChildHtml('coupon') onkar */?>
                 <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
                 <div class="totals">
                     <h2><?php echo $this->__('Cart Totals') ?></h2>

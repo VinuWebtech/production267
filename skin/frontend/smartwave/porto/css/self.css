@@ -1739,6 +1739,7 @@ ol, ul, li {
 
 .col-main .category-products .products-grid.columns4 li.item {
     /*width: 23%;   onkar*/
+    border: 1px solid #fff; /*onkar*/
 }
 
 .col-main .category-products .products-grid li.item {
@@ -1798,6 +1799,7 @@ span.list-page {
     /*text-transform: uppercase;*/
     font-size: 18px;
     font-weight: 400;
+    color: black; /*onkar*/
 }
 
 .category-description li { list-style-type: disc; }
