@@ -2169,6 +2169,7 @@ span.view-page {
 #product-attribute-specs-table {
     margin: -25px -10px;
     border: none;
+    padding-top: 10px; /*onkar*/
 }
 
 .border-box-area1 {
@@ -2829,6 +2830,13 @@ table{
     border-right: 1px dashed #ccc;*/
 }
 
+@media (max-width: 480px){
+    .col3-set .col-2{
+        padding-top: 230px;
+        float: none;
+    }
+}
+
 .col3-set .col-3 {
     float: right;
     width: 45%;
@@ -2839,8 +2847,25 @@ table{
     float: left;
     height: 250px;
     margin: 24px;
-    width: 1px !important;
+    width: 1px; /*onkar removed important */
 }
+
+@media (max-width: 480px){
+    .sp_login_seprator1 {
+    background-color: #E5E5E5; 
+    float: none; 
+    height: 1px; 
+    width: 400px; 
+    top: 300px; 
+    margin: 0px;
+    text-align: center;
+    }
+    .col3-set .col-3 {
+    float: none;
+    width: auto;
+    }
+} /*onkar for small screen*/
+
 
 .sp_login_seprator1 span {
     background-image: url("../images/colorScheme/bg-diagonal-line.png"), linear-gradient(#385D8A, #1F497D);
@@ -2853,8 +2878,18 @@ table{
     color: #fff;
 }
 
+@media (max-width: 480px){
+    .sp_login_seprator1 span {
+        background-image: url('../images/colorScheme/bg-diagonal-line.png'), linear-gradient(#385D8A, #1F497D);padding: 17px;
+            position: inherit; z-index: 1; border-radius: 50%; color: #fff;
+    }
+    .vcheckout-social {
+    padding-left: 0px;
+    }
+}  /*onkar*/
+
 .form-list input#checkout_email {
-    width=150px;
+    width:150px;
     border: 0px;
 border-bottom: 2px solid #bcbaa6;
 box-shadow: none;
