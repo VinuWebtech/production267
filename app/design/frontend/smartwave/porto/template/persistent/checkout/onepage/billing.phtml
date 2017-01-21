@@ -164,18 +164,12 @@ if ($this->getAddress()->getEmail()) {
                                     <div class="field">
                                         <label for="billing:region_id" class="lbl-billing required"><em>*</em><?php echo $this->__('State/Province') ?></label>
                                         <div class="input-box-checkout-billing">
-                                            <select id="billing:region_id" name="billing[region_id]"  title="<?php echo $this->__('State/Province') ?>" style="display:none;" class="validate-select">
-                                                <option value=""><?php echo $this->__('Please select state') ?></option>
-                                            </select>
-                                            <script type="text/javascript">
-                                                //<![CDATA[
-                                                if( $('billing:region_id')) {
-                                                    $('billing:region_id').setAttribute('defaultValue', "<?php echo $this->getgetRegionId() ?>");
-                                                }
-                                                //]]>
-                                            </script>
-                                            <input type="text" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" name="billing[region]" id="billing:region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>" style="display:none;" />
-                                        </div><?php/*onkar*/?>
+                                            <input type="text" id="billing:region" name="billing[region]"
+                                                   value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"
+                                                   title="<?php echo $this->__('State/Province') ?>"
+                                                   class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?> input-box-checkout-billing required-entry"/> <?php/*onkar*/?>
+                                                   
+                                        </div>
                                     </div>
                                 </td>
                                 <td style="padding-left: 0px" class="billing-info-td">
