@@ -168,10 +168,17 @@
             }
         }, 500);
     });
-    jQuery('#totop').click(function(){
+    /*jQuery('#totop').click(function(){
         jQuery('html, body').animate({scrollTop: 0}, 600);
         return false;
-    });
+    }); */
+
+    jQuery('#totop').click(function(e){
+       jQuery('html, body').animate({scrollTop: 0}, 600);
+       //return false;
+       e.preventDefault();
+   });
+
     jQuery(function($){
         $(".cms-index-index .footer-container.fixed-position .footer-top,.cms-index-index .footer-container.fixed-position .footer-middle").remove();
     });

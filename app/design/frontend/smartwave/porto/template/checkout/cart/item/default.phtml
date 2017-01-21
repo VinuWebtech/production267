@@ -35,9 +35,9 @@ $aspect_ratio = Mage::getStoreConfig("porto_settings/category/aspect_ratio",$cod
 $ratio = ($aspect_ratio || (!$aspect_ratio && Mage::getStoreConfig("porto_settings/category/ratio_width",$code) == 0))?1:(Mage::getStoreConfig("porto_settings/category/ratio_height",$code)/Mage::getStoreConfig("porto_settings/category/ratio_width",$code));
 ?>
 <tr>
-    <td class="action-td"><a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"></a></td>
-    <td class="pr-img-td"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->resize(80,80*$ratio); ?>" width="80" height="<?php echo 80*$ratio ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
-    <td class="product-name-td">
+    <?php /*  <td class="action-td"><a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"></a></td> onkar added close button at end*/?>
+    <td class="pr-img-td" style="border-bottom:0px"><?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><?php endif;?><img src="<?php echo $this->getProductThumbnail()->resize(80,80*$ratio); ?>" width="80" height="<?php echo 80*$ratio ?>" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /><?php if ($this->hasProductUrl()):?></a><?php endif;?></td>
+    <td class="product-name-td" style="border-bottom:0px">
         <h2 class="product-name">
         <?php if ($this->hasProductUrl()):?>
             <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->htmlEscape($this->getProductName()) ?></a>
@@ -72,17 +72,22 @@ $ratio = ($aspect_ratio || (!$aspect_ratio && Mage::getStoreConfig("porto_settin
         <?php if ($addInfoBlock): ?>
             <?php echo $addInfoBlock->setItem($_item)->toHtml() ?>
         <?php endif;?>
+        <?php /* <div>
+        <?php if ($isVisibleProduct): ?>
+            <a href="<?php echo $this->helper('wishlist')->getMoveFromCartUrl($_item->getId()); ?>" class="link-wishlist use-ajax" style="color: #08c;background: transparent none repeat scroll 0% 0%; font-size: 13px;"><?php echo $this->__('Add to Wishlist'); ?></a>
+        <?php endif ?>
+        <div> onkar */?>
     </td>
     <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
-    <td>
+    <?php /* <td style="border-bottom:0px">
         <?php if ($isVisibleProduct): ?>
             <a href="<?php echo $this->helper('wishlist')->getMoveFromCartUrl($_item->getId()); ?>" class="link-wishlist use-ajax"><?php echo $this->__('Move'); ?></a>
         <?php endif ?>
-    </td>
+    </td> onkar*/ ?>
     <?php endif ?>
 
     <?php if ($canApplyMsrp): ?>
-        <td<?php if ($this->helper('tax')->displayCartBothPrices()): ?> colspan="2"<?php endif; ?>>
+        <td style="border-bottom:0px"<?php if ($this->helper('tax')->displayCartBothPrices()): ?> colspan="2"<?php endif; ?>>
             <span class="cart-price">
                 <span class="cart-msrp-unit"><?php echo $this->__('See price before order confirmation.'); ?></span>
                 <?php $helpLinkId = 'cart-msrp-help-' . $_item->getId(); ?>
@@ -95,7 +100,8 @@ $ratio = ($aspect_ratio || (!$aspect_ratio && Mage::getStoreConfig("porto_settin
     <?php else: ?>
 
         <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
-        <td>
+        <td style="border-bottom:0px">
+            <span class="unit-price-responsive">Unit Price</span>
             <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(1, 4), 'sales') && $_item->getWeeeTaxAppliedAmount()): ?>
                 <span class="cart-tax-total" onclick="taxToggle('eunit-item-tax-details<?php echo $_item->getId(); ?>', this, 'cart-tax-total-expanded');">
             <?php else: ?>
@@ -137,7 +143,8 @@ $ratio = ($aspect_ratio || (!$aspect_ratio && Mage::getStoreConfig("porto_settin
         </td>
         <?php endif; ?>
         <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
-        <td>
+        <td style="border-bottom:0px">
+            <span class="unit-price-responsive">Unit Price</span>
             <?php $_incl = $this->helper('checkout')->getPriceInclTax($_item); ?>
             <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(1, 4), 'sales') && $_item->getWeeeTaxAppliedAmount()): ?>
                 <span class="cart-tax-total" onclick="taxToggle('unit-item-tax-details<?php echo $_item->getId(); ?>', this, 'cart-tax-total-expanded');">
@@ -179,16 +186,19 @@ $ratio = ($aspect_ratio || (!$aspect_ratio && Mage::getStoreConfig("porto_settin
         </td>
         <?php endif; ?>
     <?php endif; ?>
-    <td>
-        <div class="qty-holder">
-            <a href="javascript:void(0)" class="table_qty_dec">-</a><input name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" /><a href="javascript:void(0)" class="table_qty_inc">+</a>
-            <?php if ($isVisibleProduct): ?>
+    <td style="border-bottom:0px">
+        <div class="qty-holder a-center"><span class="qty-responsive"> Qty:</span>
+            <?php /*<a href="javascript:void(0)" class="table_qty_dec">-</a><input name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" /><a href="javascript:void(0)" class="table_qty_inc">+</a> */ ?>
+            <input name="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
+            <!--onkar enabled this textbox -->
+            <?php /*if ($isVisibleProduct): ?>
                 <a class="edit-qty" href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo $this->__('Edit item parameters') ?>"><i class="icon-pencil"></i></a>
-            <?php endif ?>
+            <?php endif */?>
         </div>
     </td>
     <?php if (($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()) && !$_item->getNoSubtotal()): ?>
-    <td class="td-total">
+    <td class="td-total" style="border-bottom:0px">
+        <span class="cart-price-responsive">Total</span>
         <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(1, 4), 'sales') && $_item->getWeeeTaxAppliedAmount()): ?>
             <span class="cart-tax-total" onclick="taxToggle('esubtotal-item-tax-details<?php echo $_item->getId(); ?>', this, 'cart-tax-total-expanded');">
         <?php else: ?>
@@ -232,8 +242,10 @@ $ratio = ($aspect_ratio || (!$aspect_ratio && Mage::getStoreConfig("porto_settin
         <?php endif; ?>
     </td>
     <?php endif; ?>
+
     <?php if (($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()) && !$_item->getNoSubtotal()): ?>
-    <td>
+    <td style="border-bottom:0px">
+    <span class="cart-price-responsive">Total</span>
         <?php $_incl = $this->helper('checkout')->getSubtotalInclTax($_item); ?>
         <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(1, 4), 'sales') && $_item->getWeeeTaxAppliedAmount()): ?>
             <span class="cart-tax-total" onclick="taxToggle('subtotal-item-tax-details<?php echo $_item->getId(); ?>', this, 'cart-tax-total-expanded');">
@@ -280,4 +292,5 @@ $ratio = ($aspect_ratio || (!$aspect_ratio && Mage::getStoreConfig("porto_settin
         <?php endif; ?>
     </td>
     <?php endif; ?>
+    <td class="action-td" style="border-bottom:0px"><a href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"></a></td><!--onkar-->
 </tr>

@@ -21,24 +21,23 @@
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-9">
-            <div class="cart-table-wrap">
+            <div class="cart-table-wrap" style="border: 0px none; border-radius: 0px; background: transparent none repeat scroll 0% 0%; box-shadow: none;">
                 <?php echo $this->getChildHtml('form_before') ?>
                 <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
                     <?php echo $this->getBlockHtml('formkey'); ?>
                     <fieldset>
-                        <table id="shopping-cart-table" class="data-table cart-table">
+                        <table id="shopping-cart-table" class="data-table cart-table" style="border-collapse: collapse;"> <!--onkar-->
                             <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
                             <thead>
                             <tr>
                                 <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
-                                <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
-                                <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
+                                <th rowspan="<?php echo $mergedCells; ?>" style="font-weight:normal"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
                                 <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
-                                    <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
+                                <?php /*<th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th> <!--onkar move to wishlist--> */ ?>
                                 <?php endif ?>
-                                <th colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Unit Price') ?></span></th>
-                                <th rowspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Qty') ?></th>
-                                <th class="last" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th>
+                                <th colspan="<?php echo $mergedCells; ?>" style="font-weight:normal"><span class="nobr"><?php echo $this->__('Unit Price') ?></span></th>
+                                <th rowspan="<?php echo $mergedCells; ?>" style="font-weight:normal" class="a-center"><?php echo $this->__('Qty') ?></th>
+                                <th class="last" colspan="<?php echo $mergedCells; ?>" style="font-weight:normal"><?php echo $this->__('Subtotal') ?></th>
                             </tr>
                             <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
                                 <tr>
@@ -49,6 +48,7 @@
                                 </tr>
                             <?php endif; ?>
                             </thead>
+                            <?php /*
                             <tfoot>
                             <tr>
                                 <td colspan="50" class="a-right">
@@ -82,6 +82,7 @@
                                 </td>
                             </tr>
                             </tfoot>
+                            onkar */ ?>
                             <tbody>
                             <?php foreach($this->getItems() as $_item): ?>
                                 <?php echo $this->getItemHtml($_item) ?>
@@ -112,7 +113,7 @@
             <div class="cart-collaterals">
                 <?php /* Extensions placeholder */ ?>
                 <?php echo $this->getChildHtml('checkout.cart.extra') ?>
-                <?php echo $this->getChildHtml('coupon') ?>
+                <?php /*echo $this->getChildHtml('coupon') onkar */?>
                 <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
                 <div class="totals">
                     <h2><?php echo $this->__('Cart Totals') ?></h2>

@@ -1,0 +1,158 @@
+
+	<script type="text/javascript"> 
+		function clearText()
+		{
+			document.getElementById("zipcode").value = ''; 
+		}
+	</script>	<!--onkar-->
+<?php
+if(Mage::getStoreConfig('productrestriction/general/enabled') == 1 )
+{
+	$message=Mage::getStoreConfig('productrestriction/general/product_msg');
+	if($message=='')
+	{
+		$message="Invalid zipcode";
+	}
+?>
+	<div class="zipcode-box">
+		<div id="zipcode-feed" class="zipcode_cont1">
+			<span><?php echo $this->__('Check Availability at'); ?></span><br class="small-360"/>
+			<span class="zipcode_cont2">
+				<input type="hidden" name="zipcode_hidden" id="zipcode_hidden" value="" />
+				<?php if(!Mage::helper('customer')->isLoggedIn()){?>
+					<input type="text" name="zipcode" id="zipcode" style="width:150px; height:36px; border:0px; border-radius:0px; border-bottom:2px solid #bcbaa6" onFocus="resetZipcode(this)" onkeypress="keyEventhandle(event,this.value);"  onBlur="resetZipcode(this)" placeholder="Enter Pincode" value="<?php /* echo $this->__('Enter Pincode') */ ?>" /><!--onkar--> <button  onclick="verifyzipcode(document.getElementById('zipcode').value);" class="button" title="<?php echo $this->__('Check Pincode'); ?>" type="button"><span><?php echo $this->__('Check'); ?></span></button>
+				<?php }else
+				{
+				
+					$customerAddressId = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling(); //oder getDefaultShipping
+					if ($customerAddressId) 
+					{
+					   $address = Mage::getModel('customer/address')->load($customerAddressId);
+					   $zip = $address->getPostcode();
+					   $product_id=Mage::app()->getRequest()->getParam('productid');
+					   $allow= Mage::helper('productrestriction')->checkSingleProductrestrictionData($zip,$product_id);
+				  		//print_r($allow);
+					}  
+				?>	
+					<input type="text" name="zipcode" id="zipcode" style="width:150px; height:36px; border:0px; border-radius:0px; border-bottom:2px solid #bcbaa6" onFocus="resetZipcode(this)" onkeypress="keyEventhandle(event,this.value);"  onBlur="resetZipcode(this)" value="<?php echo $zip ?>"  /> <button  onclick="verifyzipcode(document.getElementById('zipcode').value);" class="button required-entry" title="<?php echo $this->__('Check Pincode'); ?>" type="button"><span><?php echo $this->__('Check'); ?></span></button>
+					<?php /*<div class="zipcode-msg">
+						<?php
+							if($allow['valid']==0){echo  Mage::getStoreConfig('productrestriction/general/product_msg');}else{echo $this->__("Delivery Available at this location.");}
+					echo " </div>"; */
+			 	} ?>
+				
+			</span>
+			<div id="zipcode-loader" style="display:none;"><img src="<?php echo Mage::getDesign()->getSkinUrl('css/productrestriction/ajax-loader.gif');?>" /></div>
+			<span class="validation-advice" id="message-field" style="display:none;"><?php echo $this->__('Please enter a valid pincode.') ?></span>
+		</div>				
+		<div id="zipcode-output" style="display:none;" class="zipcode_cont1">
+			<div class="zipcode-option">
+				<div class="zipcode-label"> <?php echo $this->__('Pincode: ');?>
+					<span class="zipcode_display" id="zipcode_text"></span>
+					<a style="color: #2874f0;" onclick="setZipcodeBox(); clearText();" href="javascript:void(0)"><strong><?php echo $this->__('Change');?></strong></a> 
+				</div>
+				<div style="display:none; color: #ff1919;" id="zipcode-invalid"><?php echo $message; ?></div>
+				<div id="valid_zipcode" style="display:none; color: #00b75b;">
+					<?php echo $this->__('Delivery Available at this location.');?>
+				</div>
+				<?php /* <div id="delevery-city"  style="display:none;"><?php echo $this->__('City: ');?><span id="d-city"></span></div> */ ?>
+				<div id="delevery-days"  style="display:none;"><?php echo $this->__('Delivery Days: ');?><span id="d-days"></span></div>
+				<?php /* <div id="delevery-cod"  style="display:none;"><?php echo $this->__('Cash On Delivery : ');?><span id="d-cod"></span></div> */ ?>
+			</div>            
+		</div>
+	</div>
+	<script type="text/javascript">  
+		function keyEventhandle(e,val)
+		{
+			if(e.keyCode === 13){
+			    verifyzipcode(val);
+			    e.preventDefault();
+			     return false;
+			}               
+		}
+    	function verifyzipcode(data)
+    	{
+    		data=data.trim();
+			if(typeof data != 'undefined' && data!='' && data!='Enter Zipcode')
+			{
+				jQuery('#zipcode-loader').show();
+				document.getElementById("message-field").style.display = 'none';
+				var product_id=jQuery("input[name='product']").val();//document.getElementsByName("product").value;
+				
+				/* Vinu changes start to add functionality for allow shipping to all pincodes in system */
+				/*new Ajax.Request('<?php /* echo Mage::getBaseUrl().'productrestriction/index/checkcode';*/?>', {*/
+				new Ajax.Request('<?php echo Mage::getBaseUrl().'productrestriction/index/checksinglecode';?>', 
+				{
+				/* Vinu changes end to add functionality for allow shipping to all pincodes in system */
+					method:'post',
+					parameters: {zipcode: data,productid:product_id},
+					onSuccess: function(transport) 
+					{
+						var response = transport.responseText || "no response text";
+						result = JSON.parse(response);
+						if(result.valid=='1')
+					    {                     
+							jQuery( "#zipcode-feed").hide();                
+							jQuery( "#zipcode-output").fadeIn();
+							jQuery( "#zipcode-invalid").hide();
+							jQuery( "#valid_zipcode").show();
+							jQuery("#zipcode_text").text(data);
+							jQuery('#zipcode-loader').hide();
+							
+							if(result.city !='')
+							{
+								jQuery( "#delevery-city").show();
+								jQuery('#d-city').text(result.city);
+							}
+							
+							if(result.Delivery_Days != 0)
+							{
+								jQuery( "#delevery-days").show();
+								jQuery('#d-days').text(result.Delivery_Days);
+							}
+							
+							if(result.cod !='')
+							{
+								jQuery( "#delevery-cod").show();
+								jQuery('#d-cod').text(result.cod);
+							}
+					    }else
+					    {
+							setErrorZipcode();jQuery("#zipcode_text").text(data);
+					    }
+					    jQuery('#zipcode_hidden').val(data); 
+					},
+					onFailure: function() { setErrorZipcode();jQuery("#zipcode_text").text(data); }
+				});
+			} else	{
+		 		jQuery( "#message-field").fadeIn();
+			}
+    	}
+		function setErrorZipcode()
+		{
+			jQuery( "#zipcode-output").fadeIn();
+			jQuery( "#zipcode-invalid").fadeIn();
+			jQuery( "#zipcode-feed").hide(); 
+			jQuery( "#valid_zipcode").hide();
+			jQuery( "#delevery-days").hide();
+			jQuery( "#delevery-city").hide();
+			jQuery( "#delevery-cod").hide();
+		}
+		function setZipcodeBox()
+		{
+			jQuery('#zipcode-loader').hide();
+			jQuery( "#zipcode-feed").fadeIn();
+			jQuery( "#valid_zipcode").hide();
+			jQuery( "#delevery-days").hide();
+			jQuery( "#delevery-city").hide();
+			jQuery( "#delevery-cod").hide();
+			jQuery( "#zipcode-output").hide();  
+			jQuery("#ddays").text('');
+		}
+		function resetZipcode(field)
+		{ 
+		    if (field.defaultValue == field.value) field.value = '';
+		    else if (field.value == '') field.value = field.defaultValue; 
+		} 
+	</script>      
+<?php } ?>

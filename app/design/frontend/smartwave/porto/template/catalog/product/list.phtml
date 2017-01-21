@@ -215,10 +215,16 @@ var i = 0;
 
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = Mage::getStoreConfig("porto_settings/category_grid/columns",$code); ?>
-    <ul class="products-grid columns<?php echo $_columnCount; ?><?php if(!Mage::getStoreConfig("porto_settings/category_grid/show_addtolinks", $code)):?> hide-addtolinks<?php endif; ?><?php if(!Mage::getStoreConfig("porto_settings/category_grid/show_addtocart", $code)):?> hide-addtocart<?php endif; ?><?php if(Mage::getStoreConfig("porto_settings/category_grid/move_actions", $code)):?> move-action<?php endif; ?>">
+    
+    <ul class="products-grid columns<?php echo $_columnCount; ?><?php if(!Mage::getStoreConfig("porto_settings/category_grid/show_addtolinks", $code)):?> hide-addtolinks<?php endif; ?><?php if(!Mage::getStoreConfig("porto_settings/category_grid/show_addtocart", $code)):?> hide-addtocart<?php endif; ?><?php if(Mage::getStoreConfig("porto_settings/category_grid/move_actions", $code)):?> move-action<?php endif; ?> col-xs-12 col-md-12">    <!--onkar-->
+  
+
+      
+        
         <?php $i=0; foreach ($_productCollection as $_product): ?>
             <?php $product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
-            <li class="item">
+            
+            <li class="item col-xs-6 col-md-3"> <!--onkar-->
                 <div class="item-area">
                     <div class="product-image-area">
                         <?php
@@ -378,7 +384,11 @@ var i = 0;
                     </div>
                 </div>
             </li>
+            
+            
         <?php endforeach ?>
+        
+     
     </ul>
         <script type="text/javascript">
             jQuery('.col-main .products-grid li:nth-child(2n)').addClass('nth-child-2n');
