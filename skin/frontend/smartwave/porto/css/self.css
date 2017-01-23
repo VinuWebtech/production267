@@ -3601,3 +3601,10 @@ h3.filter-title {
     margin-top: -15px;
     }
 } /*onkar*/
+@media (min-width: 600px)
+{
+    .header-container.type4 .search-area-mobile 
+    {
+        display: none !important;
+    }
+}/* adding in self.css again same bit from responsive.css to negate browser cache */
