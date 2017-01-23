@@ -42,11 +42,11 @@
             <action method="addCss"><stylesheet>icons/css/animation.css</stylesheet></action>
             <action method="addCss" ifconfig="porto_settings/general/rtl" condition="0"><stylesheet>css/local.css</stylesheet></action>
             <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl.css</stylesheet></action>
-            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="0"><stylesheet>css/responsive.css</stylesheet></action>
+            <action method="addCss" ifconfig="porto_settings/general/rtl" condition="0"><stylesheet>css/responsive_21_01_17.css</stylesheet></action>
             <action method="addCss" ifconfig="porto_settings/general/rtl" condition="1"><stylesheet>css/rtl-responsive.css</stylesheet></action>
             <action method="addCss" ifconfig="porto_settings/general/layout" condition="1024"><stylesheet>css/layout_1024.css</stylesheet></action>
             <action method="addCss" ifconfig="porto_settings/general/layout" condition="1280"><stylesheet>css/layout_1280.css</stylesheet></action>
-			<action method="removeItem" ifconfig="porto_settings/general/disable_responsive" condition="1"><type>skin_css</type><name>css/responsive.css</name></action>
+			<action method="removeItem" ifconfig="porto_settings/general/disable_responsive" condition="1"><type>skin_css</type><name>css/responsive_21_01_17.css</name></action>
 			<action method="addItem" ifconfig="porto_settings/general/disable_responsive" condition="1"><type>skin_js</type><name>js/non_responsive.js</name></action>
             <action method="addCss" ifconfig="porto_design/basic/dark_light" condition="dark"><stylesheet>css/dark.css</stylesheet></action>
 			<action method="addCss"><stylesheet helper="porto/cssconfig/getDesignFile"/></action>
