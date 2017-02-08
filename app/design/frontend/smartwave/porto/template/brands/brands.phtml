@@ -9,16 +9,18 @@
 	$_productCollection = $_productCollection->getCollection()->addAttributeToSelect('*')->addAttributeToFilter('manufacturer', $manufacturer_id);
 ?>
 <div class="brandSpecification row">
-	<div class="brandName col-xs-12"><center><?php echo $brands->getBrandName(); ?></center></div>
+	<?php /*<div class="brandName col-xs-12"><center><?php echo $brands->getBrandName(); ?></center></div> */ ?>
+	<div class="brandImage col-xs-12"><center><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$brands->getBrandImage(); ?>"/></center></div>
 	<ul>
-		<?php if ($brands->getBrandImage()): ?>
+		<?php /*if ($brands->getBrandImage()): 
 			<li class="col-sm-3">
 				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$brands->getBrandImage(); ?>" width="200px" height="200px"/>
 			</li>
 			<li class="brandDescription col-md-9"><?php echo $brands->getDescription(); ?></li>
-		<?php else: ?>
+		*/?>
+		<?php/* else: */ ?>
 			<li class="brandDescription col-md-12"><?php echo "Description: " .$brands->getDescription(); ?></li>
-		<?php endif; ?>
+		<?php /*endif; */?>
 	</ul>
 </div>
 <?php /*
