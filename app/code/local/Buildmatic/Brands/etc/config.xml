@@ -97,10 +97,10 @@
                 </all>
 	        	<admin>
 	        		<children>
-	        			<Buildmatic_Brands>
+	        			<brands>
                             <title>Brands Module</title>
                             <sort_order>10</sort_order>
-                        </Buildmatic_Brands>
+                        </brands>
 	        			<system>
 	                        <children>
 	                            <config>
@@ -124,7 +124,7 @@
                     <items>
                         <title>Manage Brands</title>
                         <sort_order>0</sort_order>
-                    <action>adminhtml/brands</action>
+                    	<action>adminhtml/brands</action>
                     </items>
                 </children>
             </brands>
