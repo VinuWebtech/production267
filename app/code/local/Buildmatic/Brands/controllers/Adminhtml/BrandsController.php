@@ -137,4 +137,9 @@ class Buildmatic_Brands_Adminhtml_BrandsController extends Mage_Adminhtml_Contro
 		$this->_addContent($this->getLayout()->createBlock('buildmatic_brands/adminhtml_brands_edit'))->_addLeft($this->getLayout()->createBlock('buildmatic_brands/adminhtml_brands_edit_tabs'));
 		$this->renderLayout();
 	}
+
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('brands/items');
+    }
 }
