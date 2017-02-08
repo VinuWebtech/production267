@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<buildmatic_brands_brands_view>
+		<reference name = "head">
+		    <action method = "setTitle"><title>Accessory</title></action>
+		    <action method = "setKeywords"><title>module, keywords</title></action>
+		    <action method = "setDescription"><title>Module Description</title></action>
+		    <action method="addCss"><stylesheet>css/brandstyling.css</stylesheet></action>
+		</reference>
+			
+		<reference name="content">
+			<block type="buildmatic_brands/brands" name="brandspages" template="brands/brands.phtml"></block>
+		</reference>
+	</buildmatic_brands_brands_view>
+</layout>
