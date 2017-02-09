@@ -159,8 +159,9 @@
                         <?php if($_product->getMrp_price()!= ''): ?>
                             <span class="mrp-price list-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
                         <?php endif; ?>
+                        <span class="list-page"><?php echo Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
                         <!-- Vinu changes end -->
-                        <?php echo $this->getPriceHtml($_product, true) ?>
+                        <?php //echo $this->getPriceHtml($_product, true) ?>
                         <div class="actions">
                             <?php if($_product->isSaleable()): ?>
                                 <?php  if ( !($_product->getTypeInstance(true)->hasOptions($_product)/*$_product->getData('has_options')*/ || $_product->isGrouped()) ) :  ?>
@@ -377,7 +378,10 @@
                                 ?>
                             <?php endif; ?>
                             <!-- Vinu changes end -->
-                            <?php echo $this->getPriceHtml($_product) ?>
+                            <div class="price-box">
+                            <div class="price list-page"><?php echo Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
+                            <?php //echo $this->getPriceHtml($_product) ?>
+                            </div>  
                         <?php endif; ?>
                         <!--Vinu changes end-->       
                     </div>
