@@ -1,0 +1,81 @@
+.brand-products-grid
+{
+	padding-top: 10px;
+	margin-left: -10px;
+}
+
+.brand-products-grid .item{
+	border: 1px solid #fff;
+}
+
+body .product-image img{
+	text-align: center;
+}
+
+.brand-products-grid .item .item-area .details-area {
+    padding: 10px;
+}
+
+.item-area .details-area .product-name{
+	height: 50px;
+	overflow-y: hidden;
+	margin: 0 0 3px 0;
+}
+
+.brand-products-grid .item .item-area .details-area .ratings{
+	background: none;
+}
+
+.brandName {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.5;
+	color: #333;
+}
+
+.brandSpecification{
+	padding-bottom: 10px;
+}
+
+.brandDescription h2{
+	font-size: 18px;
+	color: black;
+	font-weight: 400;
+	padding: 10px 0px;
+}
+
+.brandDescription img{
+	float: right;
+	margin: 5px;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.brandDescription {
+	/*border: 1px solid #ddd;*/
+	font-size: 15px;
+	color: #333;
+}
+
+.brandDescription strong{
+	font-weight: bold;
+}
+
+.brandDescription ul{
+	
+}
+
+.brandDescription li{
+	list-style-type: disc;	
+	position: relative;
+	margin-left: 15px;
+}
+
+.price-box .price{
+	color: #b12704;
+	line-height: 1;
+	vertical-align: middle;
+	display: inline-block;
+	font-weight: normal;
+	font-size: 16px;
+}

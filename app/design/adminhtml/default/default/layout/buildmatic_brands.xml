@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<adminhtml_brands_index>
+		<reference name="content">
+			<block type="buildmatic_brands/adminhtml_brands" name="brands"/>
+		</reference>
+	</adminhtml_brands_index>
+</layout>
+
