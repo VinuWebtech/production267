@@ -44,9 +44,15 @@ body .product-image img{
 	padding: 10px 0px;
 }
 
+.brandDescription img{
+	float: right;
+	margin-top: 0px;
+	border: 1px solid black;
+	padding: 5px;
+}
+
 .brandDescription {
-	border: 1px solid #ddd;
-	background-color: #F5F5F5;
+	/*border: 1px solid #ddd;*/
 	padding: 10px;
 	font-size: 15px;
 	color: #333;
@@ -64,4 +70,13 @@ body .product-image img{
 	list-style-type: disc;	
 	position: relative;
 	margin-left: 15px;
+}
+
+.price-box .price{
+	color: #b12704;
+	line-height: 1;
+	vertical-align: middle;
+	display: inline-block;
+	font-weight: normal;
+	font-size: 16px;
 }

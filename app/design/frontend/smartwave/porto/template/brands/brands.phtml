@@ -10,8 +10,7 @@
 ?>
 <div class="brandSpecification row">
 	<?php /*<div class="brandName col-xs-12"><center><?php echo $brands->getBrandName(); ?></center></div> */ ?>
-	<div class="brandImage col-xs-12"><center><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$brands->getBrandImage(); ?>"/></center></div>
-	<ul>
+	<div>
 		<?php /*if ($brands->getBrandImage()): 
 			<li class="col-sm-3">
 				<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$brands->getBrandImage(); ?>" width="200px" height="200px"/>
@@ -19,9 +18,9 @@
 			<li class="brandDescription col-md-9"><?php echo $brands->getDescription(); ?></li>
 		*/?>
 		<?php/* else: */ ?>
-			<li class="brandDescription col-md-12"><?php echo "Description: " .$brands->getDescription(); ?></li>
+			<span class="brandDescription col-md-12"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$brands->getBrandImage(); ?>"/><?php echo "Description: " .$brands->getDescription(); ?></span>
 		<?php /*endif; */?>
-	</ul>
+	</div>
 </div>
 <?php /*
 	$catIds = array();
@@ -36,16 +35,23 @@
 		<?php foreach ($catIds as $catId): 
 		$_category = Mage::getModel('catalog/category')->load($catId);?>
 			<li class="catItem3 term-item">
-				<?php if($_category->getThumbnail()): ?>
-	        	    <a href="javascript:void(0)" title="<?php echo $_category->getName(); ?>" onclick="theFilter($catId)"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'. $_category->getThumbnail(); ?>" alt="<?php echo $_category->getName(); ?>"  /></a>
-	        	<?php endif; ?>
 	            <h5 class="category-name parent-category3">
-	            	<a class="text-color" href="javascript:void(0)" title="<?php echo $_category->getName(); ?>" onclick="theFilter($catId)">
+	            	<a id="filter2" class="text-color" href="javascript:void(0)" title="<?php echo $_category->getName(); ?>" onclick="change(this.$catId)">
 	            		<?php echo $_category->getName(); ?>
 	            	</a>
 	            </h5>
 	        </li>
 	    <?php endforeach ?>
 	</ul>
-</div> */ ?>
+</div> 
+<?php */?>
 <?php echo $this->getLayout()->createBlock('buildmatic_brands/brands')->setData('product_collection', $_productCollection)->setTemplate('brands/product/list.phtml')->toHtml(); ?>
+<?php /*
+<script type="text/javascript">
+	$("#itemsubcat").change(function(){
+        var subcat=$("#category-name").val();
+        $("#item").show();
+        $("#item").load('list.php?subcat='+subcat);
+    });
+</script>
+*/?>
