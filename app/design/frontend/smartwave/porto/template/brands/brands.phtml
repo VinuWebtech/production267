@@ -43,9 +43,10 @@
 	        </li>
 	    <?php endforeach ?>
 	</ul>
-</div>
+</div> 
+<?php */?>
 <?php echo $this->getLayout()->createBlock('buildmatic_brands/brands')->setData('product_collection', $_productCollection)->setTemplate('brands/product/list.phtml')->toHtml(); ?>
-
+<?php /*
 <script type="text/javascript">
 	$("#itemsubcat").change(function(){
         var subcat=$("#category-name").val();
@@ -53,4 +54,4 @@
         $("#item").load('list.php?subcat='+subcat);
     });
 </script>
-<?php */?>
+*/?>
