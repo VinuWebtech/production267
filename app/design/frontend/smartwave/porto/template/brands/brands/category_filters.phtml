@@ -1,0 +1,27 @@
+<?php 
+	$brand = $this->getBrand($this->getRequest()->getParam('id'));
+	$catIds = array();
+	$_catproductcollection = $this->getBrandProductCollection($brand);
+	foreach ($_catproductcollection as $_product)
+	{	
+		$catIds = array_merge($catIds, $_product->getCategoryIds());
+	}
+	$catIds = array_unique($catIds);
+?>
+<div class="catFilteringBlock">
+	<div class="block-title">Categories</div>
+		<div class="catFilteringBlockContent">
+			<ul>
+				<?php 
+					foreach ($catIds as $catId): 
+					$_category = Mage::getModel('catalog/category')->load($catId);
+				?>
+					<li class="filteredCatByMfg">
+						<a id="filter2" class="text-color" href="<?php echo Mage::getBaseUrl().$brand->getUrlKey().'/category/'.$_category->getUrlKey(); ?>" title="<?php echo $_category->getName(); ?>" >
+				    		<?php echo $_category->getName(); ?>
+				    	</a>
+					</li>
+				<?php endforeach ?>
+			</ul>
+		</div>
+</div>

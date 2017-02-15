@@ -1,15 +1,39 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
 	<buildmatic_brands_brands_view>
+		<reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+		</reference>
 		<reference name = "head">
 		    <action method = "setTitle"><title>Accessory</title></action>
 		    <action method = "setKeywords"><title>module, keywords</title></action>
 		    <action method = "setDescription"><title>Module Description</title></action>
 		    <action method="addCss"><stylesheet>css/brandstyling.css</stylesheet></action>
 		</reference>
-			
+		<reference name="page.header">
+            <action method="setTemplate"><template>brands/topDesc.phtml</template></action>
+        </reference>
+		<!--<reference name="topdesc">
+			<block method="setTemplate" name="topDescBlock" template="brands/topDesc.phtml"/>
+		</reference> -->
+		<reference name="left">
+	        <block type="buildmatic_brands/brands" name="brand_catfilters" template="brands/brands/category_filters.phtml">
+	        </block>
+    	</reference>
 		<reference name="content">
 			<block type="buildmatic_brands/brands" name="brandspages" template="brands/brands.phtml"></block>
 		</reference>
 	</buildmatic_brands_brands_view>
+	<buildmatic_brands_brands_viewcategory>
+		<reference name = "head">
+		    <action method = "setTitle"><title>Accessory</title></action>
+		    <action method = "setKeywords"><title>module, keywords1</title></action>
+		    <action method = "setDescription"><title>Module Description</title></action>
+		    <action method="addCss"><stylesheet>css/brandstyling.css</stylesheet></action>
+		</reference>
+			
+		<reference name="content">
+			<block type="buildmatic_brands/brands_category" name="catbybrand" template="brands/brands/category.phtml"></block>
+		</reference>
+	</buildmatic_brands_brands_viewcategory>
 </layout>

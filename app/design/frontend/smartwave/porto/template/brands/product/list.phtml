@@ -336,9 +336,9 @@
 					    ?>
                     </div>
                     <div class="details-area">
-                        <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                        <h2 class="product-name"><a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($product, $product->getName(), 'name') ?></a></h2>
                         <?php if($_product->getRatingSummary()): ?>
-                            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                            <?php echo $this->getReviewsSummaryHtml($product, 'short') ?>
                         <?php else: ?>
                             <div class="ratings">
                                 <div class="rating-box">
@@ -356,17 +356,17 @@
 						}
 					    ?>
                         <!--Vinu changes design adjustment of price & cart in one row-->
-                        <?php if($_product->getR4q_hide_price()): ?>
+                        <?php if($product->getR4q_hide_price()): ?>
                             <span>
-                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo "View Details" ?></a>
+                                <a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>"><?php echo "View Details" ?></a>
                             </span>
                         <?php else : ?>
                             <!-- Vinu changes for adding mrp price only if value is present for product -->
-                            <?php if($_product->getMrp_price()!= ''): ?>
-                                <span class="mrp-price list-page"><?php echo Mage::helper('core')->currency($_product->getMrp_price(),true,false); ?></span>
+                            <?php if($product->getMrp_price()!= ''): ?>
+                                <span class="mrp-price list-page"><?php echo Mage::helper('core')->currency($product->getMrp_price(),true,false); ?></span>
                                 <?php 
-                                    $MrpPrice = $_product->getMrp_price();
-                                    $MainPrice = $_product->getPrice();
+                                    $MrpPrice = $product->getMrp_price();
+                                    $MainPrice = $product->getPrice();
                                     $percentage = 0;
                                     if ($MrpPrice > $MainPrice) {
                                         $percentage = round(($MrpPrice - $MainPrice) * 100 / $MrpPrice);
@@ -379,7 +379,7 @@
                             <?php endif; ?>
                             <!-- Vinu changes end -->
                             <div class="price-box">
-                            <div class="price list-page"><?php echo Mage::helper('core')->currency($_product->getPrice(),true,false); ?></span>
+                            <div class="price list-page"><?php echo Mage::helper('core')->currency($product->getPrice(),true,false); ?></span>
                             <?php //echo $this->getPriceHtml($_product) ?>
                             </div>  
                         <?php endif; ?>

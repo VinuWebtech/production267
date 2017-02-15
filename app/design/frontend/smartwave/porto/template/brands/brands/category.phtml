@@ -1,0 +1,29 @@
+<?php 
+	$brands = Mage::getModel('buildmatic_brands/brands')->load($this->getRequest()->getParam('id'));
+	$request = Mage::app()->getRequest();
+	$parts = explode('/', $request->getPathInfo());
+	$count = count($parts);
+	$catName = $parts[$count-1];
+	//echo $catName;
+
+	$category = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addAttributeToFilter('url_key', $catName);
+	$data = $category->getData();
+	$data = $data['0']['entity_id'];
+	//var_dump($data[0][entity_id]);
+
+	/*$collection = Mage::getModel('catalog/category')
+                    ->load($data['0']['entity_id'])
+                    ->getProductCollection(); */
+
+    $prodcollection = $this->getCatProduct($data,$brands);
+    /*$attr = $collection->getResource()->getAttribute("manufacturer");
+	if ($attr->usesSource()) 
+	{
+	    $manufacturer_id = $attr->getSource()->getOptionId($brands->getBrandName());
+	}
+    $collection = $collection->addAttributeToFilter('manufacturer', $manufacturer_id); */
+    echo count($prodcollection);
+?>
+
+<?php echo $this->getLayout()->createBlock('buildmatic_brands/brands_category')->setData('product_collection', $prodcollection)->setTemplate('brands/product/list.phtml')->toHtml(); 
+ ?>
