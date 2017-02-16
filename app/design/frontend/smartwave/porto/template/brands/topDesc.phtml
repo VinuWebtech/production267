@@ -1,0 +1,13 @@
+<?php 
+    $brands = Mage::getModel('buildmatic_brands/brands')->load($this->getRequest()->getParam('id'));
+    //$brand = $this->getBrand($this->getRequest()->getParam('id'));
+?>
+<div class="brandSpecification main container">
+    <div>
+        <span class="brandDescription col-md-12">
+            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$brands->getBrandImage(); ?>"/>
+            <?php echo $brands->getDescription(); ?>
+        </span>
+    </div>
+</div>
+<?php /*echo $this->getLayout()->createBlock('buildmatic_brands/brands')->setData('product_collection', $this->getBrandProductCollection($brand))->setTemplate('brands/product/list.phtml')->toHtml(); */?>

@@ -938,7 +938,7 @@ a.comparelink:hover{color:#52b9b5}
 
 .col-main .category-products .products-grid.columns5{margin-left:-5px;margin-right:-5px}
 .col-main .category-products .products-grid.columns5 li.item{float:left;padding:10px 5px}
-.col-main .category-products .products-grid.columns5 li.item{width:20%}
+.col-main .category-products .products-grid.columns5 li.item{width:20%; border:1px solid #fff;}
 .col-main .category-products .products-grid.columns5 li.item.nth-child-5np1{clear:left}
 
 .col-main .category-products .products-grid.columns6{margin-left:-4px;margin-right:-4px}

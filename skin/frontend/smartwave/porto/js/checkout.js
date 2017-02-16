@@ -76,7 +76,7 @@ emailChecker.prototype = {
         Event.observe(this.emailEl, 'blur', this.checkEmail.bind(this));
     },
     checkEmail: function() {
-        this.checkoutMethodBtn.disabled = true;
+        //this.checkoutMethodBtn.disabled = true;   //to avoid double clicking
         var customerEmail = this.emailEl.getValue();
         var request = new Ajax.Request(
             this.Url,
@@ -100,7 +100,7 @@ emailChecker.prototype = {
             this.loginCtrl.hide();
             this.passwordCtrl.hide();
             this.registerEnv.show();
-
+            this.registerEl.checked = true; //onkar for either of the radio btn to be true
         }
         this.checkoutMethodBtn.disabled = false;
     }
