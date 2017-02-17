@@ -12,7 +12,7 @@ class Buildmatic_Brands_Block_Brands extends Mage_Core_Block_Template
         $head->setTitle($brand->getMetaTitle());
         $head->setKeywords($brand->getMetaKeyword());
         $head->setDescription($brand->getMetaDescription());
-        $head->addLinkRel('canonical', Mage::getBaseUrl().$brand->getUrlKey());
+        $head->addLinkRel('canonical', Mage::getBaseUrl().Mage::getStoreConfig('brands_section/brands_settings/url_prefix').'/'.$brand->getUrlKey());
 
         return parent::_prepareLayout();
     }
