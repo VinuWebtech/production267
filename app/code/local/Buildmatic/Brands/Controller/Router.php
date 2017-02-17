@@ -38,6 +38,10 @@ class Buildmatic_Brands_Controller_Router extends Mage_Core_Controller_Varien_Ro
                     }
                     $urlKey1 = $parts[1];
                 }
+                if (!ctype_lower($urlKey1))
+                {
+                    continue;
+                }
                 //$model = Mage::getModel($settings->getModel());
                 $model = Mage::getModel('buildmatic_brands/brands');
                 $checkid = $model->getCollection()->addFieldToFilter('url_key',$urlKey1)->addFieldToSelect('id');
@@ -74,6 +78,10 @@ class Buildmatic_Brands_Controller_Router extends Mage_Core_Controller_Varien_Ro
                     }
                     $urlKey1 = $parts[1];
                     $categoryName = $parts[4];
+                }
+                if (!ctype_lower($urlKey1))
+                {
+                    continue;
                 }
                 //$model = Mage::getModel($settings->getModel());
                 $categoryModel = Mage::getModel('catalog/category');
