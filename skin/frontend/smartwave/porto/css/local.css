@@ -613,7 +613,7 @@ tr.summary-details-excluded{font-style:italic}
 .header-container.type4 .search-area{position:static;margin:0}
 .header-container.type4 .header #search_mini_form{width:450px}
 .header-container.type4 .header .custom-block{display:inline-block;text-align:center;height:40px;line-height:40px}
-.header-container.type4 .mini-cart{display:inline-block;position:static;padding:0;margin:0;vertical-align:middle}
+.header-container.type4 .mini-cart{display:inline-block;/*position:static;*/position:relative; left:5px; top:-10px; padding:0;margin:0;/*vertical-align:middle onkar*/}/*onkar removed static added relative. also added top and left property*/
 .header-container.type4 .mybag-link{position:relative;height:40px;padding:0;line-height:40px;text-align:center;top:-3px}
 .header-container.type4 .mybag-link i{color:#08c;font-size:35px}
 .header-container.type4 .mybag-link .cart-info{position:absolute;width:100%;text-align:center;top:50%;margin-top:-4px;left:0;padding:0;display:block;line-height:1}

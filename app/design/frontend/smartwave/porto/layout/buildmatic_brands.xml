@@ -44,4 +44,17 @@
             </block>
         </reference>
     </buildmatic_brands_brands_viewcategory>
+
+    <buildmatic_brands_index_index>
+        <reference name = "head">
+            <!--<action method = "setTitle"><title>Accessory</title></action>
+            <action method = "setKeywords"><title>module, keywords1</title></action>
+            <action method = "setDescription"><title>Module Description</title></action>-->
+            <action method="addCss"><stylesheet>css/brandstyling.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" template="brands/brands/brandslist.phtml">
+            </block>
+        </reference>
+    </buildmatic_brands_index_index>
 </layout>
