@@ -114,3 +114,26 @@ body .product-image img{
 .f-left .catFilteringBlock .catFilteringBlockContent{
 	padding: 10px 15px;
 }
+
+.brandpagetitle{
+	padding-bottom: 15px;
+	font-size: 18px;
+	font-weight: 400;
+	font-style: normal;
+	color: #666262;
+}
+
+.manufacturer_list .brand{
+	padding: 2px;
+}
+
+.brand .brand-image{
+	border-color: 1px solid black;
+	border: 1;
+}
+
+.brand-image-link{
+	display: block;
+	width: 50px;
+	height: 50px;
+}
