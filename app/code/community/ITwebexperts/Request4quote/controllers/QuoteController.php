@@ -453,7 +453,7 @@ class ITwebexperts_Request4quote_QuoteController extends Mage_Core_Controller_Fr
         }
 
         if (isset($data['address'])) {
-            $address->setStreet((string) $data['address']);
+            $address->setStreet((string) $data['address']." ".(string)$data['street']);
         } elseif (isset($data['street'])) {
             $address->setStreet((string) $data['street']);
         }

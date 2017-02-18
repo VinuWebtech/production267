@@ -221,7 +221,8 @@ img.quote-icon {
     position: absolute;
     height: 18px;
     width: 18px;
-    top: -6px;
+    /*top: -6px; onkar*/
+    top: -10px; /*onkar*/
     left: 25px;
     text-align: center;
     border-radius: 50px;
@@ -234,8 +235,10 @@ img.quote-icon {
     position: absolute;
     height: 18px;
     width: 18px;
-    top: -6px;
-    left: 82px;
+    /*top: -6px;
+    left: 82px; onkar*/
+    top: -8px; /*onkar*/
+    left: 5px; /*onkar*/
     text-align: center;
     border-radius: 50px;
     font-size: 10px;

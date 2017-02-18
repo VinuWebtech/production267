@@ -1,0 +1,32 @@
+<?php
+/*$product = Mage::getModel('catalog/product');
+
+$attributes = Mage::getResourceModel('eav/entity_attribute_collection')
+    ->setEntityTypeFilter($product->getResource()->getTypeId())
+    ->addFieldToFilter('attribute_code', 'manufacturer');
+
+$attribute = $attributes->getFirstItem()->setEntity($product->getResource());
+
+$manufacturers = $attribute->getSource()->getAllOptions(false);
+*/
+
+$brands = Mage::getModel('buildmatic_brands/brands')->getCollection();
+//$manufacturers = $brand->getCollection()->addFieldToFilter('brandName');
+$prefix = Mage::getStoreConfig('brands_section/brands_settings/url_prefix');
+?>
+<div>
+	<center>
+		<span class="row brandpagetitle">BRANDS</span>
+	</center>
+	<ul class="manufacturer_list">
+		<?php foreach ($brands as $brand): ?>
+			<center>
+				<li class="col-xs-4 col-md-2 brand">
+    				<a class="brand-image-link" href="<?php echo Mage::getBaseUrl().$prefix.'/'.$brand->getUrlKey(); ?>" >
+    					<img class="brand-image" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$brand->getBrandImage();?>" title="<?php echo $brand->getBrandName(); ?>" width="50px" height="50px" alt="<?php echo $brand->getBrandName(); ?>"/>
+    				</a>
+				</li>
+			</center>
+		<?php endforeach; ?>
+	</ul>
+</div>
