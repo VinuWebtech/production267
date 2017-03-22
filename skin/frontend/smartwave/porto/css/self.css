@@ -256,6 +256,7 @@ img.quote-icon {
     border-radius: 8px 8px 5px 5px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     margin-top: 10px;
+    width: 320px; /*onkar for hover the green link part was going overflowing outer part*/
 }
 
 .item .product-image-area a.outofstock {
