@@ -92,6 +92,45 @@ class ITwebexperts_Request4quote_QuoteController extends Mage_Core_Controller_Fr
     
 	public function addAction()
 	{
+        /*Check zipcode part*/
+        $zipcodevalid=1;
+        $zip = Mage::app()->getRequest()->getParam('zipcode_hidden');
+        if ($zip == '') {
+
+            $zipcodevalid=0;
+            $msg = 'Please enter your zipcode and check availability';
+            $response['status'] = 'ERROR';
+            $response['message'] = $msg;
+
+        }
+        else {
+
+            if(Mage::getStoreConfig('productrestriction/general/enabled') == 1 )
+            {   
+                $productId = Mage::app()->getRequest()->getParam('product');    
+                $zip = Mage::app()->getRequest()->getParam('zipcode_hidden');
+                $allow= Mage::helper('productrestriction')->checkSingleProductrestrictionData($zip,$productId);
+               
+                if($allow['valid']==0)
+                {
+                    $zipcodevalid=$allow['valid'];
+                    $msg = Mage::getStoreConfig('productrestriction/general/product_msg');
+                    $response['status'] = 'ERROR';
+                    $response['message'] = $msg;
+                }
+            }
+        }
+        if($zipcodevalid==0)
+        {
+            $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
+            return;
+            //Mage::register('referrer_url', $this->_getRefererUrl());
+            //$this->_redirect($_SERVER['HTTP_REFERER']);
+            //$this->_redirect("/");
+            
+        }
+        /*check zipcode part ends*/
+
 		$cart   = $this->_getCart();
         $params = $this->getRequest()->getParams();
         if($this->getRequest()->getParam('r4quote') && $this->getRequest()->getParam('r4quote') != 'new'){

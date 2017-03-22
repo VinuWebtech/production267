@@ -12,7 +12,7 @@
                 <action method="setTemplate" >
                     <template>productrestriction/productrestriction.phtml</template> 
                 </action>
-                <block type="core/template" name="checkcode" template="productrestriction/productrestriction/productrestriction.phtml"/>
+                <!--<block type="core/template" name="checkcode" template="productrestriction/productrestriction/productrestriction.phtml"/>-->
 			</block> 
 		 </reference>
 	</catalog_product_view>
