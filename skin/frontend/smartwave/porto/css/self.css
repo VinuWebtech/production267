@@ -221,7 +221,8 @@ img.quote-icon {
     position: absolute;
     height: 18px;
     width: 18px;
-    top: -6px;
+    /*top: -6px; onkar*/
+    top: -10px; /*onkar*/
     left: 25px;
     text-align: center;
     border-radius: 50px;
@@ -234,8 +235,10 @@ img.quote-icon {
     position: absolute;
     height: 18px;
     width: 18px;
-    top: -6px;
-    left: 82px;
+    /*top: -6px;
+    left: 82px; onkar*/
+    top: -8px; /*onkar*/
+    left: 5px; /*onkar*/
     text-align: center;
     border-radius: 50px;
     font-size: 10px;
@@ -253,6 +256,7 @@ img.quote-icon {
     border-radius: 8px 8px 5px 5px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     margin-top: 10px;
+    width: 320px; /*onkar for hover the green link part was going overflowing outer part*/
 }
 
 .item .product-image-area a.outofstock {

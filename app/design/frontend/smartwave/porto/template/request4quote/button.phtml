@@ -20,7 +20,9 @@
 	<?php
 	$buttonTitle = $this->__('Request for Quote');
 	?>
-	<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-r4q" clickfunc="sendForm('<?php echo $this->getUrl('request4quote_front/quote/add') ?>')"><span class="prodButton"><span><?php echo $buttonTitle ?></span></span></button> <!--onkar-->
+	<?php /*<button type="button" title="<?php echo $buttonTitle ?>" class="button btn-r4q" clickfunc="sendForm('<?php echo $this->getUrl('request4quote_front/quote/add') ?>')"><span class="prodButton"><span><?php echo $buttonTitle ?></span></span></button><!--onkar-->*/ ?>
+    <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-r4q" id="getQuote"><span class="prodButton"><span><?php echo $buttonTitle ?></span></span></button>
+    <span id='ajax_loader' style='display:none'><i class="ajax-loader small animate-spin"></i></span>
 <?php elseif ($this->isRequestEnabled() && !$this->isRequestOrderDisabled()) : ?>
 	<div class="bulk-quote" style="margin-top: 15px;">
 		<?php if($this->isDiscountOffered()!= ''): ?>
@@ -31,7 +33,165 @@
 		<?php
 		$buttonTitle = $this->__('Get Quote');
 		?>
-		<button type="button" title="<?php echo $buttonTitle ?>" class="bulk-r4q" clickfunc="sendForm('<?php echo $this->getUrl('request4quote_front/quote/add') ?>')"><span class="prodButton"><span><?php echo $buttonTitle ?></span></span></button> <!--onkar-->
+		<?php /*<button type="button" title="<?php echo $buttonTitle ?>" class="bulk-r4q" clickfunc="sendForm('<?php echo $this->getUrl('request4quote_front/quote/add') ?>')"><span class="prodButton"><span><?php echo $buttonTitle ?></span></span></button>*/?> <!--onkar-->
+        <button type="button" title="<?php echo $buttonTitle ?>" class="bulk-r4q" id="getQuote"><span class="prodButton"><span><?php echo $buttonTitle ?></span></span></button>
+        <!--<span id='ajax_loader' style='display:none'><i class="ajax-loader small animate-spin"></i></span>-->
 	</div>
 <?php endif; ?>
+<!--
+<div id="loading-mask" style='display:none'>
+<div class ="background-overlay"></div>
+    <p id="loading_mask_loader" class="loader">
+        <i class="ajax-loader large animate-spin"></i>
+    </p>
+</div>-->
 <!-- Vinu changes for getting bulk quote button end -->
+<div class="loader"></div>
+<script type='text/javascript'>
+    
+    //AJAX function
+    /*function startAjax() {
+        var Success = false;
+      $.ajax({
+        url: "request4quote_front/quote/add",
+        async:false,
+        //data: JSON.stringify({ status: status, message: message }),
+        if(data.status == "ERROR"){
+            error: function(data){
+            Success = false;
+            alert("PLEASE ENTER VALID PINCODE");
+        }
+        success: function (data) {
+                Success = true;
+            },
+      });
+    }*/
+    /*function validation(){
+        var productAddToCartFormValid = new VarienForm('product_addtocart_form')
+            if (productAddToCartFormValid.validator.validate()) 
+            {
+                var form = $('product_addtocart_form');
+                var oldUrl = form.action;
+                if (url) 
+                {
+                    form.action = url;
+                }
+                var e = null;
+                try 
+                {
+                    form.submit();
+                } 
+                catch (e) 
+                {
+                    
+                }
+                form.action = oldUrl;
+                if (e) 
+                {
+                    throw e;
+                    
+                }
+            }
+    }*/
+    jQuery(function () 
+    {
+        jQuery("#getQuote").click(function()
+        {   //document.getElementByClassName("error-msg").style.display = 'none';
+            /*var productAddToCartFormValid = new VarienForm('product_addtocart_form')
+            if (productAddToCartFormValid.validator.validate()) 
+            {
+                var form = $('product_addtocart_form');
+                var oldUrl = form.action;
+                if (url) 
+                {
+                    form.action = url;
+                }
+                var e = null;
+                try 
+                {
+                    form.submit();
+                } 
+                catch (e) 
+                {
+                    
+                }
+                form.action = oldUrl;
+                if (e) 
+                {
+                    throw e;
+                    
+                }
+            }*/
+            jQuery.ajax(
+            {
+                url: "<?php echo Mage::getUrl('request4quote_front/quote/add');?>",
+                //parameters: Form.serialize(formId)
+                //parameters: Form.serialize(#product_addtocart_form),
+                data: jQuery("#product_addtocart_form").serialize()
+            }).done(function(response)
+            {
+                var jsonObj = JSON.parse(response);
+                var jsonMessage = jsonObj.message;
+                if(jsonMessage){
+                    //validation();
+                    alert(jsonMessage);
+                    location.reload();
+                    //"<?php Mage::getSingleton('core/session')->getMessages(true); ?>"
+
+                    //new 22-03-17 for reseting the error value
+
+
+                    //form reset end
+
+                    jQuery('#loading-mask').show();
+                    //jQuery('.error-msg').hide();
+                    //jQuery(".error-msg").remove();
+                    //jQuery('.error-msg').attr("style","display:none !important;");
+
+                    /*jQuery( '.error-msg' ).each(function () {
+                        this.style.setProperty( 'display', 'none', 'important' );
+                    });*/
+                }
+                else{ 
+                    var productAddToCartFormValid = new VarienForm('product_addtocart_form')
+                    if (productAddToCartFormValid.validator.validate()) 
+                    {
+                        var form = $('product_addtocart_form');
+                        var oldUrl = form.action;
+                        if (url) 
+                        {
+                            form.action = url;
+                        }
+                        var e = null;
+                        try 
+                        {
+                            form.submit();
+                        } 
+                        catch (e) 
+                        {
+                            
+                        }
+                        form.action = oldUrl;
+                        if (e) 
+                        {
+                            throw e;
+                            
+                        }
+                    }
+                    //validation();
+                    //alert("Please specify the product options (Color/Size)");
+                    /*jQuery( '.error-msg' ).each(function () {
+                        this.style.setProperty( 'display', 'none', 'important' );
+                    });*/
+                    //jQuery('.error-msg').attr("style","display:none !important;");
+                    //jQuery(".error-msg").css("cssText", "display:none !important;");
+                    //jQuery('.error-msg').hide();
+                    //jQuery('.messages .error-msg').remove();
+                }               
+            });
+        });
+        jQuery(document).ready(function() {
+            jQuery('.error-msg').remove();
+        });
+    });
+</script>
